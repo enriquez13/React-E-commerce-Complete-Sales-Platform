@@ -6,7 +6,7 @@ import ItemCart from './ItemCart'
 export const Cart = () => {
   
     const {cart, totalPrice} = useCartContext()
-    //console.log(cart)
+    
     if(cart.length === 0){
         
         return (
