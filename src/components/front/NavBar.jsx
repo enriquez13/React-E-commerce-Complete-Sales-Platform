@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useCartContext } from "../../CartProvider";
 import { useState } from "react";
-
+import { AiOutlineMenu,AiOutlineCloseCircle} from "react-icons/ai"
 
 export const NavBar =()=>{
     let [open,setOpen]=useState(false);
@@ -21,7 +21,7 @@ export const NavBar =()=>{
                     </div>
 
                     <div onClick={() => setOpen(!open)} className="text-xl absolute right-8 top-4 text-gray-300 cursor-pointer md:hidden">
-                        <ion-icon name={open ? 'close' : 'menu'}></ion-icon>
+                        {open==false ? <AiOutlineMenu/>:<AiOutlineCloseCircle/>}
                     </div>
                     <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-black md:bg-black
                     md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 

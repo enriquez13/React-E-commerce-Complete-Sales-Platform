@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useCartContext } from '../CartProvider'
 import ItemCart from './ItemCart'
+import { IoIosArrowBack } from "react-icons/io"
 
 export const Cart = () => {
   
@@ -30,8 +31,8 @@ export const Cart = () => {
         <>
             <div className='relative'>
                 <NavLink to='/'>
-                    <p className='absolute left-3 top-4 text-xl text-gray-400 '>
-                        <ion-icon name="chevron-back-outline"></ion-icon>
+                    <p className='absolute left-4 top-5 text-2xl text-gray-400 '>
+                        <IoIosArrowBack/>
                     </p>
                 </NavLink>
                 <h2 className='w-full text-md text-center py-4 text-black'>

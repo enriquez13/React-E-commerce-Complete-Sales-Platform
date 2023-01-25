@@ -37,7 +37,7 @@ const [color, setColor] = useState('')
                     <h5 className="text-center text-md  font-bold">{info.nombre}</h5>
                 
                 <div className=" pb-2 ">
-                    <span className="grid text-center text-xs md:text-xl text-gray-900 dark:text-gray-800 w-full">
+                    <span className="grid mb-2 text-center text-xs md:text-xl text-gray-900 w-full">
                         ${info.valor}
                     </span>
                     
@@ -65,7 +65,7 @@ const [color, setColor] = useState('')
                                     <button onClick={() => {
                                         setColor(col.color)
                                     }} 
-                                    key={col.color+item.size} className={`${col.color == color ? "border-black w-7 h-7" : "w-5 h-5"} ${col.bg}  
+                                    key={col.color+item.size} className={`${col.color == color ? "border-black w-6 h-6" : "w-5 h-5"} ${col.bg}  
                                          mx-1 border rounded-full `}>
 
                                     </button>
@@ -76,7 +76,7 @@ const [color, setColor] = useState('')
                                                                           
                     {talla && color ? <button href="#" className="absolute right-2 bottom-[-5px] justify-end" 
                     onClick={()=> onAdd(1, talla, color)}>
-                        <span className='flex items-center p-2 text-2xl rounded-full text-black animate-pulse'>
+                        <span className='flex items-center p-2 text-2xl  text-black '>
                             <BsBagPlus/>
                         </span>
                         

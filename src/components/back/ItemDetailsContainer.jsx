@@ -41,7 +41,7 @@ const products = [
                 ],
             },
             {
-                size: 'EME',
+                size: 'M',
                 colors: [
                     { color: 'blanco', bg:"bg-white" ,stock: 10 },
                     { color: 'negro', bg:"bg-neutral-900", stock: 5 },
@@ -69,7 +69,7 @@ const products = [
                 ],
             },
             {
-                size: 'X L',
+                size: 'XL',
                 colors: [
                     { color: 'blanco', bg:"bg-white" ,stock: 10 },
                     { color: 'negro', bg:"bg-neutral-900", stock: 5 },
