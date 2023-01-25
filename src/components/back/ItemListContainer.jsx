@@ -41,7 +41,7 @@ const products = [
                 ],
             },
             {
-                size: 'M',
+                size: 'm',
                 colors: [
                     { color: 'blanco', bg:"bg-white" ,stock: 10 },
                     { color: 'negro', bg:"bg-neutral-900", stock: 5 },
