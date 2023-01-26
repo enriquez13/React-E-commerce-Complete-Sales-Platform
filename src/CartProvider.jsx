@@ -7,9 +7,9 @@ const [cart, setCart] = useState([])
 //console.log('carrito: ', cart)
 
 const addProduct = (item, quantity, talla, color, ide) =>{
-  if (isInCart(item.ide)) {
+  if (isInCart(ide)) {
     setCart(cart.map(product => {
-      return product.ide === item.ide ? { ...product, quantity: product.quantity + quantity, talla, color, ide} : product
+      return product.ide === ide ? { ...product, quantity: product.quantity + quantity, talla, color, ide} : product
     }))
   } else {
     setCart([...cart, { ...item, quantity, talla, color, ide}])
