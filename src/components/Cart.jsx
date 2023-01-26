@@ -30,6 +30,7 @@ export const Cart = () => {
 
     return ( 
         <>
+        <div className='relative min-h-screen'>
             <div className='relative'>
                 <NavLink to='/'>
                     <p className='absolute left-4 top-5 text-2xl text-gray-400 '>
@@ -42,14 +43,14 @@ export const Cart = () => {
             </div>
 
 
-            <div className='min-h-[400px] md:mx-[200px] '>
+            <div className='min-h-[400px] md:mx-[200px] pb-[12rem]'>
                 {
                     cart.map(product => <ItemCart key={product.id} product={product} />)
                 }
 
             </div>   
 
-            <div className=' w-full border rounded-xl '>
+            <div className='absolute bottom-0 w-full border rounded-xl '>
                 <div className='flex py-2 px-4 text-md text-black '>
                     <h5 className='pl-2 w-2/3  md:pl-[200px]'>
                         Subtotal:
@@ -75,7 +76,8 @@ export const Cart = () => {
                         border border-black rounded-xl text-white py-4 bg-black'>Comprar</button>
                     </Link>
                 </div>    
-            </div>                 
+            </div>     
+            </div>            
         </>
     )
 }
