@@ -30,8 +30,8 @@ export const SliderCustomer = () => {
   }
   return (
     <>
-    <h2 className='text-center my-5 text-white'>RESEÑAS</h2>
-<div className=' max-w-[1400px] h-[300px] w-full m-auto mt-4 relative group text-gray-100'>
+    <h2 className='text-center my-7 text-white text-lg '>RESEÑAS</h2>
+<div className='md:w-1/3 max-w-[1400px] h-[300px] w-full m-auto  relative group text-gray-100'>
   <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full bg-center bg-cover duration-500'>
   </div>
   <div onClick={prevSlide} className='text-white group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-[1.5rem] rounded-full  '><BsChevronCompactLeft /></div>

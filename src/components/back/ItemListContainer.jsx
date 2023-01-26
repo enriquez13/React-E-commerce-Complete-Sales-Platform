@@ -354,7 +354,7 @@ export const ItemListContainer = ({texto})=>{
   //  }
     return (
         <>
-            <div className="pl-5 text-black pt-7 pb-2 text-lg">PRODUCTOS</div>
+            <div className="pl-5 text-black my-7 text-lg">PRODUCTOS</div>
 
             <div className="mb-[3rem] grid grid-cols-2 md:grid-cols-3 gap-1 ">
                 <ItemList data={data} />
