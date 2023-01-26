@@ -41,13 +41,14 @@ const [color, setColor] = useState('')
                         ${info.valor}
                     </span>
                     
-                    <div className='grid grid-cols-4 gap-1 mb-1'>
+                    <div className='grid grid-cols-4 gap-1 mb-1 md:mx-[3rem]'>
                   
                         {info.sizes.map(item => (
                             <>
-                                <div>
+                                <div className=''>
                                     <button key={item.size}
-                                        className={`${item.size == talla ? "bg-black text-gray-100 w-7 h-7 font-bold" : "border-gray-200 w-5 h-5"} text-[0.8rem] mx-1 rounded-full border `}
+                                        className={`${item.size == talla ? "bg-black text-gray-100 w-7 md:w-9 h-7 md:h-9 font-bold" 
+                                        : "border-gray-200 w-5 h-5 md:w-7 md:h-7"} text-[0.8rem] mx-1 rounded-full border `}
                                         onClick={() => setTalla(item.size)}>
                                         {item.size}
                                     </button>
@@ -58,14 +59,15 @@ const [color, setColor] = useState('')
                         )
                         }
                         </div>
-                        <div className='grid grid-cols-4 gap-1'>
+                        <div className='grid grid-cols-4 md:grid-cols-6 gap-1 md:mx-[3rem] md:mt-5'>
                         {info.sizes.map(item => (
                             item.size === talla ? item.colors.map(col => (
                                 <div className=''>
                                     <button onClick={() => {
                                         setColor(col.color)
                                     }} 
-                                    key={col.color+item.size} className={`${col.color == color ? "border-black w-6 h-6" : "w-5 h-5"} ${col.bg}  
+                                    key={col.color+item.size} className={`${col.color == color ? "border-black w-6 h-6 md:w-8 md:h-8" 
+                                    : "w-5 h-5 md:w-7 md:h-7"} ${col.bg}  
                                          mx-1 border rounded-full `}>
 
                                     </button>
@@ -76,7 +78,7 @@ const [color, setColor] = useState('')
                                                                           
                     {talla && color ? <button href="#" className="absolute right-2 bottom-[-5px] justify-end" 
                     onClick={()=> onAdd(1, talla, color)}>
-                        <span className='flex items-center p-2 text-2xl  text-black '>
+                        <span className='flex items-center p-2 text-2xl text-black md:mr-[4rem]'>
                             <BsBagPlus/>
                         </span>
                         
