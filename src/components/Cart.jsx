@@ -45,7 +45,7 @@ export const Cart = () => {
 
             <div className='min-h-[400px] md:mx-[200px] pb-[12rem]'>
                 {
-                    cart.map(product => <ItemCart key={product.id} product={product} />)
+                    cart.map(product => <ItemCart key={product.nombre+product.talla+product.color} product={product} />)
                 }
 
             </div>   

@@ -6,16 +6,16 @@ export const CartProvider = ({children}) => {
 const [cart, setCart] = useState([])
 //console.log('carrito: ', cart)
 
-const addProduct = (item, quantity, talla, color) =>{
-  //if (isInCart(item.id)) {
-    //setCart(cart.map(product => {
-      //return product.id === item.id ? { ...product, quantity: product.quantity + quantity, talla, color} : product
-  //  }))
-  //} else {
-    setCart([...cart, { ...item, quantity, talla, color}])
+const addProduct = (item, quantity, talla, color, ide) =>{
+  if (isInCart(item.ide)) {
+    setCart(cart.map(product => {
+      return product.ide === item.ide ? { ...product, quantity: product.quantity + quantity, talla, color, ide} : product
+    }))
+  } else {
+    setCart([...cart, { ...item, quantity, talla, color, ide}])
   } 
   
-//}
+}
 
 
 const totalPrice = () =>{
@@ -27,10 +27,10 @@ const totalProducts = () =>{
 }
 
 const clearCart = ()=> setCart([])
-const removeProduct = (id)=> setCart(cart.filter(product => product.id !== id ))
-const isInCart = (id) => {
+const removeProduct = (ide)=> setCart(cart.filter(product => product.ide !== ide))
+const isInCart = (ide) => {
     return (
-      cart.find(product => product.id===id ) ? true : false
+      cart.find(product => product.ide===ide ) ? true : false
     )
   }
   //console.log(cart)

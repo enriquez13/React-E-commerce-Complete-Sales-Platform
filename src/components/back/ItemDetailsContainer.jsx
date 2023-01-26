@@ -29,15 +29,15 @@ const products = [
             {
                 size: 'S',
                 colors: [
-                    { color: 'blanco', bg:"bg-white" ,stock: 10 },
-                    { color: 'negro', bg:"bg-neutral-900", stock: 5 },
-                    { color: 'gris', bg:"bg-gray-500" ,stock: 10 },
-                    { color: 'rojo', bg:"bg-[#D10000]", stock: 5 },
-                    { color: 'rosado', bg:"bg-rose-400", stock: 5 },                    
-                    { color: 'vinotinto', bg:"bg-[#56070c]", stock: 5 },
-                    { color: 'celeste', bg:"bg-blue-300", stock: 5 },
-                    { color: 'azul oscuro', bg:"bg-[#07144E]", stock: 5 },
-                    { color: 'beige', bg:"bg-[#c9a974]", stock: 5 }
+                    { idepro:'CCMUSBLA' ,color: 'blanco', bg:"bg-white" ,stock: 10 },
+                    { idepro:'CCMUSNEG' ,color: 'negro', bg:"bg-neutral-900", stock: 5 },
+                    { idepro:'CCMUSGRI' ,color: 'gris', bg:"bg-gray-500" ,stock: 10 },
+                    { idepro:'CCMUSROJ' ,color: 'rojo', bg:"bg-[#D10000]", stock: 5 },
+                    { idepro:'CCMUSROS' ,color: 'rosado', bg:"bg-rose-400", stock: 5 },                    
+                    { idepro:'CCMUSVIN' ,color: 'vinotinto', bg:"bg-[#56070c]", stock: 5 },
+                    { idepro:'CCMUSCEL' ,color: 'celeste', bg:"bg-blue-300", stock: 5 },
+                    { idepro:'CCMUSAZU' ,color: 'azul oscuro', bg:"bg-[#07144E]", stock: 5 },
+                    { idepro:'CCMUSBEI' ,color: 'beige', bg:"bg-[#c9a974]", stock: 5 }
                 ],
             },
             {

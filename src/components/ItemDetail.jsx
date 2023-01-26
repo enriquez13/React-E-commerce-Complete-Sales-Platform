@@ -14,12 +14,10 @@ export const ItemDetail = ({data}) => {
 const [goToCart, setGoToCart] = useState(false)
 const {addProduct} = useCartContext()
 
-    const onAdd = (quantity) =>{
+const onAdd = (quantity, talla, color,ide) =>{
     setGoToCart(true)
-    addProduct(data, quantity, talla, color)
-} 
-
-
+    addProduct(data, quantity, talla, color, ide)
+}
 
     const [sliderData, setSliderData] = useState(data.img ? data.imagenes : "")
     const handleClick = (index)=>{
@@ -28,14 +26,15 @@ const {addProduct} = useCartContext()
     }
     const [talla, setTalla] = useState('')
     const [color, setColor] = useState('')
+    const [ide, setIde] = useState('')
 
     return (
     <>
 
-    <div className="text-black grid md:grid-cols-2 md:my-[3rem]">
-                <div className='grid place-content-center'>
-                    <img src={sliderData.img} className=' w-full object-cover max-h-[460px] md:max-h-[450px] md:max-w-[450px] ' />
-                    <div className=" grid grid-cols-4 w-full px-2 md-px-0 gap-2">
+    <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 ">
+                <div className='md:grid md:place-content-center mx-0 px-0 '>
+                    <img src={sliderData.img} className=' w-full object-cover h-[450px] md:max-h-[450px] md:max-w-[450px]' />
+                    <div className=" grid grid-cols-4 w-full px-0 md-px-0 gap-2">
 
                         {data.imagenes?.map((foto, i) =>
                             <img key={foto.id} src={foto.img} className={`${sliderData.id == i ? "border-b-4 border-black" : ""} object-cover max-h-[100px] w-full md:max-h-[120px] py-1`} onClick={() => handleClick(i)} />
@@ -60,14 +59,17 @@ const {addProduct} = useCartContext()
                     
                     </div>
                     {talla?<h3 className='hidden md:block my-4'>Elige el color:</h3>:""}
+
                     <div className='grid grid-cols-6 gap-1 place-items-left pt-5 md:pt-0 pl-2 md:pl-0 '> 
                     {data.sizes?.map(item => (
                             item.size === talla ? item.colors.map(col => (
                                 <div className=''>
                                     <button onClick={() => {
-
+                                                               
                                         setColor(col.color)
-                                    }} key={col.color} className={`${col.color == color ? "border-2 border-black w-10 h-10" : "border border-gray-300 w-9 h-9"} ${col.bg}  
+                                        setIde(col.idepro)  
+                                    }} key={col.color} className={`${col.color == color ? "border-2 border-black w-10 h-10" 
+                                    : "border border-gray-300 w-9 h-9"} ${col.bg}  
                                          mx-1 md:mx-0 border rounded-full `}>
 
                                     </button>
@@ -89,7 +91,7 @@ const {addProduct} = useCartContext()
                 <div className='mx-8 md:mx-[6rem] md:mt-[2rem]'>
                 <button  className="flex items-center justify-center w-full h-11 mt-5 
                 border border-black rounded-xl hover:bg-neutral-100"  
-                onClick={()=> onAdd(1)}>Agregar al carrito</button>
+                onClick={()=> onAdd(1, talla, color, ide)}>Agregar al carrito</button>
                 </div>
                 <div className='mx-8 md:mx-[6rem]'>
                 <Link to='/pay'>

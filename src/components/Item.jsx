@@ -12,19 +12,21 @@ const Item = ({info})=>{
     const [goToCart, setGoToCart] = useState(false)
 const {addProduct} = useCartContext()
 
-    const onAdd = (quantity, talla, color) =>{
+    const onAdd = (quantity, talla, color,ide) =>{
     setGoToCart(true)
-    addProduct(info, quantity, talla, color)
+    addProduct(info, quantity, talla, color, ide)
 }
-const [colores, setColores] = useState([])
+//const [colores, setColores] = useState([])
 
 const [talla, setTalla] = useState('')
 const [color, setColor] = useState('')
+const [ide, setIde] = useState('')
 
 
     return (
-
+        
         <div className="relative rounded-lg">
+           
             <Link to={`/detalle/${info.id}`}>
                 <div className='flex justify-center w-full h-[300px]'>
                 <img className="md:w-3/4 items-center p-1 rounded-t-lg object-cover w-full h-full" src={info.imagen} alt="product image" />
@@ -65,6 +67,7 @@ const [color, setColor] = useState('')
                                 <div className=''>
                                     <button onClick={() => {
                                         setColor(col.color)
+                                        setIde(col.idepro)
                                     }} 
                                     key={col.color+item.size} className={`${col.color == color ? "border-black w-6 h-6 md:w-8 md:h-8" 
                                     : "w-5 h-5 md:w-7 md:h-7"} ${col.bg}  
@@ -77,7 +80,7 @@ const [color, setColor] = useState('')
                     </div>
                                                                           
                     {talla && color ? <button href="#" className="absolute right-2 bottom-[-5px] justify-end" 
-                    onClick={()=> onAdd(1, talla, color)}>
+                    onClick={()=> onAdd(1, talla, color, ide)}>
                         <span className='flex items-center p-2 text-2xl text-black md:mr-[4rem]'>
                             <BsBagPlus/>
                         </span>

@@ -5,9 +5,8 @@ import Item from './Item'
   return (
    
     data.map(product => 
-    <Item key={product.id} info={product} />)
+    <Item key={product.ide} info={product} />)
   
   )
-  
 }
 export default ItemList
