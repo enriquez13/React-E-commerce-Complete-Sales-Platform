@@ -85,7 +85,7 @@ function agregar() {
                     {talla && color ? <button href="#" className="absolute right-2 bottom-[0px] md:bottom-[1rem] justify-end" 
                     onClick={agregar} type="button" disabled = {color === ""}>
                         <span className='flex items-center p-2 text-lg rounded-2xl bg-black text-white md:mr-[4rem] 
-                        md:transform md:duration-200 md:hover:scale-110 '>
+                        md:transform md:duration-200 md:hover:scale-125 '>
                             <BsBagCheck/>
                         </span>
                         
