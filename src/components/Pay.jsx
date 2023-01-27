@@ -22,7 +22,7 @@ function onChangeValue(event) {
 
 const[pagonormal, setPagonormal]= useState('')
 function onChangePagonormal(evento){
-setPagonormal(event.target.value)
+setPagonormal(evento.target.value)
 }
 
     return (

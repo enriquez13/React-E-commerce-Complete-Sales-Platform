@@ -18,11 +18,11 @@ export const Pie = () => {
   const [tshirt, setTshirt] = useState(false)
 
   function cambiarHome(){
-    setHome(false)
+    setHome(true)
     setTshirt(false)
   }
   function cambiarTshirt(){
-  setHome(true)
+  setHome(false)
   setTshirt(true)
 }
 
@@ -32,11 +32,12 @@ export const Pie = () => {
       <div className=' w-[hv-100] h-10  rounded-xl grid grid-cols-4 text-center content-center 
     item-center justify-center border text-gray-600 bg-[#FFFEFB] text-lg'>
         <NavLink to="/" className="flex justify-center" >
-          <button onClick={cambiarHome} >{home==true ?<BsHouseDoor />:<BsHouseDoorFill/>}</button>
+          <button onClick={cambiarHome} >{home===false ?<BsHouseDoor />:<BsHouseDoorFill/>}</button>
         </NavLink>
-      
+      {console.log("home :",home)}
+      {console.log("tshirt",tshirt)}
         <NavLink to='/products' className="flex justify-center">
-          <button onClick={cambiarTshirt}>{tshirt==true?<IoShirt/>:<IoShirtOutline />}</button>
+          <button onClick={cambiarTshirt}>{tshirt===true?<IoShirt/>:<IoShirtOutline />}</button>
         </NavLink>
         <NavLink to='/cart' className="flex justify-center">
           <span className=' relative'><BsBag />

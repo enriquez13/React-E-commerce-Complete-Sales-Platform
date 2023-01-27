@@ -33,7 +33,7 @@ export const NavBar =()=>{
                             <NavLink to="/categoria/camiseta" className="text-white hover:text-gray-400 duration-500">camisetas</NavLink>
                         </li>
                         <li className="cursor-pointer md:ml-8 text-xl md:my-0 my-7">
-                            <NavLink to="/categoria/buso" className="text-white hover:text-gray-400 duration-500">Busos</NavLink>
+                            <NavLink to="/categoria/buzo" className="text-white hover:text-gray-400 duration-500">Buzos</NavLink>
                         </li>
                         <li className="cursor-pointer md:ml-8 text-xl md:my-0 my-7 text-white hover:text-gray-400 duration-500">
                             Contacto
