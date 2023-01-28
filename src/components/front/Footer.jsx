@@ -2,7 +2,7 @@ import { AiOutlineWhatsApp } from "react-icons/ai"
 const Footer=()=>{
 
     return (
-        <footer className="px-6 pb-[5rem] bg-black sm:p-6 ">
+        <footer className="px-6 pb-[5rem] bg-black sm:p-6 w-full ">
 
             <div className="flex py-8 space-x-6 justify-center ">
                 <a href="https://www.facebook.com/Zorobabel-106610321504559 " 

@@ -37,7 +37,7 @@ export const Banner = () => {
     <>
 
 <div className='mt-[2.5rem]  md:mt-[4.5rem] max-w-[1400px] h-[36rem] w-full md:max-h-[500px]  m-auto  relative group text-gray-100'>
-  <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full bg-center bg-cover duration-500'></div>
+  <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full bg-center bg-cover transition duration-700'></div>
   
   <div onClick={prevSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-3xl  rounded-full p-2 '><BsChevronCompactLeft /></div>
   <div onClick={nextSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-3xl rounded-full p-2'><BsChevronCompactRight /></div>

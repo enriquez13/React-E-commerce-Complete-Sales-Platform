@@ -27,7 +27,7 @@ function agregar() {
     setColor("")
 }
     return (
-        
+        <>
         <div className="relative rounded-lg">
            
             <Link to={`/detalle/${info.id}`}>
@@ -94,6 +94,8 @@ function agregar() {
                 </div>
             </div>
         </div>
+        
+        </>
     )
 }
 export default Item

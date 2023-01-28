@@ -7,7 +7,7 @@ export const Categories = () => {
   
 <>
 
-<div className="grid justify-items-center my-7 text-lg text-white ">
+<div className="grid justify-items-center my-10  md:font-semibold md:text-2xl text-lg text-white ">
             CATEGORIAS
 </div>
             <div className=" grid sm:grid-cols-4 text-gray-100 ">
@@ -46,7 +46,11 @@ export const Categories = () => {
                         bg-transparent border  hover:bg-gray-200 hover:text-black font-extrabold tracking-wider"> Comprar Ahora</button>
                     </div>      
                 </NavLink>
+
+                
             </div>
+            <h3 className="py-4 px-10 md:py-8  md:text-xl text-center w-full text-white">Creamos prendas para personas que buscan productos de calidad que los acompañen en su día a día.</h3>
+            
             </>
               )
             }
