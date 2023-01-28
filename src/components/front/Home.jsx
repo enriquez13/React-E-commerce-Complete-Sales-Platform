@@ -14,9 +14,10 @@ export const Home = () => {
         <NavBar/>
         <Banner />
         <Categories />
-        <SliderCustomer/>
+        
       </div>
         <ItemListContainer/>
+        <SliderCustomer/>
         <Informatio/>
         <Footer/>
     </div>

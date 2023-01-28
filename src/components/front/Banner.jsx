@@ -9,10 +9,13 @@ import { useState } from 'react'
 
 export const Banner = () => {
   const slides = [
-    {url:"https://i.pinimg.com/564x/ee/40/7f/ee407f24988ecf638b5bc8edfd936de2.jpg"},
-    {url:"https://i.pinimg.com/564x/a4/78/e8/a478e8f199fc4b7c20a0444157238142.jpg"},
-    {url:"https://i.pinimg.com/564x/01/8e/89/018e89133c5b65892db3504d87517dfe.jpg"},
+   
+    {url:"https://i.pinimg.com/564x/bd/42/38/bd4238b0109d4f9ca31be05712cae693.jpg"},
     {url:"https://i.pinimg.com/564x/e7/b5/0c/e7b50ca8cc325910a38323c77f27e1f6.jpg"},
+    {url:"https://i.pinimg.com/564x/f2/e6/5c/f2e65ca46e5c811c83e9c0d146ec2a99.jpg"},
+    {url:"https://i.pinimg.com/564x/2e/d5/85/2ed585f8884d06b781056d7eb1584d42.jpg"},
+    {url:"https://i.pinimg.com/564x/b1/58/22/b15822678168c01505d0b91d06edc80f.jpg"},
+ 
    ]
   
   const [currentIndex,setCurrentIndex] = useState(0) 
@@ -32,7 +35,8 @@ export const Banner = () => {
   }
   return (
     <>
-<div className=' md:grid md:grid-cols-2  max-w-[1400px] h-screen w-full md:max-h-[1000px] md:w-4/5 m-auto pt-14 relative group text-gray-100'>
+
+<div className='mt-[2.5rem]  md:mt-[4.5rem] max-w-[1400px] h-[36rem] w-full md:max-h-[500px]  m-auto  relative group text-gray-100'>
   <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full bg-center bg-cover duration-500'></div>
   
   <div onClick={prevSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-3xl  rounded-full p-2 '><BsChevronCompactLeft /></div>
