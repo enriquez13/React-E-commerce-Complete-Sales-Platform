@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { FiPlus, FiMinus } from "react-icons/fi"
 
 const imgs =[
-    {id:0, img:"https://i.pinimg.com/originals/61/4f/cf/614fcffa5a1f887221e977d6738268fe.jpg"},
+    {id:0, img:"https://geekflare.com/wp-content/uploads/2021/09/520401-pure-black-background-wallpaper.jpg"},
 ]
 export const ItemDetail = ({data}) => {
     
@@ -19,11 +19,18 @@ const onAdd = (quantity, talla, color,ide) =>{
     addProduct(data, quantity, talla, color, ide)
 }
 
-    const [sliderData, setSliderData] = useState(data.img ? data.imagenes : "")
+console.log(data?.imagenes)
+setTimeout(() => {
+    setSliderData(data.imagenes[0]);
+  }, 100)
+    const [sliderData, setSliderData] = useState([])
+
+
     const handleClick = (index)=>{
-        const slider=data.imagenes[index]
+        const slider= index ? data.imagenes[index] : data.imagenes[0]
         setSliderData(slider)
     }
+    //console.log(data.imagenes)
     const [talla, setTalla] = useState('')
     const [color, setColor] = useState('')
     const [ide, setIde] = useState('')
@@ -44,12 +51,18 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
 
     <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 ">
                 <div className='md:grid md:place-content-center mx-0 px-0 '>
-                    <img src={sliderData.img} className=' w-full object-cover h-[450px] md:max-h-[450px] md:max-w-[450px] md:transform md:duration-200 md:hover:scale-100' />
+                    <img src={ sliderData?.img} className=' w-full object-cover h-[450px] md:max-h-[450px] md:max-w-[450px] 
+                    md:transform md:duration-200 md:hover:scale-100' />
                     <div className=" grid grid-cols-4 w-full px-0 md-px-0 gap-2">
 
                         {data.imagenes?.map((foto, i) =>
-                            <img key={foto.id} src={foto.img} className={`${sliderData.id == i ? "border-b-4 border-black md:transform md:duration-200 md:hover:scale-105" : ""} object-cover max-h-[100px] w-full md:max-h-[120px] py-1`} onClick={() => handleClick(i)} />
+                        <>
+                            <img key={foto.id} src={foto.img} className={`${sliderData.id == i 
+                                ? "border-b-4 border-black md:transform md:duration-200 md:hover:scale-105" 
+                                : ""} object-cover max-h-[100px] w-full md:max-h-[120px] py-1`} 
+                                onClick={() => handleClick(i)} /></>
                         )
+                        
                         }
 
                     </div>

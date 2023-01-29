@@ -34,8 +34,7 @@ export const Pie = () => {
         <NavLink to="/" className="flex justify-center" >
           <button onClick={cambiarHome} >{home===false ?<BsHouseDoor />:<BsHouseDoorFill/>}</button>
         </NavLink>
-      {console.log("home :",home)}
-      {console.log("tshirt",tshirt)}
+    
         <NavLink to='/products' className="flex justify-center">
           <button onClick={cambiarTshirt}>{tshirt===true?<IoShirt/>:<IoShirtOutline />}</button>
         </NavLink>
@@ -48,7 +47,7 @@ export const Pie = () => {
             }
           </span>
         </NavLink>
-        <a href="https://wa.me/573127296362" className='flex justify-center text-lime-800 text-[#00ea38]'><BsWhatsapp /></a>
+        <a href="https://wa.me/573127296362" className='flex justify-center text-lime-800 text-[#56e95a]'><BsWhatsapp /></a>
       </div>
     </div>
   )

@@ -468,7 +468,8 @@ export const ItemListContainer = ({texto})=>{
     return (
         <>
             <NavBar />
-            <div className="grid justify-items-center text-black my-10 text-lg  font-semibold md:text-2xl">PRODUCTOS</div>
+            <div className="grid justify-items-center text-black mt-[4rem] mb-[2rem] text-lg 
+            font-semibold md:text-2xl">PRODUCTOS</div>
             <div className="mb-[3rem] grid grid-cols-2 md:grid-cols-3 gap-1 pb-[1rem]">
                 <ItemList data={data} />
             </div>
