@@ -32,7 +32,7 @@ const myTimeout =  verificar===true? setTimeout( ()=>{
     const handleClick = (index)=>{
         const slider= data.imagenes[index]
         setSliderData(slider)
-        clearTimeout(myTimeout)
+      //clearTimeout(myTimeout)
     }
     //console.log(data.imagenes)
     const [talla, setTalla] = useState('')
