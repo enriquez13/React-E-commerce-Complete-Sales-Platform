@@ -3,8 +3,6 @@ import { BsChevronCompactLeft} from "react-icons/bs";
 import { BsChevronCompactRight} from "react-icons/bs";
 import {RxDotFilled} from "react-icons/rx";
 import {RxShadowOuter} from "react-icons/rx";
-
-
 import { useState } from 'react'
 
 export const Banner = () => {
@@ -24,11 +22,16 @@ export const Banner = () => {
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex)  
   }
+
+
+
   const nextSlide = () => {
     const isLastSlide = currentIndex === slides.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex) 
   }
+
+setTimeout(nextSlide, 4000)
 
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex)

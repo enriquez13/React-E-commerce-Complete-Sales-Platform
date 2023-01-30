@@ -32,7 +32,7 @@ function agregar() {
            
             <Link to={`/detalle/${info.id}`}>
                 <div className='flex justify-center w-full h-[300px]'>
-                <img className="md:w-3/4 items-center p-1 rounded-t-lg object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src={info.imagenes[0].img} alt="product image" />
+                <img className="md:w-3/4 items-center p-1 rounded-t-lg object-cover w-full h-full md:transform md:duration-500 md:hover:scale-105" src={info.imagenes[0].img} alt="product image" />
                 </div>
             </Link>
 
