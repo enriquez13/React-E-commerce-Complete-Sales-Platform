@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import {useCartContext} from '../CartProvider'
 //import { ItemCount } from './ItemCount'
 import { Link } from 'react-router-dom'
@@ -19,16 +19,20 @@ const onAdd = (quantity, talla, color,ide) =>{
     addProduct(data, quantity, talla, color, ide)
 }
 
-console.log(data?.imagenes)
-setTimeout(() => {
-    setSliderData(data.imagenes[0]);
-  }, 100)
-    const [sliderData, setSliderData] = useState([])
+const[verificar, SetVerificar] = useState(true) 
+const myTimeout =  verificar===true? setTimeout( ()=>{
+    setSliderData(data.imagenes[0])
+    SetVerificar(false)} , 100):""
+    
 
+    const [sliderData, setSliderData] = useState([])
+   
+    
 
     const handleClick = (index)=>{
-        const slider= index ? data.imagenes[index] : data.imagenes[0]
+        const slider= data.imagenes[index]
         setSliderData(slider)
+        clearTimeout(myTimeout)
     }
     //console.log(data.imagenes)
     const [talla, setTalla] = useState('')
@@ -46,6 +50,7 @@ const [mostrarEnvios, setMostrarEnvios] = useState(false)
 const [mostrarGuiaTallas, setMostrarGuiaTallas] = useState(false)
 const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
 
+        
     return (
     <>
 
