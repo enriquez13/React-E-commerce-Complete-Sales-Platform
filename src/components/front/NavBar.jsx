@@ -30,7 +30,7 @@ export const NavBar =()=>{
         <>
 
             <div className="fixed shadown-md w-screen top-0 md:h-[20px] left-0 z-10 bg-[#1a1a1a] " >
-            {bartop===true ? <div  className=' relative z-20 w-full h-[3rem] bg-gray-100 top-0 text-center'>
+            {bartop===true ? <div  className=' relative z-20 w-full h-[3rem] bg-amber-200 top-0 text-center'>
                 <div className=" w-full md:pt-[0.6rem] h-[3rem] px-8 text-gray-500 md:transform md:hover:text-gray-700 flex items-center justify-center">
                     {oferta[currentIndex].title}
                 </div>
