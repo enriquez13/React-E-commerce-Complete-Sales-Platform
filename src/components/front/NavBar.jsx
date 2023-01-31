@@ -16,8 +16,8 @@ export const NavBar =()=>{
         <>
 
             <div className="fixed shadown-md w-screen top-0 md:h-[20px] left-0 z-10 bg-[#1a1a1a] " >
-            {bartop===true ? <div  className='relative z-20 w-full h-[3rem] bg-amber-50 top-0 text-center'>
-                <div className="pt-[0.6rem] text text-gray-500 md:transform md:hover:text-gray-700">
+            {bartop===true ? <div  className=' relative z-20 w-full h-[3rem] bg-amber-50 top-0 text-center'>
+                <div className=" w-full md:pt-[0.6rem] h-[3rem] px-8 text-gray-500 md:transform md:hover:text-gray-700">
                     Envíos gratis por compras superiores a $149.900
                 </div>
                 <div onClick={()=>setBartop(false)} className="absolute left-3 md:left-[3rem] content-center 
@@ -34,10 +34,10 @@ export const NavBar =()=>{
                             </div>
                         </NavLink>
                     </div>
-                    <h1 className=" text-xl absolute right-[1.5rem] md:right-[4rem] top-4 md:top-[1.5rem] text-gray-400 cursor-pointer">
+                    <h1 className=" text-xl absolute right-[1.5rem] md:right-[4rem] top-[1.1rem] md:top-[1.5rem] text-gray-400 cursor-pointer">
                     <NavLink to='/cart'> <span className=' relative'><BsBag />
             {
-              totalProducts() ? <span className="absolute bottom-[-10px] left-3 text-white text-base bg-blue-600 rounded-full px-2 ">
+              totalProducts() ? <span className="absolute bottom-[-10px] left-3 text-white text-base rounded-full px-2 ">
                 {totalProducts()}
               </span> : ''
             }
@@ -45,7 +45,7 @@ export const NavBar =()=>{
             </NavLink>
                     </h1>
                     <div onClick={() => setOpen(!open)} className="text-xl absolute left-[1.5rem] top-5 text-gray-300 cursor-pointer md:hidden">
-                        {open==false ? <AiOutlineMenu/>:<AiOutlineCloseCircle/>}
+                        {open==false ? <AiOutlineMenu/>:<AiOutlineClose/>}
                     </div>
                     <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-black md:bg-black
                     md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-700 

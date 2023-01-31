@@ -18,18 +18,20 @@ export const Banner = () => {
    ]
 
 
-   const[verificacion, SetVerificacion] = useState(true) 
+  const[verificacion, SetVerificacion] = useState(true) 
   const [currentIndex,setCurrentIndex] = useState(0) 
-  const prevSlide = () => {
+
+  function prevSlide () {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex)  
+    SetVerificacion(false)
   }
-  const nextSlide = () => {
+  function nextSlide () {
     const isLastSlide = currentIndex === slides.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex) 
-    
+
   }
  
   verificacion === true ? setTimeout( 
@@ -38,20 +40,21 @@ export const Banner = () => {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex)
   }
+  
 
   return (
     <>
 
-<div className='mt-[2.5rem]  md:mt-[4.5rem] max-w-[1400px] h-[30.2rem] w-full md:max-h-[500px]  m-auto  relative group text-gray-100'>
-  <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full bg-center bg-cover duration-1000 transition-all'></div>
+<div className='mt-[2.5rem]  md:mt-[4.5rem] max-w-[1400px] h-[30.2rem] w-full md:max-h-[500px]  m-auto  relative group text-gray-100 '>
+  <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full bg-center bg-cover  duration-1000 transition-all transform-gpu' ></div>
   
-  <div onClick={prevSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-3xl  rounded-full p-2 '><BsChevronCompactLeft /></div>
-  <div onClick={nextSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-3xl rounded-full p-2 '><BsChevronCompactRight /></div>
+  <div onClick={prevSlide}  className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-3xl  rounded-full p-2 z-10'><BsChevronCompactLeft /></div>
+  <div onClick={nextSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-3xl rounded-full p-2 z-10'><BsChevronCompactRight /></div>
   
   <div  className='w-full md:hidden md:group-hover:block absolute top-[50%]  translate-y-[-50%] text-center text-base rounded-lg py-3 
-    font-extrabold tracking-wider text-gray-200'>Men's Shop</div>
+    font-extrabold tracking-wider text-gray-200 z-0'>Men's Shop</div>
   <NavLink to='/products'>
-  <div  className='md:hidden md:group-hover:block absolute top-[62%] -translate-x-0 translate-y-[-50%] right-[28%] 
+  <div></div><div  className='md:hidden md:group-hover:block absolute top-[62%] -translate-x-0 translate-y-[-50%] right-[28%] 
   text-md rounded-lg py-2 border px-[3rem] hover:bg-gray-200 hover:text-black font-extrabold tracking-wider 
   text-gray-200'>Collection</div>
   </NavLink>

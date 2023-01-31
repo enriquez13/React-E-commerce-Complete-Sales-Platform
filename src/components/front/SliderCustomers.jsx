@@ -12,12 +12,16 @@ export const SliderCustomer = () => {
     {url:"https://i.pinimg.com/564x/e9/4f/ac/e94facae658063295a833c7197ed4175.jpg"},
     {url:"https://i.pinimg.com/564x/bd/1d/8b/bd1d8bae9d19eb7bdea362c32e7ed0ec.jpg"},
    ]
-  
+   const[verificacion, SetVerificacion] = useState(true)
+   
   const [currentIndex,setCurrentIndex] = useState(0) 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex)  
+  }
+  function parar (){
+    console.log("funciona")
   }
   const nextSlide = () => {
     const isLastSlide = currentIndex === slides.length - 1;
@@ -28,6 +32,9 @@ export const SliderCustomer = () => {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex)
   }
+  verificacion === true ? setTimeout( 
+    prevSlide  , 4000) : "" 
+   
   return (
     <>
     <hr/>
