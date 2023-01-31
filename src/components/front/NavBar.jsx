@@ -2,26 +2,40 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useCartContext } from "../../CartProvider";
 import { useState } from "react";
-import { AiOutlineMenu,AiOutlineClose} from "react-icons/ai"
+import { AiOutlineMenu, AiOutlineClose} from "react-icons/ai"
 import { BsBag } from 'react-icons/bs'
 
 
 export const NavBar =()=>{
+    
+    const oferta=[{id:1, title: "Envíos gratis por compras superiores a $149.900"},
+    {id:2, title: "Envíos a toda Colombia"},
+    {id:3, title: "Paga al recibir"}]
+    
     const [open,setOpen]=useState(false);
     const {totalProducts} = useCartContext()
 
     const [bartop, setBartop] = useState(true)
 
+    const [currentIndex,setCurrentIndex] = useState(0)
+    function nextSlide () {
+    const isLastSlide = currentIndex === oferta.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex) 
+  }
+  setTimeout( nextSlide , 3000) 
+
+
     return (
         <>
 
             <div className="fixed shadown-md w-screen top-0 md:h-[20px] left-0 z-10 bg-[#1a1a1a] " >
-            {bartop===true ? <div  className=' relative z-20 w-full h-[3rem] bg-amber-50 top-0 text-center'>
-                <div className=" w-full md:pt-[0.6rem] h-[3rem] px-8 text-gray-500 md:transform md:hover:text-gray-700">
-                    Envíos gratis por compras superiores a $149.900
+            {bartop===true ? <div  className=' relative z-20 w-full h-[3rem] bg-gray-100 top-0 text-center'>
+                <div className=" w-full md:pt-[0.6rem] h-[3rem] px-8 text-gray-500 md:transform md:hover:text-gray-700 flex items-center justify-center">
+                    {oferta[currentIndex].title}
                 </div>
-                <div onClick={()=>setBartop(false)} className="absolute left-3 md:left-[3rem] content-center 
-                top-[32%] text-black md:transform md:hover:text-gray-700 cursor-pointer"><AiOutlineClose/></div>
+                <div onClick={()=>setBartop(false)} className="absolute left-3 md:left-[3rem] content-center flex items-center
+                top-[34%] text-black md:transform md:hover:text-gray-700 cursor-pointer"><AiOutlineClose/></div>
                 
                 
                 </div>

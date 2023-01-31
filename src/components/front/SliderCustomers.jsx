@@ -19,10 +19,9 @@ export const SliderCustomer = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex)  
+    SetVerificacion(false)
   }
-  function parar (){
-    console.log("funciona")
-  }
+
   const nextSlide = () => {
     const isLastSlide = currentIndex === slides.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
