@@ -53,8 +53,8 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
 
     <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 ">
                 <div className='md:grid md:place-content-center mx-0 px-0 '>
-                    <div style={{backgroundImage: `url(${sliderData?.img})`}}  className='z-10 w-full object-cover h-[450px] md:max-h-[450px] md:max-w-[450px] 
-                    hover:scale-100 duration-500 transition-all' >
+                    <div style={{backgroundImage: `url(${sliderData?.img})`}}  className='z-10 w-full object-cover 
+                    h-[450px] md:max-h-[450px] md:max-w-[450px] hover:scale-100 duration-500 transition-all' >
                     </div>
                     <div className=" grid grid-cols-4 w-full px-0 md-px-0 gap-2">
 
@@ -81,7 +81,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                             <div>
                         <button key={c.size} onClick={() => setTalla(c.size)}
                         className={`${c.size == talla ? "border bg-black text-gray-100 w-10 h-10 font-bold"
-                        : "text-[1rem] mx-1 w-9 h-9 border border-gray-200 "} transform duration-700 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-full `}>{c.size}</button>
+                        : "text-[1rem] mx-1 w-9 h-9 border border-gray-200 "} transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-full `}>{c.size}</button>
                     </div>
                     ))}
                     
@@ -98,7 +98,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                                         setIde(col.idepro)  
                                     }} key={col.color} className={`${col.color == color ? "border-2 border-black w-10 h-10 " 
                                     : "border border-gray-300 w-9 h-9 "} ${col.bg}  
-                                         mx-1 md:mx-0 border rounded-full transform duration-300 hover:scale-110`}>
+                                         mx-1 md:mx-0 border rounded-full transform duration-500 hover:scale-110`}>
 
                                     </button>
                                 </div>

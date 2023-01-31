@@ -49,7 +49,7 @@ export const Banner = () => {
   <div onClick={nextSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-3xl rounded-full p-2 '><BsChevronCompactRight /></div>
   
   <div  className='w-full md:hidden md:group-hover:block absolute top-[50%]  translate-y-[-50%] text-center text-base rounded-lg py-3 
-   hover:bg-gray-200 hover:text-black font-extrabold tracking-wider text-gray-200'>Men's Shop</div>
+    font-extrabold tracking-wider text-gray-200'>Men's Shop</div>
   <NavLink to='/products'>
   <div  className='md:hidden md:group-hover:block absolute top-[62%] -translate-x-0 translate-y-[-50%] right-[28%] 
   text-md rounded-lg py-2 border px-[3rem] hover:bg-gray-200 hover:text-black font-extrabold tracking-wider 

@@ -53,7 +53,7 @@ function agregar() {
                                 <div className=''>
                                     <button key={item.size}
                                         className={`${item.size == talla ? "bg-black text-gray-100 w-7 md:w-9 h-7 md:h-9 font-bold md:transform md:duration-200 md:hover:scale-110" 
-                                        : "border-gray-200 w-5 h-5 md:w-7 md:h-7"} text-[0.8rem] mx-1 rounded-full border md:transform md:duration-200 md:hover:scale-110`}
+                                        : "border-gray-200 w-5 h-5 md:w-7 md:h-7"} text-[0.8rem] mx-1 rounded-full border md:transform duration-500 hover:scale-110`}
                                         onClick={() => setTalla(item.size)}>
                                         {item.size}
                                     </button>
@@ -72,8 +72,8 @@ function agregar() {
                                         setColor(col.color)
                                         setIde(col.idepro)
                                     }} 
-                                    key={col.color+item.size} className={`${col.color == color ? "border-black w-6 h-6 md:w-8 md:h-8 md:transform md:duration-200 md:hover:scale-110" 
-                                    : "w-5 h-5 md:w-7 md:h-7 md:transform md:duration-200 md:hover:scale-110"} ${col.bg}  
+                                    key={col.color+item.size} className={`${col.color == color ? "border-black w-6 h-6 md:w-8 md:h-8 md:transform md:duration-1000 md:hover:scale-110" 
+                                    : "w-5 h-5 md:w-7 md:h-7 md:transform duration-500 md:hover:scale-110"} ${col.bg}  
                                          mx-1 border rounded-full `}>
 
                                     </button>

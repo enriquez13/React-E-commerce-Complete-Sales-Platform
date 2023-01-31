@@ -2,8 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useCartContext } from "../../CartProvider";
 import { useState } from "react";
-import { AiOutlineMenu,AiOutlineCloseCircle} from "react-icons/ai"
+import { AiOutlineMenu,AiOutlineClose} from "react-icons/ai"
 import { BsBag } from 'react-icons/bs'
+
+
 export const NavBar =()=>{
     const [open,setOpen]=useState(false);
     const {totalProducts} = useCartContext()
@@ -13,10 +15,14 @@ export const NavBar =()=>{
     return (
         <>
 
-            <div className="fixed shadown-md w-screen top-0 md:h-[20px] left-0 z-10 bg-[#1a1a1a]" >
-            {bartop===true ? <div onClick={()=>setBartop(false)} className='relative z-20 w-full h-[1.6rem] bg-gray-50 top-0 block text-center'>
-                <div >Envíos gratis por compras superiores a $140.000</div>
-                <div  className="absolute left-2 top-0 text-black">X</div>
+            <div className="fixed shadown-md w-screen top-0 md:h-[20px] left-0 z-10 bg-[#1a1a1a] " >
+            {bartop===true ? <div  className='relative z-20 w-full h-[3rem] bg-amber-50 top-0 text-center'>
+                <div className="pt-[0.6rem] text text-gray-500 md:transform md:hover:text-gray-700">
+                    Envíos gratis por compras superiores a $149.900
+                </div>
+                <div onClick={()=>setBartop(false)} className="absolute left-3 md:left-[3rem] content-center 
+                top-[32%] text-black md:transform md:hover:text-gray-700 cursor-pointer"><AiOutlineClose/></div>
+                
                 
                 </div>
                 :""}
