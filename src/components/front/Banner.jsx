@@ -4,6 +4,7 @@ import { BsChevronCompactRight} from "react-icons/bs";
 import {RxDotFilled} from "react-icons/rx";
 import {RxShadowOuter} from "react-icons/rx";
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 export const Banner = () => {
   const slides = [
@@ -47,12 +48,14 @@ export const Banner = () => {
   
   <div onClick={prevSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-3xl  rounded-full p-2 '><BsChevronCompactLeft /></div>
   <div onClick={nextSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-3xl rounded-full p-2 '><BsChevronCompactRight /></div>
+  
   <div  className='w-full md:hidden md:group-hover:block absolute top-[50%]  translate-y-[-50%] text-center text-2xl rounded-lg py-3 
    hover:bg-gray-200 hover:text-black font-extrabold tracking-wider text-gray-200'>Mens´s Shop</div>
+  <NavLink to='/products'>
   <div  className='md:hidden md:group-hover:block absolute top-[62%] -translate-x-0 translate-y-[-50%] right-[28%] 
   text-xl rounded-lg py-2 border px-10 hover:bg-gray-200 hover:text-black font-extrabold tracking-wider 
   text-gray-200'>Collection</div>
-  
+  </NavLink>
     <div className='flex absolute top-[88%] w-full justify-center '>
     {slides.map((slide, slideIndex) =>(
       <div key={slideIndex} onClick={()=> goToSlide(slideIndex)} className={` ${slideIndex == currentIndex ? "text-[0.8rem] mt-[0.29rem] mb-[0.29rem] mx-2 ": "text-[1.4rem]"} mx-2 cursor-pointer`}>
