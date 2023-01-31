@@ -34,26 +34,25 @@ export const Banner = () => {
  
   verificacion === true ? setTimeout( 
     nextSlide , 3000) : "" 
- 
-  
 
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex)
   }
+
   return (
     <>
 
 <div className='mt-[2.5rem]  md:mt-[4.5rem] max-w-[1400px] h-[30.2rem] w-full md:max-h-[500px]  m-auto  relative group text-gray-100'>
-  <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full bg-center bg-cover '></div>
+  <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full bg-center bg-cover duration-1000 transition-all'></div>
   
   <div onClick={prevSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-3xl  rounded-full p-2 '><BsChevronCompactLeft /></div>
   <div onClick={nextSlide} className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-3xl rounded-full p-2 '><BsChevronCompactRight /></div>
   
-  <div  className='w-full md:hidden md:group-hover:block absolute top-[50%]  translate-y-[-50%] text-center text-2xl rounded-lg py-3 
-   hover:bg-gray-200 hover:text-black font-extrabold tracking-wider text-gray-200'>Mens´s Shop</div>
+  <div  className='w-full md:hidden md:group-hover:block absolute top-[50%]  translate-y-[-50%] text-center text-base rounded-lg py-3 
+   hover:bg-gray-200 hover:text-black font-extrabold tracking-wider text-gray-200'>Men's Shop</div>
   <NavLink to='/products'>
   <div  className='md:hidden md:group-hover:block absolute top-[62%] -translate-x-0 translate-y-[-50%] right-[28%] 
-  text-xl rounded-lg py-2 border px-10 hover:bg-gray-200 hover:text-black font-extrabold tracking-wider 
+  text-md rounded-lg py-2 border px-[3rem] hover:bg-gray-200 hover:text-black font-extrabold tracking-wider 
   text-gray-200'>Collection</div>
   </NavLink>
     <div className='flex absolute top-[88%] w-full justify-center '>

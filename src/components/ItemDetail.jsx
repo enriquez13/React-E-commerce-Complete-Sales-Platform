@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState , useEffect} from 'react'
+import { useState } from 'react'
 import {useCartContext} from '../CartProvider'
 //import { ItemCount } from './ItemCount'
 import { Link } from 'react-router-dom'
@@ -22,7 +22,7 @@ const onAdd = (quantity, talla, color,ide) =>{
 const[verificar, SetVerificar] = useState(true) 
 const myTimeout =  verificar===true? setTimeout( ()=>{
     setSliderData(data.imagenes[0])
-    SetVerificar(false)} , 100):""
+    SetVerificar(false)} , 1000):""
     
     const [sliderData, setSliderData] = useState([])
    
@@ -53,8 +53,9 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
 
     <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 ">
                 <div className='md:grid md:place-content-center mx-0 px-0 '>
-                    <img src={ sliderData?.img} className='z-10 w-full object-cover h-[450px] md:max-h-[450px] md:max-w-[450px] 
-                    md:transform md:duration-500 hover:scale-105 ' />
+                    <div style={{backgroundImage: `url(${sliderData?.img})`}}  className='z-10 w-full object-cover h-[450px] md:max-h-[450px] md:max-w-[450px] 
+                    hover:scale-100 duration-500 transition-all' >
+                    </div>
                     <div className=" grid grid-cols-4 w-full px-0 md-px-0 gap-2">
 
                         {data.imagenes?.map((foto, i) =>

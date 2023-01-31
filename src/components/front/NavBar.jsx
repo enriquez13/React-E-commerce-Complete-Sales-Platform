@@ -5,13 +5,22 @@ import { useState } from "react";
 import { AiOutlineMenu,AiOutlineCloseCircle} from "react-icons/ai"
 import { BsBag } from 'react-icons/bs'
 export const NavBar =()=>{
-    let [open,setOpen]=useState(false);
+    const [open,setOpen]=useState(false);
     const {totalProducts} = useCartContext()
+
+    const [bartop, setBartop] = useState(true)
+
     return (
         <>
 
             <div className="fixed shadown-md w-screen top-0 md:h-[20px] left-0 z-10 bg-[#1a1a1a]" >
-                <div className='flex items-center md:flex justify-center bg-black py-4 md:px-10 px-7'>
+            {bartop===true ? <div onClick={()=>setBartop(false)} className='relative z-20 w-full h-[1.6rem] bg-gray-50 top-0 block text-center'>
+                <div >Envíos gratis por compras superiores a $140.000</div>
+                <div  className="absolute left-2 top-0 text-black">X</div>
+                
+                </div>
+                :""}
+                <div className='flex relative items-center md:flex justify-center bg-black py-4 md:px-10 px-7'>
                     <div className=" text-gray-400">
                         <NavLink to="/">
                             <div className=" text-xl md:text-2xl">
