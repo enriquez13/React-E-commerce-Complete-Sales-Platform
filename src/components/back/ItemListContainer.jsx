@@ -18,7 +18,16 @@ const products = [
             id:1 , img:"https://i.pinimg.com/564x/56/e2/a7/56e2a75d33fbce6de6a7509b744e36be.jpg"
         },
         {
-            id:2 , img:"https://i.pinimg.com/564x/f3/be/f0/f3bef0f646035eec39c3a598deb810cd.jpg"
+            id:2 , img:"https://i.pinimg.com/564x/4f/2e/d2/4f2ed2c3caa247580fce9616995e70fc.jpg"
+            
+        },
+        {
+            id:3 , img:"https://i.pinimg.com/564x/82/b5/22/82b5225a9d26aac532b8cd0b39e8ebda.jpg"
+            
+        },
+        {
+            id:4 , img:"https://i.pinimg.com/564x/d5/d4/e0/d5d4e0c99b262b30b1683c07a90c94da.jpg"
+            
         },
         ]
         ,

@@ -21,7 +21,7 @@ export const Categories = () => {
                     </div>                
                 </NavLink>
                 <NavLink to="/categoria/camibuso" className="md:p-1 w-full relative h-[24rem] md:h-[600px] mt-2">
-                <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src="https://i.pinimg.com/564x/6f/bd/75/6fbd7592e41af6362a742a6ccf5b21ca.jpg" />
+                <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src="https://i.pinimg.com/564x/4d/98/88/4d98886de90de9d2b497210938b542e1.jpg" />
                 <div className="absolute grid bottom-[15%] w-full text-sm px-4">
                 <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold">Camibusos</h3>
                         <button className="w-1/2 rounded-xl place-self-center py-3 text-center border-gray-200 text-gray-200
@@ -30,7 +30,7 @@ export const Categories = () => {
                 </NavLink>
                 <NavLink to="/categoria/buzo" className="md:p-1 w-full relative h-[24rem] md:h-[600px] mt-2">
                     <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" 
-                        src="https://i.pinimg.com/564x/35/b4/91/35b49108b76f283bee99219db40babbb.jpg" />
+                        src="https://i.pinimg.com/564x/77/e2/a0/77e2a0c7d7de71ee8b50547725d9d338.jpg" />
                     <div className="absolute grid bottom-[15%] w-full text-sm px-4">
                     <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold">Buzos</h3>
                         <button className="w-1/2 rounded-xl place-self-center py-3 text-center border-gray-200 text-gray-200
@@ -39,7 +39,7 @@ export const Categories = () => {
                 </NavLink>
                 <NavLink to="/categoria/chaqueta" className="md:p-1 w-full relative h-[24rem] md:h-[600px] mt-2">
                 <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" 
-                src="https://i.pinimg.com/564x/b7/1d/9c/b71d9c0c77a746299ca606163761149c.jpg" />
+                src="https://i.pinimg.com/564x/82/59/8b/82598bdc2c04d71f84bb6ff680f75e77.jpg" />
                 <div className="absolute grid  bottom-[15%] w-full text-sm px-4">
                 <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold">Chaquetas</h3>
                         <button className="w-1/2 rounded-xl place-self-center py-3 text-center border-gray-200 text-gray-200

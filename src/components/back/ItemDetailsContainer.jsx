@@ -11,10 +11,19 @@ const products = [
             id:0 , img:"https://i.pinimg.com/564x/e5/30/3f/e5303f1dac816cfd977077b8f5900cf2.jpg"
         },
         {
-            id:1 , img:"https://i.pinimg.com/564x/56/e2/a7/56e2a75d33fbce6de6a7509b744e36be.jpg"
+            id:1 , img:"https://i.pinimg.com/564x/0c/41/6e/0c416e8aaf5ccad0d28dd20bb4288bb3.jpg"
         },
         {
-            id:2 , img:"https://i.pinimg.com/564x/f3/be/f0/f3bef0f646035eec39c3a598deb810cd.jpg"
+            id:2 , img:"https://i.pinimg.com/564x/ab/2c/a6/ab2ca690a88a940913bbdabd6f94db46.jpg"
+            
+        },
+        {
+            id:3 , img:"https://i.pinimg.com/564x/62/b7/26/62b726ca4c48d37d9e1907621d9f3770.jpg"
+            
+        },
+        {
+            id:4 , img:"https://i.pinimg.com/564x/08/b4/87/08b4872847ec6e1e27f1074a9c523ad8.jpg"
+            
         },
         ]
         ,

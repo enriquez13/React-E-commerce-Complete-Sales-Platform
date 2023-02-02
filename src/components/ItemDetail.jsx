@@ -22,7 +22,7 @@ const onAdd = (quantity, talla, color,ide) =>{
 const[verificar, SetVerificar] = useState(true) 
 const myTimeout =  verificar===true? setTimeout( ()=>{
     setSliderData(data.imagenes[0])
-    SetVerificar(false)} , 1000):""
+    SetVerificar(false)} , 50):""
     
     const [sliderData, setSliderData] = useState([])
    
@@ -54,7 +54,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
     <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 ">
                 <div className='md:grid md:place-content-center mx-0 px-0 '>
                     <div style={{backgroundImage: `url(${sliderData?.img})`}}  className='z-10 w-full object-cover 
-                    h-[450px] md:max-h-[450px] md:max-w-[450px] hover:scale-100 duration-500 transition-all' >
+                    h-[450px] md:max-h-[450px] md:max-w-[450px] hover:scale-100 duration-500 transition-all bg-center' >
                     </div>
                     <div className=" grid grid-cols-4 w-full px-0 md-px-0 gap-2">
 
