@@ -30,13 +30,13 @@ export const NavBar =()=>{
         <>
 
             <div className="fixed shadown-md w-screen top-0 md:h-[20px] left-0 z-10 bg-[#1a1a1a] " >
-            {bartop===true ? <div  className=' relative z-20 w-full h-[3rem] bg-amber-200 top-0 text-center'>
-                <div className=" w-full md:pt-[0.6rem] h-[3rem] px-8 text-gray-700 md:transform  md:hover:text-gray-700 
-                flex items-center justify-center  duration-1000 transition-all">
+            {bartop===true ? <div  className=' relative z-20 w-full h-[2rem] bg-gray-700 top-0 text-center'>
+                <div className=" w-full md:pt-[0.6rem] h-[2rem] px-8 text-gray-100 md:transform  md:hover:text-gray-700 
+                flex items-center justify-center  duration-1000 transition-all text-xs">
                     {oferta[currentIndex].title}
                 </div>
                 <div onClick={()=>setBartop(false)} className="absolute left-3 md:left-[3rem] content-center flex items-center
-                top-[34%] text-black md:transform md:hover:text-gray-700 cursor-pointer"><AiOutlineClose/></div>
+                top-[25%] text-white md:transform md:hover:text-gray-700 cursor-pointer"><AiOutlineClose/></div>
                 
                 
                 </div>
