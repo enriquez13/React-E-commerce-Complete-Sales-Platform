@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import ItemDetail from "../ItemDetail";
 import { useParams } from "react-router-dom";
 import { Pie } from "../front/Pie";
+import Navbar from '../front/NavBar'
 
 const products = [
     {
@@ -463,6 +464,7 @@ export const ItemDetailContainer = ({texto})=>{
 
     return (
         <>
+        <Navbar />
         <ItemDetail data={data}/>
         <Pie />
         </>

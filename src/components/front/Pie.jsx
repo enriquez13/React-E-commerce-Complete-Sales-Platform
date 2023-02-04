@@ -9,10 +9,6 @@ import { useState } from 'react'
 
 //const [cambio,setCambio]= useState(false)
 
-
-
-
-
 export const Pie = () => {
   const [home, setHome] = useState(false)
   const [tshirt, setTshirt] = useState(false)

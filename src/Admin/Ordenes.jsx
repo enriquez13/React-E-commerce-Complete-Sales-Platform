@@ -29,7 +29,7 @@ function Ordenes({ data }) {
                                 {data.producto?.map((items, index)=>(
                                   <tr key={index}>
                                     <td className="px-3 py-3 border">{data.cliente?.nombre}</td>
-                                    <td className="px-3 py-3 border">fecha</td>
+                                    <td className="px-3 py-3 border">{console.log(data.fecha?.seconds)}</td>
                                     <td className="px-3 py-3 border">#</td>
                                     <td className="px-3 py-3 border">{data.cliente?.telefono}</td>
                                     <td className="px-3 py-3 border">{data.cliente?.ciudad}</td>

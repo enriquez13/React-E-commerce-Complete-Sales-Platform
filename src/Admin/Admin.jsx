@@ -11,7 +11,7 @@ export const Admin = () => {
   const [data, setData] = useState({})
   useEffect(()=> {
     const querydb = getFirestore()
-    const queryDoc = doc(querydb, 'compras', 'BuBzlK37huqGPK2P2LiQ')
+    const queryDoc = doc(querydb, 'compras', 'F1sMyMnRYPR8l67pW6nu')
     getDoc(queryDoc)
     .then(res => setData({id : res.id , ...res.data()}))
 },[])
