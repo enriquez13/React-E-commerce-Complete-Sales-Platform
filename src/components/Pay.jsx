@@ -41,10 +41,10 @@ const db = getFirestore();
             telefono : data.telefono,
             ciudad : data.ciudad,
             direccion: data.direccion,
+        },
+            producto: cart.map(product=> ({Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
             envio: data.envio,
             fecha: new Date(),
-        },
-            descripcion: cart.map(product=> ({Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, cantidad: product.quantity})),
             total: totalPrice(),
             }
             const ordersCollection = collection(db, 'compras')

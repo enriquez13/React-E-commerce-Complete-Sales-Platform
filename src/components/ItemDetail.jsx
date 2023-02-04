@@ -175,12 +175,12 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                             </h3>
                             <div className={mostrarGuiaTallas ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
                                 {mostrarGuiaTallas && 
-                                <table class="table-auto  w-full text-center border">
+                                <table className="table-auto  w-full text-center border">
                                 <thead className='bg-gray-100'>
-                                  <tr>
-                                    <th>Talla</th>
-                                    <th>pecho</th>
-                                    <th>largo</th>
+                                  <tr className='h-3 border border-blue-500'>
+                                    <th className='border'>Talla</th>
+                                    <th className='border'>pecho</th>
+                                    <th className='border'>largo</th>
                                   </tr>
                                 </thead>
                                

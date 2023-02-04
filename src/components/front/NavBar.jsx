@@ -90,6 +90,10 @@ export const NavBar =()=>{
                          text-white hover:text-gray-400 duration-500">
                             Sobre nosotros
                         </NavLink>
+                        <NavLink to='/admin' className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
+                         text-white hover:text-gray-400 duration-500">
+                            Iniciar sesión
+                        </NavLink>
                     </ul>
                 </div>
             </div>
