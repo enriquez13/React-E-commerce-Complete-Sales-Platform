@@ -44,14 +44,14 @@ const db = getFirestore();
         },
             producto: cart.map(product=> ({Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
             envio: data.envio,
-            fecha: new Date(),
+            fecha: new Date().toLocaleDateString(),
             total: totalPrice(),
             }
             const ordersCollection = collection(db, 'compras')
             addDoc(ordersCollection, orden)
     .then(()=>{
         alert("Compra exitosa")
-
+        console.log(data)
 
     })
     .catch(error=>{
@@ -76,7 +76,7 @@ function onChangepago(ev){
     ev.preventDefault
 setMetodopago(ev.target.value)
 }
-console.log(metodopago)
+//console.log(metodopago)
 
     
 
@@ -127,26 +127,52 @@ const handleClick =()=>{
                     <p className='text-red-400'>{errors.nombre?.message}</p>
                     <label className='pt-5'>
                     Cédula: 
-                        <input {...register("cedula")}
-                         type='number'  className='w-full mt-1 mb-3 bg-gray-100'/>
+                    <input {...register("cedula",{
+                            required: "Falta escribir la cédula",
+                            minLength:{
+                                value:4,
+                                message: "debe escribir la cédula completa"
+                            }
+                        })}
+                        type='number'  className='w-full mt-1 mb-3 bg-gray-100' />
                     </label>
                     <label className='pt-2'>
                     Teléfono: 
-                        <input {...register("telefono")}
-                         type='number'  className='w-full mt-1 mb-3 bg-gray-100' />
+                    <input {...register("telefono",{
+                            required: "Falta escribir el teléfono",
+                            minLength:{
+                                value:4,
+                                message: "digite su número de teléfono"
+                            }
+                        })}
+                        type='number'  className='w-full mt-1 mb-3 bg-gray-100' />
                     </label>
                     <label className='pt-2'>
                     Ciudad o municipio:
-                        <input {...register("ciudad")}
+                        <input {...register("ciudad",{
+                            required: "Falta escribir la Ciudad o Municipio",
+                            minLength:{
+                                value:3,
+                                message: "Escribir la ciudad o municipio"
+                            }
+                        })}
                         type='text'  className='w-full mt-1 mb-3 bg-gray-100' />
                     </label>
                     <label className='pt-2'>
                     Dirección:
-                        <input {...register("direccion")}
-                        type='text' name="Dirección completa: " className=' w-full mt-1 mb-3 bg-gray-100' />
+                    <input {...register("direccion",{
+                            required: "Falta escribir la dirección",
+                            minLength:{
+                                value:6,
+                                message: "Digite la dirección completa"
+                            }
+                        })}
+                        type='text'  className='w-full mt-1 mb-3 bg-gray-100' />
                     </label>
 
-
+                    <div className='flex items-center justify-center'>
+                        <input  className='rounded-lg mt-5 bg-black text-white px-10 py-2 ' type="submit" value="Fenalizar pedido" />
+                        </div>
 
 
 
@@ -223,9 +249,7 @@ const handleClick =()=>{
 
 
                     
-                    <div className='flex items-center justify-center'>
-                        <input  className='rounded-lg mt-5 bg-black text-white px-10 py-2 ' type="submit" value="Fenalizar pedido" />
-                        </div>
+                   
                 </form>
 
                 

@@ -1,3 +1,4 @@
+import {getFirestore, collection, getDocs,query, where} from 'firebase/firestore'
 import React, {useEffect, useState} from "react";
 import { NavLink, useParams } from "react-router-dom";
 import Footer from "../front/Footer";
@@ -457,18 +458,18 @@ export const ItemListContainer = ({texto})=>{
     const { categoriaId } = useParams()
 
     useEffect(()=>{
-        const getData = new Promise(resolve => {
-            setTimeout(()=>{
-                resolve(products)
-            }, 200)
-        })
-
+        const querydb = getFirestore()
+        const queryCollection = collection(querydb, 'productos')
+       
       //  getData.then(res => setData(res))
         if ( categoriaId ){
-            getData.then(res => setData(res.filter(product => product.category ===  categoriaId)))
+            const queryFilter = query(queryCollection, where('category', '==', categoriaId))
+            getDocs(queryFilter)
+            .then(res => setData(res.docs.map(product => ({id:product.id, ...product.data()}))))
     
         } else {
-            getData.then(res => setData(res))
+            getDocs(queryCollection)
+            .then(res => setData(res.docs.map(product => ({id:product.id, ...product.data()}))))
         }
     }, [categoriaId])
    // const onAdd = (quantity) =>{

@@ -33,7 +33,7 @@ export const Banner = () => {
     setCurrentIndex(newIndex) 
     
   }
- {console.log(verificacion)}
+ //{console.log(verificacion)}
  verificacion === true ? setTimeout( 
     nextSlide , 2500) :"" 
 

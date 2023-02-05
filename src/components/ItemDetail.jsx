@@ -10,7 +10,6 @@ const imgs =[
 ]
 export const ItemDetail = ({data}) => {
     
-    
 const [goToCart, setGoToCart] = useState(false)
 const {addProduct} = useCartContext()
 
@@ -19,12 +18,12 @@ const onAdd = (quantity, talla, color,ide) =>{
     addProduct(data, quantity, talla, color, ide)
 }
 
+const [sliderData, setSliderData] = useState([])
 const[verificar, SetVerificar] = useState(true) 
 const myTimeout =  verificar===true? setTimeout( ()=>{
-    setSliderData(data.imagenes[0])
+    setSliderData(data?.imagenes[0])
     SetVerificar(false)} , 50):""
     
-    const [sliderData, setSliderData] = useState([])
    
     const handleClick = (index)=>{
         const slider= data.imagenes[index]
@@ -51,9 +50,9 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
     return (
     <>
 
-    <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 ">
+    <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 md:mt-[8rem]">
                 <div className='md:grid md:place-content-center mx-0 px-0 '>
-                    <div style={{backgroundImage: `url(${sliderData?.img})`}}  className='z-10 w-full object-cover 
+                    <div style={{backgroundImage: `url(${sliderData?.img})`}}  className=' w-full object-cover 
                     h-[450px] md:max-h-[450px] md:max-w-[450px] hover:scale-100 duration-500 transition-all bg-center' >
                     </div>
                     <div className=" grid grid-cols-4 w-full px-0 md-px-0 gap-2">
