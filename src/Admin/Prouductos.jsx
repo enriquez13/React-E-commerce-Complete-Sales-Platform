@@ -1,10 +1,12 @@
 import React from 'react'
 import {addDoc, collection, getFirestore} from 'firebase/firestore'
+import { useForm } from "react-hook-form"
 
 export const Prouductos = () => {
- 
-
-  const products = {
+    const {register, handleSubmit, formState: {errors}} = useForm()
+    const onSubmit = data => {
+  console.log(data)
+        const products = {
     id: 6,
     category: "camibuso",
     imagenes: [{
@@ -76,22 +78,129 @@ export const Prouductos = () => {
        
     ],
 }
-const handleClick =()=>{
+//const handleClick =()=>{
     const db = getFirestore();
     const productsCollection = collection(db, 'productos')
     addDoc(productsCollection, products)
     .then(()=> alert("Producto agregado con éxito"))
+.catch(error=>{
+    alert(errors)
+})
+
+
+
+//}
 }
 
   return (
     <>
     <div className='ml-5 mt-3'>Prouductos</div>
-    <button onClick={handleClick}>click</button>
+    <button >click</button>
 
+    <form  onSubmit={handleSubmit(onSubmit)} className='mx-7 text-black md:w-1/2'>
+                    <label className='' >
+                        id:
+                        <input {...register("id", {
+                            required: "Falta escribir el id",
+                            minLength:{
+                                value:1,
+                                message: "Mínimo 1 caracter"
+                            }
+                        })}
+                        type="text"  className='w-full mt-1 mb-3 bg-gray-300'/>
+                    </label>
+                    <p className='text-red-400'>{errors.nombre?.message}</p>
+                    <label className='' >
+                        category:
+                        <input {...register("category", {
+                            required: "Falta escribir la categoria",
+                            minLength:{
+                                value:4,
+                                message: "Mínimo 4 letras"
+                            }
+                        })}
+                        type="text"  className='w-full mt-1 mb-3 bg-gray-300'/>
+                    </label>
+                    <p className='text-red-400'>{errors.nombre?.message}</p>
+                    <label className='' >
+                       imagenes:
+                        <input {...register("imagenes", {
+                            required: "Falta subir las imagenes",
+                            minLength:{
+                                value:4,
+                                message: "Mínimo 4 letras"
+                            }
+                        })}
+                        type="text"  className='w-full mt-1 mb-3 bg-gray-300'/>
+                    </label>
+                    <p className='text-red-400'>{errors.nombre?.message}</p>
+                    <label className='' >
+                        nombre:
+                        <input {...register("nombre", {
+                            required: "Falta escribir el nombre",
+                            minLength:{
+                                value:4,
+                                message: "Mínimo 4 letras"
+                            }
+                        })}
+                        type="text"  className='w-full mt-1 mb-3 bg-gray-300'/>
+                    </label>
+                    <p className='text-red-400'>{errors.nombre?.message}</p>
+                    <label className='' >
+                        stock:
+                        <input {...register("stock", {
+                            required: "Falta escribir el stock",
+                            minLength:{
+                                value:1,
+                                message: "escribir un número"
+                            }
+                        })}
+                        type="text"  className='w-full mt-1 mb-3 bg-gray-300'/>
+                    </label>
+                    <p className='text-red-400'>{errors.nombre?.message}</p>
+                    <label className='' >
+                        valor:
+                        <input {...register("valor", {
+                            required: "Falta escribir el valor",
+                            minLength:{
+                                value:3,
+                                message: "Escribir valor completo"
+                            }
+                        })}
+                        type="text"  className='w-full mt-1 mb-3 bg-gray-300'/>
+                    </label>
+                    <p className='text-red-400'>{errors.nombre?.message}</p>
+                    <label className='' >
+                        cantidad:
+                        <input {...register("cantidad", {
+                            required: "Falta escribir la cantidad",
+                            minLength:{
+                                value:1,
+                                message: "Mínimo 1 número"
+                            }
+                        })}
+                        type="text"  className='w-full mt-1 mb-3 bg-gray-300'/>
+                    </label>
+                    <p className='text-red-400'>{errors.nombre?.message}</p>
+                    <label className='' >
+                        sizes:
+                        <input {...register("sizes", {
+                            required: "Falta escribir la talla",
+                            minLength:{
+                                value:1,
+                                message: "una sola talla"
+                            }
+                        })}
+                        type="text"  className='w-full mt-1 mb-3 bg-gray-300'/>
+                    </label>
+                    <p className='text-red-400'>{errors.nombre?.message}</p>
+                    <div className='flex items-center justify-center'>
+                        <input  className='rounded-lg mt-5 bg-black text-white px-10 py-2 ' type="submit" value="Fenalizar pedido" />
+                        </div>
+</form>
 
 <div>Nuevo producto</div>
     Nombre, Precio, Categoria, descripcion, Talla, Color, Imagenes, 
-
     </>
     )
 }

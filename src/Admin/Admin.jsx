@@ -37,7 +37,7 @@ function handlechange(e){
         </aside>
 
 
-        <div className='w-full h-screen md:w-5/6 px-10 pt-[4rem] '>
+        <div className='w-full md:w-5/6 px-10 pt-[4rem] '>
           {ordenes==='ordenes'?<Ordenes data={data}/>:<Prouductos />}
           
 

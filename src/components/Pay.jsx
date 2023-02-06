@@ -243,19 +243,9 @@ const handleClick =()=>{
                 </>
                 :""}
             </div>
-
-
-
-
-
-                    
-                   
-                </form>
-
                 
-
-
-            
+                </form>
+  
         </div>
 
         <a className='bg-blue-400 px-10 py-4' onClick={handleClick}>Terminar la compra</a>
