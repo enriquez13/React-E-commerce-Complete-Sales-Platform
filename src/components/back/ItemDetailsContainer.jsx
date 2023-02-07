@@ -16,7 +16,8 @@ export const ItemDetailContainer = ()=>{
         getDoc(queryDoc)
             .then(res =>  setData({id:res.id, ...res.data()}))
     }, [])
-console.log(detalleId)
+   
+//console.log(detalleId)
     return (
         <>
         <Navbar />

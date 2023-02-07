@@ -83,22 +83,7 @@ setMetodopago(ev.target.value)
 
 /////// esto es otra forma de hacer lo de la bd, no es necesario
 
-const orden = {
-    buyer:{ 
-       nombre: 'Andres2',
-        email: '@hotmail.com',
-        phone : '315655',
-        addres : 'cr219',
-},
-item: cart.map(product=> ({Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor})),
-total: totalPrice(),
-}
-const handleClick =()=>{
-    const db = getFirestore();
-    const ordersCollection = collection(db, 'orders')
-    addDoc(ordersCollection, orden)
-    .then(({id})=> console.log(id))
-}
+
 ///////////
     return (
         <>
@@ -110,7 +95,7 @@ const handleClick =()=>{
         <hr className='flex col-start-2 col-span-1 mt-1 mr-7 border-gray-500 border-[1px]'/>
         </div>
 
-    <div className='mt-10'>
+    <div className='my-10'>
             <h3 className=" w-full mb-5 text-center text-2xl text-black">Facturación y envío</h3>
                 <form  onSubmit={handleSubmit(onSubmit)} className='mx-7 text-black md:w-1/2'>
                     <label className='' >
@@ -170,9 +155,7 @@ const handleClick =()=>{
                         type='text'  className='w-full mt-1 mb-3 bg-gray-100' />
                     </label>
 
-                    <div className='flex items-center justify-center'>
-                        <input  className='rounded-lg mt-5 bg-black text-white px-10 py-2 ' type="submit" value="Fenalizar pedido" />
-                        </div>
+                    
 
 
 
@@ -243,12 +226,12 @@ const handleClick =()=>{
                 </>
                 :""}
             </div>
-                
+            <div className='flex items-center justify-center'>
+                        <input  className='rounded-lg mt-5 bg-black text-white px-10 py-2 ' type="submit" value="Fenalizar pedido" />
+                    </div>
                 </form>
   
         </div>
-
-        <a className='bg-blue-400 px-10 py-4' onClick={handleClick}>Terminar la compra</a>
             
         
         </>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { BsChevronCompactLeft} from "react-icons/bs";
 import { BsChevronCompactRight} from "react-icons/bs";
 import {RxDotFilled} from "react-icons/rx";
@@ -34,9 +35,11 @@ export const Banner = () => {
     
   }
  //{console.log(verificacion)}
- verificacion === true ? setTimeout( 
-    nextSlide , 2500) :"" 
-
+ useEffect(() => {
+ let interval = setInterval( 
+    nextSlide , 2500)  
+    return () => clearInterval(interval)
+ })
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex)
   }
@@ -45,7 +48,7 @@ export const Banner = () => {
   return (
     <>
 
-<div className='mt-[2.5rem]  md:mt-[4.5rem] max-w-[1400px] h-[30.2rem] w-full md:max-h-[500px]  m-auto  relative group text-gray-100 '>
+<div className='max-w-[1400px] h-[30.2rem] w-full md:max-h-[500px]  m-auto  relative group text-gray-100 '>
   <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className=' bg-top w-full h-full  bg-cover  duration-1000 transition-all transform-gpu' ></div>
   
   <div onClick={prevSlide}  className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5  text-3xl md:text-[3.5rem]  rounded-full p-2 z-10'><BsChevronCompactLeft /></div>
