@@ -43,7 +43,6 @@ export const Banner = () => {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex)
   }
-  
 
   return (
     <>

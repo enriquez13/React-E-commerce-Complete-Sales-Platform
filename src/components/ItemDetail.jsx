@@ -80,15 +80,15 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                         {data.sizes?.map((c) => (
                             <div>
                         <button key={c.size} onClick={() => setTalla(c.size)}
-                        className={`${c.size == talla ? "border bg-black text-gray-100 w-10 h-10 font-bold"
-                        : "text-[1rem] mx-1 w-9 h-9 border border-gray-200 "} transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-full `}>{c.size}</button>
+                        className={`${c.size == talla ? "border bg-black text-gray-100 w-7 h-7 font-bold"
+                        : "text-[1rem] mx-1 w-7 h-7 border border-gray-200 "} transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-full `}>{c.size}</button>
                     </div>
                     ))}
                     
                     </div>
                     {talla?<h3 className='hidden md:block my-4'>Elige el color:</h3>:""}
 
-                    <div className='grid grid-cols-6 gap-1 place-items-left pt-5 md:pt-0 pl-2 md:pl-0 '> 
+                    <div className='grid grid-cols-8 gap-1 place-items-left pt-5 md:pt-0 pl-2 md:pl-0 '> 
                     {data.sizes?.map(item => (
                             item.size === talla ? item.colors.map(col => (
                                 <div className=''>
@@ -96,8 +96,8 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                                                                
                                         setColor(col.color)
                                         setIde(col.idepro)  
-                                    }} key={col.color} className={`${col.color == color ? "border-2 border-black w-10 h-10 " 
-                                    : "border border-gray-300 w-9 h-9 "} ${col.bg}  
+                                    }} key={col.color} className={`${col.color == color ? "border-2 border-black w-7 h-7 " 
+                                    : "border border-gray-300 w-7 h-7 "} ${col.bg}  
                                          mx-1 md:mx-0 border rounded-full transform duration-500 hover:scale-110`}>
 
                                     </button>

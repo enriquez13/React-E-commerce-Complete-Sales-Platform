@@ -48,7 +48,7 @@ export const SliderCustomer = () => {
 
     useEffect(() => {
       let interval = setInterval( 
-         nextSlide , 3500)  
+         nextSlide , 4500)  
          return () => clearInterval(interval)
       })
   return (
