@@ -45,7 +45,7 @@ export const NavBar =()=>{
                 </div>
                 :""}
   
-                <div className={`${scroll<=100 ? "opacity-20 " : ""} flex transition-all duration-1000 bg-black relative items-center md:flex justify-center py-4 md:px-10 px-7`}>
+                <div className={`${scroll<=100 ? "bg-gradient-to-b from-black to-transparent  bg-opacity-[0.01]" : ""} flex transition-all duration-1000 bg-black relative items-center md:flex justify-center py-4 md:px-10 px-7`}>
                     <div className=" text-gray-300 z-100">
                         <NavLink to="/">
                             <div className=" text-xl md:text-2xl tracking-[0.1rem] ">
@@ -66,7 +66,7 @@ export const NavBar =()=>{
                     <div onClick={() => setOpen(!open)} className="text-xl absolute left-[1.5rem] top-5 text-gray-300 cursor-pointer md:hidden">
                         {open==false ? <AiOutlineMenu/>:<AiOutlineClose/>}
                     </div>
-                    <ul className={`md:flex md:items-center md:pb-0 pt-2 pb-4 absolute md:static bg-black
+                    <ul className={`md:flex md:items-center md:pb-0 pt-2 pb-4 absolute md:static bg-black md:bg-transparent
                     md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0  transition-all duration-700 ease-in
                      ${open ? 'top-[3.5rem] opacity-100' : 'top-[-490px]'} md:opacity-100 `}>
                         <NavLink to="/" className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2 text-white
