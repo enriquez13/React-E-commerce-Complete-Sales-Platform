@@ -75,13 +75,13 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
 
             <h3 className="pl-3 md:pl-0 text-sm md:text-base mt-2 mb-5  md:mt-5">${data.valor}</h3>
             <h3 className='hidden md:block my-4'>Elige la talla:</h3>
-            <div className='grid grid-cols-6 gap-1 place-items-left pl-2 md:pl-0'>
+            <div className='grid grid-cols-8 gap-1 place-items-left pl-2 md:pl-0'>
                     
                         {data.sizes?.map((c) => (
                             <div>
                         <button key={c.size} onClick={() => setTalla(c.size)}
                         className={`${c.size == talla ? "border bg-black text-gray-100 w-7 h-7 font-bold"
-                        : "text-[1rem] mx-1 w-7 h-7 border border-gray-200 "} transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-full `}>{c.size}</button>
+                        : "text-[1rem] w-6 h-6 border border-gray-200 "} transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-full `}>{c.size}</button>
                     </div>
                     ))}
                     
@@ -98,7 +98,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                                         setIde(col.idepro)  
                                     }} key={col.color} className={`${col.color == color ? "border-2 border-black w-7 h-7 " 
                                     : "border border-gray-300 w-7 h-7 "} ${col.bg}  
-                                         mx-1 md:mx-0 border rounded-full transform duration-500 hover:scale-110`}>
+                                          md:mx-0 border rounded-full transform duration-500 hover:scale-110`}>
 
                                     </button>
                                 </div>
