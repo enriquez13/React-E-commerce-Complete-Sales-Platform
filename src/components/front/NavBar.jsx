@@ -45,15 +45,15 @@ export const NavBar =()=>{
                 </div>
                 :""}
   
-                <div className={`${scroll<=100 ? "bg-gradient-to-b from-black to-transparent  bg-opacity-[0.01]" : ""} flex transition-all duration-1000 bg-black relative items-center md:flex justify-center py-4 md:px-10 px-7`}>
+                <div className={`${scroll<=100 ? "bg-gradient-to-b from-black to-transparent  bg-opacity-[0.01] shadow-sm" : ""} flex transition-all duration-1000 bg-black relative items-center md:flex justify-center py-4 md:px-10 px-7`}>
                     <div className=" text-gray-300 z-100">
                         <NavLink to="/">
-                            <div className=" text-xl md:text-2xl tracking-[0.1rem] ">
+                            <div className=" text-xl md:text-2xl tracking-[0.1rem] text-gray-400">
                                 ZOROBABEL
                             </div>
                         </NavLink>
                     </div>
-                    <h1 className=" text-xl absolute right-[1.5rem] md:right-[4rem] top-[1.1rem] md:top-[1.5rem] text-gray-300 cursor-pointer">
+                    <h1 className=" text-xl absolute right-[1.5rem] md:right-[4rem] top-[1.1rem] md:top-[1.5rem] text-gray-400 cursor-pointer">
                     <NavLink to='/cart'> <span className=' relative'><BsBag />
             {
               totalProducts() ? <span className="bg-blue-500 absolute bottom-[-10px] left-3 text-white text-base rounded-full px-2 ">
@@ -63,7 +63,7 @@ export const NavBar =()=>{
             </span>
             </NavLink>
                     </h1>
-                    <div onClick={() => setOpen(!open)} className="text-xl absolute left-[1.5rem] top-5 text-gray-300 cursor-pointer md:hidden">
+                    <div onClick={() => setOpen(!open)} className="text-xl absolute left-[1.5rem] top-5 text-gray-400 cursor-pointer md:hidden">
                         {open==false ? <AiOutlineMenu/>:<AiOutlineClose/>}
                     </div>
                     <ul className={`md:flex md:items-center md:pb-0 pt-2 pb-4 absolute md:static bg-black md:bg-transparent
@@ -106,4 +106,3 @@ export const NavBar =()=>{
     )
 }
 export default NavBar
-
