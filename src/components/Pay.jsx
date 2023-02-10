@@ -57,14 +57,12 @@ const db = getFirestore();
     .catch(error=>{
         alert(errors)
     })
-  
-
 }
 
 const[opcionenvio,setOpcionenvio]= useState('clasico')
 const[metodopago, setMetodopago]= useState('')
 let descuento = totalPrice() >= 140000 ? -totalPrice()*0.2 : 0
-let valorenvio = (totalPrice()>=140000? 0 :(opcionenvio==="clasico" ? 5000:10000))
+let valorenvio = (totalPrice()>=140000? 0 :(opcionenvio==="clasico" ? 5000 : 10000))
 let total = opcionenvio ? totalPrice() + descuento + valorenvio : ""
 
 

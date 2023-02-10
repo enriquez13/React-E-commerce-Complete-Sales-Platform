@@ -6,7 +6,8 @@ import ItemDetailContainer from './components/back/ItemDetailsContainer'
 import { CartProvider } from './CartProvider'
 import {Pay} from './components/Pay'
 import {Cart} from './components/Cart'
-import {Admin} from './Admin/Admin'
+import {Admin} from '../src/components/Sesiones/Admin/Admin'
+import { Sesion } from './components/Sesiones/Sesion'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/detalle/:detalleId' element={<ItemDetailContainer />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/pay' element={<Pay />} />
+          <Route path='/sesion' element={<Sesion />} />
           <Route path='/admin' element={<Admin />} />
         </Routes>
       </CartProvider>
