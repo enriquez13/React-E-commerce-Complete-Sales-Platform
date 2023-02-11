@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import {HashRouter as Router, Routes, Route} from "react-router-dom"
 import Home from './components/front/Home'
 import { ItemListContainer } from './components/back/ItemListContainer'
 import ItemDetailContainer from './components/back/ItemDetailsContainer'
@@ -14,7 +14,7 @@ function App() {
   
   return (
 <div className='bg-[#FFFEFB] text-black '>
-    <BrowserRouter>
+    <Router>
       <CartProvider>
         <Routes>
           <Route path='/*' element={<Home />} />
@@ -27,7 +27,7 @@ function App() {
           <Route path='/admin' element={<Admin />} />
         </Routes>
       </CartProvider>
-    </BrowserRouter>
+    </Router>
     </div>
     )
 }
