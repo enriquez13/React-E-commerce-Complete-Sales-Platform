@@ -37,10 +37,10 @@ function agregar() {
             </Link>
 
             <div className="px-3 md:pb-5">
-                
+            <Link to={`/detalle/${info.id}`}>
                     <h5 className="text-center text-md  font-bold">{info.category}</h5>
                     <h5 className="text-center text-md  font-bold">{info.nombre}</h5>
-                
+            </Link>
                 <div className=" pb-2 ">
                     <span className="grid mb-2 text-center text-xs md:text-base text-gray-900 w-full">
                         ${info.valor}
