@@ -115,11 +115,12 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
              //   ? <Link to='/cart'>Terminar compra</Link>
              //   : <ItemCount initial={1} stock={12} onAdd={onAdd}/>
             }
-            <section className='h-[5rem] bg-gradient-to-b from-slate-200 to-slate-50 shadow-md rounded-lg py-4 px-3 relative'>
-            <h3 className='text-sky-900  absolute top-[35%]'>Pack X3 unidades</h3>
-            <span className='text-sky-900 absolute top-2 right-3 text-xs'>Valor unidad ${data.valor*0.8}</span>
-            <span className='text-sky-900 absolute top-6 right-3'>${data.valor*0.8*3}</span>
-            <span className='text-amber-300 line-through absolute top-[2.6rem] right-3'>${data.valor*3}</span>
+            <section className='h-[7rem] bg-gradient-to-b from-slate-300 to-slate-100 shadow-md rounded-lg my-3 md:my-10 px-3 relative'>
+            <h3 className='text-sky-900  absolute top-8'>Pack X3 unidades</h3>
+            <h3 className='text-sky-900  absolute top-[3.3rem] w-2/3 text-xs'>Agrega 3 productos al carrito y obten el descuento automaticamente</h3>
+            <span className='text-sky-900 absolute top-3 right-3 text-xs'>Valor unidad ${data.valor*0.8}</span>
+            <span className='text-sky-900 absolute top-8 right-3'>${data.valor*0.8*3}</span>
+            <span className='text-amber-500 line-through absolute top-[3.5rem] right-3 text-xs'>${data.valor*3}</span>
             </section>
 
             {talla && color ?<div className="">
