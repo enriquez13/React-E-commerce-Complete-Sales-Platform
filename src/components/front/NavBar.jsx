@@ -8,7 +8,7 @@ import firebaseApp from '../../firebase/config'
 import { getAuth, signOut } from 'firebase/auth'
 
 
-export const NavBar =()=>{
+export const NavBar =(user)=>{
     
     const oferta=[{id:1, title: "Envíos gratis por compras superiores a $149.900"},
     {id:2, title: "Envíos a toda Colombia"},
@@ -100,12 +100,13 @@ export const NavBar =()=>{
                          text-white hover:text-gray-400 duration-500">
                             Iniciar sesión o registro
                         </NavLink>
+               
                         <button onClick={()=> signOut(auth)} className="bg-black text-white rounded-lg py-2 px-4">Cerrar sesión</button>
-                        
                     </ul>
+                   
                 </div>
             </div>
-            
+         
         </>
     )
 }

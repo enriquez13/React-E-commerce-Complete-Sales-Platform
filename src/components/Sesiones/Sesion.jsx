@@ -4,6 +4,7 @@ import { HomeLogin } from './HomeLogin'
 import firebaseApp from '../../firebase/config';
 import {getAuth, onAuthStateChanged} from "firebase/auth"  
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import NavBar from '../front/NavBar';
 
 const firestore = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp)
@@ -26,7 +27,7 @@ function setUserWithFirebaseAndRol (usuarioFirebase){
     rol : rol,
   }
   setUser(userData)
-  console.log(userData)
+  
 })
  
 }
@@ -41,7 +42,10 @@ function setUserWithFirebaseAndRol (usuarioFirebase){
     }
   })
   return (
-   <> {user ? <HomeLogin user={user}/> : <Login/>} 
+   <> 
+   
+   <NavBar user={user}/>
+   {user ? <HomeLogin user={user}/> : <Login/>} 
    </>
   )
 }

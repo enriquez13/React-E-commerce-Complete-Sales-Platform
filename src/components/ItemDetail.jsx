@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import {useCartContext} from '../CartProvider'
 //import { ItemCount } from './ItemCount'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { FiPlus, FiMinus } from "react-icons/fi"
 
 const imgs =[
@@ -48,6 +48,8 @@ const [mostrarEnvios, setMostrarEnvios] = useState(false)
 const [mostrarGuiaTallas, setMostrarGuiaTallas] = useState(false)
 const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
 
+
+
     return (
     <>
    
@@ -73,7 +75,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                 <div className='md:px-20'>
         <h2 className="text-left font-bold pl-3 mt-2 md:mt-0 md:pl-0 md:text-left text-2xl md:text-4xl  ">{data.category}{" "}{data.nombre}</h2> 
 
-            <h3 className="pl-3 md:pl-0 text-sm md:text-base mt-2 mb-5  md:mt-5">${data.valor}</h3>
+            <h3 className="pl-3 md:pl-0 text-sm md:text-base mt-2 mb-5  md:mt-5">${data.valor} unidad</h3>
             <h3 className='hidden md:block my-4'>Elige la talla:</h3>
             <div className='grid grid-cols-8 gap-1 place-items-left pl-2 md:pl-0'>
                     
@@ -113,23 +115,33 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
              //   ? <Link to='/cart'>Terminar compra</Link>
              //   : <ItemCount initial={1} stock={12} onAdd={onAdd}/>
             }
-            
+            <section className='h-[5rem] bg-gradient-to-b from-slate-200 to-slate-50 shadow-md rounded-lg py-4 px-3 relative'>
+            <h3 className='text-sky-900  absolute top-[35%]'>Pack X3 unidades</h3>
+            <span className='text-sky-900 absolute top-2 right-3 text-xs'>Valor unidad ${data.valor*0.8}</span>
+            <span className='text-sky-900 absolute top-6 right-3'>${data.valor*0.8*3}</span>
+            <span className='text-amber-300 line-through absolute top-[2.6rem] right-3'>${data.valor*3}</span>
+            </section>
+
             {talla && color ?<div className="">
                 <div className='mx-8 md:mx-[6rem] md:mt-[2rem]'>
                 <button  className="flex items-center justify-center w-full h-11 mt-5 
                 border border-black rounded-xl hover:bg-neutral-100 md:transform md:duration-200 md:hover:scale-105 "
                 disabled={color === ""}  
-                onClick={agregar}>Agregar al carrito</button>
+                onClick={agregar}>Agregar y seguir comprando</button>
                 </div>
-                <div className='mx-8 md:mx-[6rem]'>
-                <Link to='/pay'>
-                    <button className="flex items-center justify-center w-full  h-11 mt-3
-                    text-white bg-black rounded-xl font-bold md:transform md:duration-200 md:hover:scale-105 hover:bg-neutral-900 hover:text-neutral-200">Comprar
-                    </button>
-                </Link>
-                </div>
+              
             </div>:""}
-
+            <div className='mx-8 md:mx-[6rem] mt-6'>
+              
+                <button className="flex items-center justify-center w-full  h-11 mt-3
+                    text-amber-200 animate-bounce bg-black rounded-xl font-bold md:transform md:duration-200 md:hover:scale-105
+                    hover:bg-neutral-900 hover:text-neutral-200 "
+                    onClick={agregar} disabled={color === ""}>
+                        <span>Compra aquí y paga en CASA</span>
+                       
+                    </button>                        
+                    {color === "" ?<span className='text-red-400'>Falta elegir el color</span>:""}
+                </div>
             <div className='grid grid-cols-4 my-4 content-center ' 
             onClick={()=>setMostrarDescripcion(!mostrarDescripcion)}>
             <p className='col-start-1 col-span-3'>Descripción</p>
