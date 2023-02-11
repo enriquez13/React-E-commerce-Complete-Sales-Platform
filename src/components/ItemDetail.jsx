@@ -263,8 +263,13 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                                         </h3>
                                     <span className='font-medium '>¿El envío es gratis? </span>
                                     <h3 className="mb-4">
-                                        ¡Sí! Tenemos envío GRATIS por compras superiores a $140.000 a la mayorías de ciudades
+                                        ¡Sí! Tenemos envío GRATIS por compras superiores a $149.900 a la mayorías de ciudades
                                         y varios municipios. Por un costo adicional puedes obtener envío exprés en algunas ciudades.
+                                    </h3>
+                                    <span className='font-medium '>¿Cuidado de la prenda? </span>
+                                    <h3 className="mb-4">
+                                        El cuidado debe ser el de la mayoría de prendas textiles de diferentes marcas, las recomendaicones son:
+                                        No retorcer para un secado más rápido, se debe secar naturalmente en sombra, planchar a baja temperatura, no utilizar secadora.
                                     </h3>
 <h3 className='font-medium mt-4'>¿Y si no me queda o no me gustó?</h3>
 <h3 className='mb-4'>

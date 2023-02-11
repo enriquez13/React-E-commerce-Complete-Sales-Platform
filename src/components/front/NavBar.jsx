@@ -12,7 +12,9 @@ export const NavBar =(user)=>{
     
     const oferta=[{id:1, title: "Envíos gratis por compras superiores a $149.900"},
     {id:2, title: "Envíos a toda Colombia"},
-    {id:3, title: "Paga al recibir"}]
+    {id:3, title: "Paga al recibir"},
+    {id:4, title: "Pack X3 unidades 20% OFF "}
+    ]
     
     const [open,setOpen]=useState(false);
     const {totalProducts} = useCartContext()
