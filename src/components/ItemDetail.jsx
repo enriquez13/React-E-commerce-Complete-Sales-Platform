@@ -4,6 +4,7 @@ import {useCartContext} from '../CartProvider'
 //import { ItemCount } from './ItemCount'
 import { Link, NavLink } from 'react-router-dom'
 import { FiPlus, FiMinus } from "react-icons/fi"
+import SliderCustomer from './front/SliderCustomers'
 
 const imgs =[
     {id:0, img:"https://geekflare.com/wp-content/uploads/2021/09/520401-pure-black-background-wallpaper.jpg"},
@@ -43,7 +44,8 @@ function agregar(){
     setColor("")
 }
 
-const [mostrarDescripcion, setMostrarDescripcion] = useState(true)
+const [mostrarDescripcion, setMostrarDescripcion] = useState(false)
+const [mostrarFormasDePago, setMostrarFormasDePago] = useState(true)
 const [mostrarEnvios, setMostrarEnvios] = useState(false)
 const [mostrarGuiaTallas, setMostrarGuiaTallas] = useState(false)
 const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
@@ -107,7 +109,8 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                             )
                             ) : ""))}
                             </div>
-                                                    
+                            {talla === "" ?<span className='text-red-400 px-4'>Falta elegir la talla</span>:""}   
+                            {talla !== "" && color === "" ?<span className='text-red-400 px-4'>Falta elegir el color</span>:""}          
         <div className="w-auto px-5 md:px-0">
             
             {
@@ -115,12 +118,12 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
              //   ? <Link to='/cart'>Terminar compra</Link>
              //   : <ItemCount initial={1} stock={12} onAdd={onAdd}/>
             }
-            <section className='h-[7rem] bg-gradient-to-b from-slate-300 to-slate-100 shadow-md rounded-lg my-3 md:my-10 px-3 relative'>
-            <h3 className='text-sky-900  absolute top-8'>Pack X3 unidades</h3>
+            <section className='h-[7rem] bg-gradient-to-b from-slate-300 to-slate-100 shadow-md rounded-lg my-3 md:my-10 px-4 relative'>
+            <h3 className='text-sky-900  absolute top-7'>Pack X3 unidades</h3>
             <h3 className='text-sky-900  absolute top-[3.3rem] w-2/3 text-xs'>Agrega 3 productos al carrito y obten el descuento automaticamente</h3>
-            <span className='text-sky-900 absolute top-3 right-3 text-xs'>Valor unidad ${data.valor*0.8}</span>
-            <span className='text-sky-900 absolute top-8 right-3'>${data.valor*0.8*3}</span>
-            <span className='text-amber-500 line-through absolute top-[3.5rem] right-3 text-xs'>${data.valor*3}</span>
+            <span className='text-sky-900 absolute top-3 right-4 text-xs'>Valor unidad ${data.valor*0.8}</span>
+            <span className='text-sky-900 absolute top-7 right-4'>${data.valor*0.8*3}</span>
+            <span className='text-amber-500 line-through absolute top-[3rem] right-4 '>${data.valor*3}</span>
             </section>
 
             {talla && color ?<div className="">
@@ -128,7 +131,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                 <button  className="flex items-center justify-center w-full h-11 mt-5 
                 border border-black rounded-xl hover:bg-neutral-100 md:transform md:duration-200 md:hover:scale-105 "
                 disabled={color === ""}  
-                onClick={agregar}>Agregar y seguir comprando</button>
+                onClick={agregar}>Agregar al carrito</button>
                 </div>
               
             </div>:""}
@@ -141,13 +144,15 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                         <span>Compra aquí y paga en CASA</span>
                        
                     </button>                        
-                    {color === "" ?<span className='text-red-400'>Falta elegir el color</span>:""}
+                    
                 </div>
-            <div className='grid grid-cols-4 my-4 content-center ' 
+
+            <h2 className='grid justify-items-center my-10 font-semibold md:text-2xl '>INFORMACIÓN DE INTERES</h2>
+            <div className='grid grid-cols-4 mt-10 mb-4 content-center ' 
             onClick={()=>setMostrarDescripcion(!mostrarDescripcion)}>
-            <p className='col-start-1 col-span-3'>Descripción</p>
-            <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600'>
-            {mostrarDescripcion===true? <FiMinus/> : <FiPlus />}
+            <p className='col-start-1 col-span-3'>Descripción del producto</p>
+            <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600 '>
+            <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarDescripcion===true? <FiMinus/> : <FiPlus />}</button>
             </h3>
             <div className={mostrarDescripcion ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
                 {mostrarDescripcion && <p>El camibuso tipo polo es un producto de alta calidad debido a que está 
@@ -157,9 +162,20 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
             horma grande). </p>}
             </div>
             </div>     
+            <hr/>
 
-
-            
+            <div className='grid grid-cols-4 my-4 content-center ' 
+            onClick={()=>setMostrarFormasDePago(!mostrarFormasDePago)}>
+            <p className='col-start-1 col-span-3'>Formas de pago</p>
+            <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600'>
+            <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarFormasDePago===true ? <FiMinus/> : <FiPlus />}</button>
+            </h3>
+            <div className={mostrarFormasDePago ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
+                {mostrarFormasDePago && <h3>Ofrecemos servicio contraentrega, es decir, pagas el total cuando te llegue
+                    el producto hasta tu casa o dirección señalada, también contamos con pago directo
+                    por medio de transferencia Bancolombia, pago por nequi o daviplata</h3>}
+            </div>
+            </div>   
            
 
 
@@ -169,12 +185,12 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
             onClick={()=>setMostrarEnvios(!mostrarEnvios)}>
             <p className='col-start-1 col-span-3'>Envíos y devoluciones</p>
             <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600'>
-            {mostrarEnvios===true ? <FiMinus/> : <FiPlus />}
+            <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarEnvios===true ? <FiMinus/> : <FiPlus />}</button>
             </h3>
             <div className={mostrarEnvios ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
                 {mostrarEnvios && <h3>Tenemos envíos a toda Colombia, utilizamos transportadoras como 
                     Servientrega, Coordinadora, interrapidisimo y envía, el envío a ciudades como Popayán, Cali, Bogotá, Medellín, Bogotá
-                    tarda entre 2-3 días hábiles, a otros lugares tarda entre 3-6 días hábiles</h3>}
+                    tarda entre 2-4 días hábiles, a otros lugares tarda entre 3-6 días hábiles</h3>}
             </div>
             </div>       
             
@@ -184,7 +200,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                             onClick={() => setMostrarGuiaTallas(!mostrarGuiaTallas)}>
                             <p className='col-start-1 col-span-3'>Guía de tallas</p>
                             <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600 '>
-                                {mostrarGuiaTallas===true ? <FiMinus/> : <FiPlus />}
+                                <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarGuiaTallas===true ? <FiMinus/> : <FiPlus />}</button>
                             </h3>
                             <div className={mostrarGuiaTallas ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
                                 {mostrarGuiaTallas && 
@@ -236,7 +252,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
             onClick={()=>setMostrarPreguntas(!mostrarPreguntas)}>
             <p className='col-start-1 col-span-3'>Preguntas frecuentes</p>
             <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600'>
-            {mostrarPreguntas===true ? <FiMinus/> : <FiPlus />}
+            <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarPreguntas===true ? <FiMinus/> : <FiPlus />}</button>
             </h3>
             <div className={mostrarPreguntas ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
                 {mostrarPreguntas && <div>
@@ -286,11 +302,10 @@ Puedes pagar con transferencia a Bancolombia, Nequi, Daviplata, pagos con tarjet
         </div>
     </div>
     </div>
-    <h2 className="w-full text-2xl md:text-4xl my-2 md:mt-12 text-center">Agregar más productos</h2>
-    
 
-    <div className=" h-32 grid grid-cols-2 md:grid-cols-3 md:gap-12 px-3 md:px-10">
-       Aquí van Imagenes        
+    <SliderCustomer />
+    <div className='flex items-center justify-center'>
+        <button className="text-lg md:text-4xl md:mt-12 py-2 px-7 text-center mt-8 mb-[5rem] border border-gray-300 rounded-lg">Buscar más productos</button>
     </div>
    
 

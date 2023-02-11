@@ -54,7 +54,7 @@ export const SliderCustomer = () => {
   return (
     <>
     <hr/>
-    <h2 className='grid justify-items-center my-10 md:font-semibold md:text-2xl '>RESEÑAS DE ALGUNOS CLIENTES</h2>
+    <h2 className='grid justify-items-center my-10 font-semibold md:text-2xl '>RESEÑAS DE ALGUNOS CLIENTES</h2>
 <div className='md:w-1/3 max-w-[1400px] h-[400px] w-full m-auto  relative group text-gray-100 z-0'>
   <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full bg-center bg-cover duration-500'>
   </div>
