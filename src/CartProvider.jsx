@@ -4,7 +4,10 @@ const cartContext = React.createContext([])
 export const useCartContext = ()=> useContext(cartContext)
 export const CartProvider = ({children}) => {
 const [cart, setCart] = useState([])
+const [opens, setOpens] = useState(false)
 //console.log('carrito: ', cart)
+
+const OpenSlider = (open) => { setOpens(open) } 
 
 const addProduct = (item, quantity, talla, color, ide) =>{
   if (isInCart(ide)) {
@@ -43,6 +46,8 @@ const isInCart = (ide) => {
       addProduct,
       totalPrice,
       totalProducts,
+      OpenSlider,
+      opens,
       cart
     }}>
     {children}

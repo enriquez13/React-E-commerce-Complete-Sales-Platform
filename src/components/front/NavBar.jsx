@@ -17,9 +17,8 @@ export const NavBar =(user)=>{
     ]
     
     const [open,setOpen]=useState(false);
-    const {totalProducts} = useCartContext()
-
-    const [bartop, setBartop] = useState(true)
+    const {totalProducts, OpenSlider, opens} = useCartContext()
+    const closeOpen = ()=>{ OpenSlider(true) }
 
     const [currentIndex,setCurrentIndex] = useState(0)
     function nextSlide () {
@@ -37,14 +36,14 @@ export const NavBar =(user)=>{
   }
   const  auth = getAuth(firebaseApp)
     return (
-        <>
+        <> 
             <div className="fixed z-10 shadown-md w-full top-0 left-0 " >
-            {bartop===true ? <div  className='relative z-10 w-full bg-gray-700 top-0 text-center '>
+            {opens===false ? <div  className='relative z-10 w-full bg-gray-700 top-0 text-center '>
                 <div className="w-full h-[2rem] px-8  md:transform  md:hover:text-gray-700 
                 flex items-center justify-center text-[0.6rem] text-amber-200 tracking-[0.3rem] uppercase ">
                     {oferta[currentIndex].title}
                 </div>
-                <div onClick={()=>setBartop(false)} className="absolute left-3 md:left-[3rem] content-center flex items-center
+                <div onClick={closeOpen} className="absolute left-3 md:left-[3rem] content-center flex items-center
                 top-[25%] text-white md:transform md:hover:text-gray-700 cursor-pointer"><AiOutlineClose/></div>
                 </div>
                 :""}
