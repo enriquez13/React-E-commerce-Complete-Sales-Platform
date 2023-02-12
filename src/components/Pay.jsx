@@ -6,7 +6,50 @@ import { useCartContext } from '../CartProvider'
 import { useForm } from "react-hook-form"
 
 
+
 export const Pay = () => {
+
+// Integración Wompi 
+    const [openCheckout, setOpenCheckout] = useState(false);
+
+    const handleCheckout = () => {
+      setOpenCheckout(true);
+      console.log(total)
+      var checkout = new WidgetCheckout({
+        currency: 'COP',
+        amountInCents: parseFloat(total*100),
+        reference: 'AD002901221',
+        publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
+        redirectUrl: 'https://transaction-redirect.wompi.co/check', // Opcional
+        taxInCents: { // Opcional
+          vat: 1900,
+          consumption: 800
+        },
+        customerData: { // Opcional
+          email:'lola@gmail.com',
+          fullName: 'Lola Flores',
+          phoneNumber: '3040777777',
+          phoneNumberPrefix: '+57',
+          legalId: '123456789',
+          legalIdType: 'CC'
+        },
+        shippingAddress: { // Opcional
+          addressLine1: "Calle 123 # 4-5",
+          city: "Bogota",
+          phoneNumber: '3019444444',
+          region: "Cundinamarca",
+          country: "CO"
+        }
+      });
+      checkout.open(function ( result ) {
+        var transaction = result.transaction
+        console.log('Transaction ID: ', transaction.id)
+        console.log('Transaction object: ', transaction)
+      });
+    };
+    
+/////////////////////////
+
     const {cart, totalPrice} = useCartContext()
 
 //const [envio, setEnvio]=useState('1') 
@@ -217,9 +260,10 @@ setMetodopago(ev.target.value)
                         </p>
                         :""}
                      
-                        <label className='block'>PSE o tarjeta de crédito
+                        <label className='block'>PSE, tarjeta de crédito, Nequi, Bancolombia, otros
                         <input className='mx-2 mt-4' type="radio" value="tarjetas" name="gender" onClick={onChangepago}/> 
                         </label>
+                        
                 </div>
                 </>
                 :""}
@@ -228,10 +272,14 @@ setMetodopago(ev.target.value)
                         <input  className='rounded-lg mt-5 bg-black text-white px-10 py-2 ' type="submit" value="Fenalizar pedido" />
                     </div>
                 </form>
-  
+                
         </div>
-            
-        
+
+        <div>
+            {/* Botón Wompi */}
+         
+            <button onClick={handleCheckout} className="rounded-lg bg-black text-white py-2 px-6 m-4">Checkout</button>
+    </div>
         </>
     )
 }
