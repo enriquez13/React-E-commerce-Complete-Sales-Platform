@@ -43,8 +43,8 @@ function setUserWithFirebaseAndRol (usuarioFirebase){
   })
   return (
    <> 
-   
    <NavBar user={user}/>
+   <button onClick={()=> signOut(auth)} className=" text-white rounded-lg py-2 px-4">Cerrar sesión</button>
    {user ? <HomeLogin user={user}/> : <Login/>} 
    </>
   )

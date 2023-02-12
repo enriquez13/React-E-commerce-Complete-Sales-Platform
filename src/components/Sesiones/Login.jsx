@@ -46,6 +46,7 @@ export const Login = () => {
         "Ya tengo una cuenta, quiero iniciar sesión"
         : "No tengo una cuenta, quiero registrarme"}</h1>
     </button>
+    
     </>
   )
 }
