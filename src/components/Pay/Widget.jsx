@@ -17,7 +17,7 @@ export const Widget = ({total}) => {
         amountInCents: 5000000,
         reference: paymentReference,
         publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
-        redirectUrl: `https://my-react-app-enriquez13.vercel.app/#/event`, // Opcional
+        redirectUrl: `https://my-react-app-enriquez13.vercel.app/event`, // Opcional
         customerData: { // Opcional
           email:'alejandro@gmail.com',
           fullName: 'Alejandro Enríquez',
