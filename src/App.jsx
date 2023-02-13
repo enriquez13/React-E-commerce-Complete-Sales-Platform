@@ -9,6 +9,7 @@ import {Cart} from './components/Cart'
 import {Admin} from '../src/components/Sesiones/Admin/Admin'
 import { Sesion } from './components/Sesiones/Sesion'
 import { useLocation } from 'react-router-dom';
+import Event from './components/Event'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -33,6 +34,7 @@ function App() {
             <Route path='/pay' element={<Pay />} />
             <Route path='/sesion' element={<Sesion />} />
             <Route path='/admin' element={<Admin />} />
+            <Route path='/event' element={<Event />} />
           </Routes>
         </CartProvider>
     </Router>

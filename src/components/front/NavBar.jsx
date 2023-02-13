@@ -108,6 +108,10 @@ export const NavBar =(user)=>{
                          text-white hover:text-gray-400 duration-500">
                                 Iniciar sesión o registro
                             </NavLink>
+                            <NavLink to='/event' className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
+                         text-white hover:text-gray-400 duration-500">
+                                Event
+                            </NavLink>
 
                            
                         </ul>

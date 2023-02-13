@@ -4,50 +4,13 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useCartContext } from '../CartProvider'
 import { useForm } from "react-hook-form"
-
+import {Widget} from './Pay/Widget'
 
 
 export const Pay = () => {
 
 // Integración Wompi 
-    const [openCheckout, setOpenCheckout] = useState(false);
 
-    const handleCheckout = () => {
-      setOpenCheckout(true);
-      console.log(total)
-      var checkout = new WidgetCheckout({
-        currency: 'COP',
-        amountInCents: parseFloat(total*100),
-        reference: 'AD002901221',
-        publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
-        redirectUrl: 'https://transaction-redirect.wompi.co/check', // Opcional
-        taxInCents: { // Opcional
-          vat: 1900,
-          consumption: 800
-        },
-        customerData: { // Opcional
-          email:'lola@gmail.com',
-          fullName: 'Lola Flores',
-          phoneNumber: '3040777777',
-          phoneNumberPrefix: '+57',
-          legalId: '123456789',
-          legalIdType: 'CC'
-        },
-        shippingAddress: { // Opcional
-          addressLine1: "Calle 123 # 4-5",
-          city: "Bogota",
-          phoneNumber: '3019444444',
-          region: "Cundinamarca",
-          country: "CO"
-        }
-      });
-      checkout.open(function ( result ) {
-        var transaction = result.transaction
-        console.log('Transaction ID: ', transaction.id)
-        console.log('Transaction object: ', transaction)
-      });
-    };
-    
 /////////////////////////
 
     const {cart, totalPrice} = useCartContext()
@@ -87,7 +50,7 @@ const db = getFirestore();
         },
             producto: cart.map(product=> ({Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
             envio: data.envio,
-            fecha: new Date().toLocaleDateString(),
+            fecha: new Date().toLocaleString(),
             total: totalPrice(),
             }
             const ordersCollection = collection(db, 'compras')
@@ -277,8 +240,8 @@ setMetodopago(ev.target.value)
 
         <div>
             {/* Botón Wompi */}
-         
-            <button onClick={handleCheckout} className="rounded-lg bg-black text-white py-2 px-6 m-4">Checkout</button>
+         {console.log(total)}
+           <Widget total={total} />
     </div>
         </>
     )
