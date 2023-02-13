@@ -14,7 +14,7 @@ export const Widget = ({total}) => {
       setOpenCheckout(true);
       var checkout = new WidgetCheckout({
         currency: 'COP',
-        amountInCents: 5000000,
+        amountInCents: {total},
         reference: paymentReference,
         publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
         redirectUrl: `https://my-react-app-enriquez13.vercel.app/event`, // Opcional

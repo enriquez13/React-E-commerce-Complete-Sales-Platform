@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom'
 import {useCartContext} from '../CartProvider'
 import { useState } from 'react'
 import { BsBagCheck } from "react-icons/bs";
+import { Modal } from './back/Modal';
 
 //import { cartContext } from '../CartProvider'
 
 const Item = ({info})=>{
-    
+const [showModal, setShowModal] = useState(false);
 const [goToCart, setGoToCart] = useState(false)
-const {addProduct} = useCartContext()
+const {addProduct, cart, removeProduct} = useCartContext()
 
     const onAdd = (quantity, talla, color,ide) =>{
     setGoToCart(true)
@@ -21,11 +22,16 @@ const {addProduct} = useCartContext()
 const [talla, setTalla] = useState('')
 const [color, setColor] = useState('')
 const [ide, setIde] = useState('')
+
 function agregar() {
+    setShowModal(true)
     onAdd(1, talla, color, ide) 
     setTalla("")
     setColor("")
 }
+const closeModal = () => {
+    setShowModal(false);
+  };
     return (
         <>
         <div className="relative rounded-lg">
@@ -91,11 +97,23 @@ function agregar() {
                         
                     </button>
                     :""}
+                  {showModal && (
+        <Modal closeModal={closeModal} cart={cart} removeProduct={removeProduct}   />
+      )}
+   
+
+
+
+
                 </div>
             </div>
         </div>
         
         </>
     )
+
+    
 }
+
+
 export default Item
