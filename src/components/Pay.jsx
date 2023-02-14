@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import {Widget} from './Pay/Widget'
 
 
+
 export const Pay = () => {
 
 // Integración Wompi 
@@ -35,6 +36,8 @@ export const Pay = () => {
 const [envioss, setEnvioss]= useState('clasico')
 //console.log(envioss)
 
+//add
+const [isPaying, setIsPaying] = useState(false);
 
 const {register, handleSubmit, formState: {errors}} = useForm({ defaultValues: { envio: "clasico" } })
 const onSubmit = data => {
@@ -56,14 +59,21 @@ const db = getFirestore();
             const ordersCollection = collection(db, 'compras')
             addDoc(ordersCollection, orden)
     .then(()=>{
-        alert("Compra exitosa")
+        alert("Formulario enviado con éxito")
         console.log(data)
 
     })
     .catch(error=>{
-        alert(errors)
+        console.error(error)
     })
 }
+
+// add
+const handlePayment = () => {
+    setIsPaying(true);
+  };
+
+
 
 const[opcionenvio,setOpcionenvio]= useState('clasico')
 const[metodopago, setMetodopago]= useState('')
@@ -204,11 +214,15 @@ setMetodopago(ev.target.value)
                         type="radio" {...register("envio")} onChange={onChangeValue}/>
                         </label>
                 </div>
-                {opcionenvio==="clasico"?
+                {opcionenvio==="clasico" ?
                 <>
                 <h4 className='col-start-1 col-span-5 mt-5 font-medium'>Tipo de pago</h4>
                 <div className='col-start-1 col-span-7 text-md' //onChange={onChangeValue}
                 > 
+                        
+                        <label className='block'>PSE, T.Crédito, Nequi, Bancolombia
+                        <input className='mx-2 mt-4' type="radio" value="tarjetas" name="gender" onClick={onChangepago}/> 
+                        </label>
                         <label > Transferencia, Nequi o Daviplata
                         <input className='mx-2 mt-4' type="radio" value="transferencia" name="gender" onClick={onChangepago}  /> 
                         </label>
@@ -223,26 +237,29 @@ setMetodopago(ev.target.value)
                         </p>
                         :""}
                      
-                        <label className='block'>PSE, tarjeta de crédito, Nequi, Bancolombia, otros
-                        <input className='mx-2 mt-4' type="radio" value="tarjetas" name="gender" onClick={onChangepago}/> 
-                        </label>
                         
                 </div>
                 </>
                 :""}
             </div>
-            <div className='flex items-center justify-center'>
-                        <input  className='rounded-lg mt-5 bg-black text-white px-10 py-2 ' type="submit" value="Fenalizar pedido" />
+                    <div className='flex items-center justify-center'>
+                        {opcionenvio==="contraentrega" ? (<input className='rounded-lg mt-5 bg-black text-white px-10 py-2 ' 
+                        type="submit" value="Fenalizar y Pagar en casa" /> )
+                        : (metodopago==="tarjetas" 
+                        ? <>
+                        <Widget total={total} handlePayment={handlePayment}/>
+                        <button type="submit" className='hidden' disabled={isPaying}>
+                        Enviar
+                      </button></>
+                      
+                      :"")}
+                        
                     </div>
                 </form>
-                
+              
         </div>
 
-        <div>
-            {/* Botón Wompi */}
-         {console.log(total)}
-           <Widget total={total} />
-    </div>
+       
         </>
     )
 }

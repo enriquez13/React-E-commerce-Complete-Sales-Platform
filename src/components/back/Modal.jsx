@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export const Modal = ({ closeModal, cart, removeProduct }) => {
     return (
@@ -10,7 +11,7 @@ export const Modal = ({ closeModal, cart, removeProduct }) => {
                 <div className="bg-white  pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div className="mt-3 text-center sm:mt-5 mx-2">
                         <h3 className="text-lg leading-6 font-medium text-gray-900 my-4">
-                            Producto Agregado
+                            Productos Agregados
                         </h3>
                         {cart?.map((product, index) => (
 
@@ -25,7 +26,7 @@ export const Modal = ({ closeModal, cart, removeProduct }) => {
                                             {product.category}{" "}{product.nombre}
                                         </p>
                                         <p className="text-sm leading-5 text-gray-500 ">
-                                            {product.talla}{" "}{product.color}
+                                            Talla {" "}{product.talla}{" "} Color{" "}{product.color}
                                         </p>
                                         <p className="text-sm leading-5 text-gray-500 ">
                                             Cantidad: {product.quantity}
@@ -50,25 +51,29 @@ export const Modal = ({ closeModal, cart, removeProduct }) => {
 
 
                 <div className="bg-gray-50 px-4 py-3 sm:px-6 flex justify-center w-full gap-2">
-              
-                    <span className="flex w-1/2 rounded-md shadow-sm  sm:ml-3 sm:w-auto">
-                        <button
-                            type="button"
-                            
-                            className="inline-flex  justify-center w-full rounded-md border border-transparent px-2 py-2 bg-black text-xs leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-1000 sm:text-sm sm:leading-5"
-                        >
-                            Seguir comprando
-                        </button>
-                    </span>
-                    <span className="flex w-1/2 rounded-md shadow-sm  sm:ml-3 sm:w-auto">
+                <span className="flex w-1/2 rounded-md shadow-sm  sm:ml-3 sm:w-auto">
                         <button
                             type="button"
                             onClick={closeModal}
                             className="inline-flex  justify-center w-full rounded-md border border-transparent px-2 py-2 bg-black text-xs leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-1000 sm:text-sm sm:leading-5"
                         >
-                            Comprar ya
+                            Seguir comprando
                         </button>
                     </span>
+                    
+                    
+                    {cart.length ?<NavLink to='/pay' className="flex w-1/2 rounded-md shadow-sm  sm:ml-3 sm:w-auto bg-red-400">
+                        <button
+                            type="button"
+                            
+                            className="w-full inline-flex  justify-center rounded-md border border-transparent px-2 py-2 bg-black text-xs leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-1000 sm:text-sm sm:leading-5"
+                        >
+                            Comprar ya
+                        </button>
+                    </NavLink> : ""}
+                  
+                   {console.log(cart.length)}
+                  
                 </div>
             </div>
         </div>

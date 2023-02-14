@@ -1,23 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
-export const Widget = ({total}) => {
-  const [paymentReference, setPaymentReference] = useState('');
+export const Widget = ({total, handlePayment}) => {
+  
+  const [isPaying, setIsPaying] = useState(false);
+  const [openCheckout, setOpenCheckout] = useState(false);
+  const reference = uuidv4();
+ 
 
-    const [openCheckout, setOpenCheckout] = useState(false);
-
-    const handleCheckout = () => {
+    const handleCheckout = async () => {
       //REFERENCIA ÚNICA
-    const reference = uuidv4();
-    setPaymentReference(reference);
-      //
+      console.log(reference);
+
+{console.log("pago : ",reference, "valor :", total*100)}
+    
+    //
+    ;
+
+    // Realiza el pago de Wompi aquí
+
       setOpenCheckout(true);
       var checkout = new WidgetCheckout({
         currency: 'COP',
-        amountInCents: {total},
-        reference: paymentReference,
+        amountInCents: total*100,
+        reference: reference,
         publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
-        redirectUrl: `https://my-react-app-enriquez13.vercel.app/event`, // Opcional
+        //redirectUrl: `https://my-react-app-enriquez13.vercel.app/event`, // Opcional
         customerData: { // Opcional
           email:'alejandro@gmail.com',
           fullName: 'Alejandro Enríquez',
@@ -33,20 +41,22 @@ export const Widget = ({total}) => {
           region: "Cundinamarca",
           country: "CO"
         }
+    
+   
       });
       checkout.open(function ( result ) {
         var transaction = result.transaction
         console.log('Transaction ID: ', transaction.id)
-        console.log('Transaction object: ', transaction)
-      });
+        console.log('Transaction object: ', transaction.status)
 
-    
+      });
+      setIsPaying(true)
     }
 
     
     
   return (
     
-    <button onClick={handleCheckout} className="rounded-lg bg-black text-white py-2 px-6 m-4">Pagar</button>
+    <button type="submit" onClick={handleCheckout} className="rounded-lg mt-5 bg-black text-white px-10 py-2">Pagar</button>
   )
 }
