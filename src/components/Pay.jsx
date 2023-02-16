@@ -6,39 +6,11 @@ import { useCartContext } from '../CartProvider'
 import { useForm } from "react-hook-form"
 import {Widget} from './Pay/Widget'
 
-
-
 export const Pay = () => {
-
-// Integración Wompi 
-
-/////////////////////////
-
     const {cart, totalPrice} = useCartContext()
 
-//const [envio, setEnvio]=useState('1') 
-
-
-
-
-//function onChangeValue(event) {
- //       setEnvio(event.target.value)
- //     }
-
-//const[pagonormal, setPagonormal]= useState('')
-//function onChangePagonormal(evento){
-//setPagonormal(evento.target.value)
-//}
-
-
-
-//useForm
 const [envioss, setEnvioss]= useState('clasico')
-//console.log(envioss)
-
-//add
 const [isPaying, setIsPaying] = useState(false);
-
 const {register, handleSubmit, formState: {errors}} = useForm({ defaultValues: { envio: "clasico" } })
 const onSubmit = data => {
     setEnvioss(data.envio)
@@ -59,21 +31,16 @@ const db = getFirestore();
             const ordersCollection = collection(db, 'compras')
             addDoc(ordersCollection, orden)
     .then(()=>{
-        alert("Formulario enviado con éxito")
-        //console.log(data)
-
+        alert("Felicidades, tu compra fue exitosa")
     })
     .catch(error=>{
         console.error(error)
     })
 }
 
-// add
 const handlePayment = () => {
     setIsPaying(true);
   };
-
-
 
 const[opcionenvio,setOpcionenvio]= useState('clasico')
 const[metodopago, setMetodopago]= useState('')
@@ -81,24 +48,14 @@ let descuento = totalPrice() >= 140000 ? -totalPrice()*0.2 : 0
 let valorenvio = (totalPrice()>=140000? 0 :(opcionenvio==="clasico" ? 5000 : 10000))
 let total = opcionenvio ? totalPrice() + descuento + valorenvio : ""
 
-
 function onChangeValue(e){
-    e.preventDefault
+    e.preventDefault()
 setOpcionenvio(e.target.value)
 }
 function onChangepago(ev){
-    ev.preventDefault
+    ev.preventDefault()
 setMetodopago(ev.target.value)
 }
-//console.log(metodopago)
-
-    
-
-
-/////// esto es otra forma de hacer lo de la bd, no es necesario
-
-
-///////////
     return (
         <>
         <h2 className='text-center text-2xl my-5 mb-10'>ZOROBABEL</h2>
@@ -169,10 +126,6 @@ setMetodopago(ev.target.value)
                         type='text'  className='w-full mt-1 mb-3 bg-gray-100' />
                     </label>
 
-                    
-
-
-
                 <div className=' mt-5  py-5 border border-gray-300 px-5 grid grid-cols-7 '>
                 <h4 className='font-semibold col-start-1 col-span-7 mb-5'>Tu pedido</h4>
                 <h5 className=' col-start-1 col-span-5 font-medium mb-2'>Producto</h5>
@@ -186,7 +139,6 @@ setMetodopago(ev.target.value)
 
                 <hr className='col-start-1 col-span-7 border-gray-300 my-2'/>
 
-               
                 </>
                 ))}
                 
@@ -200,7 +152,9 @@ setMetodopago(ev.target.value)
                 <hr className='col-start-1 col-span-7 border border-gray-600 my-2'/>
 
                 <h5 className=' col-start-1 col-span-5 font-medium'>Total</h5>
+                
                 <h5 className=' col-start-6 col-span-2 font-medium text-right'>{total}</h5>
+                
                 <h4 className='col-start-1 col-span-5 mt-5 font-medium'>Método de envío</h4>
                 
 
@@ -248,9 +202,7 @@ setMetodopago(ev.target.value)
                         : (metodopago==="tarjetas" 
                         ? <>
                         <Widget total={total} handlePayment={handlePayment}/>
-                        <button type="submit" className='hidden' disabled={isPaying}>
-                        Enviar
-                      </button></>
+                       </>
                       
                       :"")}
                         

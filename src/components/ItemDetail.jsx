@@ -5,6 +5,8 @@ import {useCartContext} from '../CartProvider'
 import { Link, NavLink } from 'react-router-dom'
 import { FiPlus, FiMinus } from "react-icons/fi"
 import SliderCustomer from './front/SliderCustomers'
+import './Details.css'
+
 
 const imgs =[
     {id:0, img:"https://geekflare.com/wp-content/uploads/2021/09/520401-pure-black-background-wallpaper.jpg"},
@@ -19,7 +21,7 @@ const onAdd = (quantity, talla, color,ide) =>{
     addProduct(data, quantity, talla, color, ide)
 }
 
-const [sliderData, setSliderData] = useState([])
+const [sliderData, setSliderData] = useState(data.imagenes && data.imagenes.length > 0 ? data.imagenes[0] : null);
 const[verificar, SetVerificar] = useState(true) 
 const myTimeout =  verificar===true? setTimeout( ()=>{
     setSliderData(data?.imagenes[0])
@@ -39,7 +41,7 @@ const myTimeout =  verificar===true? setTimeout( ()=>{
     const [ide, setIde] = useState('')
 
 function agregar(){
-    onAdd(1, talla, color, ide) 
+    onAdd(1, talla, color, ide)
     setTalla("")
     setColor("")
 }
@@ -64,7 +66,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
 
                         {data.imagenes?.map((foto, i) =>
                         <>
-                            <img key={foto.id} src={foto.img} className={`${sliderData.id == i 
+                           <img key={foto.id} src={foto.img} className={`${sliderData && sliderData.id == i 
                                 ? "border-b-4 border-black transform duration-300 md:hover:scale-100" 
                                 : ""} object-cover max-h-[100px] w-full md:max-h-[120px] py-1`} 
                                 onClick={() => handleClick(i)} /></>
@@ -136,41 +138,50 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
               
             </div>:""}
             <div className='mx-8 md:mx-[6rem] mt-6'>
-              
+                
                 <button className="flex items-center justify-center w-full  h-11 mt-3
                     text-amber-200 animate-bounce bg-black rounded-xl font-bold md:transform md:duration-200 md:hover:scale-105
                     hover:bg-neutral-900 hover:text-neutral-200 "
                     onClick={agregar} disabled={color === ""}>
                         <span>Compra aquí y paga en CASA</span>
-                       
-                    </button>                        
-                    
+                    </button>                      
                 </div>
+
+
 
             <h2 className='grid justify-items-center my-10 font-semibold md:text-2xl '>INFORMACIÓN DE INTERES</h2>
             <div className='grid grid-cols-4 mt-10 mb-4 content-center ' 
-            onClick={()=>setMostrarDescripcion(!mostrarDescripcion)}>
-            <p className='col-start-1 col-span-3'>Descripción del producto</p>
-            <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600 '>
-            <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarDescripcion===true? <FiMinus/> : <FiPlus />}</button>
-            </h3>
-            <div className={mostrarDescripcion ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
-                {mostrarDescripcion && <p>El camibuso tipo polo es un producto de alta calidad debido a que está 
+         onClick={() => setMostrarDescripcion(!mostrarDescripcion)}>
+      <p className='col-start-1 col-span-3'>Descripción del producto</p>
+      <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600 '>
+        <button className='bg-black bg-opacity-5 p-1 rounded-full'>
+          {mostrarDescripcion ? <FiMinus/> : <FiPlus />}
+        </button>
+      </h3>
+      <div className={`product-description ${mostrarDescripcion ? "show-element" : ""} col-start-1 col-span-4 mt-4`}>
+        {mostrarDescripcion && (
+          <p>
+            El camibuso tipo polo es un producto de alta calidad debido a que está 
             elaborado en piqué de alta calidad lo cual garantiza comodidad, suavidad en la tela, agradable 
-            a la vista,  es semi stretch para mayor comodidad, no destiñe y tampoco se deforma después del 
+            a la vista, es semi stretch para mayor comodidad, no destiñe y tampoco se deforma después del 
             lavado en condiciones normales. Nuestra horma es la convencional o ideal (no es reducida ni tampoco 
-            horma grande). </p>}
-            </div>
-            </div>     
+            horma grande).
+          </p>
+        )}
+      </div>
+      
+      </div>
             <hr/>
-
             <div className='grid grid-cols-4 my-4 content-center ' 
             onClick={()=>setMostrarFormasDePago(!mostrarFormasDePago)}>
+
+                
             <p className='col-start-1 col-span-3'>Formas de pago</p>
             <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600'>
-            <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarFormasDePago===true ? <FiMinus/> : <FiPlus />}</button>
+            <button className='bg-black bg-opacity-5 p-1 rounded-full'>
+                {mostrarFormasDePago ? <FiMinus/> : <FiPlus />}</button>
             </h3>
-            <div className={mostrarFormasDePago ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
+            <div className={`product-description  ${mostrarFormasDePago ? "show-element" : "" } col-start-1 col-span-4 mt-4`}>
                 {mostrarFormasDePago && <h3>Ofrecemos servicio contraentrega, es decir, pagas el total cuando te llegue
                     el producto hasta tu casa o dirección señalada, también contamos con pago directo
                     por medio de transferencia Bancolombia, pago por nequi o daviplata</h3>}
@@ -185,9 +196,10 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
             onClick={()=>setMostrarEnvios(!mostrarEnvios)}>
             <p className='col-start-1 col-span-3'>Envíos y devoluciones</p>
             <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600'>
-            <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarEnvios===true ? <FiMinus/> : <FiPlus />}</button>
+            <button className='bg-black bg-opacity-5 p-1 rounded-full'>
+                {mostrarEnvios ? <FiMinus/> : <FiPlus />}</button>
             </h3>
-            <div className={mostrarEnvios ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
+            <div className={`product-description ${mostrarEnvios ? "show-element " : ""}col-start-1 col-span-4 mt-4`}>
                 {mostrarEnvios && <h3>Tenemos envíos a toda Colombia, utilizamos transportadoras como 
                     Servientrega, Coordinadora, interrapidisimo y envía, el envío a ciudades como Popayán, Cali, Bogotá, Medellín, Bogotá
                     tarda entre 2-4 días hábiles, a otros lugares tarda entre 3-6 días hábiles</h3>}
@@ -200,9 +212,9 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                             onClick={() => setMostrarGuiaTallas(!mostrarGuiaTallas)}>
                             <p className='col-start-1 col-span-3'>Guía de tallas</p>
                             <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600 '>
-                                <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarGuiaTallas===true ? <FiMinus/> : <FiPlus />}</button>
+                                <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarGuiaTallas ? <FiMinus/> : <FiPlus />}</button>
                             </h3>
-                            <div className={mostrarGuiaTallas ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
+                            <div className={`product-description ${mostrarGuiaTallas ? "show-element c " : ""} col-start-1 col-span-4 mt-4`}>
                                 {mostrarGuiaTallas && 
                                 <table className="table-auto  w-full text-center border">
                                 <thead className='bg-gray-100'>
@@ -252,10 +264,10 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
             onClick={()=>setMostrarPreguntas(!mostrarPreguntas)}>
             <p className='col-start-1 col-span-3'>Preguntas frecuentes</p>
             <h3 className='col-start-4 col-span-4 grid justify-items-end text-2xl pr-2 text-gray-600'>
-            <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarPreguntas===true ? <FiMinus/> : <FiPlus />}</button>
+            <button className='bg-black bg-opacity-5 p-1 rounded-full'>{mostrarPreguntas ? <FiMinus/> : <FiPlus />}</button>
             </h3>
-            <div className={mostrarPreguntas ? "show-element col-start-1 col-span-4 mt-4 " : ""}>
-                {mostrarPreguntas && <div>
+            <div className={`product-description ${mostrarPreguntas ? "show-element" : ""} col-start-1 col-span-4 mt-4`}>
+                {mostrarPreguntas && (<div>
                                      <h3 className='font-medium mt-2'>¿Cuánto tarda en llegar mi pedido? </h3>
                                      <h3 className="mb-4">
                                         En Bogotá de 1 a 5 días hábiles, en ciudades principales de 5 a 7 días hábiles y en otros
@@ -290,17 +302,14 @@ En cada producto encuentras un calculador de talla que te recomienda basado en t
 
 <h3 className='font-medium'>¿Qué opciones de envío hay si quiero mi pedido pronto?</h3>
 <h3 className="mb-4">
-En Bogotá tenemos varias opciones para que tengas tu pedido hoy mismo, las puedes elegir en la pantalla de pago.
-Recoger en nuestra bodega en Bogotá
-Envío hoy mismo si pides antes de la 1pm ($12.000)
-Envío siguiente día hábil ($6.000)
+Podemos enviar terminal a terminal o servicio de envío rápido
 </h3>
 <h3 className='font-medium'>¿Qué opciones de pago manejan?</h3>
 <h3 className="mb-4">
 Puedes pagar con transferencia a Bancolombia, Nequi, Daviplata, pagos con tarjeta crédito, débito, pago contraentrega. 
 
 </h3>
-</div>}
+</div>)}
             </div>
             </div>
             <hr/>
