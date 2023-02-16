@@ -47,7 +47,7 @@ export const Widget = ({total, handlePayment}) => {
       checkout.open(function ( result ) {
         var transaction = result.transaction
         console.log('Transaction ID: ', transaction.id)
-        console.log('Transaction object: ', transaction.status)
+        console.log('Transaction object: ', transaction)
 
       });
       setIsPaying(true)

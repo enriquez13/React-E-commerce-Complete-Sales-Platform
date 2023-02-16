@@ -17,15 +17,17 @@ export const Categories = () => {
                     <div className="absolute grid bottom-[15%] w-full text-sm px-4">
                         <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold">Camisetas</h3>
                         <button className="w-1/2 rounded-xl place-self-center py-3 text-center border-gray-200 text-gray-200
-                        bg-transparent border  hover:bg-gray-200 hover:text-black font-extrabold tracking-wider">Ver Ahora</button>
+                         border  hover:bg-gray-200 hover:text-black font-extrabold tracking-wider bg-black
+                        bg-opacity-50">Ver Ahora</button>
                     </div>                
                 </NavLink>
                 <NavLink to="/categoria/camibuso" className="md:p-1 w-full relative h-[24rem] md:h-[600px] mt-2">
                 <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src="https://i.pinimg.com/564x/4d/98/88/4d98886de90de9d2b497210938b542e1.jpg" />
                 <div className="absolute grid bottom-[15%] w-full text-sm px-4">
-                <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold">Camibusos</h3>
+                <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold ">Camibusos</h3>
                         <button className="w-1/2 rounded-xl place-self-center py-3 text-center border-gray-200 text-gray-200
-                        bg-transparent border  hover:bg-gray-200 hover:text-black font-extrabold tracking-wider"> Ver Ahora</button>
+                        border  hover:bg-gray-200 hover:text-black font-extrabold tracking-wider bg-black
+                        bg-opacity-50"> Ver Ahora</button>
                     </div>      
                 </NavLink>
                 <NavLink to="/categoria/buzo" className="md:p-1 w-full relative h-[24rem] md:h-[600px] mt-2">
@@ -34,7 +36,8 @@ export const Categories = () => {
                     <div className="absolute grid bottom-[15%] w-full text-sm px-4">
                     <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold">Buzos</h3>
                         <button className="w-1/2 rounded-xl place-self-center py-3 text-center border-gray-200 text-gray-200
-                        bg-transparent border  hover:bg-gray-200 hover:text-black font-extrabold tracking-wider"> Ver Ahora</button>
+                         border  hover:bg-gray-200 hover:text-black font-extrabold tracking-wider bg-black
+                        bg-opacity-50"> Ver Ahora</button>
                     </div>     
                 </NavLink>
                 <NavLink to="/categoria/chaqueta" className="md:p-1 w-full relative h-[24rem] md:h-[600px] mt-2">
@@ -43,7 +46,8 @@ export const Categories = () => {
                 <div className="absolute grid  bottom-[15%] w-full text-sm px-4">
                 <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold">Chaquetas</h3>
                         <button className="w-1/2 rounded-xl place-self-center py-3 text-center border-gray-200 text-gray-200
-                        bg-transparent border  hover:bg-gray-200 hover:text-black font-extrabold tracking-wider"> Ver Ahora</button>
+                         border  hover:bg-gray-200 hover:text-black font-extrabold tracking-wider bg-black
+                        bg-opacity-50"> Ver Ahora</button>
                     </div>      
                 </NavLink>
 

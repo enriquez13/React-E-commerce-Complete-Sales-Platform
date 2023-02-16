@@ -61,7 +61,7 @@ export const Banner = () => {
   <NavLink to='/products' className="flex justify-center">  
     <div  className='text-center w-1/3 md:max-w-[8rem]
   text-sm rounded-lg py-3  hover:bg-gray-200 hover:text-black font-xs 
-  bg-black tracking-[0.em] bg-opacity-30'>SHOP NOW</div>
+  bg-black tracking-[0.em] bg-opacity-50 border border-gray-200 '>SHOP NOW</div>
   </NavLink>
   </div>
     <div className='flex absolute top-[88%] w-full justify-center '>

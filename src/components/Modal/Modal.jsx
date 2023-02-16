@@ -1,11 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
-export const Modal = ({ closeModal, cart, removeProduct }) => {
+const descuento = 0.8
+const precioLimite = 149900
+export const Modal = ({ closeModal, cart, removeProduct, totalPrice }) => {
     return (
-        <div className="fixed w-2/3 z-50 h-[50%]  top-[4rem] right-2 inset-y-0 pt-0  sm:inset-y-0 sm:flex sm:items-center sm:justify-center">
-            <div className="fixed inset-0 transition-opacity">
-                <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+        <div className="fixed w-2/3 z-50 h-[50%]  top-[4rem] right-2 inset-y-0 pt-0 sm:inset-y-0 sm:flex sm:items-center sm:justify-center">
+            <div className="fixed inset-0 transition-opacity" onClick={closeModal}>
+                <div className="absolute inset-0 bg-gray-500 opacity-40"></div>
             </div>
             <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
                 <div className="bg-white  pt-5 pb-4 sm:p-6 sm:pb-4">
@@ -15,12 +16,11 @@ export const Modal = ({ closeModal, cart, removeProduct }) => {
                         </h3>
                         {cart?.map((product, index) => (
 
-
                             <div className="mt-2 grid grid-cols-3 gap-4" key={index}>
                                 <div className='h-full flex items-center justify-center'>
                                     <img src={product.imagenes[0].img} className="max-w-[4rem] " />
                                 </div>
-                                <div className="col-span-2 h-full d-flex align-items-center py-5">
+                                <div className="col-span-2 h-full d-flex align-items-center py-5 relative">
                                     <div>
                                         <p className="text-sm leading-5 text-gray-500 ">
                                             {product.category}{" "}{product.nombre}
@@ -31,19 +31,26 @@ export const Modal = ({ closeModal, cart, removeProduct }) => {
                                         <p className="text-sm leading-5 text-gray-500 ">
                                             Cantidad: {product.quantity}
                                         </p>
+                                        <p className="text-sm leading-5 text-gray-500 ">
+                                            Valor: <span className={`${totalPrice()>=precioLimite ? 'line-through text-amber-500' :""} `}>{product.valor}</span>
+                                            { totalPrice() >= precioLimite ? <h4>{product.valor*descuento}</h4> : " "}
+                                        </p>
                                     </div>
-                                </div>
-                                <div className="absolute right-2">
+                                    <div className="absolute top-[50%] right-2">
                                         <button onClick={() => removeProduct(product.ide)}
-                                            class="rounded-full h-5 w-5 flex items-center justify-center text-black bg-black bg-opacity-5">
-                                            <span class="text-xs">X</span>
+                                            className="rounded-full h-5 w-5 flex items-center justify-center text-black bg-black bg-opacity-5">
+                                            <span className="text-xs">X</span>
                                         </button>
                                     </div>
+                                </div>
+                                
                             </div>
 
                         ))}
-                        <p className="text-sm leading-5 text-gray-500">
-                            Total
+                        <hr className='my-2'/>
+                        <p className="text-sm leading-5 text-gray-500 ">
+                            Total: <span className={`${totalPrice()>=precioLimite ? 'line-through text-amber-500' :""} `}>{totalPrice()}</span>
+                            {totalPrice()>=precioLimite ?<h4>{totalPrice()*descuento}</h4>:""}
                         </p>
                     </div>
 
@@ -71,9 +78,6 @@ export const Modal = ({ closeModal, cart, removeProduct }) => {
                             Comprar ya
                         </button>
                     </NavLink> : ""}
-                  
-                   {console.log(cart.length)}
-                  
                 </div>
             </div>
         </div>

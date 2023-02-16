@@ -24,7 +24,7 @@ const[verificar, SetVerificar] = useState(true)
 const myTimeout =  verificar===true? setTimeout( ()=>{
     setSliderData(data?.imagenes[0])
     SetVerificar(false) 
-    console.log(data?.imagenes[0])
+    
 }, 1000):""
     
    

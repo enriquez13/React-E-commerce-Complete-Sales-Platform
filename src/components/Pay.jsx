@@ -60,7 +60,7 @@ const db = getFirestore();
             addDoc(ordersCollection, orden)
     .then(()=>{
         alert("Formulario enviado con éxito")
-        console.log(data)
+        //console.log(data)
 
     })
     .catch(error=>{

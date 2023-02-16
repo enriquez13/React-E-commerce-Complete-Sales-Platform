@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 import {useCartContext} from '../CartProvider'
 import { useState } from 'react'
 import { BsBagCheck } from "react-icons/bs";
-import { Modal } from './back/Modal';
+import { Modal } from './Modal/Modal';
 
 //import { cartContext } from '../CartProvider'
 
 const Item = ({info})=>{
 const [showModal, setShowModal] = useState(false);
 const [goToCart, setGoToCart] = useState(false)
-const {addProduct, cart, removeProduct} = useCartContext()
+const {addProduct, cart, removeProduct, totalPrice} = useCartContext()
 
     const onAdd = (quantity, talla, color,ide) =>{
     setGoToCart(true)
@@ -98,7 +98,7 @@ const closeModal = () => {
                     </button>
                     :""}
                   {showModal && (
-        <Modal closeModal={closeModal} cart={cart} removeProduct={removeProduct}   />
+        <Modal closeModal={closeModal} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} />
       )}
    
 
