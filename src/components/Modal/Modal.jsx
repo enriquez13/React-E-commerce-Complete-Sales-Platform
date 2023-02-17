@@ -65,7 +65,7 @@ export const Modal = ({ closeModal, cart, removeProduct, totalPrice, totalProduc
                                             { totalPrice() >= precioLimite ? <h4 className='text-blue-500'>{product.valor*descuento}</h4> : " "}
                                         </p>
                                     </div>
-                                    <div className="absolute top-[50%] right-2">
+                                    <div className="absolute top-[50%] right-3">
                                         <button onClick={() => removeProduct(product.ide)}
                                             className="rounded-full h-5 w-5 flex items-center justify-center text-black bg-black bg-opacity-5">
                                             <span className="text-xs"><AiFillDelete /></span>

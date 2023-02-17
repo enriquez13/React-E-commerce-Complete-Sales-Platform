@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form"
 import {Widget} from './Pay/Widget'
 import { useEffect } from 'react'
 
+const descuento = 0.8
+const precioLimite = 149900
+
 export const Pay = () => {
     const {cart, totalPrice} = useCartContext()
 
@@ -63,9 +66,9 @@ const db = getFirestore();
 
 const[opcionenvio,setOpcionenvio]= useState('clasico')
 const[metodopago, setMetodopago]= useState('')
-let descuento = totalPrice() >= 140000 ? -totalPrice()*0.2 : 0
+let descuentos = totalPrice() >= 140000 ? -totalPrice()*0.2 : 0
 let valorenvio = (totalPrice()>=140000? 0 :(opcionenvio==="clasico" ? 5000 : 10000))
-let total = opcionenvio ? totalPrice() + descuento + valorenvio : ""
+let total = opcionenvio ? totalPrice() + descuentos + valorenvio : ""
 
 function onChangeValue(e){
     e.preventDefault()
@@ -152,17 +155,20 @@ setMetodopago(ev.target.value)
                 {cart.map((itemcart) =>(
                     <>
                 <h5 key={itemcart.id+itemcart.color} className=' col-start-1 col-span-5'>
-                 {itemcart.category}{" "}{itemcart.nombre}{" talla "}{itemcart.talla} {" color "}{itemcart.color} X{itemcart.quantity}
+                 <span className='text-blue-500 font-bold'>{itemcart.quantity}{" "}</span>
+                 { itemcart.category}{" "}{itemcart.nombre}{" talla "}{itemcart.talla} {" color "}{itemcart.color} 
                 </h5>
-                <h5 key={itemcart.id+itemcart.talla} className=' col-start-6 col-span-2 text-right'>{itemcart.valor*itemcart.quantity}</h5>
+                <div key={itemcart.id+itemcart.talla} className=' col-start-6 col-span-2 text-right text-blue-500'>
+                <span className={`${totalPrice()>=precioLimite ? 'line-through text-amber-500' :"text-blue-500"} `}>{itemcart.valor}</span>
+                                            { totalPrice() >= precioLimite ? <h4 className='text-blue-500'>{itemcart.valor*descuento}</h4> : " "}
+                </div>
 
                 <hr className='col-start-1 col-span-7 border-gray-300 my-2'/>
 
                 </>
                 ))}
                 
-                <h5 className=' col-start-1 col-span-5'>Descuento</h5>
-                <h5 className=' col-start-6 col-span-2 text-right'>{descuento}</h5>
+                
                 <h5 className=' col-start-1 col-span-5'>{opcionenvio==="clasico"? "Envío clásico":"Envío contraentrega"}</h5>
                 <h5 className=' col-start-6 col-span-2 text-right'>
                     {valorenvio}
@@ -172,7 +178,10 @@ setMetodopago(ev.target.value)
 
                 <h5 className=' col-start-1 col-span-5 font-medium'>Total</h5>
                 
-                <h5 className=' col-start-6 col-span-2 font-medium text-right'>{total}</h5>
+                <div className=' col-start-6 col-span-2 font-medium text-right'>
+                <span className={`${totalPrice()>=precioLimite ? 'line-through text-amber-500' :"text-blue-500"} `}>{total}</span>
+                            {totalPrice()>=precioLimite ?<h4 className='text-blue-500'>{total}</h4>:""}
+                </div >
                 
                 <h4 className='col-start-1 col-span-5 mt-5 font-medium'>Método de envío</h4>
                 
