@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { useCartContext } from '../CartProvider'
 import { useForm } from "react-hook-form"
 import {Widget} from './Pay/Widget'
+import { useEffect } from 'react'
 
 export const Pay = () => {
     const {cart, totalPrice} = useCartContext()
@@ -12,8 +13,18 @@ export const Pay = () => {
 const [envioss, setEnvioss]= useState('clasico')
 const [isPaying, setIsPaying] = useState(false);
 const {register, handleSubmit, formState: {errors}} = useForm({ defaultValues: { envio: "clasico" } })
+
+
+
+
+
+
+
 const onSubmit = data => {
     setEnvioss(data.envio)
+
+    useEffect(() => {
+        if (isPaying) {
 const db = getFirestore();
     const orden = {
         cliente:{ 
@@ -32,15 +43,23 @@ const db = getFirestore();
             addDoc(ordersCollection, orden)
     .then(()=>{
         alert("Felicidades, tu compra fue exitosa")
+        setIsPaying(false)
     })
     .catch(error=>{
         console.error(error)
     })
+
+}
+}, [isPaying]);
+
+
 }
 
-const handlePayment = () => {
-    setIsPaying(true);
-  };
+
+
+
+
+
 
 const[opcionenvio,setOpcionenvio]= useState('clasico')
 const[metodopago, setMetodopago]= useState('')
@@ -201,7 +220,7 @@ setMetodopago(ev.target.value)
                         type="submit" value="Fenalizar y Pagar en casa" /> )
                         : (metodopago==="tarjetas" 
                         ? <>
-                        <Widget total={total} handlePayment={handlePayment}/>
+                        <Widget total={total} />
                        </>
                       
                       :"")}

@@ -10,6 +10,11 @@ import {Admin} from '../src/components/Sesiones/Admin/Admin'
 import { Sesion } from './components/Sesiones/Sesion'
 import { useLocation } from 'react-router-dom';
 import Event from './components/Event'
+import { Proceso } from './components/Page/Proceso'
+import { Envios } from './components/Page/Envios'
+import { Politicas } from './components/Page/Politicas'
+import { Contactanos } from './components/Page/Contactanos'
+
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -35,6 +40,10 @@ function App() {
             <Route path='/sesion' element={<Sesion />} />
             <Route path='/admin' element={<Admin />} />
             <Route path='/event' element={<Event />} />
+            <Route path='/contactanos' element={<Contactanos />} />
+            <Route path='/proceso' element={<Proceso />} />
+            <Route path='/politicas' element={<Politicas />} />
+            <Route path='/envios' element={<Envios />} />
           </Routes>
         </CartProvider>
     </Router>

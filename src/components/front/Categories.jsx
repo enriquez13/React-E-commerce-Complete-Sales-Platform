@@ -53,7 +53,11 @@ export const Categories = () => {
 
                 
             </div>
-            <h3 className="py-4 px-10 md:py-8  md:text-xl text-center w-full text-white">Creamos prendas para personas que buscan productos de calidad que los acompañen en su día a día.</h3>
+            <h3 className="py-4 px-10 md:py-8  md:text-xl text-center w-full text-white">
+            La ropa bonita no solo nos hace lucir bien, también aumenta nuestra confianza y mejora 
+            nuestro estado de ánimo. Invertir en prendas atractivas y de alta calidad es una inversión 
+            en nosotros mismos. ¡Hazte un favor y consigue ropa bonita para sentirte genial!
+            </h3>
             
             </>
               )

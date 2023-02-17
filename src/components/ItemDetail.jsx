@@ -2,19 +2,19 @@ import React from 'react'
 import { useState } from 'react'
 import {useCartContext} from '../CartProvider'
 //import { ItemCount } from './ItemCount'
-import { Link, NavLink } from 'react-router-dom'
 import { FiPlus, FiMinus } from "react-icons/fi"
 import SliderCustomer from './front/SliderCustomers'
 import './Details.css'
+import { Modal } from './Modal/Modal'
 
 
 const imgs =[
     {id:0, img:"https://geekflare.com/wp-content/uploads/2021/09/520401-pure-black-background-wallpaper.jpg"},
 ]
 export const ItemDetail = ({data}) => {
-    
+  const [showModal, setShowModal] = useState(false);
 const [goToCart, setGoToCart] = useState(false)
-const {addProduct} = useCartContext()
+const {addProduct, closeModal, cart, removeProduct, totalPrice, totalProducts } = useCartContext()
 
 const onAdd = (quantity, talla, color,ide) =>{
     setGoToCart(true)
@@ -41,10 +41,14 @@ const myTimeout =  verificar===true? setTimeout( ()=>{
     const [ide, setIde] = useState('')
 
 function agregar(){
+  setShowModal(true)
     onAdd(1, talla, color, ide)
     setTalla("")
     setColor("")
 }
+const closeModaldetail = () => {
+  setShowModal(false);
+};
 
 const [mostrarDescripcion, setMostrarDescripcion] = useState(false)
 const [mostrarFormasDePago, setMostrarFormasDePago] = useState(true)
@@ -84,35 +88,45 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
             <div className='grid grid-cols-8 gap-1 place-items-left pl-2 md:pl-0'>
                     
                         {data.sizes?.map((c) => (
-                            <div>
-                        <button key={c.size} onClick={() => setTalla(c.size)}
-                        className={`${c.size == talla ? "border bg-black text-gray-100 w-7 h-7 font-bold"
-                        : "text-[1rem] w-6 h-6 border border-gray-200 "} transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-full `}>{c.size}</button>
-                    </div>
+                           <>
+                           <button
+                             key={c.size}
+                             onClick={() => setTalla(c.size)}
+                             className={`${
+                               c.size === talla
+                                 ? "border bg-black text-gray-100 w-7 h-7 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-full"
+                                 : "text-[1rem] w-6 h-6 border border-gray-200 transform duration-500 md:hover:scale-110 md:hover:border-gray-500 rounded-full"
+                             }`}
+                           >
+                             {c.size}
+                           </button>
+                         </>
                     ))}
                     
                     </div>
-                    {talla?<h3 className='hidden md:block my-4'>Elige el color:</h3>:""}
-
-                    <div className='grid grid-cols-8 gap-1 place-items-left pt-5 md:pt-0 pl-2 md:pl-0 '> 
-                    {data.sizes?.map(item => (
-                            item.size === talla ? item.colors.map(col => (
-                                <div className=''>
-                                    <button onClick={() => {
-                                                               
-                                        setColor(col.color)
-                                        setIde(col.idepro)  
-                                    }} key={col.color} className={`${col.color == color ? "border-2 border-black w-7 h-7 " 
-                                    : "border border-gray-300 w-7 h-7 "} ${col.bg}  
-                                          md:mx-0 border rounded-full transform duration-500 hover:scale-110`}>
-
-                                    </button>
-                                </div>
-                            )
-                            ) : ""))}
-                            </div>
-                            {talla === "" ?<span className='text-red-400 px-4'>Falta elegir la talla</span>:""}   
-                            {talla !== "" && color === "" ?<span className='text-red-400 px-4'>Falta elegir el color</span>:""}          
+                    {talla && <h3 className='hidden md:block my-4'>Elige el color:</h3>}
+<div className='grid grid-cols-8 gap-1 place-items-left pt-5 md:pt-0 pl-2 md:pl-0'>
+  {data.sizes?.map((item) => {
+    if (item.size !== talla) {
+      return null;
+    }
+    return item.colors.map((col) => (
+      <div className=''>
+        <button
+          key={col-color}
+          onClick={() => {
+            setColor(col.color);
+            setIde(col.idepro);
+          }}
+          className={`${color === col.color ? "border-2 border-black w-7 h-7" : "border border-gray-300 w-7 h-7"} ${col.bg} md:mx-0 border rounded-full transform duration-500 hover:scale-110`}
+        />
+      </div>
+    ));
+  })}
+</div>
+{talla === "" && <span className='text-red-400 px-4'>Falta elegir la talla</span>}
+{talla && color === "" && <span className='text-red-400 px-4'>Falta elegir el color</span>}
+                                     
         <div className="w-auto px-5 md:px-0">
             
             {
@@ -321,7 +335,9 @@ Puedes pagar con transferencia a Bancolombia, Nequi, Daviplata, pagos con tarjet
     <div className='flex items-center justify-center'>
         <button className="text-lg md:text-4xl md:mt-12 py-2 px-7 text-center mt-8 mb-[5rem] border border-gray-300 rounded-lg">Buscar más productos</button>
     </div>
-   
+    {showModal && (
+        <Modal closeModal={closeModaldetail} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts} />
+      )}
 
     </>
   )

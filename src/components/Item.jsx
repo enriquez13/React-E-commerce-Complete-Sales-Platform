@@ -11,7 +11,7 @@ import { Modal } from './Modal/Modal';
 const Item = ({info})=>{
 const [showModal, setShowModal] = useState(false);
 const [goToCart, setGoToCart] = useState(false)
-const {addProduct, cart, removeProduct, totalPrice} = useCartContext()
+const {addProduct, cart, removeProduct, totalPrice, totalProducts} = useCartContext()
 
     const onAdd = (quantity, talla, color,ide) =>{
     setGoToCart(true)
@@ -58,7 +58,7 @@ const closeModal = () => {
                             <>
                                 <div className=''>
                                     <button key={item.size}
-                                        className={`${item.size == talla ? "bg-black text-gray-100 w-7 md:w-9 h-7 md:h-9 font-bold md:transform md:duration-200 md:hover:scale-110" 
+                                        className={`${item.size == talla ? "border bg-black text-gray-100 w-[1.3rem] md:w-9 h-[1.3rem] md:h-9 font-bold md:transform md:duration-200 md:hover:scale-110" 
                                         : "border-gray-200 w-5 h-5 md:w-7 md:h-7"} text-[0.8rem] mx-1 rounded-full border md:transform duration-500 hover:scale-110`}
                                         onClick={() => setTalla(item.size)}>
                                         {item.size}
@@ -73,17 +73,17 @@ const closeModal = () => {
                         <div className='grid grid-cols-4 md:grid-cols-6 gap-1 md:mx-[3rem] md:mt-5'>
                         {info.sizes.map(item => (
                             item.size === talla ? item.colors.map(col => (
-                                <div className=''>
+                                <>
                                     <button onClick={() => {
                                         setColor(col.color)
                                         setIde(col.idepro)
                                     }} 
-                                    key={col.color+item.size} className={`${col.color == color ? "border-black w-6 h-6 md:w-8 md:h-8 md:transform md:duration-1000 md:hover:scale-110" 
+                                    key={col.color+item.size} className={`${col.color == color ? "border-black w-[1.3rem] h-[1.3rem] md:w-8 md:h-8 md:transform md:duration-1000 md:hover:scale-110" 
                                     : "w-5 h-5 md:w-7 md:h-7 md:transform duration-500 md:hover:scale-110"} ${col.bg}  
                                          mx-1 border rounded-full `}>
 
                                     </button>
-                                </div>
+                                </>
                             )
                             ) : ""))}               
                     </div>
@@ -98,7 +98,7 @@ const closeModal = () => {
                     </button>
                     :""}
                   {showModal && (
-        <Modal closeModal={closeModal} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} />
+        <Modal closeModal={closeModal} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts}/>
       )}
    
 

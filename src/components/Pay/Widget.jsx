@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
-export const Widget = ({total, handlePayment}) => {
+export const Widget = ({total}) => {
   
   const [isPaying, setIsPaying] = useState(false);
   const [openCheckout, setOpenCheckout] = useState(false);
@@ -11,8 +11,7 @@ export const Widget = ({total, handlePayment}) => {
     const handleCheckout = async () => {
       //REFERENCIA ÚNICA
       console.log(reference);
-
-{console.log("pago : ",reference, "valor :", total*100)}
+      {console.log("pago : ",reference, "valor :", total*100)}
     
     //
     ;
@@ -26,23 +25,22 @@ export const Widget = ({total, handlePayment}) => {
         reference: reference,
         publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
         //redirectUrl: `https://my-react-app-enriquez13.vercel.app/event`, // Opcional
-        customerData: { // Opcional
-          email:'alejandro@gmail.com',
-          fullName: 'Alejandro Enríquez',
-          phoneNumber: '3140000000',
-          phoneNumberPrefix: '+57',
-          legalId: '123456789',
-          legalIdType: 'CC'
-        },
-        shippingAddress: { // Opcional
-          addressLine1: "Calle 123 # 4-5",
-          city: "Bogota",
-          phoneNumber: '3019444444',
-          region: "Cundinamarca",
-          country: "CO"
-        }
+        //customerData: { // Opcional
+        //  email:'alejandro@gmail.com',
+        //  fullName: 'Alejandro Enríquez',
+        //  phoneNumber: '3140000000',
+        //  phoneNumberPrefix: '+57',
+        //  legalId: '123456789',
+        //  legalIdType: 'CC'
+        //},
+        //shippingAddress: { // Opcional
+         // addressLine1: "Calle 123 # 4-5",
+         // city: "Bogota",
+         // phoneNumber: '3019444444',
+         // region: "Cundinamarca",
+         // country: "CO"
+        //}
     
-   
       });
       checkout.open(function ( result ) {
         var transaction = result.transaction
@@ -52,8 +50,6 @@ export const Widget = ({total, handlePayment}) => {
       });
       setIsPaying(true)
     }
-
-    
     
   return (
     

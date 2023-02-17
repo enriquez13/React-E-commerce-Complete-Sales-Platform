@@ -5,7 +5,10 @@ import ItemCart from './ItemCart'
 import { IoIosArrowBack } from "react-icons/io"
 
 export const Cart = () => {
-    
+    function handleClick() {
+        window.history.back();
+      }
+
     const {cart, totalPrice} = useCartContext()
     let descuento = totalPrice() >= 140000 ? -totalPrice()*0.2 : 0
     let total = totalPrice() ? totalPrice() + descuento : ""
@@ -34,11 +37,10 @@ export const Cart = () => {
         <>
         <div className='relative min-h-screen  md:grid md:grid-cols-2'>
             <div className='relative md:col-start-1 md:col-span-2'>
-                <NavLink to='/'>
-                    <p className='absolute left-4 top-5 text-2xl text-gray-400 '>
+                    <p className='absolute left-4 top-5 text-2xl text-gray-400 '
+                    onClick={handleClick}>
                         <IoIosArrowBack/>
                     </p>
-                </NavLink>
                 <h2 className='w-full text-md text-center py-4 text-black'>
                     Mi Carrito de compras
                 </h2>

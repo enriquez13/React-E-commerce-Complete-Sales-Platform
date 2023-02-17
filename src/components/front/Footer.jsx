@@ -1,4 +1,5 @@
 import { AiOutlineWhatsApp } from "react-icons/ai"
+import { NavLink } from "react-router-dom";
 const Footer=()=>{
 
     return (
@@ -31,18 +32,18 @@ const Footer=()=>{
 
                     <h2 className="mt-4 text-sm font-semibold text-gray-200 uppercase ">Información</h2>
                     <ul className="text-gray-400">
-                        <li className='my-2'>
+                        <li className='my-2 mb-2 hover:underline'>
                             <a href="" className="mb-2 hover:underline">Preguntas frecuentes</a>
                         </li>
-                        <li className='my-2'>
+                        <li className='my-2 mb-2 hover:underline'>
                             <a href="" className="mb-2 hover:underline">Direcciones</a>
                         </li>
-                        <li className='my-2'>
+                        <li className='my-2 mb-2 hover:underline'>
                             <a href="" className="mb-2 hover:underline">Nosotros</a>
                         </li>
-                        <li className='my-2'>
-                            <a href="" className=" hover:underline">Contáctanos</a>
-                        </li>
+                        <NavLink to='/contactanos' className='my-2 hover:underline'>
+                            Contáctanos
+                        </NavLink>
                     </ul>
                 </div>
 
@@ -50,37 +51,37 @@ const Footer=()=>{
 
                     <h2 className="mt-4 text-sm font-semibold text-gray-200 uppercase ">Envíos y devoluciones</h2>
                     <ul className="text-gray-400">
-                        <li className='my-2'>
-                            <a href="" className=" hover:underline">Envíos</a>
-                        </li>
-                        <li className='my-2'>
-                            <a href="" className=" hover:underline">proceso de devolución</a>
-                        </li>
+                        <NavLink to='/envios' className='my-2 hover:underline w-full'>
+                            <h3>Envíos</h3>
+                        </NavLink>
+                        <NavLink to='/proceso' className='my-2 hover:underline w-full'>
+                            <h3>proceso de devolución</h3>
+                        </NavLink>
                        
-                        <li className='my-2'>
-                            <a href="" className=" hover:underline">Políticas</a>
-                        </li>
+                        <NavLink to='/politicas' className='my-2 hover:underline'>
+                            <h3>Políticas</h3>
+                        </NavLink>
                     </ul>
                     </div>
                     <div className="sm:grid sm:justify-items-center">
 
                         <h2 className="mt-4 text-sm font-semibold text-gray-200 uppercase ">Métodos de pago</h2>
                         <ul className="text-gray-400">
-                            <li className='my-2'>
-                                <a href="" className=" hover:underline">Transferencia bancolombia</a>
-                            </li>
-                            <li className='my-2'>
-                                <a href="" className=" hover:underline">Pago nequi</a>
-                            </li>
-                            <li className='my-2'>
-                                <a href="" className=" hover:underline">Pago daviplata</a>
-                            </li>
-                            <li className='my-2'>
-                                <a href="" className=" hover:underline">PSE y tarjeta de crédito</a>
-                            </li>
-                            <li className='my-2'>
-                                <a href="" className=" hover:underline">Servicio contraentrega</a>
-                            </li>
+                            <p className='my-2'>
+                               Transferencia bancolombia
+                            </p>
+                            <p className='my-2'>
+                                Pago nequi
+                            </p>
+                            <p className='my-2'>
+                                Pago daviplata
+                            </p>
+                            <p className='my-2'>
+                                PSE y tarjeta de crédito
+                            </p>
+                            <p className='my-2'>
+                                Servicio contraentrega
+                            </p>
                         </ul>
                     </div>
                 
