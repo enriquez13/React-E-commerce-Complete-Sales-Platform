@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
-export const Widget = ({total}) => {
-  
+export const Widget = (props) => {
+  function enviarVariableHijo() {
+    const variableHijo = "Hola, soy una variable del hijo";
+    props.enviarVariable(variableHijo);
+  }
   const [isPaying, setIsPaying] = useState(false);
   const [openCheckout, setOpenCheckout] = useState(false);
   const reference = uuidv4();
- 
+ {console.log(props)}
 
     const handleCheckout = async () => {
       //REFERENCIA ÚNICA
       console.log(reference);
-      {console.log("pago : ",reference, "valor :", total*100)}
+      {console.log("pago : ",reference, "valor :", 5000*100)}
     
     //
     ;
@@ -21,7 +24,7 @@ export const Widget = ({total}) => {
       setOpenCheckout(true);
       var checkout = new WidgetCheckout({
         currency: 'COP',
-        amountInCents: total*100,
+        amountInCents: 5000*100,
         reference: reference,
         publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
         //redirectUrl: `https://my-react-app-enriquez13.vercel.app/event`, // Opcional
@@ -46,7 +49,7 @@ export const Widget = ({total}) => {
         var transaction = result.transaction
         console.log('Transaction ID: ', transaction.id)
         console.log('Transaction object: ', transaction)
-
+        enviarVariableHijo()
       });
       setIsPaying(true)
     }

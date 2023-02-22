@@ -7,27 +7,29 @@ import { useForm } from "react-hook-form"
 import {Widget} from './Pay/Widget'
 import { useEffect } from 'react'
 
+
 const descuento = 0.8
 const precioLimite = 149900
 
 export const Pay = () => {
+    const [variablePadre, setVariablePadre] = useState(null);
+    const [data, setData] = useState({});
+    function recibirVariable(variableHijo) {
+        setVariablePadre(variableHijo);
+      }
     const {cart, totalPrice} = useCartContext()
 
 const [envioss, setEnvioss]= useState('clasico')
-const [isPaying, setIsPaying] = useState(false);
 const {register, handleSubmit, formState: {errors}} = useForm({ defaultValues: { envio: "clasico" } })
 
-
-
-
-
-
+useEffect(() => {
+    console.log(data);
+  }, [data]);
 
 const onSubmit = data => {
     setEnvioss(data.envio)
 
-    useEffect(() => {
-        if (isPaying) {
+    
 const db = getFirestore();
     const orden = {
         cliente:{ 
@@ -46,14 +48,12 @@ const db = getFirestore();
             addDoc(ordersCollection, orden)
     .then(()=>{
         alert("Felicidades, tu compra fue exitosa")
-        setIsPaying(false)
+        //setIsPaying(false)
     })
     .catch(error=>{
         console.error(error)
     })
 
-}
-}, [isPaying]);
 
 
 }
@@ -229,14 +229,14 @@ setMetodopago(ev.target.value)
                         type="submit" value="Fenalizar y Pagar en casa" /> )
                         : (metodopago==="tarjetas" 
                         ? <>
-                        <Widget total={total} />
+                        <Widget enviarVariable={recibirVariable}/>
                        </>
                       
                       :"")}
                         
                     </div>
                 </form>
-              
+              {console.log("Resultado:",variablePadre)}
         </div>
 
        

@@ -9,11 +9,13 @@ import {Cart} from './components/Cart'
 import {Admin} from '../src/components/Sesiones/Admin/Admin'
 import { Sesion } from './components/Sesiones/Sesion'
 import { useLocation } from 'react-router-dom';
-import Event from './components/Event'
+
 import { Proceso } from './components/Page/Proceso'
 import { Envios } from './components/Page/Envios'
 import { Politicas } from './components/Page/Politicas'
 import { Contactanos } from './components/Page/Contactanos'
+import WompiWidget from './components/Paytwo'
+import Formulario from './components/Pay/Formulario'
 
 
 const ScrollToTop = () => {
@@ -39,11 +41,12 @@ function App() {
             <Route path='/pay' element={<Pay />} />
             <Route path='/sesion' element={<Sesion />} />
             <Route path='/admin' element={<Admin />} />
-            <Route path='/event' element={<Event />} />
+            <Route path='/wompiWidget' element={<WompiWidget />} />
             <Route path='/contactanos' element={<Contactanos />} />
             <Route path='/proceso' element={<Proceso />} />
             <Route path='/politicas' element={<Politicas />} />
             <Route path='/envios' element={<Envios />} />
+            <Route path='/formulario' element={<Formulario /> } />
           </Routes>
         </CartProvider>
     </Router>

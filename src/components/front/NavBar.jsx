@@ -36,7 +36,7 @@ function NavBar() {
     return (
         <> 
             <div className="fixed z-10 shadown-md w-full top-0 left-0 " >
-            {opens === false ? <div className="relative z-10 w-full bg-gray-700 top-0 text-center  ">
+            {opens === false ? <div className="relative z-10 w-full bg-gray-700 top-0 text-center ">
             <div className="w-full h-[2rem] flex items-center justify-center text-[0.6rem] text-amber-200 tracking-[0.3rem] uppercase" style={{ display: 'flex', alignItems: 'center' }}>
                 <AnimatedText />
             </div>
@@ -108,7 +108,7 @@ function NavBar() {
                          text-white hover:text-gray-400 duration-500">
                                 Iniciar sesión o registro
                             </NavLink>
-                            <NavLink to='/event' className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
+                            <NavLink to='/wompiWidget' className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
                          text-white hover:text-gray-400 duration-500">
                                 Event
                             </NavLink>                           

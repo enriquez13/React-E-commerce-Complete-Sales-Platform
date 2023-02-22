@@ -47,7 +47,7 @@ export const Banner = () => {
   return (
     <>
 
-<div className='max-w-[1400px] h-[30.2rem] w-full md:max-h-[500px]  m-auto  relative group text-gray-100 '>
+<div className='max-w-[1400px] h-[35rem] w-full md:max-h-[500px]  m-auto  relative group text-gray-100 '>
   <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className=' bg-top w-full h-full  bg-cover  duration-1000 transition-all transform-gpu' ></div>
   
   <div onClick={prevSlide}  className='md:hidden md:group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5  text-3xl md:text-[3.5rem]  rounded-full p-2 z-10'><BsChevronCompactLeft /></div>
