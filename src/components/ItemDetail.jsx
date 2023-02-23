@@ -28,8 +28,10 @@ const products = {
       {
           size: 'S',
           colors: [
-              { idepro:'CBPUSBLA' ,color: 'blanco', bg:"bg-white" ,stock: 10 },
-              { idepro:'CBPUSNEG' ,color: 'negro', bg:"bg-neutral-900", stock: 5 },
+              { idepro:'CBPUSBLA' ,color: 'blanco', bg:"bg-white" ,stock: 10 , imagen:
+              "https://firebasestorage.googleapis.com/v0/b/ecommerce-112df.appspot.com/o/images%2Fmilitar1.jpeg?alt=media&token=8f36bc84-97c1-42ce-a08b-c654568a6476"},
+              { idepro:'CBPUSNEG' ,color: 'negro', bg:"bg-neutral-900", stock: 5, imagen: 
+              "https://firebasestorage.googleapis.com/v0/b/ecommerce-112df.appspot.com/o/images%2Fmilitar2.jpeg?alt=media&token=b4848056-6291-4a6c-82f0-db80a6baff1d" },
               { idepro:'CBPUSGRI' ,color: 'gris', bg:"bg-gray-500" ,stock: 10 },
               { idepro:'CBPUSROJ' ,color: 'rojo', bg:"bg-[#D10000]", stock: 5 },
               { idepro:'CBPUSROS' ,color: 'rosado', bg:"bg-rose-400", stock: 5 },                    
@@ -127,14 +129,16 @@ const [mostrarEnvios, setMostrarEnvios] = useState(false)
 const [mostrarGuiaTallas, setMostrarGuiaTallas] = useState(false)
 const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
 
-
+//if (data && data.sizes && data.sizes[0] && data.sizes[0].colors && data.sizes[0].colors[0] && data.sizes[0].colors[0].imagen) {
+//  console.log(data.sizes[0].colors[0].imagen);
+//}
 
     return (
     <>
    
     <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 md:mt-[8rem]">
                 <div className='md:grid md:place-content-center mx-0 px-0 '>
-                    <div style={{backgroundImage: `url(${sliderData?.img})`}}  className=' object-cover bg-top w-full
+                    <div style={{backgroundImage: `url(${sliderData?.img})`, backgroundSize: 'cover'}}  className=' object-cover bg-center w-full
                     h-[500px] md:max-h-[450px] md:max-w-[450px] hover:scale-100 duration-500 transition-all ' >
                     </div>
                     <div className=" grid grid-cols-4 w-full px-0 md-px-0 gap-2">

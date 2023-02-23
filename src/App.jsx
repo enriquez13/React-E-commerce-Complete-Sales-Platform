@@ -16,7 +16,7 @@ import { Politicas } from './components/Page/Politicas'
 import { Contactanos } from './components/Page/Contactanos'
 import WompiWidget from './components/Paytwo'
 import Formulario from './components/Pay/Formulario'
-import Adminn from './components/Sesiones/Admin/Adminn'
+//import Adminn from './components/Sesiones/Admin/Adminn'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -47,7 +47,6 @@ function App() {
             <Route path='/politicas' element={<Politicas />} />
             <Route path='/envios' element={<Envios />} />
             <Route path='/formulario' element={<Formulario /> } />
-            <Route path='/adminn' element={<Adminn /> } />
           </Routes>
         </CartProvider>
     </Router>

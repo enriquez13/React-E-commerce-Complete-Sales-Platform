@@ -27,10 +27,10 @@ function handlechange(e){
 
   return (
     
-    <div className='md:flex bg-gray-100'>
+    <div className='md:flex '>
         <button onClick={()=> signOut(auth)} className="bg-black text-white rounded-lg py-2 px-4">Cerrar sesión</button>
         <aside className=' mx-1 my-1 bg-black rounded-md md:w-1/6 text-white pt-[4rem]'>
-        <button className='w-full px-2 pt-3  bg-black ' value='ordenes' onClick={handlechange}>
+        <button className='w-full px-2 pt-6  bg-black ' value='ordenes' onClick={handlechange}>
             Ordenes
         </button>
         <button className='w-full px-2 pt-5 ' value='productos' onClick={handlechange}>

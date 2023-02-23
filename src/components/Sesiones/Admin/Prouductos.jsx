@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { CRUDProducto } from './CRUDProducto'
+import CRUDProduct from './CRUDProduct';
+//import { CRUDProducto } from './CRUDProducto'
 //import {getFirestore, collection, getDocs} from 'firebase/firestore'
 //import { CRUDProducto } from './CRUDProducto'
 
@@ -14,7 +15,7 @@ const[crear, setCrear]=useState(false)
         onClick={()=>setCrear(true)}>Crear productos</button>
        
         </div>
-        {crear===true ? <CRUDProducto />: ""}
+        {crear===true ? <CRUDProduct />: ""}
 
             <table className="table-auto  w-full text-center border text-sm">
                               
