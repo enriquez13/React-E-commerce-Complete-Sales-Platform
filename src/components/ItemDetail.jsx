@@ -169,8 +169,8 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                              onClick={() => setTalla(c.size)}
                              className={`${
                                c.size === talla
-                                 ? "border bg-black text-gray-100 w-7 h-7 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-full"
-                                 : "text-[1rem] w-6 h-6 border border-gray-200 transform duration-500 md:hover:scale-110 md:hover:border-gray-500 rounded-full"
+                                 ? "border bg-black text-gray-100 w-7 h-7 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
+                                 : "text-[1rem] w-6 h-6 border border-gray-200 transform duration-500 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                              }`}
                            >
                              {c.size}

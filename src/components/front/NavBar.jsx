@@ -6,6 +6,7 @@ import { BsBag } from 'react-icons/bs';
 import { useCartContext } from "../../CartProvider";
 import AnimatedText from "../AnimatedText/AnimatedText";
 import firebaseApp from '../../firebase/config';
+import { DataCategorias } from "./DataCategorias";
 
 function NavBar() {
   const [open, setOpen] = useState(false);
@@ -48,7 +49,7 @@ function NavBar() {
                
                 
 
-                <div className={`${scroll <= 100 ? "bg-gradient-to-b bg-opacity-[0.01] from-black  md:h-[7rem] shadow-sm md:grid md:grid-cols-3"
+                <div className={`${scroll <= 100 ? " bg-opacity-[0.01] from-black  md:h-[7rem] shadow-sm md:grid md:grid-cols-3"
                     : "md:h-[4rem] md:grid md:grid-cols-6" } 
                     ${open ? "bg-opacity-[1]" : ""}
                 flex transition-all duration-1000 bg-black relative items-center justify-center py-4 md:px-10 px-7`}>
@@ -75,27 +76,32 @@ function NavBar() {
                     cursor-pointer md:hidden ">
                         {open == false ? <AiOutlineMenu /> : <AiOutlineClose />}
                     </div>
-                    <div className={`${scroll <= 100 ? "md:col-start-1 md:col-span-6 md:flex md:justify-center" :"md:col-start-2 md:col-span-6 md:flex md:justify-center"}`}>
+                    <div className={`${scroll <= 100 ? "md:col-start-1 md:col-span-6 md:flex md:justify-center" 
+                    :"md:col-start-2 md:col-span-6 md:flex md:justify-center"} `}>
+
                         <ul className={`md:flex md:items-center md:pb-0  absolute md:static bg-black bg-opacity-90 md:bg-transparent
-                    md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0  transition-all duration-700 ease-in 
-                     ${open ? 'top-[3.5rem]' : 'top-[-490px]'}  `}>
-                            <NavLink to="/" className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2 text-white
-                         hover:text-gray-400 duration-500"
-                                onClick={() => setOpen(!open)}>
-                                Inicio
-                            </NavLink>
-                            <NavLink to="/categoria/camiseta" className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
-                         text-white hover:text-gray-400 duration-500" onClick={() => setOpen(!open)}>
-                                Camisetas
-                            </NavLink>
-                            <NavLink to="/categoria/buzo" className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
-                         text-white hover:text-gray-400 duration-500" onClick={() => setOpen(!open)}>
-                                Buzos
-                            </NavLink>
-                            <NavLink to="/categoria/chaqueta" className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
-                         text-white hover:text-gray-400 duration-500" onClick={() => setOpen(!open)}>
-                                Chaquetas
-                            </NavLink>
+                    md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-700 ease-in 
+                     ${open ? 'top-[3.5rem] overflow-y-scroll h-[100vh] pb-[6rem]' : 'top-[-1000px]'}  `}>
+
+                            <div className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-6 text-white
+                         hover:text-gray-400 duration-500 font-semibold ">
+                               Nuestros productos
+                            </div>
+
+                            {DataCategorias.map((categorias,index)=>(
+                            <NavLink to={`/categoria/${categorias.url}`} className="mx-10  grid grid-cols-3 gap-4 cursor-pointer md:ml-8 text-xl md:my-0 py-2 text-white hover:text-gray-400 duration-500" onClick={() => setOpen(!open)}>
+                            <div className="grid-row-span-2">
+                              <img src={categorias.src} className="w-[6rem] h-[6rem] object-cover"/>
+                            </div>
+                            <div className="col-span-2 flex flex-col justify-center items-left mx-4">
+                              <div className="mb-2 uppercase text-sm font-semibold">{categorias.nombre}</div>
+                              <div className="text-sm text-gray-300 font-semibold">{categorias.detalle}</div>
+                            </div>
+                          </NavLink>
+                            ))}
+                            <hr className="bg-gray-900 opacity-30 mx-10  my-8" />
+
+
                             <NavLink className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
                          text-white hover:text-gray-400 duration-500">
                                 Contacto
@@ -117,6 +123,7 @@ function NavBar() {
                                 Admin2
                             </NavLink>                   
                         </ul>
+                     
                     </div>
                 </div>
             </div>
