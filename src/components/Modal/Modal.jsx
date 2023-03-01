@@ -9,26 +9,19 @@ const precioLimite = 149900
 
 export const Modal = ({ closeModal, cart, removeProduct, totalPrice, totalProducts }) => {
     return (
-        <div className="fixed w-3/4 z-50 h-[50%]  top-[4rem] right-2 inset-y-0 pt-0 sm:inset-y-0 sm:flex sm:items-center sm:justify-center">
+        <div className="fixed w-5/6 z-50 h-[50%]   right-0 inset-y-0 pt-0 sm:inset-y-0 sm:flex sm:items-center sm:justify-center">
             <div className="fixed inset-0 transition-opacity" onClick={closeModal}>
                 <div className="absolute inset-0 bg-gray-500 opacity-40"></div>
             </div>
-            <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
-                <div className="bg-white  pt-5 pb-4 sm:p-6 sm:pb-4">
+            
+            <div className="bg-gray-100 rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+                <div className="  pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div className="mt-3 text-center sm:mt-5 mx-2 relative">
                         <h3 className="text-lg leading-6 font-medium text-gray-900 my-4 ">
-                            Productos Agregados
+                           Recién agregados al carrito
                         </h3>
                         
-                        <h1 className=" text-xl absolute left-[0.2rem] md:left-[4rem] top-[0.1rem] md:top-[1.5rem] text-gray-400 cursor-pointer">
-                       <span className=' relative'><BsBag />
-                            {
-                                totalProducts() ? <span className="bg-blue-500 absolute bottom-[-10px] left-1 text-white text-base rounded-full px-2 ">
-                                    {totalProducts()}
-                                </span> : ''
-                            }
-                        </span>
-                    </h1>
+                       
                     <hr/>
                         
                         <button
@@ -42,27 +35,34 @@ export const Modal = ({ closeModal, cart, removeProduct, totalPrice, totalProduc
                         </button>
                         
 
-                        <div className="h-[60vh] overflow-y-scroll">
+                        <div className="max-h-[60vh] overflow-y-scroll ">
                         {cart?.map((product, index) => (
 
-                            <div className="mt-2 grid grid-cols-3 gap-4" key={index}>
-                                <div className='h-full flex items-center justify-center'>
-                                    <img src={product.imagenes[0].img} className="max-w-[4rem] " />
+                            <div className="my-2 grid grid-cols-3 gap-4 bg-white" key={index} >
+                                <div className='h-full flex items-center justify-center relative'>
+                                    <img src={cart[index].img} className="max-w-[4rem] " />
+                                    <h1 className=" text-xl absolute right-[1.3rem] md:left-[4rem] top-[1.2rem] md:top-[1.5rem] text-gray-400 cursor-pointer">
+                       <span className=' relative'>
+                            {
+                                totalProducts() ? <span className="bg-blue-500 absolute bottom-[-2px] left-1 text-white text-sm rounded-full px-[0.4rem] ">
+                                    {product.quantity}
+                                </span> : ''
+                            }
+                        </span>
+                    </h1>
                                 </div>
                                 <div className="col-span-2 h-full d-flex align-items-center py-5 relative">
                                     <div>
-                                        <p className="text-sm leading-5 text-gray-500 ">
+                                        <p className="text-sm leading-5 text-gray-500 font-bold ">
                                             {product.category}{" "}{product.nombre}
                                         </p>
                                         <p className="text-sm leading-5 text-gray-500 ">
                                             Talla {" "}{product.talla}{" "} Color{" "}{product.color}
                                         </p>
+                                        
                                         <p className="text-sm leading-5 text-gray-500 ">
-                                            Cantidad: {product.quantity}
-                                        </p>
-                                        <p className="text-sm leading-5 text-gray-500 ">
-                                            Valor: <span className={`${totalPrice()>=precioLimite ? 'line-through text-amber-500' :"text-blue-500"} `}>{product.valor}</span>
-                                            { totalPrice() >= precioLimite ? <h4 className='text-blue-500'>{product.valor*descuento}</h4> : " "}
+                                            <span className={`${totalPrice()>=precioLimite ? 'line-through text-gray-400' :"text-gray-700"} font-bold `}>{product.valor}</span>
+                                            { totalPrice() >= precioLimite ? <span className='text-gray-700 font-bold pl-2'>{product.valor*descuento}</span> : " "}
                                         </p>
                                     </div>
                                     <div className="absolute top-[50%] right-3">
@@ -77,7 +77,20 @@ export const Modal = ({ closeModal, cart, removeProduct, totalPrice, totalProduc
 
                         ))}
                         </div>
-
+                        <div>OBTENGA HASTA UN 40 % DE DESCUENTO EN COMPLEMENTOS POPULARES</div>
+                        <div>
+                                        <p className="text-sm leading-5 text-gray-500 font-bold ">
+                                            {}{" "}product.nombre
+                                        </p>
+                                        <p className="text-sm leading-5 text-gray-500 ">
+                                            Talla {" "}{}{" "} Color{" "}
+                                        </p>
+                                        
+                                        <p className="text-sm leading-5 text-gray-500 ">
+                                            <span className={`${totalPrice()>=precioLimite ? 'line-through text-gray-400' :"text-gray-700"} font-bold `}>product.valor</span>
+                                            { totalPrice() >= precioLimite ? <span className='text-gray-700 font-bold pl-2'>product.valor*descuento</span> : " "}
+                                        </p>
+                                    </div>
                         <hr className='my-2'/>
                         <p className="text-sm leading-5 text-gray-500 ">
                             Total: <span className={`${totalPrice()>=precioLimite ? 'line-through text-amber-500' :"text-blue-500"} `}>{totalPrice()}</span>

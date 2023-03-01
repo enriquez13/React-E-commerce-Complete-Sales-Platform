@@ -89,6 +89,7 @@ export const ItemDetail = ({data}) => {
 
   const [selectedSize, setSelectedSize] = useState( {})
   const [images, setImages] = useState(selectedSize?.colors)
+  
 
 
 
@@ -96,9 +97,9 @@ export const ItemDetail = ({data}) => {
 const [goToCart, setGoToCart] = useState(false)
 const {addProduct, closeModal, cart, removeProduct, totalPrice, totalProducts } = useCartContext()
 
-const onAdd = (quantity, talla, color, ide) =>{
+const onAdd = (quantity, talla, color, ide, img) =>{
     setGoToCart(true)
-    addProduct(data, quantity, talla, color, ide)
+    addProduct(data, quantity, talla, color, ide, img)
 }
 
 const [sliderData, setSliderData] = useState(data && data.sizes && data.sizes[0].colors ? data.sizes[0].colors[0] : null);
@@ -110,24 +111,30 @@ const myTimeout =  verificar===true? setTimeout( ()=>{
 }, 1000):""
     
 const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+
     const handleClick = (index)=>{
       setSelectedImageIndex(index)
-        const slider= data.sizes[0].colors[index] 
+        const slider= selectedSize.colors[index] 
         setSliderData(slider)
         setColor(slider.color)
         setIde(slider.idepro)
-      //clearTimeout(myTimeout)
+        setImg(slider.imagen)
+        
+       // console.log(selectedSize.colors[index].idepro)
+        //clearTimeout(myTimeout)
     }
     //console.log(data.imagenes)
     const [talla, setTalla] = useState(null)
     const [color, setColor] = useState('')
     const [ide, setIde] = useState('')
+    const [img, setImg] = useState("")
 
 function agregar(){
     setShowModal(true)
-    onAdd(1, talla, color, ide)
+    onAdd(1, talla, color, ide, img)
     setTalla("")
     setColor("")
+    setImg("")
     setSelectedSize({})
 }
 const closeModaldetail = () => {
@@ -157,17 +164,17 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                     <div className=" grid grid-cols-4 w-full px-0 md-px-0 gap-2">
 
                     {images?.map((foto, i) => (
-  <img
-    key={foto.idepro}
-    src={foto.imagen}
-    className={`${
-      selectedImageIndex === i
-        ? "border-b-4 border-black transform duration-300 md:hover:scale-100 "
-        : "opacity-40"
-    } object-cover max-h-[100px] w-full md:max-h-[120px] py-1`}
-    onClick={() => handleClick(i)}
-  />
-))}
+                <img
+                  key={foto.idepro}
+                  src={foto.imagen}
+                  className={`${
+                    selectedImageIndex === i
+                      ? "border-b-4 border-black transform duration-300 md:hover:scale-100 "
+                      : "opacity-40"
+                  } object-cover max-h-[100px] w-full md:max-h-[120px] py-1`}
+                  onClick={() => handleClick(i)}
+                />
+              ))}
 
 
                     </div>
@@ -213,6 +220,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
           key={col.color}
           onClick={() => {
             setColor(col.color);
+            setImg(col.imagen)
             setIde(col.idepro);
             setSliderData(data?.sizes[0].colors[index] )
             setSelectedImageIndex(index)
@@ -224,7 +232,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
     ));
   })}
 </div>
-{console.log("ide", ide)}
+
 {selectedSize.size === "" && <span className='text-red-400 px-4'>Falta elegir la talla</span>}
 {selectedSize.size && color === "" && <span className='text-red-400 px-4'>Falta elegir el color</span>}
                                      

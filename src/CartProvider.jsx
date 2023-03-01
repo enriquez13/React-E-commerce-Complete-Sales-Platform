@@ -9,13 +9,13 @@ const [opens, setOpens] = useState(false)
 
 const OpenSlider = (open) => { setOpens(open) } 
 
-const addProduct = (item, quantity, talla, color, ide) =>{
+const addProduct = (item, quantity, talla, color, ide, img) =>{
   if (isInCart(ide)) {
     setCart(cart.map(product => {
-      return product.ide === ide ? { ...product, quantity: product.quantity + quantity, talla, color, ide} : product
+      return product.ide === ide ? { ...product, quantity: product.quantity + quantity, talla, color, ide, img} : product
     }))
   } else {
-    setCart([...cart, { ...item, quantity, talla, color, ide}])
+    setCart([...cart, { ...item, quantity, talla, color, ide, img}])
   } 
   
 }
