@@ -49,7 +49,7 @@ function NavBar() {
                
                 
 
-                <div className={`${scroll <= 100 ? " bg-opacity-[0.01] from-black  md:h-[7rem] shadow-sm md:grid md:grid-cols-3"
+                <div className={`${scroll <= 100 ? " bg-opacity-[0.01] from-black  md:h-[7rem] md:grid md:grid-cols-3"
                     : "md:h-[4rem] md:grid md:grid-cols-6" } 
                     ${open ? "bg-opacity-[1]" : ""}
                 flex transition-all duration-1000 bg-black relative items-center justify-center py-4 md:px-10 px-7`}>
@@ -81,7 +81,7 @@ function NavBar() {
 
                         <ul className={`md:flex md:items-center md:pb-0  absolute md:static bg-black bg-opacity-90 md:bg-transparent
                     md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-700 ease-in 
-                     ${open ? 'top-[3.5rem] overflow-y-scroll h-[100vh] pb-[6rem]' : 'top-[-1000px]'}  `}>
+                     ${open ? 'top-[3.5rem] overflow-y-scroll h-[100vh] pb-[10rem]' : 'top-[-1000px]'}  `}>
 
                             <div className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-6 text-white
                          hover:text-gray-400 duration-500 font-semibold ">

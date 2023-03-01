@@ -84,40 +84,51 @@ const products = {
 const imgs =[
     {id:0, img:"https://geekflare.com/wp-content/uploads/2021/09/520401-pure-black-background-wallpaper.jpg"},
 ]
+
 export const ItemDetail = ({data}) => {
+
+  const [selectedSize, setSelectedSize] = useState( {})
+  const [images, setImages] = useState(selectedSize?.colors)
+
+
+
   const [showModal, setShowModal] = useState(false);
 const [goToCart, setGoToCart] = useState(false)
 const {addProduct, closeModal, cart, removeProduct, totalPrice, totalProducts } = useCartContext()
 
-const onAdd = (quantity, talla, color,ide) =>{
+const onAdd = (quantity, talla, color, ide) =>{
     setGoToCart(true)
     addProduct(data, quantity, talla, color, ide)
 }
 
-const [sliderData, setSliderData] = useState(data.imagenes && data.imagenes.length > 0 ? data.imagenes[0] : null);
+const [sliderData, setSliderData] = useState(data && data.sizes && data.sizes[0].colors ? data.sizes[0].colors[0] : null);
 const[verificar, SetVerificar] = useState(true) 
 const myTimeout =  verificar===true? setTimeout( ()=>{
-    setSliderData(data?.imagenes[0])
+    setSliderData(data?.sizes[0].colors[0])
     SetVerificar(false) 
     
 }, 1000):""
     
-   
+const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const handleClick = (index)=>{
-        const slider= data.imagenes[index]
+      setSelectedImageIndex(index)
+        const slider= data.sizes[0].colors[index] 
         setSliderData(slider)
+        setColor(slider.color)
+        setIde(slider.idepro)
       //clearTimeout(myTimeout)
     }
     //console.log(data.imagenes)
-    const [talla, setTalla] = useState('')
+    const [talla, setTalla] = useState(null)
     const [color, setColor] = useState('')
     const [ide, setIde] = useState('')
 
 function agregar(){
-  setShowModal(true)
+    setShowModal(true)
     onAdd(1, talla, color, ide)
     setTalla("")
     setColor("")
+    setSelectedSize({})
 }
 const closeModaldetail = () => {
   setShowModal(false);
@@ -138,22 +149,29 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
    
     <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 md:mt-[8rem]">
                 <div className='md:grid md:place-content-center mx-0 px-0 '>
-                    <div style={{backgroundImage: `url(${sliderData?.img})`, backgroundSize: 'cover'}}  className=' object-cover bg-center w-full
+                {data && data.sizes && data.sizes[0].colors && (
+                <>
+                    <div style={{backgroundImage: `url(${sliderData?.imagen})`, backgroundSize: 'cover'}}  className=' object-cover bg-center w-full
                     h-[500px] md:max-h-[450px] md:max-w-[450px] hover:scale-100 duration-500 transition-all ' >
                     </div>
                     <div className=" grid grid-cols-4 w-full px-0 md-px-0 gap-2">
 
-                        {data.imagenes?.map((foto, i) =>
-                        <>
-                           <img key={foto.id} src={foto.img} className={`${sliderData && sliderData.id == i 
-                                ? "border-b-4 border-black transform duration-300 md:hover:scale-100" 
-                                : ""} object-cover max-h-[100px] w-full md:max-h-[120px] py-1`} 
-                                onClick={() => handleClick(i)} /></>
-                        )
-                        
-                        }
+                    {images?.map((foto, i) => (
+  <img
+    key={foto.idepro}
+    src={foto.imagen}
+    className={`${
+      selectedImageIndex === i
+        ? "border-b-4 border-black transform duration-300 md:hover:scale-100 "
+        : "opacity-40"
+    } object-cover max-h-[100px] w-full md:max-h-[120px] py-1`}
+    onClick={() => handleClick(i)}
+  />
+))}
+
 
                     </div>
+                    </>)}
                 </div>
                 <div className='md:px-20'>
         <h2 className="text-left font-bold pl-3 mt-2 md:mt-0 md:pl-0 md:text-left text-2xl md:text-4xl  ">{data.category}{" "}{data.nombre}</h2> 
@@ -166,9 +184,13 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                            <>
                            <button
                              key={c.size}
-                             onClick={() => setTalla(c.size)}
+                             onClick={() => {
+    setSelectedSize(c)
+    setImages(c.colors)
+    setTalla(c.size)
+  }}
                              className={`${
-                               c.size === talla
+                               c.size === selectedSize.size
                                  ? "border bg-black text-gray-100 w-7 h-7 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                                  : "text-[1rem] w-6 h-6 border border-gray-200 transform duration-500 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                              }`}
@@ -179,28 +201,32 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                     ))}
                     
                     </div>
-                    {talla && <h3 className='hidden md:block my-4'>Elige el color:</h3>}
+                    {selectedSize.size && <h3 className='hidden md:block my-4'>Elige el color:</h3>}
 <div className='grid grid-cols-8 gap-1 place-items-left pt-5 md:pt-0 pl-2 md:pl-0'>
   {data.sizes?.map((item) => {
-    if (item.size !== talla) {
+    if (item.size !== selectedSize.size) {
       return null;
     }
-    return item.colors.map((col) => (
+    return item.colors.map((col, index) => (
       <div className=''>
         <button
-          key={col-color}
+          key={col.color}
           onClick={() => {
             setColor(col.color);
             setIde(col.idepro);
+            setSliderData(data?.sizes[0].colors[index] )
+            setSelectedImageIndex(index)
+            
           }}
-          className={`${color === col.color ? "border-2 border-black w-7 h-7" : "border border-gray-300 w-7 h-7"} ${col.bg} md:mx-0 border rounded-full transform duration-500 hover:scale-110`}
+          className={`${col.color === selectedSize?.colors[selectedImageIndex]?.color  ? "border-2 border-black w-7 h-7" : "border border-gray-300 w-7 h-7"} ${col.bg} md:mx-0 border rounded-full transform duration-500 hover:scale-110`}
         />
       </div>
     ));
   })}
 </div>
-{talla === "" && <span className='text-red-400 px-4'>Falta elegir la talla</span>}
-{talla && color === "" && <span className='text-red-400 px-4'>Falta elegir el color</span>}
+{console.log("ide", ide)}
+{selectedSize.size === "" && <span className='text-red-400 px-4'>Falta elegir la talla</span>}
+{selectedSize.size && color === "" && <span className='text-red-400 px-4'>Falta elegir el color</span>}
                                      
         <div className="w-auto px-5 md:px-0">
             
@@ -217,11 +243,11 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
             <span className='text-amber-500 line-through absolute top-[3rem] right-4 '>${data.valor*3}</span>
             </section>
 
-            {talla && color ?<div className="">
+            {selectedSize.size && color ?<div className="">
                 <div className='mx-8 md:mx-[6rem] md:mt-[2rem]'>
                 <button  className="flex items-center justify-center w-full h-11 mt-5 
                 border border-black rounded-xl hover:bg-neutral-100 md:transform md:duration-200 md:hover:scale-105 "
-                disabled={color === ""}  
+                disabled={selectedSize.size === ""}  
                 onClick={agregar}>Agregar al carrito</button>
                 </div>
               
