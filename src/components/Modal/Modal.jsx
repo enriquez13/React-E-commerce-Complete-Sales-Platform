@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AiFillDelete } from "react-icons/ai"
 import { AiOutlineClose } from "react-icons/ai";
-import { BsBag } from 'react-icons/bs';
+//import { BsBag } from 'react-icons/bs';
 
 const descuento = 0.8
 const precioLimite = 149900
 
-export const Modal = ({ closeModal, cart, removeProduct, totalPrice, totalProducts }) => {
+export const Modal = (props) => {
+    const {closeModal, cart, removeProduct, totalPrice, totalProducts, allProducts} = props
+    const [selectedSize, setSelectedSize] = useState(null);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleSizeClick = (size, producto) => {
+    setSelectedSize(size);
+    setSelectedProduct(producto.id);
+    {console.log("producto", producto.id)}
+  };
+  
+
     return (
         <div className="fixed w-5/6 z-50 h-[50%]   right-0 inset-y-0 pt-0 sm:inset-y-0 sm:flex sm:items-center sm:justify-center">
             <div className="fixed inset-0 transition-opacity" onClick={closeModal}>
@@ -77,29 +88,80 @@ export const Modal = ({ closeModal, cart, removeProduct, totalPrice, totalProduc
 
                         ))}
                         </div>
-                        <div>OBTENGA HASTA UN 40 % DE DESCUENTO EN COMPLEMENTOS POPULARES</div>
-                        <div>
-                                        <p className="text-sm leading-5 text-gray-500 font-bold ">
-                                            {}{" "}product.nombre
-                                        </p>
-                                        <p className="text-sm leading-5 text-gray-500 ">
-                                            Talla {" "}{}{" "} Color{" "}
-                                        </p>
-                                        
-                                        <p className="text-sm leading-5 text-gray-500 ">
-                                            <span className={`${totalPrice()>=precioLimite ? 'line-through text-gray-400' :"text-gray-700"} font-bold `}>product.valor</span>
-                                            { totalPrice() >= precioLimite ? <span className='text-gray-700 font-bold pl-2'>product.valor*descuento</span> : " "}
-                                        </p>
+                        
+                        <h2>Obten hasta 40% dcto en productos complementos populares</h2>
+                        <div className="max-h-[45vh] overflow-y-scroll">
+                            {allProducts.map((producto, index) => (
+                                <div className=" bg-white my-4 mx-4 border border-gray-300 p-4 flex items-center justify-center h-[7rem]">
+                                    <div className=" flex-shrink-0 mr-4 w-2/6">
+                                        <img
+                                            src={producto.sizes[0].colors[0].imagen ? producto.sizes[0].colors[0].imagen : null}
+                                            className="max-w-full"
+                                        />
                                     </div>
+                                    <div className="flex-1 grid grid-cols-4 gap-4 w-1/6">
+                                        <div className="col-span-2">
+                                            <h4 className="text-xs font-bold text-black">{producto.category}</h4>
+                                            <h4 className="text-xs font-bold text-gray-500">{producto.nombre}</h4>
+                                            <p className="text-sm leading-5 text-gray-500 ">
+                                                <h4 className="font-bold text-black text-sm">{producto.valor * 0.6}</h4>
+                                                <h4 className={`${" line-through text-gray-500"} font-bold text-sm`}>{producto.valor}</h4>
+                                            </p>
+                                        </div>
+                                        <div className='w-3/6'>
+                                            <div className='flex-1 grid grid-cols-4 gap-4'>
+
+
+                                                {producto.sizes.map((size, index) => (
+
+                                                    <button key={index} className={`${producto.size === selectedSize
+                                                            ? "text-[0.7rem] border bg-black text-gray-100 w-5 h-5 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
+                                                            : "text-[0.7rem] w-5 h-5 border border-gray-200 transform duration-500 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
+                                                        }`}
+                                                        onClick={() => handleSizeClick(size.size, producto)}>
+                                                        {size.size}
+                                                    </button>
+
+                                                ))}
+
+
+                                               
+                                                    {selectedProduct === producto.id && selectedSize && (
+                                                        <div className='grid grid-cols-5 gap-4'>
+
+                                                            {producto.sizes
+                                                                .find((size) => size.size === selectedSize)
+                                                                .colors.map((color, index) => (
+                                                                    <button
+                                                                        className={`${color === "rojo" ? "border-2 border-black w-4 h-4"
+                                                                            : "border border-gray-300 w-4 h-4"} 
+                                                                        ${color.bg} md:mx-0 border rounded-full transform duration-500 hover:scale-110`}
+                                                                        key={index}></button>
+                                                                ))}
+
+                                                        </div>
+                                                    )}
+                                               
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            ))}
+                        </div>
+
+
                         <hr className='my-2'/>
                         <p className="text-sm leading-5 text-gray-500 ">
                             Total: <span className={`${totalPrice()>=precioLimite ? 'line-through text-amber-500' :"text-blue-500"} `}>{totalPrice()}</span>
                             {totalPrice()>=precioLimite ?<h4 className='text-blue-500'>{totalPrice()*descuento}</h4>:""}
                         </p>
+
                     </div>
-
+                    
                 </div>
-
+            
 
                 <div className="bg-gray-50 px-4 py-3 sm:px-6 flex justify-center w-full gap-2">
                 <span className="flex w-1/2 rounded-md shadow-sm  sm:ml-3 sm:w-auto">

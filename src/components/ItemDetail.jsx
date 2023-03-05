@@ -85,13 +85,12 @@ const imgs =[
     {id:0, img:"https://geekflare.com/wp-content/uploads/2021/09/520401-pure-black-background-wallpaper.jpg"},
 ]
 
-export const ItemDetail = ({data}) => {
-
-  const [selectedSize, setSelectedSize] = useState( {})
-  const [images, setImages] = useState(selectedSize?.colors)
-  
-
-
+export const ItemDetail = (props) => {
+  const { data, allProducts } = props;
+  const [selectedSize, setSelectedSize] = useState( data && data.sizes ? data.sizes[0] : {})
+  const [images, setImages] = useState(data && data.sizes && data.sizes[0].colors ? data.sizes[0].colors :null)
+//{console.log("data.sizes",data?.sizes[0]?.colors)}
+//{console.log("selectedSize",selectedSize?.colors)}
 
   const [showModal, setShowModal] = useState(false);
 const [goToCart, setGoToCart] = useState(false)
@@ -103,12 +102,8 @@ const onAdd = (quantity, talla, color, ide, img) =>{
 }
 
 const [sliderData, setSliderData] = useState(data && data.sizes && data.sizes[0].colors ? data.sizes[0].colors[0] : null);
-const[verificar, SetVerificar] = useState(true) 
-const myTimeout =  verificar===true? setTimeout( ()=>{
-    setSliderData(data?.sizes[0].colors[0])
-    SetVerificar(false) 
-    
-}, 1000):""
+
+
     
 const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
@@ -119,11 +114,8 @@ const [selectedImageIndex, setSelectedImageIndex] = useState(null);
         setColor(slider.color)
         setIde(slider.idepro)
         setImg(slider.imagen)
-        
-       // console.log(selectedSize.colors[index].idepro)
-        //clearTimeout(myTimeout)
     }
-    //console.log(data.imagenes)
+ 
     const [talla, setTalla] = useState(null)
     const [color, setColor] = useState('')
     const [ide, setIde] = useState('')
@@ -146,11 +138,6 @@ const [mostrarFormasDePago, setMostrarFormasDePago] = useState(true)
 const [mostrarEnvios, setMostrarEnvios] = useState(false)
 const [mostrarGuiaTallas, setMostrarGuiaTallas] = useState(false)
 const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
-
-//if (data && data.sizes && data.sizes[0] && data.sizes[0].colors && data.sizes[0].colors[0] && data.sizes[0].colors[0].imagen) {
-//  console.log(data.sizes[0].colors[0].imagen);
-//}
-
     return (
     <>
    
@@ -445,7 +432,7 @@ Puedes pagar con transferencia a Bancolombia, Nequi, Daviplata, pagos con tarjet
         <button className="text-lg md:text-4xl md:mt-12 py-2 px-7 text-center mt-8 mb-[5rem] border border-gray-300 rounded-lg">Buscar más productos</button>
     </div>
     {showModal && (
-        <Modal closeModal={closeModaldetail} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts} />
+        <Modal closeModal={closeModaldetail} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
       )}
 
     </>

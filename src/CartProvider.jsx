@@ -49,7 +49,7 @@ const isInCart = (ide) => {
       OpenSlider,
       opens,
       cart
-    }}>
+      }}>
     {children}
     </cartContext.Provider>
   )
