@@ -83,19 +83,19 @@ function NavBar() {
                     md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-700 ease-in 
                      ${open ? 'top-[3.5rem] overflow-y-scroll h-[100vh] pb-[10rem]' : 'top-[-1000px]'}  `}>
 
-                            <div className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-6 text-white
+                            <div className="md:hidden grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-6 text-white
                          hover:text-gray-400 duration-500 font-semibold ">
                                Nuestros productos
                             </div>
 
                             {DataCategorias.map((categorias,index)=>(
                             <NavLink to={`/categoria/${categorias.url}`} className="mx-10  grid grid-cols-3 gap-4 cursor-pointer md:ml-8 text-xl md:my-0 py-2 text-white hover:text-gray-400 duration-500" onClick={() => setOpen(!open)}>
-                            <div className="grid-row-span-2">
+                            <div className="md:hidden grid-row-span-2">
                               <img src={categorias.src} className="w-[6rem] h-[6rem] object-cover"/>
                             </div>
                             <div className="col-span-2 flex flex-col justify-center items-left mx-4">
                               <div className="mb-2 uppercase text-sm font-semibold">{categorias.nombre}</div>
-                              <div className="text-sm text-gray-300 font-semibold">{categorias.detalle}</div>
+                              <div className="md:hidden text-sm text-gray-300 font-semibold">{categorias.detalle}</div>
                             </div>
                           </NavLink>
                             ))}

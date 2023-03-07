@@ -54,8 +54,6 @@ const db = getFirestore();
         console.error(error)
     })
 
-
-
 }
 
 

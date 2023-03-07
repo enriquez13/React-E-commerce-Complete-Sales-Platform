@@ -1,213 +1,195 @@
-import React, { useState, useEffect } from 'react';
-import {addDoc, collection, getFirestore} from 'firebase/firestore'
-import { useCartContext } from '../CartProvider'
+import React from 'react'
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useForm } from 'react-hook-form';
+import {addDoc, collection, getFirestore} from 'firebase/firestore'
 
-const reference = uuidv4(); //referencia de pago único
-const WompiWidget = () => {
-    const [opcionEnvio, setOpcionEnvio] = useState('envio'); //opción envío
-    const precioEnvio = opcionEnvio === 'envio' ? 5000 : 10000; //precio del envío seleccionado
-    
-    const handleOptionChange = (event) => { 
-      setOpcionEnvio(event.target.value);
-    }; // guarda el tipo de envío seleccionado
-
-    // constantes utilizadas en el formulario
-    const [nombre, setNombre] = useState("")
-    const [apellidos, setApellidos] = useState("");
-    const [cedula, setCedula] = useState("");
-    const [telefono, setTelefono] = useState("");
-    const [ciudad, setCiudad] = useState("");
-    const [direccion, setDireccion] = useState("");
-    /////////////////////////////////////////////////
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      console.log("nombre:",nombre, "apellidos", apellidos, "cedula:", cedula, "telefono:", telefono, "ciudad:", ciudad, "direccion:",direccion) 
-      //guarda los valores ingresados en los inputs 
-    };
-
-    //longitud mínima de caracteres para los input
-    const validateInput = (input) => {
-      return input.length >= 4;
-    };
-
-    //Validación de los input
-    const isNombreValid = validateInput(nombre);
-    const isApellidosValid = validateInput(apellidos);
-    const isCiudadValid = validateInput(ciudad);
-    
-    
+const descuento = 0.4
 
 
-    const {cart, totalPrice} = useCartContext()
-  const [checkout, setCheckout] = useState(null);
-  // se crea un objeto con los datos mínimos necesarios para realizar el pago; sin embargo cambiará al ingresar datos al input 
-  const [config, setConfig] = useState({
-    currency: 'COP',
+export const Paytwo = () => {
+  const [openCheckout, setOpenCheckout] = useState(false);
+  //const [datos, setDatos] = useState("");
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    mode: 'onChange',
+    defaultValues: {
+      name: '',
+      apellido: '',
+      cedula: '',
+      telefono: '',
+      ciudad: '',
+      direccion: '',
+      option: '',
+    },
+    criteriaMode: 'all',
+  });
+
+  const handleCheckout = async (data) => {
+    const reference = uuidv4(); //Referencia única
+
+    setOpenCheckout(true);
+    var checkout = new WidgetCheckout({
+      currency: 'COP',
       amountInCents: 2490000,
       reference: reference,
       publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
-      customerData: {
-        // email: 'lola@gmail.com',
-          fullName: 'nombre',
-          phoneNumber: 'phoneNumber',
-          phoneNumberPrefix: '+57',
-          legalId: 'cedula', //cédula
-          legalIdType: 'CC'
-        },
-        shippingAddress: {
-          addressLine1: 'direccion',
-          city: 'ciudad',
-          phoneNumber: '311876200',
-          region: 'region',
-          country: 'CO'
-        }
-  })
-
-  //Se agregan los datos cuando se le da click al botón de pago y se actualiza cuando tetecta cambios
-  useEffect(() => {
-    
-    const configure = {
-      currency: 'COP',
-      amountInCents: 15000000,
-      reference: reference,
-      publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
-      customerData: {
-        fullName: nombre,
-        phoneNumber: telefono !== '' ? telefono:'telefono',
-        phoneNumberPrefix: '+57',
-        legalId: cedula !== '' ? cedula:'cedula',
-        legalIdType: 'CC'
+      //redirectUrl: 'https://transaction-redirect.wompi.co/check', // Opcional
+      taxInCents: { // Opcional
+        vat: 1900,
+        consumption: 800,
       },
+      customerData: { // Opcional
+        email:'lola@gmail.com',
+        fullName: data.name,
+        phoneNumber: data.telefono,
+        phoneNumberPrefix: '+57',
+        legalId: data.cedula,
+        legalIdType: 'CC',
+      },
+      shippingAddress: { // Opcional
+        addressLine1: data.direccion,
+        city: data.ciudad,
+        phoneNumber: '3019444444',
+        region: "Cundinamarca",
+        country: "CO",
+      }
+    })
     
-    };
-    setConfig(configure);
-    const checkoutInstance = new window.WidgetCheckout(configure);
-    setCheckout(checkoutInstance);
-  }, [nombre, telefono, cedula]);
-
-
-
-  const onCheckoutCompleted = (result) => {
-    const transaction = result.transaction;
-    console.log('Transaction ID: ', transaction.id);
-    console.log('Transaction object: ', transaction);
-
-
-    const db = getFirestore();
-    const orden = {
+    checkout.open(function ( result ) {
+      var transaction = result.transaction
+      console.log('Transaction ID: ', transaction.id)
+      console.log('Transaction object: ', transaction)
+      console.log('Transaction object: ', data)
+      console.log("Status : ", transaction.status)
+      //Subir datos a firebase
+      if(transaction.status==="APPROVED"){
+      const db = getFirestore();
+    let orden = {
         cliente:{ 
-            transactionId: transaction.id,
-            customerData: config.customerData,
-            transaction: transaction,
-
-            nombre: nombre,
-            cedula: cedula,
-            telefono : telefono,
-            ciudad : ciudad,
-            direccion: direccion,
+            nombre: data.name,
+            apellido: data.apellido,
+            cedula: data.cedula,
+            telefono : data.telefono,
+            ciudad : data.ciudad,
+            direccion: data.direccion,
         },
-            producto: cart.map(product=> ({Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
-            envio: opcionEnvio,
-            precioEnvio: precioEnvio,
+            //producto: cart.map(product=> ({Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
+            envio: data.option,
             fecha: new Date().toLocaleString(),
-            total: totalPrice(),
+            //total: totalPrice(),
             }
             const ordersCollection = collection(db, 'compras')
             addDoc(ordersCollection, orden)
     .then(()=>{
         alert("Felicidades, tu compra fue exitosa")
+        //setIsPaying(false)
     })
     .catch(error=>{
         console.error(error)
-        alert("No se pudo completar la trabsacción, vuelve a intentar")
     })
-  };
+    }
+  })
+  }
 
-  const handleOpenCheckout = () => {
-    checkout.open(onCheckoutCompleted);
+  const onSubmit = async (data) => {
+    
+    if (data.option === 'option1') {
+
+      {console.log("selección 1")}
+      const db = getFirestore();
+    let orden = {
+        cliente:{ 
+            nombre: data.name,
+            apellido: data.apellido,
+            cedula: data.cedula,
+            telefono : data.telefono,
+            ciudad : data.ciudad,
+            direccion: data.direccion,
+        },
+            //producto: cart.map(product=> ({Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
+            envio: data.option,
+            fecha: new Date().toLocaleString(),
+            //total: totalPrice(),
+            }
+            const ordersCollection = collection(db, 'compras')
+            addDoc(ordersCollection, orden)
+    .then(()=>{
+        alert("Felicidades, tu compra fue exitosa")
+        //setIsPaying(false)
+    })
+    .catch(error=>{
+        console.error(error)
+    })
+    } else if (data.option === 'option2') {
+      //setDatos(data)
+      console.log("datos : ",data.name)
+      handleCheckout(data);
+
+    }
+    
   };
 
   return (
-    <div>
-{precioEnvio}{opcionEnvio}{nombre}{telefono}{direccion}{reference}
-{console.log("config paytwo : ", config)}
-<form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="nombre">Nombre:</label>
-        <input
-          type="text"
-          id="nombre"
-          pattern="^[a-zA-Z0-9]*$"
-          title="Solo se permiten letras y números"
-          value={nombre}
-          onChange={(event) => setNombre(event.target.value)}
-          className={!isNombreValid ? "invalid" : ""}
-        />
-        {!isNombreValid && (
-          <span className="error">El nombre debe tener al menos 5 caracteres</span>
-        )}
+    <>
+    <div className='my-10'>
+    <h3 className=" w-full mb-5 text-center text-2xl text-black">Facturación y envío</h3>
+    <form onSubmit={handleSubmit(onSubmit)} className='mx-7 text-black md:w-1/2'>
+      <label htmlFor="name">Nombres:</label>
+      <input id="name" type="text" {...register('name', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ\s]+$/  })} 
+      className='w-full mt-1 bg-gray-100'/>
+      <div className='text-red-400 mb-3'>{errors.name && errors.name.type === 'required' && <p>Falta escribir el nombre</p>}
+      {errors.name && errors.name.type === 'minLength' && <p>El nombre debe tener al menos 4 caracteres</p>}
+      {errors.name && errors.name.type === 'pattern' && <p>El nombre no puede contener símbolos</p>}
       </div>
-      <div>
-        <label htmlFor="apellidos">Apellidos:</label>
-        <input
-          type="text"
-          id="apellidos"
-          value={apellidos}
-          onChange={(event) => setApellidos(event.target.value)}
-          className={!isApellidosValid ? "invalid" : ""}
-        />
-        {!isApellidosValid && (
-          <span className="error">Los apellidos deben tener al menos 5 caracteres</span>
-        )}
+      <label htmlFor="apellido">Apellidos:</label>
+      <input id="apellido" type="text" {...register('apellido', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ\s]+$/  })} 
+      className='w-full mt-1  bg-gray-100'/>
+      <div className='text-red-400 mb-3'>{errors.apellido && errors.apellido.type === 'required' && <p>Falta escribir el apellido</p>}
+      {errors.apellido && errors.apellido.type === 'minLength' && <p>El apellido debe tener al menos 4 caracteres</p>}
+      {errors.apellido && errors.apellido.type === 'pattern' && <p>El apellido no puede contener símbolos</p>}
       </div>
-      <div>
-        <label htmlFor="cedula">Cédula:</label>
-        <input
-          type="number"
-          id="cedula"
-          value={cedula}
-          onChange={(event) => setCedula(event.target.value)}
-        />
+      <label htmlFor="cedula">Cédula:</label>
+      <input id="cedula" type="text" {...register('cedula', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ0-9#./\s]+$/  })} 
+      className='w-full mt-1  bg-gray-100'/>
+      <div className='text-red-400 mb-3'>{errors.cedula && errors.cedula.type === 'required' && <p>Falta escribir el número de cédula o pasaporte</p>}
+      {errors.cedula && errors.cedula.type === 'minLength' && <p>La cédula debe tener al menos 4 caracteres</p>}
+      {errors.cedula && errors.cedula.type === 'pattern' && <p>La cédula no puede contener símbolos</p>}
       </div>
-      <div>
-        <label htmlFor="telefono">Teléfono:</label>
-        <input
-          type="number"
-          id="telefono"
-          value={telefono}
-          onChange={(event) => setTelefono(event.target.value)}
-        />
+      <label htmlFor="telefono">Teléfono:</label>
+      <input id="telefono" type="number" {...register('telefono', { required: true, minLength: 4, pattern: /^[0-9#.\s]+$/  })} 
+      className='w-full mt-1 bg-gray-100'/>
+      <div className='text-red-400 mb-3'>{errors.telefono && errors.telefono.type === 'required' && <p>Falta escribir el teléfono</p>}
+      {errors.telefono && errors.telefono.type === 'minLength' && <p>El teléfono debe tener al menos 7 números</p>}
+      {errors.telefono && errors.telefono.type === 'pattern' && <p>El teléfono no puede contener símbolos</p>}
       </div>
-      <div>
-        <label htmlFor="ciudad">Ciudad o municipio:</label>
-        <input
-          type="text"
-          id="ciudad"
-          value={ciudad}
-          onChange={(event) => setCiudad(event.target.value)}
-          className={!isCiudadValid ? "invalid" : ""}
-        />
-        {!isCiudadValid && (
-          <span className="error">La ciudad/municipio debe tener al menos 5 caracteres</span>
-        )}
+      <label htmlFor="ciudad">Ciudad o municipio:</label>
+      <input id="ciudad" type="text" {...register('ciudad', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ\s]+$/  })} 
+      className='w-full mt-1 bg-gray-100'/>
+      <div className='text-red-400 mb-3'>{errors.ciudad && errors.ciudad.type === 'required' && <p>Falta escribir la ciudad o municipio</p>}
+      {errors.ciudad && errors.ciudad.type === 'minLength' && <p>La ciudad o municipio deben tener al menos 4 caracteres</p>}
+      {errors.ciudad && errors.ciudad.type === 'pattern' && <p>La ciudad o municipio no puede contener símbolos</p>}
       </div>
-      <div>
-        <label htmlFor="direccion">Dirección:</label>
-        <input
-          type="text"
-          id="direccion"
-          value={direccion}
-          onChange={(event) => setDireccion(event.target.value)}
-        />
+      <label htmlFor="direccion">Dirección:</label>
+      <input id="direccion" type="text" {...register('direccion', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ0-9#./\s]+$/  })} 
+      className='w-full mt-1 bg-gray-100'/>
+      <div className='text-red-400 mb-3'>{errors.ciudad && errors.direccion.type === 'required' && <p>Falta escribir la dirección</p>}
+      {errors.direccion && errors.direccion.type === 'minLength' && <p>La Dirección debe tener al menos 4 caracteres</p>}
+      {errors.direccion && errors.direccion.type === 'pattern' && <p>La Dirección no puede contener símbolos</p>}
       </div>
-      <button  type="submit" onClick={handleOpenCheckout} >Pagar</button>
-    </form>
 
-      
-      
-</div>
+      <div>
+        <label htmlFor="option1">Opción 1:</label>
+        <input id="option1" type="radio" value="option1" {...register('option', { required: true })} />
+        <label htmlFor="option2">Opción 2:</label>
+        <input id="option2" type="radio" value="option2" {...register('option', { required: true })} />
+        {errors.option && errors.option.type === 'required' && <p className='text-red-400'>Seleccion una opción de envío</p>}
+      </div>
+      <button type="submit" >
+        Comprar
+      </button>
+    </form>
+    </div>
+    </>
   );
 };
 
-export default WompiWidget;

@@ -24,7 +24,7 @@ export const Pie = () => {
 
   const {totalProducts} = useCartContext()
   return (
-    <div className='px-1 w-full fixed bottom-1 z-50'>
+    <div className='md:hidden px-1 w-full fixed bottom-1 z-50'>
       <div className=' w-[hv-100] h-10  rounded-xl grid grid-cols-4 text-center content-center 
     item-center justify-center border text-gray-300 bg-[#333230] text-lg '>
         <NavLink to="/" className="flex justify-center" >

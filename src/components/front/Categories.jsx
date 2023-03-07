@@ -14,7 +14,7 @@ export const Categories = () => {
             <div className=" grid sm:grid-cols-4 text-gray-100 ">
                 {DataCategorias.map((category,index)=>(
                 <NavLink to={`/categoria/${category.url}`} key={index} className=" md:p-1 w-full relative h-[24rem] md:h-[600px] mt-2">
-                <img className="opacity-70 object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src={category.src} />
+                <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src={category.src} />
                     <div className="absolute grid bottom-[50%] translate-y-[50%] w-full text-sm px-4 ">
                         <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold" >{category.nombre}</h3>
                         <button className="w-1/2 rounded-xl place-self-center py-3 text-center border-gray-200 text-gray-200

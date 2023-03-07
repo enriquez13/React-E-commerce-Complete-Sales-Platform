@@ -20,15 +20,15 @@ export const Modal = (props) => {
   
 
     return (
-        <div className="fixed w-5/6 z-50 h-[50%]   right-0 inset-y-0 pt-0 sm:inset-y-0 sm:flex sm:items-center sm:justify-center">
+        <div className="fixed w-5/6 z-[100] h-[100%] bg-red-400 md:w-full right-0 inset-y-0 pt-0  sm:flex sm:items-center sm:justify-center">
             <div className="fixed inset-0 transition-opacity" onClick={closeModal}>
                 <div className="absolute inset-0 bg-gray-500 opacity-40"></div>
             </div>
             
-            <div className="bg-gray-100 rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+            <div className="bg-gray-100 rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full ">
                 <div className="  pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div className="mt-3 text-center sm:mt-5 mx-2 relative">
-                        <h3 className="text-lg leading-6 font-medium text-gray-900 my-4 ">
+                        <h3 className="text-xl font-bold leading-6  text-gray-900 my-4 ">
                            Recién agregados al carrito
                         </h3>
                         
@@ -89,17 +89,17 @@ export const Modal = (props) => {
                         ))}
                         </div>
                         
-                        <h2>Obten hasta 40% dcto en productos complementos populares</h2>
+                        <h2 className='text-lg font-bold'>Obten 40% dcto en productos complementos populares</h2>
                         <div className="max-h-[45vh] overflow-y-scroll">
                             {allProducts.map((producto, index) => (
-                                <div className=" bg-white my-4 mx-4 border border-gray-300 p-4 flex items-center justify-center h-[7rem]">
-                                    <div className=" flex-shrink-0 mr-4 w-2/6">
+                                <div className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem]">
+                                    <div className=" col-span-2">
                                         <img
                                             src={producto.sizes[0].colors[0].imagen ? producto.sizes[0].colors[0].imagen : null}
                                             className="max-w-full"
                                         />
                                     </div>
-                                    <div className="flex-1 grid grid-cols-4 gap-4 w-1/6">
+                               
                                         <div className="col-span-2">
                                             <h4 className="text-xs font-bold text-black">{producto.category}</h4>
                                             <h4 className="text-xs font-bold text-gray-500">{producto.nombre}</h4>
@@ -108,8 +108,8 @@ export const Modal = (props) => {
                                                 <h4 className={`${" line-through text-gray-500"} font-bold text-sm`}>{producto.valor}</h4>
                                             </p>
                                         </div>
-                                        <div className='w-3/6'>
-                                            <div className='flex-1 grid grid-cols-4 gap-4'>
+                                        <div className='col-span-4'>
+                                            <div className=''>
 
 
                                                 {producto.sizes.map((size, index) => (
@@ -125,9 +125,10 @@ export const Modal = (props) => {
                                                 ))}
 
 
-                                               
+                                            </div>
+                                            <div className=''>
                                                     {selectedProduct === producto.id && selectedSize && (
-                                                        <div className='grid grid-cols-5 gap-4'>
+                                                        <>
 
                                                             {producto.sizes
                                                                 .find((size) => size.size === selectedSize)
@@ -139,14 +140,15 @@ export const Modal = (props) => {
                                                                         key={index}></button>
                                                                 ))}
 
-                                                        </div>
+                                                        </>
                                                     )}
                                                
                                             </div>
+                                            <button className='bg-black text-white border rounded-lg px-3'>Agregar</button>
                                         </div>
 
                                     </div>
-                                </div>
+                           
 
                             ))}
                         </div>
