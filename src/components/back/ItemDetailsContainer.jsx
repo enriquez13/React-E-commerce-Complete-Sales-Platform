@@ -2,7 +2,7 @@ import { getFirestore, collection, getDocs, doc, getDoc } from 'firebase/firesto
 import React, {useEffect, useState} from "react";
 import ItemDetail from "../ItemDetail";
 import { useParams } from "react-router-dom";
-import { Pie } from "../front/Pie";
+//import { Pie } from "../front/Pie";
 import Navbar from '../front/NavBar'
 import ItemList from '../ItemList';
 
@@ -48,7 +48,7 @@ export const ItemDetailContainer = ()=>{
         <ItemDetail data={data} allProducts={allProducts}/>
         
         <ItemList />
-        <Pie />
+      
         </>
     )
 }

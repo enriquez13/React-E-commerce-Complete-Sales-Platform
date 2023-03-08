@@ -432,7 +432,7 @@ Puedes pagar con transferencia a Bancolombia, Nequi, Daviplata, pagos con tarjet
         <button className="text-lg md:text-4xl md:mt-12 py-2 px-7 text-center mt-8 mb-[5rem] border border-gray-300 rounded-lg">Buscar más productos</button>
     </div>
     {showModal && (
-        <Modal closeModal={closeModaldetail} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
+        <Modal closeModal={closeModaldetail} addProduct={addProduct} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
       )}
 
     </>

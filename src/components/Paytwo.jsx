@@ -3,11 +3,13 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useForm } from 'react-hook-form';
 import {addDoc, collection, getFirestore} from 'firebase/firestore'
+import { NavLink } from 'react-router-dom';
 
 const descuento = 0.4
 
 
 export const Paytwo = () => {
+  const [envio,setEnvio]=useState("")
   const [openCheckout, setOpenCheckout] = useState(false);
   //const [datos, setDatos] = useState("");
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -92,7 +94,7 @@ export const Paytwo = () => {
   }
 
   const onSubmit = async (data) => {
-    
+    setEnvio(data.option)
     if (data.option === 'option1') {
 
       {console.log("selección 1")}
@@ -130,7 +132,13 @@ export const Paytwo = () => {
   };
 
   return (
-    <>
+    <><NavLink to='/home'><h2 className='text-center text-2xl my-5 mb-10'>ZOROBABEL</h2></NavLink>
+    <div className='w-full grid grid-cols-2'>
+    <NavLink to='/cart'><h3  className='col-start-1 col-span-1 text-center '>1. Carrito</h3></NavLink>
+    <h3 className='col-start-2 col-span-1 text-center'>2. Compra</h3>
+    <hr className='flex col-start-1 col-span-1 mt-1 ml-7 border-[1px] border-gray-300'/>
+    <hr className='flex col-start-2 col-span-1 mt-1 mr-7 border-gray-500 border-[1px]'/>
+    </div>
     <div className='my-10'>
     <h3 className=" w-full mb-5 text-center text-2xl text-black">Facturación y envío</h3>
     <form onSubmit={handleSubmit(onSubmit)} className='mx-7 text-black md:w-1/2'>
@@ -178,15 +186,17 @@ export const Paytwo = () => {
       </div>
 
       <div>
-        <label htmlFor="option1">Opción 1:</label>
+        <label htmlFor="option1" className='pr-1'>Contraentrega:</label>
         <input id="option1" type="radio" value="option1" {...register('option', { required: true })} />
-        <label htmlFor="option2">Opción 2:</label>
+        <label htmlFor="option2" className='ml-4 pr-1'>Envío normal:</label>
         <input id="option2" type="radio" value="option2" {...register('option', { required: true })} />
         {errors.option && errors.option.type === 'required' && <p className='text-red-400'>Seleccion una opción de envío</p>}
       </div>
-      <button type="submit" >
-        Comprar
+      <div className='flex items-center justify-center'>
+      <button type="submit" className="rounded-lg mt-5 bg-black text-white px-10 py-2">
+      Finalizar
       </button>
+      </div>
     </form>
     </div>
     </>
