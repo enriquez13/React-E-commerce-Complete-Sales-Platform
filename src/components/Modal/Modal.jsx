@@ -20,12 +20,12 @@ export const Modal = (props) => {
   
 
     return (
-        <div className="fixed w-5/6 z-[100] h-[100%] bg-red-400 md:w-full right-0 inset-y-0 pt-0  sm:flex sm:items-center sm:justify-center">
+        <div className="max-h-[100vh] fixed w-full z-[100] h-[100%] bg-red-400 md:w-full right-0 inset-y-0 pt-0  sm:flex sm:items-center sm:justify-center">
             <div className="fixed inset-0 transition-opacity" onClick={closeModal}>
                 <div className="absolute inset-0 bg-gray-500 opacity-40"></div>
             </div>
             
-            <div className="bg-gray-100 rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full ">
+            <div className=" bg-gray-100 rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full ">
                 <div className="  pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div className="mt-3 text-center sm:mt-5 mx-2 relative">
                         <h3 className="text-xl font-bold leading-6  text-gray-900 my-4 ">
@@ -46,7 +46,7 @@ export const Modal = (props) => {
                         </button>
                         
 
-                        <div className="max-h-[60vh] overflow-y-scroll ">
+                        <div className="max-h-[30vh] overflow-y-scroll ">
                         {cart?.map((product, index) => (
 
                             <div className="my-2 grid grid-cols-3 gap-4 bg-white" key={index} >
@@ -90,7 +90,7 @@ export const Modal = (props) => {
                         </div>
                         
                         <h2 className='text-lg font-bold'>Obten 40% dcto en productos complementos populares</h2>
-                        <div className="max-h-[45vh] overflow-y-scroll">
+                        <div className="max-h-[30vh] overflow-y-scroll">
                             {allProducts.map((producto, index) => (
                                 <div className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem]">
                                     <div className=" col-span-2">
@@ -109,7 +109,7 @@ export const Modal = (props) => {
                                             </p>
                                         </div>
                                         <div className='col-span-4'>
-                                            <div className=''>
+                                            <div className='grid grid-cols-4 gap-4 mx-2'>
 
 
                                                 {producto.sizes.map((size, index) => (
@@ -126,7 +126,7 @@ export const Modal = (props) => {
 
 
                                             </div>
-                                            <div className=''>
+                                            <div className='grid grid-cols-6 gap-1 my-2 '>
                                                     {selectedProduct === producto.id && selectedSize && (
                                                         <>
 
@@ -134,8 +134,8 @@ export const Modal = (props) => {
                                                                 .find((size) => size.size === selectedSize)
                                                                 .colors.map((color, index) => (
                                                                     <button
-                                                                        className={`${color === "rojo" ? "border-2 border-black w-4 h-4"
-                                                                            : "border border-gray-300 w-4 h-4"} 
+                                                                        className={`${color === "rojo" ? "border-2 border-black w-5 h-5"
+                                                                            : "border border-gray-300 w-5 h-5"} 
                                                                         ${color.bg} md:mx-0 border rounded-full transform duration-500 hover:scale-110`}
                                                                         key={index}></button>
                                                                 ))}
@@ -144,7 +144,7 @@ export const Modal = (props) => {
                                                     )}
                                                
                                             </div>
-                                            <button className='bg-black text-white border rounded-lg px-3'>Agregar</button>
+                                            <button className='bg-black text-white border rounded-lg px-3 py-1 text-sm'>Agregar</button>
                                         </div>
 
                                     </div>
