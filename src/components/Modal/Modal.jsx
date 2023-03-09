@@ -116,9 +116,9 @@ export const Modal = (props) => {
                         <div className="">{// aquí overflow-y-scroll
                         }
                             {allProducts.map((producto, index) => (
-                                <div className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem]">
-                                    <div className=" col-span-2">
-                                        <img className="y-[3rem] w-[3rem] object-cover"
+                                <div className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem] justify-items-center content-center">
+                                    <div className="container h-[5rem] w-[5rem] col-span-2">
+                                        <img className="image object-cover w-full h-full "
                                             src={ selectedProduct.id === producto.id && selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen }
                                             
                                         />
