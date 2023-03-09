@@ -46,7 +46,6 @@ export const ItemDetailContainer = ()=>{
         <>
         <Navbar />
         <ItemDetail data={data} allProducts={allProducts}/>
-        
         <ItemList />
       
         </>
