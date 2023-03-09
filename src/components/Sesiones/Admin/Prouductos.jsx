@@ -28,7 +28,7 @@ const[crear, setCrear]=useState(false)
                                     <th className='border'>Stock</th>
                                   </tr>
                                 </thead>
-                                      //{console.log(data)}                       
+                                                        
                                 <tbody className='mt-2 bg-white'>
                                 
                                   <tr >

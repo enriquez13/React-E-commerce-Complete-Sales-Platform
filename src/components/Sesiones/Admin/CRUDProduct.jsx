@@ -1,6 +1,7 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { UpData } from "./UpData";
 
 const AddProductForm = () => {
   const { register, handleSubmit, control, formState: { errors } } = useForm();
@@ -14,7 +15,7 @@ const AddProductForm = () => {
     const imgPromises = [];
   
     const productData = {
-      id: 1,
+      id: data.category,
       category: data.category,
       nombre: data.nombre,
       valor: Number(data.valor),
@@ -22,7 +23,7 @@ const AddProductForm = () => {
       sizes: fields.map((size) => ({
         size: size.size,
         colors: size.colors.map((color) => ({
-          idepro: 1,
+          idepro: color.color,
           color: color.color,
           bg: color.bg,
           stock: Number(color.stock),
@@ -61,7 +62,7 @@ const AddProductForm = () => {
       <input {...register("category")} className=' mt-1 mb-3 bg-gray-100 ml-2'/>
     </label>
     <label className="block">
-      Nombre:
+      Nombre del producto:
       <input {...register("nombre")} className='mt-1 mb-3 bg-gray-100 ml-2'/>
     </label>
     <label className="block">
@@ -91,14 +92,16 @@ const AddProductForm = () => {
             Size:
             <input {...register(`sizes.${sizeIndex}.size`)} className='mt-1 mb-3 bg-gray-100 ml-2'/>
           </label>
-          <button className="bg-black text-white mx-4"
-            type="button"
-            onClick={() => {
-              remove(sizeIndex);
-            }}
-          >
-            Eliminar talla
-          </button>
+          {//<button className="bg-black text-white mx-4"
+          //  type="button"
+          //  onClick={() => {
+          //    remove(sizeIndex);
+          //  }}
+          //>
+          
+          //</div>  Eliminar talla
+          //</button>
+          }
           {size.colors && size.colors.map((color, colorIndex) => (
             <div key={color.id}>
               <label className="block">
@@ -131,6 +134,16 @@ const AddProductForm = () => {
         </div>
    ))}
    </label>
+   
+   <button className="bg-black text-white mx-4 py-1 px-3 rounded-lg"
+        type="button"
+        onClick={() => {
+          append({
+            size: "",
+            colors: [{ color: "rojo", bg: "rojo", stock: 0, img: "" }],
+          });
+        }}
+      ></button>
    <button type="submit" className="block my-4 bg-black text-white w-1/2 py-2">Agregar producto</button>
    </form>
  );
@@ -139,7 +152,9 @@ const AddProductForm = () => {
 const CRUDProduct = () => {
   return (
     <div>
-      <AddProductForm />
+      {//<AddProductForm />
+      }
+      <UpData />
     </div>
   );
 };
