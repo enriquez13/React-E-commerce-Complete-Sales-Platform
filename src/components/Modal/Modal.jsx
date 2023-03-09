@@ -118,9 +118,9 @@ export const Modal = (props) => {
                             {allProducts.map((producto, index) => (
                                 <div className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem]">
                                     <div className=" col-span-2">
-                                        <img
+                                        <img className="y-[3rem] w-[3rem] object-cover"
                                             src={ selectedProduct.id === producto.id && selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen }
-                                            className="max-w-[4rem] max-y-[4rem]"
+                                            
                                         />
                                     </div>
                                
