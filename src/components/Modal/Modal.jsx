@@ -120,7 +120,7 @@ export const Modal = (props) => {
                                     <div className=" col-span-2">
                                         <img
                                             src={ selectedProduct.id === producto.id && selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen }
-                                            className="max-w-full"
+                                            className="max-y-full object-cover"
                                         />
                                     </div>
                                
