@@ -203,6 +203,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
     }
     return item.colors.map((col, index) => (
       <div className=''>
+        {console.log("gb : ", col.bg)}
         <button
           key={col.color}
           onClick={() => {
