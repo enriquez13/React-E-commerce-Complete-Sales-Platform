@@ -431,7 +431,7 @@ Puedes pagar con transferencia a Bancolombia, Nequi, Daviplata, pagos con tarjet
         </div>
     </div>
     </div>
-
+    
     <SliderCustomer />
     <div className='flex items-center justify-center'>
         <button className="text-lg md:text-4xl md:mt-12 py-2 px-7 text-center mt-8 mb-[5rem] border border-gray-300 rounded-lg">Buscar más productos</button>

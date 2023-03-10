@@ -5,7 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 //import { BsBag } from 'react-icons/bs';
 
-const descuento = 0.8
+const descuento = 0.6
 const precioLimite = 149900
 
 export const Modal = (props) => {
@@ -94,9 +94,15 @@ export const Modal = (props) => {
                                         </p>
                                         
                                         <p className="text-sm leading-5 text-gray-500 ">
-                                            <span className={`${totalPrice()>=precioLimite ? 'line-through text-gray-400' :"text-gray-700"} font-bold `}>{product.valor}</span>
-                                            { totalPrice() >= precioLimite ? <span className='text-gray-700 font-bold pl-2'>{product.valor*descuento}</span> : " "}
-                                        </p>
+      <span className={`${cart.length > 2 && index > 0 ? 'line-through text-gray-400' : 'text-gray-700'} font-bold`}>
+        {product.valor}
+      </span>
+      {totalPrice() >= precioLimite && index > 0 ? (
+        <span className='text-gray-700 font-bold pl-2'>
+          {product.valor * descuento}
+        </span>
+      ) : " "}
+    </p>
                                     </div>
                                     <div className="absolute top-[50%] right-3">
                                         <button onClick={() => removeProduct(product.ide)}
@@ -183,7 +189,7 @@ export const Modal = (props) => {
                 </div>
                 </div>
 
-                <div className="h-[12vh] bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
+                <div className="h-[10vh] bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
                 <h3 className="text-sm leading-5 text-gray-500 w-full text-center pt-1">
                             <span className='font-bold text-black'>Total:</span> <span className={`${ 'text-black font-bold'}`}>
                                 {totalPrice()}</span>

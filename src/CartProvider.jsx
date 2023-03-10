@@ -20,11 +20,27 @@ const addProduct = (item, quantity, talla, color, ide, img) =>{
   
 }
 
-
-const totalPrice = () =>{
-  return cart.reduce((prev,act) => prev + act.quantity * act.valor, 0)
-}
+// Precio total
+//const totalPrice = () =>{
+//  return cart.reduce((prev,act) => prev + act.quantity * act.valor, 0)
+//}
 //console.log('totalPrice: ' ,totalPrice )
+
+//Descuento a partir de la segunda prenda
+const descuento = 0.6; // 40% de descuento
+const totalPrice = () => {
+  const total = cart.reduce((prev, product, index) => {
+    const valor = Number(product.valor);
+    const cantidad = product.quantity || 1; // Si la propiedad quantity no está definida, se asume que hay 1 producto
+    if (index > 0 || cantidad > 1 ) {
+      prev += valor * descuento * cantidad;
+    } else {
+      prev += valor * cantidad;
+    }
+    return prev;
+  }, 0);
+  return total;
+};
 const totalProducts = () =>{
   return cart.reduce((acomulador,productoActual) => acomulador + productoActual.quantity, 0)
 }
