@@ -128,8 +128,8 @@ export const Modal = (props) => {
                                             <h4 className="text-xs font-bold text-black">{producto.category}</h4>
                                             <h4 className="text-xs font-bold text-gray-500">{producto.nombre}</h4>
                                             <p className="text-sm leading-5 text-gray-500 ">
-                                                <h4 className="font-bold text-black text-sm">{producto.valor * 0.6}</h4>
-                                                <h4 className={`${" line-through text-gray-500"} font-bold text-sm`}>{producto.valor}</h4>
+                                                <span className="font-bold text-black text-sm">{producto.valor * 0.6}</span>
+                                                <span className={`${" line-through text-gray-500"} font-bold text-sm`}>{producto.valor}</span>
                                             </p>
                                         </div>
                                         <div className='col-span-4'>
@@ -160,9 +160,9 @@ export const Modal = (props) => {
                                                                     <button
                                                                     onClick={() => handleColorClick(color)}
                                                                         className={`${color === "rojo" ? "border-2 border-black w-5 h-5"
-                                                                            : "border border-gray-300 w-5 h-5"} 
-                                                                        ${color.bg} md:mx-0 border rounded-full transform duration-500 hover:scale-110`}
-                                                                        key={index}></button>
+                                                                            : "border border-gray-300 w-5 h-5"} md:mx-0 border 
+                                                                            rounded-full transform duration-500 hover:scale-110 ${color.bg}`}
+                                                                        key={color.idepro}></button>
                                                                 ))}
 
                                                         </>
@@ -183,22 +183,23 @@ export const Modal = (props) => {
                 </div>
                 </div>
 
-                <div className="h-[12vh] bg-gray-50  fixed bottom-0 w-full shadow-md">
+                <div className="h-[12vh] bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
                 <h3 className="text-sm leading-5 text-gray-500 w-full text-center pt-1">
                             <span className='font-bold text-black'>Total:</span> <span className={`${ 'text-black font-bold'}`}>
                                 {totalPrice()}</span>
                         </h3>
                     
-                    <div className='px-4 py-1 sm:px-6 flex justify-center w-full gap-2'>
+                    <div className='px-6 py-1 sm:px-6 w-full gap-2'>
                     {cart.length ?
+                    <NavLink to='/pay' className="">
                         <button 
                             type="button"
                             className="w-full inline-flex justify-center rounded-md border border-transparent px-2 py-2 
-                            bg-black text-xs leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none 
+                            bg-black text-sm leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none 
                             focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-1000 sm:text-sm sm:leading-5"
                         >
                             Terminar compra
-                        </button>
+                        </button></NavLink>
                     : ""}</div>
                 </div>
             

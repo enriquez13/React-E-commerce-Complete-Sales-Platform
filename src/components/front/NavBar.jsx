@@ -36,11 +36,11 @@ function NavBar() {
   };
     return (
         <> 
-            <div className="fixed z-10 shadown-md w-full top-0 left-0 " >
-            {opens === false ? <div className="relative z-10 w-full bg-gray-700 top-0 text-center ">
+           <div className="fixed z-10 shadown-md w-full top-0 left-0 " >
+            {opens === false && scroll <= 100? <div className="relative z-10 w-full bg-gray-700 top-0 text-center "> 
             <div className="w-full h-[2rem] flex items-center justify-center text-[0.6rem] text-amber-200 tracking-[0.3rem] uppercase" style={{ display: 'flex', alignItems: 'center' }}>
                 <AnimatedText />
-            </div>
+            </div> 
             
                 <div onClick={closeOpen} className="absolute left-3 md:left-[3rem] content-center flex items-center
                 top-[25%] text-white md:transform md:hover:text-gray-700 cursor-pointer"><AiOutlineClose /></div>
@@ -89,7 +89,7 @@ function NavBar() {
                             </div>
 
                             {DataCategorias.map((categorias,index)=>(
-                            <NavLink to={`/categoria/${categorias.url}`} className="mx-10  grid grid-cols-3 gap-4 cursor-pointer md:ml-8 text-xl md:my-0 py-2 text-white hover:text-gray-400 duration-500" onClick={() => setOpen(!open)}>
+                            <NavLink key={index} to={`/categoria/${categorias.url}`} className="mx-10  grid grid-cols-3 gap-4 cursor-pointer md:ml-8 text-xl md:my-0 py-2 text-white hover:text-gray-400 duration-500" onClick={() => setOpen(!open)}>
                             <div className="md:hidden grid-row-span-2">
                               <img src={categorias.src} className="w-[6rem] h-[6rem] object-cover"/>
                             </div>

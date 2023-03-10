@@ -9,15 +9,16 @@ const ItemCart = ({product})=>{
     const [goToCart, setGoToCart] = useState(false)
     const {addProduct} = useCartContext();
 
-        const onAdd = (quantity, talla, color, ide) =>{
+        const onAdd = (quantity, talla, color, ide, img) =>{
         setGoToCart(true)
-        addProduct(product, quantity, talla, color, ide)
+        addProduct(product, quantity, talla, color, ide, img)
     }
     return(
         <>
             <div className=" text-black mx-2 border rounded-xl flex md:grid-cols-4 my-1">
                 <div className="p-1 flex-none w-1/4 items-center justify-center">
                     <img className="rounded-xl md:w-4/6" src={product.imagenes[0].img} />
+                    {console.log(product)}
                 </div>
 
                 <div className="  w-2/4 grid items-center ml-4 ">

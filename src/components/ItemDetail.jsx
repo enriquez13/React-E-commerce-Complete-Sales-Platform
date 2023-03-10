@@ -116,7 +116,7 @@ const [selectedImageIndex, setSelectedImageIndex] = useState(null);
         setImg(slider.imagen)
     }
  
-    const [talla, setTalla] = useState(null)
+    const [talla, setTalla] = useState(data.sizes[0].size)
     const [color, setColor] = useState('')
     const [ide, setIde] = useState('')
     const [img, setImg] = useState("")
@@ -124,10 +124,12 @@ const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 function agregar(){
     setShowModal(true)
     onAdd(1, talla, color, ide, img)
+    {console.log("talla", talla)}
     setTalla("")
     setColor("")
     setImg("")
     setSelectedSize({})
+    setSelectedImageIndex(null)
 }
 const closeModaldetail = () => {
   setShowModal(false);
@@ -152,7 +154,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
 
                     {images?.map((foto, i) => (
                 <img
-                  key={foto.idepro}
+                  key={i}
                   src={foto.imagen}
                   className={`${
                     selectedImageIndex === i
@@ -182,6 +184,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
     setSelectedSize(c)
     setImages(c.colors)
     setTalla(c.size)
+                             {console.log("settalla", talla)}
   }}
                              className={`${
                                c.size === selectedSize.size
@@ -202,21 +205,22 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
       return null;
     }
     return item.colors.map((col, index) => (
-      <div className=''>
-        {console.log("gb : ", col.bg)}
+      <div className='' key={index}>
         <button
-          key={col.color}
+          key={index}
           onClick={() => {
             setColor(col.color);
             setImg(col.imagen)
             setIde(col.idepro);
             setSliderData(data?.sizes[0].colors[index] )
             setSelectedImageIndex(index)
-            
+    
           }}
-          className={`${col.color === selectedSize?.colors[selectedImageIndex]?.color  ? "border-2 border-black w-7 h-7" : "border border-gray-300 w-7 h-7"} ${col.bg} md:mx-0 border rounded-full transform duration-500 hover:scale-110`}
-        />
-      </div>
+          className={`${col.color === selectedSize?.colors[selectedImageIndex]?.color 
+            ? "border-2 border-black w-7 h-7 " 
+            : "border border-gray-300 w-7 h-7 "} ${col.bg} md:mx-0 border rounded-full transform duration-500 hover:scale-110`}
+        />      
+        </div>
     ));
   })}
 </div>

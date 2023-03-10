@@ -3,8 +3,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {useCartContext} from '../CartProvider'
 import { useState } from 'react'
-import { BsBagCheck } from "react-icons/bs";
-import { Modal } from './Modal/Modal';
+//import { BsBagCheck } from "react-icons/bs";
+//import { Modal } from './Modal/Modal';
 
 //import { cartContext } from '../CartProvider'
 
@@ -19,9 +19,9 @@ const {addProduct, cart, removeProduct, totalPrice, totalProducts} = useCartCont
 }
 //const [colores, setColores] = useState([])
 
-const [talla, setTalla] = useState('')
-const [color, setColor] = useState('')
-const [ide, setIde] = useState('')
+//const [talla, setTalla] = useState('')
+//const [color, setColor] = useState('')
+//const [ide, setIde] = useState('')
 
 function agregar() {
     setShowModal(true)
@@ -59,17 +59,20 @@ const closeModal = () => {
                         <div className='grid grid-cols-8 md:grid-cols-8 gap-1 md:mx-[3rem] md:mt-5'>
                         {
                            info.sizes[0].colors.slice(0, 6).map((col,index) => (
-                                <>
-                                    <button onClick={() => {
+                                
+                               <React.Fragment key={index}>
+                                    <button //onClick={() => {
                                         //setColor(col.color)
                                         //setIde(col.idepro)
-                                    }} 
-                                    key={col.color+index} className={` 
+                                    //}} 
+                                    key={col.idepro} 
+                                    className={` 
                                     " w-4 h-4 md:w-7 md:h-7 md:transform duration-500 md:hover:scale-110"} 
-                                        mx-1 border rounded-full  ${col.bg} `}>
+                                        mx-1 border rounded-full ${col.bg} `}>
                                     
                                     </button>
-                                </>
+                                    </React.Fragment>
+                            
                             )
                             ) } {info.sizes[0].colors.length>5 
                             ?<button className='rounded-full w-4 h-4 md:w-7 md:h-7 md:transform duration-500 md:hover:scale-110"}  
