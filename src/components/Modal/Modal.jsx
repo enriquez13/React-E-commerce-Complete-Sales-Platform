@@ -209,7 +209,7 @@ export const Modal = (props) => {
                         
                     : ""}
                     <div className='w-1/2'>
-                    <button 
+                    <button onClick={closeModal}
                             type="button"
                             className="w-full inline-flex justify-center rounded-md border border-transparent px-2 py-2 
                             bg-black text-sm leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none 
