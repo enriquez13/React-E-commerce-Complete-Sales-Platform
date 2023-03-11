@@ -6,10 +6,10 @@ function Ordenes({ data }) {
         <>
             <h1 className='text-center mb-9 text-2xl'>Ordenes</h1>
             <section className='flex mb-[3rem]'>
-              <div className='w-1/4 py-2 pl-3 bg-gray-200 border border-bg-gray-300 '>Por preparar 1</div>
-              <div className='w-1/4 py-2 pl-3 bg-gray-200 border border-bg-gray-300 mx-1'>En preparación 0</div>
-              <div className='w-1/4 py-2 pl-3 bg-gray-200 border border-bg-gray-300 mr-1'>En tránsito 0</div>
-              <div className='w-1/4 py-2 pl-3 bg-gray-200 border border-bg-gray-300 '> Entregado 0</div>
+              <div className='w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300 '>Por preparar 1</div>
+              <div className='w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300'>En preparación 0</div>
+              <div className='w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300'>En tránsito 0</div>
+              <div className='w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300 '> Entregado 0</div>
             </section>
             
             <table className="table-auto  w-full text-center border text-[0.6rem] md:text-base">         

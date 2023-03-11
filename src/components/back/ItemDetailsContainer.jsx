@@ -10,6 +10,7 @@ import ItemList from '../ItemList';
 export const ItemDetailContainer = ()=>{
     const [data,setData] = useState({})
     const { detalleId } = useParams()
+    {console.log("detalleId : ", detalleId)} //console
     const [allProducts, setAllProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -51,9 +52,9 @@ export const ItemDetailContainer = ()=>{
     return (
         <>
         <Navbar />
-        <ItemDetail data={data} allProducts={allProducts}/>
-        <ItemList />
-      
+        <ItemDetail data={data} allProducts={allProducts} />
+        {//<ItemList />
+        }  
         </>
     )
 }

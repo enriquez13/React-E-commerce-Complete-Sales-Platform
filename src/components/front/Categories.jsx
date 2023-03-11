@@ -17,8 +17,8 @@ export const Categories = () => {
                 <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src={category.src} />
                     <div className="absolute grid bottom-[50%] translate-y-[50%] w-full text-sm px-4 ">
                         <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold" >{category.nombre}</h3>
-                        <button className="w-1/2 rounded-xl place-self-center py-3 text-center border-gray-200 text-gray-200
-                         border  hover:bg-gray-200 hover:text-black font-extrabold tracking-wider bg-black
+                        <button className="w-1/2 rounded-xl place-self-center py-3 text-center  text-gray-200
+                         border border-gray-400 md:hover:bg-opacity-80  font-extrabold tracking-wider bg-black
                         bg-opacity-50">{category.boton}</button>
                     </div>                
                 </NavLink>

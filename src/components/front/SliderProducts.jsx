@@ -1,29 +1,14 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import img1 from '../../../public/i1.jpg'
-import img2 from '../../../public/i2.jpg'
-import img3 from '../../../public/i3.jpg'
-import img4 from '../../../public/i4.jpg'
-import img5 from '../../../public/i5.jpg'
-import img7 from '../../../public/i7.jpg'
-import img8 from '../../../public/i8.jpg'
-import img9 from '../../../public/i9.jpg'
-import img10 from '../../../public/i10.jpg'
-import img11 from '../../../public/i11.jpg'
-import img12 from '../../../public/i12.jpg'
-import img13 from '../../../public/i13.jpg'
+import { Link } from "react-router-dom";
 
 
-export const SliderCustomer = () => {
-  const slides = [
-    {url: img1},{url: img2},{url: img3},{url: img4},{url: img5},{url: img7},{url: img8},
-    {url: img9},{url: img10},{url: img11},{url: img12},{url: img13},
-   ]
-   
-   const settings = {
+export const SliderProducts = ({ allProducts }) => {
+  //const sliderRef = useRef(null);
+
+  const settings = {
     dots: true,
     infinite: true,
     speed: 900,
@@ -59,20 +44,29 @@ export const SliderCustomer = () => {
   };
 
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto">
       <Slider {...settings} //ref={sliderRef}
       >
-        {slides.map((productos, index) => (
+        {allProducts?.map((productos, index) => (
           <div key={index} className="p-4">
+        
             <div className=" overflow-hidden">
+            <Link to={{ pathname: `/detalle/${productos.id}`, state: { producto: productos } }}>
+
               <img
-                src={productos.url}
-                alt={productos.url}
-                className="w-full h-[18rem] object-cover rounded-lg"
+                src={productos.imagenes[0].img}
+                alt={productos.nombre}
+                className="w-full h-[20rem] object-cover rounded-lg"
               />
-             
+           
+              <div className="p-4">
+                <h2 className="font-bold text-sm mb-2 text-center">{productos.category}{" "}{productos.nombre}</h2>
+                <p className="text-gray-700 text-sm  text-center">${productos.valor}</p>
+              </div>
+              </Link>
             </div>
           </div>
+            
         ))}
       </Slider>
       {// botones de adelantar o regresar
@@ -93,6 +87,4 @@ export const SliderCustomer = () => {
     }
     </div>
   );
-    
-}
-export default SliderCustomer
+};

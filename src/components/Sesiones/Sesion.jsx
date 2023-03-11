@@ -4,7 +4,6 @@ import { HomeLogin } from './HomeLogin'
 import firebaseApp from '../../firebase/config';
 import {getAuth, onAuthStateChanged} from "firebase/auth"  
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
-import NavBar from '../front/NavBar';
 
 const firestore = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp)
@@ -43,7 +42,6 @@ function setUserWithFirebaseAndRol (usuarioFirebase){
   })
   return (
    <> 
-   <NavBar user={user}/>
    <button onClick={()=> signOut(auth)} className=" text-white rounded-lg py-2 px-4">Cerrar sesión</button>
    {user ? <HomeLogin user={user}/> : <Login/>} 
    </>

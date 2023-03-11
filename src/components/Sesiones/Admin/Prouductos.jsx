@@ -5,7 +5,7 @@ import CRUDProduct from './CRUDProduct';
 //import { CRUDProducto } from './CRUDProducto'
 
 
-export const Prouductos = ({data}) => {
+export const Prouductos = ({productos}) => {
 const[crear, setCrear]=useState(false)
     return(
         <>
@@ -22,24 +22,39 @@ const[crear, setCrear]=useState(false)
                                   <thead className=''>
                                   <tr className='rounded-lg bg-gray-200 '>
                                   <th className='border'>Imagen</th>
-                                    <th className='border'>Nombre</th>
                                     <th className='border'>ID Producto</th>
+                                    <th className='border'>Nombre</th>
+                                    <th className='border'>Talla</th>
+                                    <th className='border'>Color</th>
                                     <th className='border'>Precio</th>
                                     <th className='border'>Stock</th>
                                   </tr>
                                 </thead>
                                                         
                                 <tbody className='mt-2 bg-white'>
+                                {productos.map((product, index)=>(
+                                   < >
+                                   
+                                   {product.sizes.map((producto, index)=>(
+                                    <>
+                                    {producto.colors.map((final, index)=>(
+                                    <tr  className=''>
+                                    <td className="px-3 py-3 border ">
+                                      <img src={final.imagen} className="object-cover h-[4rem] w-[4rem]" />  </td>
+                                    <td className="px-3 py-3 border"> {final.idepro}</td>
+                                    <td className="px-3 py-3 border">{product.category}{" "}{product.nombre}</td>                                    
+                                    <td className="px-3 py-3 border">{producto.size}</td>            
+                                    <td className="px-3 py-3 border">{final.color}</td>
+                                    <td className="px-3 py-3 border">{product.valor}</td>
+                                    <td className="px-3 py-3 border">{final.stock}</td>
+                                    </tr>
+                                    ))}
+                                    </>
+                                   ))}
+                                  
+                                  </>
+                                ))}
                                 
-                                  <tr >
-                                    <td className="px-3 py-3 border">img</td>
-                                    <td className="px-3 py-3 border">#</td>
-                                    <td className="px-3 py-3 border"> nombre</td>
-                                    <td className="px-3 py-3 border">precio</td>
-                                    <td className="px-3 py-3 border">stock</td>
-                                  </tr>
-                               
-                               
                                   </tbody>                  
             </table>  
         </>

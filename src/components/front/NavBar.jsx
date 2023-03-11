@@ -6,7 +6,7 @@ import { BsBag } from 'react-icons/bs';
 import { useCartContext } from "../../CartProvider";
 import AnimatedText from "../AnimatedText/AnimatedText";
 import firebaseApp from '../../firebase/config';
-import { DataCategorias } from "./DataCategorias";
+import { DataCategorias, DataIformacion } from "./DataCategorias";
 
 function NavBar() {
   const [open, setOpen] = useState(false);
@@ -54,7 +54,7 @@ function NavBar() {
                     ${open ? "bg-opacity-[1]" : ""}
                 flex transition-all duration-1000 bg-black relative items-center justify-center py-4 md:px-10 px-7`}>
                     <div className={` ${scroll <= 100 ? "md:col-start-1 md:col-span-6" : "md:col-start-1 md:col-span-1" }
-                     text-gray-300 z-100 md:col-start-1 md:col-span-1`}>
+                     text-gray-300 z-100 md:col-start-1 md:col-span-1  h-full`}>
                         <NavLink to="/">
                             <div className="text-xl md:text-2xl tracking-[0.1rem] text-gray-400 text-center">
                                 ZOROBABEL
@@ -81,7 +81,7 @@ function NavBar() {
 
                         <ul className={`md:flex md:items-center md:pb-0  absolute md:static bg-black bg-opacity-90 md:bg-transparent
                     md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-700 ease-in 
-                     ${open ? 'top-[3.5rem] overflow-y-scroll h-[100vh] pb-[10rem]' : 'top-[-1000px]'}  `}>
+                     ${open ? 'top-[3.5rem] overflow-y-scroll h-[100vh] pb-[10rem]' : 'top-[-1000px]'} `}>
 
                             <div className="md:hidden grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-6 text-white
                          hover:text-gray-400 duration-500 font-semibold ">
@@ -89,11 +89,13 @@ function NavBar() {
                             </div>
 
                             {DataCategorias.map((categorias,index)=>(
-                            <NavLink key={index} to={`/categoria/${categorias.url}`} className="mx-10  grid grid-cols-3 gap-4 cursor-pointer md:ml-8 text-xl md:my-0 py-2 text-white hover:text-gray-400 duration-500" onClick={() => setOpen(!open)}>
+                            <NavLink key={index} to={`/categoria/${categorias.url}`} className="mx-10  grid grid-cols-3 gap-4 cursor-pointer 
+                            md:ml-8 text-xl md:my-0 py-2 text-white hover:text-gray-400 duration-500" 
+                            onClick={() => setOpen(!open)}>
                             <div className="md:hidden grid-row-span-2">
                               <img src={categorias.src} className="w-[6rem] h-[6rem] object-cover"/>
                             </div>
-                            <div className="col-span-2 flex flex-col justify-center items-left mx-4">
+                            <div className="col-span-2 flex flex-col justify-center items-left mx-4  ">
                               <div className="mb-2 uppercase text-sm font-semibold">{categorias.nombre}</div>
                               <div className="md:hidden text-sm text-gray-300 font-semibold">{categorias.detalle}</div>
                             </div>
@@ -102,26 +104,17 @@ function NavBar() {
                             <hr className="bg-gray-900 opacity-30 mx-10  my-8" />
 
 
-                            <NavLink className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
+                            {DataIformacion.map((informacion, index)=>(   
+                            <NavLink key={index} to={`/${informacion.url}`}
+                            className="grid justify-items-center content-center  cursor-pointer md:ml-8 text-xl md:my-0 py-2
                          text-white hover:text-gray-400 duration-500">
-                                Contacto
+                                <h3  className="mb-2 uppercase text-sm font-semibold">{informacion.nombre}</h3>
                             </NavLink>
-                            <NavLink className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
-                         text-white hover:text-gray-400 duration-500">
-                                Sobre nosotros
-                            </NavLink>
-                            <NavLink to='/sesion' className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
-                         text-white hover:text-gray-400 duration-500">
-                                Iniciar sesión o registro
-                            </NavLink>
-                            <NavLink to='/wompiWidget' className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
-                         text-white hover:text-gray-400 duration-500">
-                                Event
-                            </NavLink>             
-                            <NavLink to='/adminn' className="grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-2
-                         text-white hover:text-gray-400 duration-500">
-                                Admin2
-                            </NavLink>                   
+                            ))}
+                          
+                       
+                                 
+                                          
                         </ul>
                      
                     </div>

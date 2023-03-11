@@ -2,6 +2,6 @@ import React from 'react'
 
 export const Clientes = () => {
   return (
-    <div className='ml-5 mt-3'>Clientes</div>
+    <h1 className='text-center mb-9 text-2xl'>Clientes</h1>
   )
 }

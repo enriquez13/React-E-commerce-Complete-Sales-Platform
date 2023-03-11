@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import {useCartContext} from '../CartProvider'
 //import { ItemCount } from './ItemCount'
@@ -6,81 +6,11 @@ import { FiPlus, FiMinus } from "react-icons/fi"
 import SliderCustomer from './front/SliderCustomers'
 import './Details.css'
 import { Modal } from './Modal/Modal'
+import { SliderProducts } from './front/SliderProducts'
+import Footer from './front/Footer'
+import { Informatio } from './front/Informatio'
 
-const products = {
-  id: 6,
-  category: "camibuso",
-  imagenes: [{
-      id:0 , img:"https://i.pinimg.com/564x/a3/86/35/a386354159315f097d22b97209e76754.jpg"
-  },
-  {
-      id:1 , img:"https://i.pinimg.com/564x/2d/8c/48/2d8c480bca67f6a9bb9f6cf475af24a9.jpg"
-  },
-  {
-      id:2 , img:"https://i.pinimg.com/564x/68/92/d1/6892d1348f031c501ef46c33e6ee6c75.jpg"
-  },
-  ],
-  nombre: "cuello polo",
-  stock: 2,
-  valor: 90000,
-  cantidad: 4,
-  sizes: [
-      {
-          size: 'S',
-          colors: [
-              { idepro:'CBPUSBLA' ,color: 'blanco', bg:"bg-white" ,stock: 10 , imagen:
-              "https://firebasestorage.googleapis.com/v0/b/ecommerce-112df.appspot.com/o/images%2Fmilitar1.jpeg?alt=media&token=8f36bc84-97c1-42ce-a08b-c654568a6476"},
-              { idepro:'CBPUSNEG' ,color: 'negro', bg:"bg-neutral-900", stock: 5, imagen: 
-              "https://firebasestorage.googleapis.com/v0/b/ecommerce-112df.appspot.com/o/images%2Fmilitar2.jpeg?alt=media&token=b4848056-6291-4a6c-82f0-db80a6baff1d" },
-              { idepro:'CBPUSGRI' ,color: 'gris', bg:"bg-gray-500" ,stock: 10 },
-              { idepro:'CBPUSROJ' ,color: 'rojo', bg:"bg-[#D10000]", stock: 5 },
-              { idepro:'CBPUSROS' ,color: 'rosado', bg:"bg-rose-400", stock: 5 },                    
-              { idepro:'CBPUSVIN' ,color: 'vinotinto', bg:"bg-[#56070c]", stock: 5 },
-              { idepro:'CBPUSCEL' ,color: 'celeste', bg:"bg-blue-300", stock: 5 },
-              { idepro:'CBPUSAZU' ,color: 'azul oscuro', bg:"bg-[#07144E]", stock: 5 },
-              { idepro:'CBPUSBEI' ,color: 'beige', bg:"bg-[#c9a974]", stock: 5 }
-          ],
-      },
-      {
-          size: 'M',
-          colors: [
-              {idepro:'CBPUMBLA', color: 'blanco', bg:"bg-white" ,stock: 10 },
-              {idepro:'CBPUMNEG', color: 'negro', bg:"bg-neutral-900", stock: 5 },
-              {idepro:'CBPUMGRI', color: 'gris', bg:"bg-gray-500" ,stock: 10 },
-              {idepro:'CBPUMROJ', color: 'rojo', bg:"bg-[#D10000]", stock: 5 },
-              {idepro:'CBPUMROS', color: 'rosado', bg:"bg-rose-400", stock: 5 },                    
-              {idepro:'CBPUMVIN', color: 'vinotinto', bg:"bg-[#56070c]", stock: 5 },
-              {idepro:'CBPUMCEL', color: 'celeste', bg:"bg-blue-300", stock: 5 },
-              {idepro:'CBPUMAZU', color: 'azul oscuro', bg:"bg-[#07144E]", stock: 5 },
-              {idepro:'CBPUMBEI', color: 'beige', bg:"bg-[#c9a974]", stock: 5 }
-          ],
-      },
-      {
-          size: 'L',
-          colors: [
-              {idepro:'CBPULBLA', color: 'blanco', bg:"bg-white" ,stock: 10 },
-              {idepro:'CBPULNEG', color: 'negro', bg:"bg-neutral-900", stock: 5 },
-              {idepro:'CBPULGRI', color: 'gris', bg:"bg-gray-500" ,stock: 10 },
-              {idepro:'CBPULROJ', color: 'rojo', bg:"bg-[#D10000]", stock: 5 },
-              {idepro:'CBPULROS', color: 'rosado', bg:"bg-rose-400", stock: 5 },                    
-              {idepro:'CBPULVIN', color: 'vinotinto', bg:"bg-[#56070c]", stock: 5 },
-              {idepro:'CBPULCEL', color: 'celeste', bg:"bg-blue-300", stock: 5 },
-              {idepro:'CBPULAZU', color: 'azul oscuro', bg:"bg-[#07144E]", stock: 5 },
-              {idepro:'CBPULBEI', color: 'beige', bg:"bg-[#c9a974]", stock: 5 }
-          ],
-      },
-      {
-          size: 'XL',
-          colors: [
-              {idepro:'CBPUXLBLA', color: 'blanco', bg:"bg-white" ,stock: 10 },
-              {idepro:'CBPUXLNEG', color: 'negro', bg:"bg-neutral-900", stock: 5 },
-              {idepro:'CBPUXLGRI', color: 'gris', bg:"bg-gray-500" ,stock: 10 },
-            
-          ],
-      },
-     
-  ],
-}
+
 const imgs =[
     {id:0, img:"https://geekflare.com/wp-content/uploads/2021/09/520401-pure-black-background-wallpaper.jpg"},
 ]
@@ -91,6 +21,13 @@ export const ItemDetail = (props) => {
   const [images, setImages] = useState(data && data.sizes && data.sizes[0].colors ? data.sizes[0].colors :null)
 //{console.log("data.sizes",data?.sizes[0]?.colors)}
 //{console.log("selectedSize",selectedSize?.colors)}
+
+useEffect(() => {
+  if (data?.sizes) {
+    setSelectedSize(data.sizes[0]);
+    setImages(data.sizes[0].colors);
+  }
+}, [data]);
 
   const [showModal, setShowModal] = useState(false);
 const [goToCart, setGoToCart] = useState(false)
@@ -425,17 +362,21 @@ Puedes pagar con transferencia a Bancolombia, Nequi, Daviplata, pagos con tarjet
 
 </h3>
 </div>)}
+
             </div>
             </div>
             <hr/>
         </div>
     </div>
     </div>
+    <h2 className='w-full text-center text-lg font-semibold my-14 '>TAMBIEN TE PUEDE INTERESAR</h2>
+     
+     <SliderProducts allProducts={allProducts} />    
+     <h2 className='w-full text-center text-lg font-semibold mt-20 '>AlGUNAS RESEÑAS DE CLIENTES</h2>
+    <SliderCustomer />   
+    <Informatio />      
+    <Footer />
     
-    <SliderCustomer />
-    <div className='flex items-center justify-center'>
-        <button className="text-lg md:text-4xl md:mt-12 py-2 px-7 text-center mt-8 mb-[5rem] border border-gray-300 rounded-lg">Buscar más productos</button>
-    </div>
     {showModal && (
         <Modal closeModal={closeModaldetail} addProduct={addProduct} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
       )}

@@ -4,6 +4,8 @@ import Ordenes from './Ordenes';
 import { Prouductos } from './Prouductos';
 import firebaseApp from '../../../firebase/config'
 import { getAuth, signOut } from 'firebase/auth'
+import { NavLink } from 'react-router-dom';
+import { Clientes } from './Clientes';
 
 //function handleAction(event) {
   //console.log('Child did:', event.target.value);
@@ -12,6 +14,7 @@ const  auth = getAuth(firebaseApp)
 
 export const Admin = () => {
   const [data, setData] = useState({})
+  const [productos, setProductos] = useState({})
   
   useEffect(()=> {
     const querydb = getFirestore()
@@ -19,33 +22,46 @@ export const Admin = () => {
     getDocs(queryCollection)
             .then(res => setData(res.docs.map(product => ({id:product.id, ...product.data()}))))
 },[])
+useEffect(()=> {
+  const querydb = getFirestore()
+  const queryCollection = collection(querydb, 'productos')
+  getDocs(queryCollection)
+          .then(res => setProductos(res.docs.map(product => ({id:product.id, ...product.data()}))))
+},[])
 
-const [ordenes, setOrdenes] = useState('')
-function handlechange(e){
-  setOrdenes(e.target.value)
+const [contenido, setContenido] = useState(null);
+
+function handlechangeOrdenes(){
+  setContenido(<Ordenes data={data}/>)
+}
+function handlechangeProductos(){
+  setContenido(<Prouductos productos={productos}/>)
+}
+function handlechangeClientes(){
+  setContenido(<Clientes />)
 }
 
   return (
     
-    <div className='md:flex '>
-        <button onClick={()=> signOut(auth)} className="bg-black text-white rounded-lg py-2 px-4">Cerrar sesión</button>
-        <aside className=' mx-1 my-1 bg-black rounded-md md:w-1/6 text-white pt-[4rem]'>
-        <button className='w-full px-2 pt-6  bg-black ' value='ordenes' onClick={handlechange}>
+    <div className='md:flex h-screen'>
+
+        <aside className=' mx-1 my-1 bg-black  rounded-md md:w-1/6 text-white pt-[2rem]'>
+        <NavLink to='/'><button  className="w-full  text-blue-400 rounded-lg pb-2 px-4">Ir a la tienda</button></NavLink> 
+        <button onClick={()=> signOut(auth)} className="w-full  text-blue-400 rounded-lg pb-2 px-4">Cerrar sesión</button>
+        <button className='w-full px-2 pt-6  bg-black ' value='ordenes' onClick={handlechangeOrdenes}>
             Ordenes
         </button>
-        <button className='w-full px-2 pt-5 ' value='productos' onClick={handlechange}>
+        <button className='w-full px-2 pt-5 ' onClick={handlechangeClientes}>
             Clientes
         </button>
-        <button className='w-full px-2 pt-5 ' value='productos' onClick={handlechange}>
+        <button className='w-full px-2 pt-5 ' onClick={handlechangeProductos}>
             Productos
         </button>
         </aside>
 
 
         <div className='w-full md:w-5/6 px-10 pt-[4rem] '>
-          {ordenes==='ordenes'?<Ordenes data={data}/>:<Prouductos />}
-          
-
+          {contenido}
         </div>
         
     </div>

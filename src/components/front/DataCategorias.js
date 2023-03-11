@@ -10,3 +10,10 @@ export const DataCategorias = [
     {url:"chaqueta", nombre: "Chaquetas", detalle:"Con cierre",
     src:"https://i.pinimg.com/564x/82/59/8b/82598bdc2c04d71f84bb6ff680f75e77.jpg", boton: "Ver Ahora"},
 ]
+export const DataIformacion = [
+    {url: "", nombre: "Contacto"},
+    {url: "", nombre: "Nosotros"},
+    {url: "sesion", nombre: "Sesión"},
+    {url: "wompiWidget", nombre: "Event"},
+    {url: "adminn", nombre: "Admin2"}
+]
