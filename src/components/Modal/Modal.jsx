@@ -43,9 +43,9 @@ export const Modal = (props) => {
     return (
         <div className=" fixed w-full z-[100]  right-0 inset-y-0 pt-0 md:mt-[10rem]  sm:flex sm:items-center sm:justify-center ">
             <div className="fixed inset-0 transition-opacity" onClick={closeModal}>
-                <div className="absolute inset-0 bg-gray-100 "></div>
+                <div className="absolute inset-0 bg-black bg-opacity-80  "></div>
             </div>
-            <div className='relative h-[120vh]'>
+            <div className='relative h-[120vh] bg-gray-100'>
             <div className="h-[95vh] max-h-[100vh] md:max-h-[88vh] overflow-y-scroll  rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full ">
                 <div className="  pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div className="h-[70vh] text-center sm:mt-5 mx-2 relative">
@@ -189,15 +189,15 @@ export const Modal = (props) => {
                 </div>
                 </div>
 
-                <div className="h-[10vh] sm:max-w-lg sm:w-full bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
+                <div className="h-[10vh]  sm:max-w-lg sm:w-full bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
                 <h3 className="text-sm leading-5 text-gray-500 w-full text-center pt-1">
                             <span className='font-bold text-black'>Total:</span> <span className={`${ 'text-black font-bold'}`}>
                                 {totalPrice()}</span>
                         </h3>
                     
-                    <div className='px-6 py-1 sm:px-6 w-full gap-2'>
+                    <div className='px-6 py-1 sm:px-6 w-full gap-2 flex'>
                     {cart.length ?
-                    <NavLink to='/pay' className="">
+                    <NavLink to='/pay' className=" w-1/2">
                         <button 
                             type="button"
                             className="w-full inline-flex justify-center rounded-md border border-transparent px-2 py-2 
@@ -206,7 +206,19 @@ export const Modal = (props) => {
                         >
                             Terminar compra
                         </button></NavLink>
-                    : ""}</div>
+                        
+                    : ""}
+                    <div className='w-1/2'>
+                    <button 
+                            type="button"
+                            className="w-full inline-flex justify-center rounded-md border border-transparent px-2 py-2 
+                            bg-black text-sm leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none 
+                            focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-1000 sm:text-sm sm:leading-5"
+                        >
+                            Seguir comprando
+                        </button>
+                        </div>
+                    </div>
                 </div>
             
             </div>
