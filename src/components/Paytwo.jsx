@@ -170,19 +170,19 @@ export const Paytwo = () => {
       {errors.telefono && errors.telefono.type === 'minLength' && <p>El teléfono debe tener al menos 7 números</p>}
       {errors.telefono && errors.telefono.type === 'pattern' && <p>El teléfono no puede contener símbolos</p>}
       </div>
-      <label htmlFor="ciudad">Ciudad o municipio:</label>
-      <input id="ciudad" type="text" {...register('ciudad', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ\s]+$/  })} 
+      <label htmlFor="ciudad">Ciudad:</label>
+      <input id="ciudad" type="text" {...register('ciudad', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ\s#.\-]+$/,  })} 
       className='w-full mt-1 bg-gray-100'/>
-      <div className='text-red-400 mb-3'>{errors.ciudad && errors.ciudad.type === 'required' && <p>Falta escribir la ciudad o municipio</p>}
-      {errors.ciudad && errors.ciudad.type === 'minLength' && <p>La ciudad o municipio deben tener al menos 4 caracteres</p>}
-      {errors.ciudad && errors.ciudad.type === 'pattern' && <p>La ciudad o municipio no puede contener símbolos</p>}
+      <div className='text-red-400 mb-3'>{errors.ciudad && errors.ciudad.type === 'required' && <p>Falta escribir la ciudad</p>}
+      {errors.ciudad && errors.ciudad.type === 'minLength' && <p>La ciudad debe tener al menos 4 caracteres</p>}
+      {errors.ciudad && errors.ciudad.type === 'pattern' && <p>La ciudad no puede contener símbolos</p>}
       </div>
       <label htmlFor="direccion">Dirección:</label>
-      <input id="direccion" type="text" {...register('direccion', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ0-9#./\s]+$/  })} 
+      <input id="direccion" type="text" {...register('direccion', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ\s#.\-]+$/,  })} 
       className='w-full mt-1 bg-gray-100'/>
-      <div className='text-red-400 mb-3'>{errors.ciudad && errors.direccion.type === 'required' && <p>Falta escribir la dirección</p>}
-      {errors.direccion && errors.direccion.type === 'minLength' && <p>La Dirección debe tener al menos 4 caracteres</p>}
-      {errors.direccion && errors.direccion.type === 'pattern' && <p>La Dirección no puede contener símbolos</p>}
+      <div className='text-red-400 mb-3'>{errors.direccion && errors.direccion.type === 'required' && <p>Falta escribir la dirección</p>}
+      {errors.direccion && errors.direccion.type === 'minLength' && <p>La dirección debe tener al menos 4 caracteres</p>}
+      {errors.direccion && errors.direccion.type === 'pattern' && <p>La dirección no puede contener símbolos</p>}
       </div>
 
       <div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AiFillDelete } from "react-icons/ai"
 import { AiOutlineClose } from "react-icons/ai";
-
+import { ListaColores } from '../ListaColores';
 //import { BsBag } from 'react-icons/bs';
 
 const descuento = 0.6
@@ -41,12 +41,12 @@ export const Modal = (props) => {
   
 
     return (
-        <div className=" fixed w-full z-[100]  md:w-full right-0 inset-y-0 pt-0  sm:flex sm:items-center sm:justify-center">
+        <div className=" fixed w-full z-[100]  right-0 inset-y-0 pt-0 md:mt-[10rem]  sm:flex sm:items-center sm:justify-center ">
             <div className="fixed inset-0 transition-opacity" onClick={closeModal}>
                 <div className="absolute inset-0 bg-gray-100 "></div>
             </div>
             <div className='relative h-[120vh]'>
-            <div className="h-[95vh] max-h-[100vh] overflow-y-scroll  rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full ">
+            <div className="h-[95vh] max-h-[100vh] md:max-h-[88vh] overflow-y-scroll  rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full ">
                 <div className="  pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div className="h-[70vh] text-center sm:mt-5 mx-2 relative">
                         <h3 className="text-xl font-bold leading-6  text-gray-900 my-4 ">
@@ -165,10 +165,10 @@ export const Modal = (props) => {
                                                                 .colors.map((color, index) => (
                                                                     <button
                                                                     onClick={() => handleColorClick(color)}
-                                                                        className={`${color === "rojo" ? "border-2 border-black w-5 h-5"
+                                                                        className={`${color.color === "" ? "border-2 border-black w-5 h-5"
                                                                             : "border border-gray-300 w-5 h-5"} md:mx-0 border 
-                                                                            rounded-full transform duration-500 hover:scale-110 ${color.bg}`}
-                                                                        key={color.idepro}></button>
+                                                                            rounded-full transform duration-500 hover:scale-110 ${ListaColores[color.color]}`}
+                                                                        key={color.idepro}/>
                                                                 ))}
 
                                                         </>
@@ -189,7 +189,7 @@ export const Modal = (props) => {
                 </div>
                 </div>
 
-                <div className="h-[10vh] bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
+                <div className="h-[10vh] sm:max-w-lg sm:w-full bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
                 <h3 className="text-sm leading-5 text-gray-500 w-full text-center pt-1">
                             <span className='font-bold text-black'>Total:</span> <span className={`${ 'text-black font-bold'}`}>
                                 {totalPrice()}</span>
