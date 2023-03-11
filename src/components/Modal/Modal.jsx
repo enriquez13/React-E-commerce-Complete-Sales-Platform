@@ -176,7 +176,7 @@ export const Modal = (props) => {
                                                
                                             </div>
                                             <button onClick={agregar}
-                                            className='bg-black text-white border rounded-lg px-3 py-1 text-sm'>Agregar</button>
+                                            className='bg-black text-white border rounded-lg px-3 py-1 text-sm' disabled={setSelectedColor}>Agregar</button>
                                         </div>
 
                                     </div>
