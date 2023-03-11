@@ -19,7 +19,6 @@ const Formulario = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("data : ", data);
     setData(data)
     setFormData(data);
   };
@@ -92,8 +91,7 @@ const onCheckoutCompleted = (result) => {
   
   
   return (
-    <>{console.log("data.nombre : ", data)}
-    {console.log("config : ",config)}
+    <>
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label htmlFor="nombre">Nombre:</label>

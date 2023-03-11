@@ -20,8 +20,7 @@ export const ItemDetail = (props) => {
   const { data, allProducts } = props;
   const [selectedSize, setSelectedSize] = useState( data && data.sizes ? data.sizes[0] : {})
   const [images, setImages] = useState(data && data.sizes && data.sizes[0].colors ? data.sizes[0].colors :null)
-//{console.log("data.sizes",data?.sizes[0]?.colors)}
-//{console.log("selectedSize",selectedSize?.colors)}
+
 
 useEffect(() => {
   if (data?.sizes) {
@@ -62,7 +61,6 @@ const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 function agregar(){
     setShowModal(true)
     onAdd(1, talla, color, ide, img)
-    {console.log("talla", talla)}
     setTalla("")
     setColor("")
     setImg("")
@@ -119,11 +117,11 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
                            <button
                              key={c.size}
                              onClick={() => {
-    setSelectedSize(c)
-    setImages(c.colors)
-    setTalla(c.size)
-                             {console.log("settalla", talla)}
-  }}
+                            setSelectedSize(c)
+                            setImages(c.colors)
+                            setTalla(c.size)
+                            
+                          }}
                              className={`${
                                c.size === selectedSize.size
                                  ? "border bg-black text-gray-100 w-7 h-7 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"

@@ -22,9 +22,9 @@ export const Pay = () => {
 const [envioss, setEnvioss]= useState('clasico')
 const {register, handleSubmit, formState: {errors}} = useForm({ defaultValues: { envio: "clasico" } })
 
-useEffect(() => {
-    console.log(data);
-  }, [data]);
+//useEffect(() => {
+//    console.log(data);
+//  }, [data]);
 
 const onSubmit = data => {
     setEnvioss(data.envio)
@@ -234,7 +234,7 @@ setMetodopago(ev.target.value)
                         
                     </div>
                 </form>
-              {console.log("Resultado:",variablePadre)}
+             
         </div>
 
        

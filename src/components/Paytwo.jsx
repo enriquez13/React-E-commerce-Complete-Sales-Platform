@@ -164,11 +164,11 @@ export const Paytwo = () => {
       {errors.cedula && errors.cedula.type === 'pattern' && <p>La cédula no puede contener símbolos</p>}
       </div>
       <label htmlFor="telefono">Teléfono:</label>
-      <input id="telefono" type="number" {...register('telefono', { required: true, minLength: 4, pattern: /^[0-9#.\s]+$/  })} 
+      <input id="telefono" type="number" {...register('telefono', { required: true, minLength: 7, pattern: /^[0-9\s]+$/  })} 
       className='w-full mt-1 bg-gray-100'/>
       <div className='text-red-400 mb-3'>{errors.telefono && errors.telefono.type === 'required' && <p>Falta escribir el teléfono</p>}
       {errors.telefono && errors.telefono.type === 'minLength' && <p>El teléfono debe tener al menos 7 números</p>}
-      {errors.telefono && errors.telefono.type === 'pattern' && <p>El teléfono no puede contener símbolos</p>}
+      {errors.telefono && errors.telefono.type === 'pattern' && <p>El teléfono solo debe tener números</p>}
       </div>
       <label htmlFor="ciudad">Ciudad:</label>
       <input id="ciudad" type="text" {...register('ciudad', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ\s#.\-]+$/,  })} 
@@ -178,18 +178,17 @@ export const Paytwo = () => {
       {errors.ciudad && errors.ciudad.type === 'pattern' && <p>La ciudad no puede contener símbolos</p>}
       </div>
       <label htmlFor="direccion">Dirección:</label>
-      <input id="direccion" type="text" {...register('direccion', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ\s#.\-]+$/,  })} 
+      <input id="direccion" type="text" {...register('direccion', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ0-9#.,/-\s]+$/  })} 
       className='w-full mt-1 bg-gray-100'/>
       <div className='text-red-400 mb-3'>{errors.direccion && errors.direccion.type === 'required' && <p>Falta escribir la dirección</p>}
       {errors.direccion && errors.direccion.type === 'minLength' && <p>La dirección debe tener al menos 4 caracteres</p>}
-      {errors.direccion && errors.direccion.type === 'pattern' && <p>La dirección no puede contener símbolos</p>}
+      {errors.direccion && errors.direccion.type === 'pattern' && <p>La dirección no puede contener símbolos los permitidos son (# - . , / )</p>}
       </div>
-
       <div>
-        <label htmlFor="option1" className='pr-1'>Contraentrega:</label>
-        <input id="option1" type="radio" value="option1" {...register('option', { required: true })} />
-        <label htmlFor="option2" className='ml-4 pr-1'>Envío normal:</label>
+      <label htmlFor="option2" className=' pr-1 text-blue-700'>Envío normal:</label>
         <input id="option2" type="radio" value="option2" {...register('option', { required: true })} />
+        <label htmlFor="option1" className='ml-4 pr-1 text-blue-700'>Contraentrega:</label>
+        <input id="option1" type="radio" value="option1" {...register('option', { required: true })} />
         {errors.option && errors.option.type === 'required' && <p className='text-red-400'>Seleccion una opción de envío</p>}
       </div>
       <div className='flex items-center justify-center'>

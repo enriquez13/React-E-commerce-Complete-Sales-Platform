@@ -38,7 +38,7 @@ function handlechangeProductos(){
   setContenido(<Prouductos productos={productos}/>)
 }
 function handlechangeClientes(){
-  setContenido(<Clientes />)
+  setContenido(<Clientes data={data}/>)
 }
 
   return (

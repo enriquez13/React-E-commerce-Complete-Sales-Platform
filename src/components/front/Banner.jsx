@@ -34,7 +34,7 @@ export const Banner = () => {
     setCurrentIndex(newIndex) 
     
   }
- //{console.log(verificacion)}
+
  useEffect(() => {
  let interval = setInterval( 
     nextSlide , 2500)  
