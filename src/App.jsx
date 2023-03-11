@@ -15,8 +15,9 @@ import { Politicas } from './components/Page/Politicas'
 import { Contactanos } from './components/Page/Contactanos'
 import {Paytwo} from './components/Paytwo'
 import Formulario from './components/Pay/Formulario'
-import { SliderProducts } from './components/front/SliderProducts'
+//import { SliderProducts } from './components/front/SliderProducts'
 //import Adminn from './components/Sesiones/Admin/Adminn'
+
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();

@@ -12,7 +12,7 @@ import  {Informatio} from "../front/Informatio"
 export const ItemListContainer = ({texto})=>{
     const [data,setData] = useState([])
     const { categoriaId } = useParams()
-
+   
     useEffect(()=>{
         const querydb = getFirestore()
         const queryCollection = collection(querydb, 'productos')
@@ -22,10 +22,11 @@ export const ItemListContainer = ({texto})=>{
             const queryFilter = query(queryCollection, where('category', '==', categoriaId))
             getDocs(queryFilter)
             .then(res => setData(res.docs.map(product => ({id:product.id, ...product.data()}))))
-    
+        
         } else {
             getDocs(queryCollection)
             .then(res => setData(res.docs.map(product => ({id:product.id, ...product.data()}))))
+           
         }
     }, [categoriaId])
    // const onAdd = (quantity) =>{
@@ -38,6 +39,7 @@ export const ItemListContainer = ({texto})=>{
             font-semibold md:text-2xl">PRODUCTOS</div>
             <div className="mb-[3rem] grid grid-cols-2 md:grid-cols-3 gap-1 pb-[1rem]">
                 <ItemList data={data} />
+                
             </div>
             <Pie />
             <SliderCustomers />

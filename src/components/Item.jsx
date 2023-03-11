@@ -3,12 +3,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {useCartContext} from '../CartProvider'
 import { useState } from 'react'
+import {ListaColores} from './ListaColores'
 //import { BsBagCheck } from "react-icons/bs";
 //import { Modal } from './Modal/Modal';
 
 //import { cartContext } from '../CartProvider'
 
 const Item = ({info})=>{
+
+//COLORES
+
 const [showModal, setShowModal] = useState(false);
 const [goToCart, setGoToCart] = useState(false)
 const {addProduct, cart, removeProduct, totalPrice, totalProducts} = useCartContext()
@@ -43,14 +47,14 @@ const closeModal = () => {
                     <img className=" items-center p-1 rounded-t-lg object-cover w-full h-full md:transform md:duration-500 md:hover:scale-105" 
                     src={info.imagenes[0].img} alt="product image" />
                 </div>
-                {info.nuevo&&<div className='absolute bg-amber-200 rounded-tl-lg rounded-br-lg 
+                {info.nuevo && <div className='absolute bg-amber-200 rounded-tl-lg rounded-br-lg 
                 p-1 left-2 sm:left-[4rem] top-2 text-xs font-semibold'>NEW</div>}
                 </div>
             </Link>
 
             <div className="px-3 md:pb-5">
             <Link to={`/detalle/${info.id}`}>
-                    <h5 className="text-center text-xs  font-bold">{info.category}{" "}{info.nombre}</h5>
+                    <h5 className="text-center text-xs font-bold">{info.category}{" "}{info.nombre}</h5>
             </Link>
             
                 <div className=" pb-2 ">
@@ -59,22 +63,17 @@ const closeModal = () => {
                     </span>
                     <Link to={`/detalle/${info.id}`}>
                         <div className='grid grid-cols-8 md:grid-cols-8 gap-1 md:mx-[3rem] md:mt-5'>
-                        {
+                        { 
                            info.sizes[0].colors.slice(0, 6).map((col,index) => (
-                                
-                               <React.Fragment key={index}>
-                                    <button //onClick={() => {
-                                        //setColor(col.color)
-                                        //setIde(col.idepro)
-                                    //}} 
-                                    key={col.idepro} 
-                                    className={` 
-                                    " w-4 h-4 md:w-7 md:h-7 md:transform duration-500 md:hover:scale-110"} 
-                                        mx-1 border rounded-full ${col.bg} `}>
-                                    
-                                    </button>
-                                    </React.Fragment>
                             
+                               <>
+                                
+                                    <button key={col.idepro} className={`w-4 h-4 md:w-7 md:h-7 md:transform duration-500 
+                                    md:hover:scale-110 mx-1 border rounded-full ${ListaColores[col.color]} !important `}  
+                                    />
+                                    
+                                </>
+                           
                             )
                             ) } {info.sizes[0].colors.length>5 
                             ?<button className='rounded-full w-4 h-4 md:w-7 md:h-7 md:transform duration-500 md:hover:scale-110"}  
@@ -99,7 +98,7 @@ const closeModal = () => {
                 </div>
             </div>
         </div>
-        
+       
         </>
     )
 

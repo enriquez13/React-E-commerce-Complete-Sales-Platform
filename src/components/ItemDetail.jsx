@@ -9,6 +9,7 @@ import { Modal } from './Modal/Modal'
 import { SliderProducts } from './front/SliderProducts'
 import Footer from './front/Footer'
 import { Informatio } from './front/Informatio'
+import { ListaColores } from './ListaColores'
 
 
 const imgs =[
@@ -155,7 +156,7 @@ const [mostrarPreguntas, setMostrarPreguntas] = useState(false)
           }}
           className={`${col.color === selectedSize?.colors[selectedImageIndex]?.color 
             ? "border-2 border-black w-7 h-7 " 
-            : "border border-gray-300 w-7 h-7 "} ${col.bg} md:mx-0 border rounded-full transform duration-500 hover:scale-110`}
+            : "border border-gray-300 w-7 h-7 "} ${ListaColores[col.color]} md:mx-0 border rounded-full transform duration-500 hover:scale-110`}
         />      
         </div>
     ));
