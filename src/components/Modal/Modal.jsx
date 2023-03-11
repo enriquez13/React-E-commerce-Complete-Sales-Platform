@@ -176,12 +176,13 @@ export const Modal = (props) => {
                                                
                                             </div>
                                             {!selectedColor && (
-                                            <div className='bg-red-100 text-red-600 rounded-lg px-3 py-1 text-sm'>
+                                            <div className='bg-red-100 text-red-600 rounded-lg px-3 my-1 text-sm'>
                                                Seleccione un color
                                             </div>
                                             )}
                                             <button onClick={agregar}
-                                            className='bg-black text-white border rounded-lg px-3 py-1 text-sm' disabled={!setSelectedColor}>Agregar</button>
+                                            className='bg-black text-white border rounded-lg px-3 py-1 text-sm' disabled={!selectedColor}
+                                            >Agregar</button>
                                         </div>
 
                                     </div>
