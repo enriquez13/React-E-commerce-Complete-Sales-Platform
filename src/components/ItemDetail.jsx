@@ -371,7 +371,7 @@ Puedes pagar con transferencia a Bancolombia, Nequi, Daviplata, pagos con tarjet
     <h2 className='w-full text-center text-lg font-semibold my-14 '>TAMBIEN TE PUEDE INTERESAR</h2>
      
      <SliderProducts allProducts={allProducts} />    
-     <h2 className='w-full text-center text-lg font-semibold mt-20 '>AlGUNAS RESEÑAS DE CLIENTES</h2>
+     <h2 className='w-full text-center text-lg font-semibold mt-10 '>AlGUNAS RESEÑAS DE CLIENTES</h2>
     <SliderCustomer />   
     <Informatio />      
     <Footer />

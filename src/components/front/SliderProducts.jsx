@@ -36,7 +36,7 @@ export const SliderProducts = ({ allProducts }) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -44,7 +44,7 @@ export const SliderProducts = ({ allProducts }) => {
   };
 
   return (
-    <div className="container max-w-full overflow-x-hidden mx-auto">
+    <div className="container max-w-full overflow-hidden mx-auto">
       <Slider {...settings} //ref={sliderRef}
       >
         {allProducts?.map((productos, index) => (
@@ -59,7 +59,7 @@ export const SliderProducts = ({ allProducts }) => {
                 className="w-full h-[20rem] object-cover rounded-lg"
               />
            
-              <div className="p-4">
+              <div className="px-4">
                 <h2 className="font-bold text-sm mb-2 text-center">{productos.category}{" "}{productos.nombre}</h2>
                 <p className="text-gray-700 text-sm  text-center">${productos.valor}</p>
               </div>
