@@ -8,12 +8,12 @@ export const Categories = () => {
   
 <>
 
-<div className="grid justify-items-center my-10  md:font-semibold md:text-2xl text-lg text-white ">
+<div className=" grid justify-items-center my-10  md:font-semibold md:text-2xl text-lg text-white ">
             CATEGORIAS
 </div>
-            <div className=" grid sm:grid-cols-4 text-gray-100 ">
+            <div className="w-1/2 grid sm:grid-cols-4 text-gray-100 ">
                 {DataCategorias.map((category,index)=>(
-                <NavLink to={`/categoria/${category.url}`} key={index} className=" md:p-1 w-full relative h-[24rem] md:h-[600px] mt-2">
+                <NavLink to={`/categoria/${category.url}`} key={index} className=" w-full relative h-[24rem] md:h-[600px] mt-2">
                 <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src={category.src} />
                     <div className="absolute grid bottom-[50%] translate-y-[50%] w-full text-sm px-4 ">
                         <h3 className="place-self-center text-gray-200 text-2xl my-4 font-semibold" >{category.nombre}</h3>

@@ -36,7 +36,7 @@ function NavBar() {
   };
     return (
         <> 
-           <div className="fixed z-10 shadown-md w-full top-0 left-0 " >
+           <div className="fixed z-10 shadown-md w-full top-0 left-0 max-w-screen overflow-hidden" >
             {opens === false && scroll <= 100? <div className="relative z-10 w-full bg-gray-700 top-0 text-center "> 
             <div className="w-full h-[2rem] flex items-center justify-center text-[0.6rem] text-amber-200 tracking-[0.3rem] uppercase" style={{ display: 'flex', alignItems: 'center' }}>
                 <AnimatedText />

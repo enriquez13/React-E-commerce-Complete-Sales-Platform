@@ -4,12 +4,12 @@ import { NavLink, useParams } from "react-router-dom";
 import Footer from "../front/Footer";
 import { Pie } from "../front/Pie";
 import ItemList from "../ItemList";
-//mport NavBar from '../front/NavBar'
+import NavBar from '../front/NavBar'
 import SliderCustomers from '../front/SliderCustomers'
 import  {Informatio} from "../front/Informatio"
 
 
-export const ItemListContainer = ({texto})=>{
+export const ItemListContainer = ()=>{
     const [data,setData] = useState([])
     const { categoriaId } = useParams()
    
@@ -34,18 +34,21 @@ export const ItemListContainer = ({texto})=>{
   //  }
     return (
         <>
-           
-            <div className="grid justify-items-center text-black mt-[4rem] mb-[2rem] text-lg 
+        
+           <NavBar />
+        <div className="grid justify-items-center text-black mt-[4rem] mb-[2rem] text-lg 
             font-semibold md:text-2xl">PRODUCTOS</div>
             <div className="mb-[3rem] grid grid-cols-2 md:grid-cols-3 gap-1 pb-[1rem]">
                 <ItemList data={data} />
                 
             </div>
-            
+            <Pie />
             <SliderCustomers />
-            <Informatio />
-            <Footer/>
-        </>
+        <Informatio />
+            <Footer/> 
+            
+            </>
+           
     )
 }
 export default ItemListContainer
