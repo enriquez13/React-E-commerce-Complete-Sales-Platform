@@ -1,5 +1,9 @@
 import React  from 'react'
 
+const envio ={
+  option1:"Envío normal",
+  option2:"Contraentrega"
+}
 function Ordenes({ data }) {
  
     return (
@@ -19,6 +23,7 @@ function Ordenes({ data }) {
                                     <th className='border'># orden</th>
                                     <th className='border'>Nombre</th>
                                     <th className='border'>Teléfono</th>
+                                    <th className='border'>Ciudad</th>
                                     <th className='border'>Dirección</th>
                                     <th className='border'>ID Producto</th>
                                     <th className='border'>Cantidad Producto Talla Color Precio</th>
@@ -37,8 +42,9 @@ function Ordenes({ data }) {
                                     <td className="px-3 py-3 border"># </td>
                                     <td className="px-3 py-3 border">{items?.cliente?.nombre}</td>
                                     <td className="px-3 py-3 border">{items?.cliente?.telefono}</td>
-                                    <td className="px-3 py-3 border">{items?.cliente?.ciudad+ " " + items.cliente?.direccion }</td>
-                                    <td className="px-3 py-3 border">#</td>
+                                    <td className="px-3 py-3 border">{items?.cliente?.ciudad}</td>
+                                    <td className="px-3 py-3 border">{items?.cliente?.direccion }</td>
+                                    <td className="px-3 py-3 border">{"ID"}</td>
                                     <td className="px-3 py-3 border"> {items?.producto?.map((product, index)=>(
                                       <>
                                     <h3 key={index+"pro"} className='py-2'>{product?.Cantidad+" "+product?.Nombre+ " T: " + 
@@ -47,7 +53,7 @@ function Ordenes({ data }) {
                                     </>
                                     ))}
                                     </td>
-                                    <td className="px-3 py-3 border">{items?.envio}</td>
+                                    <td className="px-3 py-3 border">{envio[items?.envio]}</td>
                                     <td className="px-3 py-3 border">preparar</td>
                                     <td className="px-3 py-3 border">{items?.total}</td>
                                   </tr>

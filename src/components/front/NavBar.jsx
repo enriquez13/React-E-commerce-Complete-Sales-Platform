@@ -7,8 +7,17 @@ import { useCartContext } from "../../CartProvider";
 import AnimatedText from "../AnimatedText/AnimatedText";
 import firebaseApp from '../../firebase/config';
 import { DataCategorias, DataIformacion } from "./DataCategorias";
+import { Modal } from "../Modal/Modal";
 
-function NavBar() {
+function NavBar(props) {
+  //showmodal
+  const { data, allProducts } = props;
+  const [showModal, setShowModal] = useState(false); 
+  const closeModaldetail = () => {
+    setShowModal(false);
+  };
+  const {addProduct, closeModal, cart, removeProduct, totalPrice } = useCartContext()
+
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState(0);
   const auth = getAuth(firebaseApp);
@@ -33,6 +42,7 @@ function NavBar() {
       .catch((error) => {
         console.error(error);
       });
+      
   };
     return (
         <> 
@@ -62,14 +72,14 @@ function NavBar() {
                         </NavLink>
                     </div>
                     <h1 className=" text-xl absolute right-[1.5rem] md:right-[4rem] top-[1.1rem] md:top-[1.5rem] text-gray-400 cursor-pointer">
-                        <NavLink to='/cart'> <span className=' relative'><BsBag />
+                        <div onClick={()=> setShowModal(true)}> <span className=' relative'><BsBag />
                             {
                                 totalProducts() ? <span className="bg-blue-500 absolute bottom-[-10px] left-3 text-white text-base rounded-full px-2 ">
                                     {totalProducts()}
                                 </span> : ''
                             }
                         </span>
-                        </NavLink>
+                        </div>
 
                     </h1>
                     <div onClick={() => setOpen(!open)} className="text-xl absolute left-[1.5rem] top-5 text-gray-400 
@@ -120,7 +130,9 @@ function NavBar() {
                     </div>
                 </div>
             </div>
-
+            {showModal && (
+        <Modal closeModal={closeModaldetail} addProduct={addProduct} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
+      )}
         </>
     )
 }

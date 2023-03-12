@@ -35,7 +35,7 @@ export const ItemListContainer = ()=>{
     return (
         <>
         
-           <NavBar />
+           <NavBar data={data} allProducts={data}/>
         <div className="grid justify-items-center text-black mt-[4rem] mb-[2rem] text-lg 
             font-semibold md:text-2xl">PRODUCTOS</div>
             <div className="mb-[3rem] grid grid-cols-2 md:grid-cols-3 gap-1 pb-[1rem]">

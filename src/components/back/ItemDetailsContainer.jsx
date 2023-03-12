@@ -4,7 +4,7 @@ import ItemDetail from "../ItemDetail";
 import { useParams } from "react-router-dom";
 //import { Pie } from "../front/Pie";
 import Navbar from '../front/NavBar'
-import ItemList from '../ItemList';
+//import ItemList from '../ItemList';
 
 
 export const ItemDetailContainer = ()=>{
@@ -51,7 +51,7 @@ export const ItemDetailContainer = ()=>{
 
     return (
         <>
-        <Navbar />
+        <Navbar data={data} allProducts={allProducts}/>
         <ItemDetail data={data} allProducts={allProducts} />
         {//<ItemList />
         }  

@@ -43,11 +43,11 @@ function handlechangeClientes(){
 
   return (
     
-    <div className='md:flex h-screen'>
+    <div className='md:flex h-screen w-full p-1'>
 
-        <aside className=' mx-1 my-1 bg-black  rounded-md md:w-1/6 text-white pt-[2rem]'>
-        <NavLink to='/'><button  className="w-full  text-blue-400 rounded-lg pb-2 px-4">Ir a la tienda</button></NavLink> 
-        <button onClick={()=> signOut(auth)} className="w-full  text-blue-400 rounded-lg pb-2 px-4">Cerrar sesión</button>
+        <aside className='bg-black  w-full h-[50vh] md:h-screen rounded-md md:w-1/6 text-white '>
+        <NavLink to='/'><button  className="w-full pt-14 text-blue-400 rounded-lg pb-2 px-4">Ir a la tienda</button></NavLink> 
+        <button onClick={()=> signOut(auth)} className="w-full  text-blue-400 rounded-lg py-2 px-4">Cerrar sesión</button>
         <button className='w-full px-2 pt-6  bg-black ' value='ordenes' onClick={handlechangeOrdenes}>
             Ordenes
         </button>

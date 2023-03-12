@@ -11,7 +11,7 @@ const precioLimite = 149900
 export const Modal = (props) => {
     const {addProduct, closeModal, cart, removeProduct, totalPrice, totalProducts, allProducts} = props
     const [selectedSize, setSelectedSize] = useState({});
-    const [selectedColor, setSelectedColor] = useState({});
+    const [selectedColor, setSelectedColor] = useState(null);
     const [selectedProduct, setSelectedProduct] = useState({});
     const [selectedImagen, setSelectedImagen] = useState()
     const [goToCart, setGoToCart] = useState(false)
@@ -34,7 +34,7 @@ export const Modal = (props) => {
     
     setSelectedSize("")
     setSelectedProduct("")
-    setSelectedColor("")
+    setSelectedColor(null)
     //setImg("")
    
 }
@@ -175,12 +175,13 @@ export const Modal = (props) => {
                                                     )}
                                                
                                             </div>
-                                            {!selectedColor && (
-                                            <div className='bg-red-100 text-red-600 rounded-lg px-3 my-1 text-sm'>
-                                               Seleccione un color
-                                            </div>
-                                            )}
-                                            <button onClick={agregar}
+                                            {//!selectedColor && (
+                                            //<div className='bg-red-100 text-red-600 rounded-lg px-3 my-1 text-sm'>
+                                            //   Seleccione un color
+                                            //</div>
+                                            //)}
+                                            }
+                                            <button onClick={agregar} 
                                             className='bg-black text-white border rounded-lg px-3 py-1 text-sm' disabled={!selectedColor}
                                             >Agregar</button>
                                         </div>

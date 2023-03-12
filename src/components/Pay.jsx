@@ -77,7 +77,7 @@ function onChangepago(ev){
 setMetodopago(ev.target.value)
 }
     return (
-        <>
+        <>{console.log("cart : ", cart)}
         <h2 className='text-center text-2xl my-5 mb-10'>ZOROBABEL</h2>
         <div className='w-full grid grid-cols-2'>
         <NavLink to='/cart'><h3  className='col-start-1 col-span-1 text-center '>1. Carrito</h3></NavLink>

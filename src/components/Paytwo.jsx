@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useForm } from 'react-hook-form';
 import {addDoc, collection, getFirestore} from 'firebase/firestore'
 import { NavLink } from 'react-router-dom';
+import { useCartContext } from '../CartProvider';
 
 const descuento = 0.4
 
-
 export const Paytwo = () => {
+  const {cart, totalPrice} = useCartContext()
   const [envio,setEnvio]=useState("")
   const [openCheckout, setOpenCheckout] = useState(false);
   //const [datos, setDatos] = useState("");
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onChange',
     defaultValues: {
+      email: '',
       name: '',
       apellido: '',
       cedula: '',
@@ -41,7 +43,7 @@ export const Paytwo = () => {
         consumption: 800,
       },
       customerData: { // Opcional
-        email:'lola@gmail.com',
+        email:data.email,
         fullName: data.name,
         phoneNumber: data.telefono,
         phoneNumberPrefix: '+57',
@@ -51,8 +53,8 @@ export const Paytwo = () => {
       shippingAddress: { // Opcional
         addressLine1: data.direccion,
         city: data.ciudad,
-        phoneNumber: '3019444444',
-        region: "Cundinamarca",
+        phoneNumber: data.telefono,
+        region: "Departamento",
         country: "CO",
       }
     })
@@ -68,6 +70,7 @@ export const Paytwo = () => {
       const db = getFirestore();
     let orden = {
         cliente:{ 
+            email: data.email,
             nombre: data.name,
             apellido: data.apellido,
             cedula: data.cedula,
@@ -75,10 +78,10 @@ export const Paytwo = () => {
             ciudad : data.ciudad,
             direccion: data.direccion,
         },
-            //producto: cart.map(product=> ({Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
+            producto: cart.map(product=> ({Ide:product.ide, Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
             envio: data.option,
             fecha: new Date().toLocaleString(),
-            //total: totalPrice(),
+            total: totalPrice(),
             }
             const ordersCollection = collection(db, 'compras')
             addDoc(ordersCollection, orden)
@@ -96,11 +99,11 @@ export const Paytwo = () => {
   const onSubmit = async (data) => {
     setEnvio(data.option)
     if (data.option === 'option1') {
-
-      {console.log("selección 1")}
+      //contraentrega
       const db = getFirestore();
     let orden = {
         cliente:{ 
+            email: data.email,
             nombre: data.name,
             apellido: data.apellido,
             cedula: data.cedula,
@@ -108,10 +111,10 @@ export const Paytwo = () => {
             ciudad : data.ciudad,
             direccion: data.direccion,
         },
-            //producto: cart.map(product=> ({Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
+            producto: cart.map(product=> ({Ide:product.ide, Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
             envio: data.option,
             fecha: new Date().toLocaleString(),
-            //total: totalPrice(),
+            total: totalPrice(),
             }
             const ordersCollection = collection(db, 'compras')
             addDoc(ordersCollection, orden)
@@ -123,6 +126,7 @@ export const Paytwo = () => {
         console.error(error)
     })
     } else if (data.option === 'option2') {
+      //Envío normal
       //setDatos(data)
       console.log("datos : ",data.name)
       handleCheckout(data);
@@ -132,7 +136,8 @@ export const Paytwo = () => {
   };
 
   return (
-    <><NavLink to='/home'><h2 className='text-center text-2xl my-5 mb-10'>ZOROBABEL</h2></NavLink>
+    <>{console.log("cart : ", cart)}
+    <NavLink to='/home'><h2 className='text-center text-2xl my-5 mb-10'>ZOROBABEL</h2></NavLink>
     <div className='w-full grid grid-cols-2'>
     <NavLink to='/cart'><h3  className='col-start-1 col-span-1 text-center '>1. Carrito</h3></NavLink>
     <h3 className='col-start-2 col-span-1 text-center'>2. Compra</h3>
@@ -142,6 +147,13 @@ export const Paytwo = () => {
     <div className='my-10'>
     <h3 className=" w-full mb-5 text-center text-2xl text-black">Facturación y envío</h3>
     <form onSubmit={handleSubmit(onSubmit)} className='mx-7 text-black md:w-1/2'>
+    <label htmlFor="email">Email:</label>
+      <input id="email" type="email" {...register('email', { required: true, minLength: 4, pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/  })} 
+      className='w-full mt-1 bg-gray-100'/>
+      <div className='text-red-400 mb-3'>{errors.email && errors.email.type === 'required' && <p>Falta escribir el nombre</p>}
+      {errors.email && errors.email.type === 'minLength' && <p>El nombre debe tener al menos 4 caracteres</p>}
+      {errors.email && errors.email.type === 'pattern' && <p>El nombre no puede contener símbolos diferentes de @_.</p>}
+      </div>
       <label htmlFor="name">Nombres:</label>
       <input id="name" type="text" {...register('name', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ\s]+$/  })} 
       className='w-full mt-1 bg-gray-100'/>
