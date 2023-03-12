@@ -44,7 +44,7 @@ export const SliderProducts = ({ allProducts }) => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container max-w-full overflow-x-hidden mx-auto">
       <Slider {...settings} //ref={sliderRef}
       >
         {allProducts?.map((productos, index) => (

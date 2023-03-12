@@ -43,7 +43,7 @@ export const SliderCustomer = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 2,
         },
@@ -59,11 +59,11 @@ export const SliderCustomer = () => {
   };
 
   return (
-    <div className="container mx-auto my-10">
+    <div className="max-w-full overflow-x-hidden m-auto my-10">
       <Slider {...settings} //ref={sliderRef}
       >
         {slides.map((productos, index) => (
-          <div key={index} className="p-4">
+          <div key={index} className="py-4">
             <div className=" overflow-hidden">
               <img
                 src={productos.url}

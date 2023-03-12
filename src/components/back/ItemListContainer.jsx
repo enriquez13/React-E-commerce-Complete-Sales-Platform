@@ -43,8 +43,9 @@ export const ItemListContainer = ()=>{
                 
             </div>
             <Pie />
+            <h2 className='w-full text-center text-lg font-semibold my-20 text-black'>AlGUNAS RESEÑAS DE CLIENTES</h2>
             <SliderCustomers />
-        <Informatio />
+            <Informatio />
             <Footer/> 
             
             </>

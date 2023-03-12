@@ -36,7 +36,7 @@ function NavBar() {
   };
     return (
         <> 
-           <div className="fixed z-10 shadown-md w-full top-0 left-0 max-w-screen overflow-hidden" >
+           <div className="fixed z-10 shadown-md w-full top-0 left-0 max-w-screen " >
             {opens === false && scroll <= 100? <div className="relative z-10 w-full bg-gray-700 top-0 text-center "> 
             <div className="w-full h-[2rem] flex items-center justify-center text-[0.6rem] text-amber-200 tracking-[0.3rem] uppercase" style={{ display: 'flex', alignItems: 'center' }}>
                 <AnimatedText />
@@ -79,7 +79,7 @@ function NavBar() {
                     <div className={`${scroll <= 100 ? "md:col-start-1 md:col-span-6 md:flex md:justify-center" 
                     :"md:col-start-2 md:col-span-6 md:flex md:justify-center"} `}>
 
-                        <ul className={`md:flex md:items-center md:pb-0  absolute md:static bg-black bg-opacity-90 md:bg-transparent
+                        <ul className={`md:flex md:items-center md:pb-0  absolute md:static bg-black bg-opacity-[0.96] md:bg-transparent
                     md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-700 ease-in 
                      ${open ? 'top-[3.5rem] overflow-y-scroll h-[100vh] pb-[10rem]' : 'top-[-1000px]'} `}>
 
@@ -90,7 +90,7 @@ function NavBar() {
 
                             {DataCategorias.map((categorias,index)=>(
                             <NavLink key={index} to={`/categoria/${categorias.url}`} className="mx-10  grid grid-cols-3 gap-4 cursor-pointer 
-                            md:ml-8 text-xl md:my-0 py-2 text-white hover:text-gray-400 duration-500" 
+                            md:ml-8 text-xl md:my-0 py-2 text-gray-400  hover:text-gray-800 duration-500" 
                             onClick={() => setOpen(!open)}>
                             <div className="md:hidden grid-row-span-2">
                               <img src={categorias.src} className="w-[6rem] h-[6rem] object-cover"/>
@@ -107,7 +107,7 @@ function NavBar() {
                             {DataIformacion.map((informacion, index)=>(   
                             <NavLink key={index} to={`/${informacion.url}`}
                             className="grid justify-items-center content-center  cursor-pointer md:ml-8 text-xl md:my-0 py-2
-                         text-white hover:text-gray-400 duration-500">
+                            text-gray-400  hover:text-gray-800 duration-500">
                                 <h3  className="mb-2 uppercase text-sm font-semibold">{informacion.nombre}</h3>
                             </NavLink>
                             ))}
