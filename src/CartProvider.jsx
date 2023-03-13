@@ -1,4 +1,4 @@
-import React,{useState, useContext} from 'react'
+import React,{useState, useContext, useEffect} from 'react'
 
 const cartContext = React.createContext([])
 export const useCartContext = ()=> useContext(cartContext)
@@ -53,6 +53,18 @@ const isInCart = (ide) => {
     )
   }
   //console.log(cart)
+
+   // Guardar y recuperar el carrito del localStorage
+   useEffect(() => {
+    const savedCart = localStorage.getItem('cart')
+    if (savedCart) {
+      setCart(JSON.parse(savedCart))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
   return (
     <cartContext.Provider value={{

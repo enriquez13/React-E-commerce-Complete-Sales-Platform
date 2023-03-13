@@ -53,7 +53,7 @@ export const SliderProducts = ({ allProducts }) => {
           <div key={index} className="p-4">
         
             <div className=" overflow-hidden">
-            <Link to={{ pathname: `/detalle/${productos.id}`, state: { producto: productos } }}>
+            <Link to={`/detalle/${productos.id}`}>
 
               <img
                 src={productos.imagenes[0].img}
@@ -65,7 +65,7 @@ export const SliderProducts = ({ allProducts }) => {
                 <h2 className="font-bold text-sm mb-2 text-center">{productos.category}{" "}{productos.nombre}</h2>
                 <p className="text-gray-700 text-sm  text-center">${productos.valor}</p>
               </div>
-              </Link>
+            </Link>
             </div>
           </div>
             

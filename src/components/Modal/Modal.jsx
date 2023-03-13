@@ -149,20 +149,22 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                                         <div className='col-span-4'>
                                             <div className='grid grid-cols-4 gap-4 mx-2'>
 
-
+                                          
+                                                <>
                                                 {producto.sizes.map((size, index) => (
-                                                    <>
-
-                                                    <button key={index} className={`${producto.size === selectedSize
+                                                   
+                                                      
+                                                    <button key={index} className={`${size.size === selectedSize.size && selectedProduct.id === producto.id
                                                             ? "text-[0.7rem] border bg-black text-gray-100 w-5 h-5 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                                                             : "text-[0.7rem] w-5 h-5 border border-gray-200 transform duration-500 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                                                         }`}
                                                         onClick={() => handleSizeClick(size, producto)}>
                                                         {size.size}
                                                     </button>
-                                                    </>
+                                                    
                                                 ))}
-
+                                                </>
+                                                
 
                                             </div>
                                             <div className='grid grid-cols-6 gap-1 my-2 '>
@@ -172,15 +174,14 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                                                             {producto.sizes
                                                                 .find((size) => size.size === selectedSize.size)
                                                                 .colors.map((color, index) => (
-                                                                  
-                                                                    
+                                                                
                                                                     <button
                                                                     onClick={() => handleColorClick(color)}
-                                                                        className={`${color.color === "" ? "border-2 border-black w-5 h-5"
-                                                                            : "border border-gray-300 w-5 h-5"} md:mx-0 border 
-                                                                            rounded-full transform duration-500 hover:scale-110 ${ListaColores[color.color]}`}
+                                                                        className={`${ selectedColor.color===color.color ? "border-2 border-black w-5 h-5"
+                                                                            : "border border-gray-300 w-5 h-5"} md:mx-0 
+                                                                            rounded-full transform duration-500 hover:scale-110  ${ListaColores[color.color]}`}
                                                                         key={color.idepro}/>
-                                                                  
+                                                            
                                                                 ))}
 
                                                         </>

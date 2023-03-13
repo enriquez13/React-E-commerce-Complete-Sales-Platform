@@ -38,10 +38,10 @@ export const Paytwo = () => {
       reference: reference,
       publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
       //redirectUrl: 'https://transaction-redirect.wompi.co/check', // Opcional
-      taxInCents: { // Opcional
-        vat: 1900,
-        consumption: 800,
-      },
+      //taxInCents: { // Opcional
+      //  vat: 1900,
+      //  consumption: 800,
+      //},
       customerData: { // Opcional
         email:data.email,
         fullName: data.name,
