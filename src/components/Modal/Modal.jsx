@@ -9,7 +9,12 @@ const descuento = 0.6
 const precioLimite = 149900
 
 export const Modal = (props) => {
-    const {addProduct, closeModal, cart, removeProduct, totalPrice, totalProducts, allProducts} = props
+
+const {addProduct, closeModal, cart, removeProduct, totalPrice, totalProducts, allProducts} = props
+//Filtrar productos de menor o igual valor al mayor del carrito
+const maxValor = cart.reduce((max, producto) => (producto.valor > max ? producto.valor : max), 0);
+const filteredProducts = allProducts.filter(producto => producto.valor <= maxValor);
+
     const [selectedSize, setSelectedSize] = useState({});
     const [selectedColor, setSelectedColor] = useState(null);
     const [selectedProduct, setSelectedProduct] = useState({});
@@ -31,7 +36,6 @@ export const Modal = (props) => {
   }
   function agregar(){
     onAdd(1, selectedSize.size, selectedColor.color, selectedColor.idepro, selectedColor.imagen)
-    
     setSelectedSize("")
     setSelectedProduct("")
     setSelectedColor(null)
@@ -49,17 +53,19 @@ export const Modal = (props) => {
             <div className="h-[95vh] max-h-[100vh] md:max-h-[88vh] overflow-y-scroll  rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full ">
                 <div className="  pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div className="h-[70vh] text-center sm:mt-5 mx-2 relative">
-                        <h3 className="text-xl font-bold leading-6  text-gray-900 my-4 ">
-                           Recién agregados al carrito
-                        </h3>
-                        
+                    <h3 className="text-xl font-bold leading-6  text-gray-900 my-4 ">
+                    {filteredProducts.length> 0 ? 
+                           "Recién agregados al carrito": "No tiene productos Agregados"
+                    }
+                        </h3>  
+                       
                         
                         <button
                             type="button"
                             onClick={closeModal}
-                            className="absolute right-3 md:right-[3rem] content-center flex items-center
-                            top-[-5px] text-black md:transform md:hover:text-gray-700 cursor-pointer 
-                            bg-black bg-opacity-5 rounded-full p-1 text-xl"
+                            className="absolute right-3 md:right-[0] content-center flex items-center
+                            top-[-20px] text-black md:transform md:hover:text-gray-700 cursor-pointer 
+                            bg-black bg-opacity-5 rounded-full p-1 text-3xl"
                         >
                             <AiOutlineClose />
                         </button>
@@ -68,23 +74,18 @@ export const Modal = (props) => {
                         <div className="  "> {// aquí overflow-y-scroll
                         }
                         {cart?.map((product, index) => (
-                            <>
-                            <div className=" grid grid-cols-3  bg-white" key={index} >
-                                <div className='h-full flex items-center justify-center relative'>
-                                    <img src={cart[index].img} className="max-w-[4rem] max-y-[4rem] object-cover" />
-                                    <p className=" text-xl absolute right-[1.3rem] md:left-[4rem] top-[1.2rem] md:top-[1.5rem] text-gray-400 cursor-pointer">
-                       <span className=' relative'>
-                            {
-                                totalProducts() ? <span className="bg-blue-500 absolute bottom-[-2px] left-[-20px] text-white text-sm rounded-full px-[0.4rem] ">
-                                    {product.quantity}
-                                </span> : ''
-                            }
-                            
-                        </span> 
-                       
-                    </p>
+                            <>   
+
+                            <div className=" grid grid-cols-6 bg-white h-[7rem] w-full justify-items-center content-center" key={index}  >
+                                <div className='col-span-2  w-[6rem] h-[6rem]  relative'>
+                                    <img src={cart[index].img} className="object-cover w-full h-full " />
+                                <span className='bg-blue-500 absolute top-[-4px] right-[-7px] 
+                                 text-white text-sm rounded-full px-[0.4rem]'>
+                                     { totalProducts() ? product.quantity : '' }
+                                 </span> 
+                                 
                                 </div>
-                                <div className="col-span-2 h-full d-flex align-items-center py-5 relative">
+                                <div className="col-span-3 h-full d-flex align-items-center py-5 relative">
                                     <div>
                                         <p className="text-sm leading-5 text-gray-500 font-bold ">
                                             {product.category}{" "}{product.nombre}
@@ -94,15 +95,15 @@ export const Modal = (props) => {
                                         </p>
                                         
                                         <p className="text-sm leading-5 text-gray-500 ">
-      <span className={`${cart.length > 2 && index > 0 ? 'line-through text-gray-400' : 'text-gray-700'} font-bold`}>
-        {product.valor}
-      </span>
-      {totalPrice() >= precioLimite && index > 0 ? (
-        <span className='text-gray-700 font-bold pl-2'>
-          {product.valor * descuento}
-        </span>
-      ) : " "}
-    </p>
+                                        <span className={`${cart.length > 2 && index > 0 ? 'line-through text-gray-400' : 'text-gray-700'} font-bold`}>
+                                            {product.valor}
+                                        </span>
+                                        {totalPrice() >= precioLimite && index > 0 ? (
+                                            <span className='text-gray-700 font-bold pl-2'>
+                                            {product.valor * descuento}
+                                            </span>
+                                        ) : " "}
+                                        </p>
                                     </div>
                                     <div className="absolute top-[50%] right-3">
                                         <button onClick={() => removeProduct(product.ide)}
@@ -118,13 +119,15 @@ export const Modal = (props) => {
                             </>))}
                         </div>
                         
+                        {filteredProducts.length > 0 ? 
                         <h2 className='text-lg font-bold mt-4'>Obten 40% dcto en productos populares</h2>
-                        <div className="">{// aquí overflow-y-scroll
-                        }
-                            {allProducts.map((producto, index) => (
-                                <div className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem] justify-items-center content-center">
+                        : <div className='w-full bg-blue-200 h-[80vh] flex items-center justify-center'>
+                            <h3 className='text-2xl'>Carrito vacío</h3></div>}
+                        <div className="">
+                            {filteredProducts.map((producto, index) => (
+                                <div key={index} className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem] justify-items-center content-center">
                                     <div className="container h-[5rem] w-[5rem] col-span-2">
-                                        <img className="image object-cover w-full h-full "
+                                        <img className="object-cover w-full h-full "
                                             src={ selectedProduct.id === producto.id && selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen }
                                             
                                         />
@@ -134,8 +137,8 @@ export const Modal = (props) => {
                                             <h4 className="text-xs font-bold text-black">{producto.category}</h4>
                                             <h4 className="text-xs font-bold text-gray-500">{producto.nombre}</h4>
                                             <p className="text-sm leading-5 text-gray-500 ">
-                                                <span className="font-bold text-black text-sm">{producto.valor * 0.6}</span>
-                                                <span className={`${" line-through text-gray-500"} font-bold text-sm`}>{producto.valor}</span>
+                                                <h4 className="font-bold text-black text-sm">{producto.valor * 0.6}</h4>
+                                                <h4 className={`${" line-through text-gray-500"} font-bold text-sm`}>{producto.valor}</h4>
                                             </p>
                                         </div>
                                         <div className='col-span-4'>
@@ -182,7 +185,7 @@ export const Modal = (props) => {
                                             //)}
                                             }
                                             <button onClick={agregar} 
-                                            className='bg-black text-white border rounded-lg px-3 py-1 text-sm' disabled={!selectedColor}
+                                            className='bg-black text-white border rounded-lg px-3 py-1 text-sm' 
                                             >Agregar</button>
                                         </div>
 
@@ -215,7 +218,7 @@ export const Modal = (props) => {
                         </button></NavLink>
                         
                     : ""}
-                    <div className='w-1/2'>
+                    <div className={`${filteredProducts > 0 ? "w-1/2" : "w-full "}`}>
                     <button onClick={closeModal}
                             type="button"
                             className="w-full inline-flex justify-center rounded-md border border-transparent px-2 py-2 
