@@ -34,7 +34,7 @@ export const Paytwo = () => {
     setOpenCheckout(true);
     var checkout = new WidgetCheckout({
       currency: 'COP',
-      amountInCents: 2490000,
+      amountInCents: totalPrice()*100,
       reference: reference,
       publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
       //redirectUrl: 'https://transaction-redirect.wompi.co/check', // Opcional

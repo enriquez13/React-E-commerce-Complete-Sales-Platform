@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import './Slider.css'
 
 
 export const SliderProducts = ({ allProducts }) => {
@@ -10,6 +11,7 @@ export const SliderProducts = ({ allProducts }) => {
 
   const settings = {
     dots: true,
+    dotsClass: "slick-dots slick-thumb",
     infinite: true,
     speed: 900,
     slidesToShow: 4,
@@ -44,8 +46,8 @@ export const SliderProducts = ({ allProducts }) => {
   };
 
   return (
-    <div className="container max-w-full overflow-hidden mx-auto">
-      <Slider {...settings} //ref={sliderRef}
+    <div className="container max-w-full overflow-hidden mx-auto ">
+      <Slider {...settings}  //ref={sliderRef }
       >
         {allProducts?.map((productos, index) => (
           <div key={index} className="p-4">

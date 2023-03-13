@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import './Slider.css'
 import img1 from '../../../public/i1.jpg'
 import img2 from '../../../public/i2.jpg'
 import img3 from '../../../public/i3.jpg'
@@ -25,6 +25,7 @@ export const SliderCustomer = () => {
    
    const settings = {
     dots: true,
+    dotsClass: "slick-dots slick-thumb",
     infinite: true,
     speed: 900,
     slidesToShow: 4,

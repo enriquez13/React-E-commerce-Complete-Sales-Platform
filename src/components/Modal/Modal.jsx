@@ -16,10 +16,13 @@ const maxValor = cart.reduce((max, producto) => (producto.valor > max ? producto
 const filteredProducts = allProducts.filter(producto => producto.valor <= maxValor);
 
     const [selectedSize, setSelectedSize] = useState({});
-    const [selectedColor, setSelectedColor] = useState(null);
+    const [selectedColor, setSelectedColor] = useState("");
     const [selectedProduct, setSelectedProduct] = useState({});
-    const [selectedImagen, setSelectedImagen] = useState()
+    const [selectedImagen, setSelectedImagen] = useState("")
     const [goToCart, setGoToCart] = useState(false)
+    //generar alerta si no se ha seleccionado color
+    const [productId, setProductId] = useState("")
+    const [alertColor, setSAlertColor] = useState(false)
     
     
     const onAdd = (quantity, talla, color, ide, img) =>{
@@ -33,15 +36,19 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
   const handleColorClick = (color) => {
     setSelectedColor(color)
     setSelectedImagen(color.imagen)
+    setProductId("")
   }
-  function agregar(){
-    onAdd(1, selectedSize.size, selectedColor.color, selectedColor.idepro, selectedColor.imagen)
-    setSelectedSize("")
-    setSelectedProduct("")
-    setSelectedColor(null)
+  function agregar(Id){
+    setProductId(Id)
+    if(selectedColor!==""){ 
+        onAdd(1, selectedSize.size, selectedColor.color, selectedColor.idepro, selectedColor.imagen)
+        setSelectedSize("")
+        setSelectedProduct("")
+        setSelectedColor("")
+        setProductId("")
     //setImg("")
-   
-}
+    }
+    }
   
 
     return (
@@ -49,22 +56,21 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
             <div className="fixed inset-0 transition-opacity" onClick={closeModal}>
                 <div className="absolute inset-0 bg-black bg-opacity-80  "></div>
             </div>
-            <div className='relative h-[120vh] bg-gray-100'>
-            <div className="h-[95vh] max-h-[100vh] md:max-h-[88vh] overflow-y-scroll  rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full ">
-                <div className="  pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div className='relative h-[120vh] bg-gray-100 '>
+            <div className="h-[90vh] max-h-[90vh] md:max-h-[88vh] overflow-y-scroll  rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full ">
+                <div className="   pb-[8rem] sm:p-6 sm:pb-4">
                     <div className="h-[70vh] text-center sm:mt-5 mx-2 relative">
-                    <h3 className="text-xl font-bold leading-6  text-gray-900 my-4 ">
+                    <h3 className="text-xl font-bold leading-6  text-gray-900 my-6 ">
                     {filteredProducts.length> 0 ? 
                            "Recién agregados al carrito": "No tiene productos Agregados"
                     }
                         </h3>  
                        
-                        
                         <button
                             type="button"
                             onClick={closeModal}
-                            className="absolute right-3 md:right-[0] content-center flex items-center
-                            top-[-20px] text-black md:transform md:hover:text-gray-700 cursor-pointer 
+                            className="absolute right-1 md:right-[0] content-center flex items-center
+                            top-[-12px] text-black md:transform md:hover:text-gray-700 cursor-pointer 
                             bg-black bg-opacity-5 rounded-full p-1 text-3xl"
                         >
                             <AiOutlineClose />
@@ -95,10 +101,10 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                                         </p>
                                         
                                         <p className="text-sm leading-5 text-gray-500 ">
-                                        <span className={`${cart.length > 2 && index > 0 ? 'line-through text-gray-400' : 'text-gray-700'} font-bold`}>
+                                        <span className={`${cart.length > 1 && index > 0 ? 'line-through text-gray-400' : 'text-gray-700'} font-bold`}>
                                             {product.valor}
                                         </span>
-                                        {totalPrice() >= precioLimite && index > 0 ? (
+                                        { index > 0 ? (
                                             <span className='text-gray-700 font-bold pl-2'>
                                             {product.valor * descuento}
                                             </span>
@@ -121,31 +127,31 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                         
                         {filteredProducts.length > 0 ? 
                         <h2 className='text-lg font-bold mt-4'>Obten 40% dcto en productos populares</h2>
-                        : <div className='w-full bg-blue-200 h-[80vh] flex items-center justify-center'>
-                            <h3 className='text-2xl'>Carrito vacío</h3></div>}
-                        <div className="">
+                        : <div className='w-full bg-white h-[80vh] flex items-center justify-center'>
+                            <h3 className='text-2xl'>Agregar Mapeo de categorias</h3></div>}
+                        <div className="pb-[0.2rem]">
                             {filteredProducts.map((producto, index) => (
                                 <div key={index} className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem] justify-items-center content-center">
                                     <div className="container h-[5rem] w-[5rem] col-span-2">
                                         <img className="object-cover w-full h-full "
-                                            src={ selectedProduct.id === producto.id && selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen }
-                                            
+                                            src={ selectedProduct.id === producto.id && selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen }   
                                         />
                                     </div>
                                
                                         <div className="col-span-2">
                                             <h4 className="text-xs font-bold text-black">{producto.category}</h4>
                                             <h4 className="text-xs font-bold text-gray-500">{producto.nombre}</h4>
-                                            <p className="text-sm leading-5 text-gray-500 ">
+                                            <aside className="text-sm leading-5 text-gray-500 ">
                                                 <h4 className="font-bold text-black text-sm">{producto.valor * 0.6}</h4>
                                                 <h4 className={`${" line-through text-gray-500"} font-bold text-sm`}>{producto.valor}</h4>
-                                            </p>
+                                            </aside>
                                         </div>
                                         <div className='col-span-4'>
                                             <div className='grid grid-cols-4 gap-4 mx-2'>
 
 
                                                 {producto.sizes.map((size, index) => (
+                                                    <>
 
                                                     <button key={index} className={`${producto.size === selectedSize
                                                             ? "text-[0.7rem] border bg-black text-gray-100 w-5 h-5 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
@@ -154,7 +160,7 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                                                         onClick={() => handleSizeClick(size, producto)}>
                                                         {size.size}
                                                     </button>
-
+                                                    </>
                                                 ))}
 
 
@@ -162,29 +168,32 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                                             <div className='grid grid-cols-6 gap-1 my-2 '>
                                                     {selectedProduct.id === producto.id && selectedSize.size && (
                                                         <>
-
+                                                            
                                                             {producto.sizes
                                                                 .find((size) => size.size === selectedSize.size)
                                                                 .colors.map((color, index) => (
+                                                                  
+                                                                    
                                                                     <button
                                                                     onClick={() => handleColorClick(color)}
                                                                         className={`${color.color === "" ? "border-2 border-black w-5 h-5"
                                                                             : "border border-gray-300 w-5 h-5"} md:mx-0 border 
                                                                             rounded-full transform duration-500 hover:scale-110 ${ListaColores[color.color]}`}
                                                                         key={color.idepro}/>
+                                                                  
                                                                 ))}
 
                                                         </>
                                                     )}
                                                
                                             </div>
-                                            {//!selectedColor && (
-                                            //<div className='bg-red-100 text-red-600 rounded-lg px-3 my-1 text-sm'>
-                                            //   Seleccione un color
-                                            //</div>
-                                            //)}
-                                            }
-                                            <button onClick={agregar} 
+                                            { productId === producto.id &&  (
+                                            <div className='bg-red-100 text-red-600 rounded-lg px-3 my-1 text-sm'>
+                                               Seleccione un color
+                                            </div>
+                                            )}
+                                            
+                                            <button onClick={()=>agregar(producto.id)} 
                                             className='bg-black text-white border rounded-lg px-3 py-1 text-sm' 
                                             >Agregar</button>
                                         </div>
@@ -199,29 +208,31 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                 </div>
                 </div>
 
-                <div className="h-[10vh]  sm:max-w-lg sm:w-full bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
+                <div className="h-[11vh]  sm:max-w-lg sm:w-full bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
                 <h3 className="text-sm leading-5 text-gray-500 w-full text-center pt-1">
-                            <span className='font-bold text-black'>Total:</span> <span className={`${ 'text-black font-bold'}`}>
-                                {totalPrice()}</span>
+                            <span className='font-bold text-black'>Total: </span> <span className={`${ 'text-black font-bold'}`}>
+                            ${totalPrice()}</span>
                         </h3>
                     
-                    <div className='px-6 py-1 sm:px-6 w-full gap-2 flex'>
+                    <div className='px-2 pb-2  pt-1 sm:px-6 w-full gap-2 flex'>
                     {cart.length ?
-                    <NavLink to='/pay' className=" w-1/2">
+                    <div className=" w-1/2">
+                    <NavLink to='/pay'>
                         <button 
                             type="button"
-                            className="w-full inline-flex justify-center rounded-md border border-transparent px-2 py-2 
+                            className="w-full inline-flex justify-center rounded-md border border-transparent  py-2 
                             bg-black text-sm leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none 
                             focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-1000 sm:text-sm sm:leading-5"
                         >
                             Terminar compra
                         </button></NavLink>
+                        </div>
                         
                     : ""}
-                    <div className={`${filteredProducts > 0 ? "w-1/2" : "w-full "}`}>
+                    <div className={`${cart.length > 0 ? "w-1/2" : "w-full "}`}>
                     <button onClick={closeModal}
                             type="button"
-                            className="w-full inline-flex justify-center rounded-md border border-transparent px-2 py-2 
+                            className="w-full inline-flex justify-center rounded-md border border-transparent  py-2 
                             bg-black text-sm leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none 
                             focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-1000 sm:text-sm sm:leading-5"
                         >

@@ -64,9 +64,10 @@ export const Banner = () => {
   bg-black tracking-[0.em] bg-opacity-50 border border-gray-400 '>SHOP NOW</div>
   </NavLink>
   </div>
-    <div className='flex absolute bottom-[-5%] w-full justify-center '>
+    <div className='flex absolute bottom-[10px] w-full justify-center '>
     {slides.map((slide, slideIndex) =>(
-      <div key={slideIndex} onClick={()=> goToSlide(slideIndex)} className={` ${slideIndex == currentIndex ? "text-[0.8rem] mt-[0.29rem] mb-[0.29rem] mx-2 ": "text-[1.4rem]"} mx-2 cursor-pointer`}>
+      <div key={slideIndex} onClick={()=> goToSlide(slideIndex)} 
+      className={` ${slideIndex == currentIndex ? "text-[0.8rem] mt-[0.29rem] mb-[0.29rem] mx-2 ": "text-[1.4rem]"} mx-2 cursor-pointer text-gray-100`}>
         {slideIndex==currentIndex?<RxShadowOuter />:<RxDotFilled />}
         </div>
     ))}

@@ -1,0 +1,30 @@
+.slick-thumb {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .slick-thumb li button:before {
+    color: black; /* color de los puntos */
+    font-size: 8px;
+    width: 6px;
+    height: 6px;
+  }
+  
+  .slick-thumb li.slick-active button:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0 ;
+    border: 2px solid #818181 ;
+    border-radius: 50%;
+    background: transparent;
+    width: 12px;
+    height: 12px;
+    top: 3px;
+  }
