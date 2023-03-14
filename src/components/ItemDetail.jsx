@@ -78,7 +78,7 @@ export const ItemDetail = (props) => {
     <>
       <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 md:mt-[8rem]">
      
-        <div className='md:grid md:place-content-center mx-0 px-0 '>
+        <div className='md:grid md:place-content-center mx-0 px-0 mt-[3.7rem] md:mt-0'>
           {data && data.sizes && data.sizes[0].colors && (
             <>
               <div style={{ backgroundImage: `url(${sliderData?.imagen})`, backgroundSize: 'cover' }} className=' object-cover bg-center w-full
@@ -167,12 +167,21 @@ export const ItemDetail = (props) => {
               //   ? <Link to='/cart'>Terminar compra</Link>
               //   : <ItemCount initial={1} stock={12} onAdd={onAdd}/>
             }
-            <section className='h-[7rem] bg-gradient-to-b from-slate-300 to-slate-100 shadow-md rounded-lg my-3 md:my-10 px-4 relative'>
-              <h3 className='text-sky-900  absolute top-7'>Pack X3 unidades</h3>
-              <h3 className='text-sky-900  absolute top-[3.3rem] w-2/3 text-xs'>Agrega 3 productos al carrito y obten el descuento automaticamente</h3>
-              <span className='text-sky-900 absolute top-3 right-4 text-xs'>Valor unidad ${data.valor * 0.8}</span>
-              <span className='text-sky-900 absolute top-7 right-4'>${data.valor * 0.8 * 3}</span>
-              <span className='text-amber-500 line-through absolute top-[3rem] right-4 '>${data.valor * 3}</span>
+            <section className='py-5 bg-gradient-to-b from-slate-300 to-slate-100 shadow-md rounded-lg my-3 md:my-10 px-4 relative'>
+              <h3 className='text-sky-900 text-center my-5'>Obten <span className='text-blue-600 font-bold'>20%</span> y <span className='text-blue-600 font-bold'>40%</span> por la segunda y tercera prenda</h3>
+              <h3 className='text-sky-900  text-sm'>Primera prenda  
+                <span className='text-blue-600 font-semibold'> ${data.valor} </span>
+              </h3>
+              <h3 className='py-1 text-sky-900  text-sm'>Obten <span className='text-blue-600 font-semibold'> 20% OFF </span>
+                  en la segunda prenda   
+                <span className='py-1 text-blue-600 font-semibold'> ${data.valor * 0.8} </span>
+                <span className='text-amber-500 line-through font-semibold'> ${data.valor} </span> 
+              </h3>
+              <h3 className='py-1 text-sky-900  text-sm'>Obten <span className='text-blue-600 font-semibold'> 40% OFF </span>
+                  en la tercera prenda   
+                <span className='text-blue-600 font-semibold'> ${data.valor * 0.6} </span>
+                <span className='text-amber-500 line-through font-semibold'> ${data.valor} </span> 
+              </h3>
             </section>
 
             {selectedSize.size && color ? <div className="">

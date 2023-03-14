@@ -14,6 +14,5 @@ export const DataIformacion = [
     {url: "", nombre: "Contacto"},
     {url: "", nombre: "Nosotros"},
     {url: "sesion", nombre: "Sesión"},
-    {url: "wompiWidget", nombre: "Event"},
-    {url: "adminn", nombre: "Admin2"}
+  
 ]

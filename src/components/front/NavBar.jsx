@@ -53,7 +53,7 @@ function NavBar(props) {
             </div> 
             
                 <div onClick={closeOpen} className="absolute left-3 md:left-[3rem] content-center flex items-center
-                top-[25%] text-white md:transform md:hover:text-gray-700 cursor-pointer"><AiOutlineClose /></div>
+                top-[25%] text-gray-200 md:transform md:hover:text-gray-700 cursor-pointer"><AiOutlineClose /></div>
                 </div>: ""}
                     
                
@@ -71,7 +71,7 @@ function NavBar(props) {
                             </div>
                         </NavLink>
                     </div>
-                    <h1 className=" text-xl absolute right-[1.5rem] md:right-[4rem] top-[1.1rem] md:top-[1.5rem] text-gray-400 cursor-pointer">
+                    <h1 className=" text-xl absolute right-[1.5rem] md:right-[4rem] top-[1.1rem] md:top-[1.5rem] text-slate-400 cursor-pointer">
                         <div onClick={()=> setShowModal(true)}> <span className=' relative'><BsBag />
                             {
                                 totalProducts() ? <span className="bg-blue-500 absolute bottom-[-10px] left-3 text-white text-base rounded-full px-2 ">

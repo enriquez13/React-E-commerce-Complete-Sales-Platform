@@ -111,10 +111,10 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                                         ) : " "}
                                         </p>
                                     </div>
-                                    <div className="absolute top-[50%] right-3">
+                                    <div className="absolute top-[50%] right-[-3rem]">
                                         <button onClick={() => removeProduct(product.ide)}
-                                            className="rounded-full h-5 w-5 flex items-center justify-center text-black bg-black bg-opacity-5">
-                                            <span className="text-xs"><AiFillDelete /></span>
+                                            className="rounded-full h-5 w-5 flex items-center justify-center text-gray-600 ">
+                                            <span className="text-sm"><AiFillDelete /></span>
                                         </button>
                                     </div>
                                 </div>
