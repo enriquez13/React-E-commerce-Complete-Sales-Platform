@@ -160,7 +160,7 @@ export const ItemDetail = (props) => {
           {selectedSize.size === "" && <span className='text-red-400 px-4'>Falta elegir la talla</span>}
           {selectedSize.size && color === "" && <span className='text-red-400 px-4'>Falta elegir el color</span>}
 
-          <div className="w-auto px-5 md:px-0">
+          <div className="w-auto mx-2 md:px-0">
 
             {
               //    goToCart
@@ -168,7 +168,7 @@ export const ItemDetail = (props) => {
               //   : <ItemCount initial={1} stock={12} onAdd={onAdd}/>
             }
             <section className='py-5 bg-gradient-to-b from-slate-300 to-slate-100 shadow-md rounded-lg my-3 md:my-10 px-4 relative'>
-              <h3 className='text-sky-900 text-center my-5'>Obten <span className='text-blue-600 font-bold'>20%</span> y <span className='text-blue-600 font-bold'>40%</span> por la segunda y tercera prenda</h3>
+              <h3 className='text-sky-900 text-center mb-5'>Obten <span className='text-blue-500 font-bold text-lg'>20%</span> y <span className='text-blue-500 font-bold text-lg'>40%</span> por la segunda y tercera prenda</h3>
               <h3 className='text-sky-900  text-sm'>Primera prenda  
                 <span className='text-blue-600 font-semibold'> ${data.valor} </span>
               </h3>

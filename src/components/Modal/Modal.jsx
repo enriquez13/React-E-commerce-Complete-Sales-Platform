@@ -10,10 +10,13 @@ const precioLimite = 149900
 
 export const Modal = (props) => {
 
-const {addProduct, closeModal, cart, removeProduct, totalPrice, totalProducts, allProducts} = props
+const {addProduct, closeModal, cart, removeProduct, totalPrice, totalProducts, allProducts, mostExpensiveProduct} = props
 //Filtrar productos de menor o igual valor al mayor del carrito
 const maxValor = cart.reduce((max, producto) => (producto.valor > max ? producto.valor : max), 0);
 const filteredProducts = allProducts.filter(producto => producto.valor <= maxValor);
+//carrito producots ordenados de mayor a menor valor
+const productosOrdenados = cart.sort((a, b) => b.valor - a.valor);
+
 
     const [selectedSize, setSelectedSize] = useState({});
     const [selectedColor, setSelectedColor] = useState("");
@@ -81,7 +84,7 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                         }
                         {cart?.map((product, index) => (
                             <>   
-
+                                    {console.log(index)}
                             <div className=" grid grid-cols-6 bg-white h-[7rem] w-full justify-items-center content-center" key={index}  >
                                 <div className='col-span-2  w-[6rem] h-[6rem]  relative'>
                                     <img src={cart[index].img} className="object-cover w-full h-full " />
@@ -99,16 +102,17 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                                         <p className="text-sm leading-5 text-gray-500 ">
                                             Talla {" "}{product.talla}{" "} Color{" "}{product.color}
                                         </p>
-                                        
+                                       
+                                            
                                         <p className="text-sm leading-5 text-gray-500 ">
-                                        <span className={`${cart.length > 1 && index > 0 ? 'line-through text-gray-400' : 'text-gray-700'} font-bold`}>
-                                            {product.valor}
-                                        </span>
-                                        { index > 0 ? (
-                                            <span className='text-gray-700 font-bold pl-2'>
-                                            {product.valor * descuento}
+                                            <span className={`${cart.length > 1 && index > 0 ? 'line-through text-gray-400' : 'text-gray-700'} font-bold`}>                                           
+                                                {cart[index].valor}
                                             </span>
-                                        ) : " "}
+                                            { index > 0 ? (
+                                                <span className='text-gray-700 font-bold pl-2'>
+                                                    { index === 0 ? cart[index].valor : index === 1 ? cart[index].valor * 0.8 : cart[index].valor * 0.6}
+                                                </span>
+                                            ) : " "}
                                         </p>
                                     </div>
                                     <div className="absolute top-[50%] right-[-3rem]">
@@ -240,6 +244,7 @@ const filteredProducts = allProducts.filter(producto => producto.valor <= maxVal
                             Seguir comprando
                         </button>
                         </div>
+                      
                     </div>
                 </div>
             

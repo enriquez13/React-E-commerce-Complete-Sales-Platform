@@ -27,20 +27,18 @@ const addProduct = (item, quantity, talla, color, ide, img) =>{
 //console.log('totalPrice: ' ,totalPrice )
 
 //Descuento a partir de la segunda prenda
-const descuento = 0.6; // 40% de descuento
+const descuentos = [1, 0.8, 0.6]; // 0% de descuento al primer elemento, 20% al segundo, 40% a partir del tercero
+
 const totalPrice = () => {
-  const total = cart.reduce((prev, product, index) => {
+  return cart.reduce((prev, product, index) => {
     const valor = Number(product.valor);
     const cantidad = product.quantity || 1; // Si la propiedad quantity no está definida, se asume que hay 1 producto
-    if (index > 0 || cantidad > 1 ) {
-      prev += valor * descuento * cantidad;
-    } else {
-      prev += valor * cantidad;
-    }
+    const descuento = descuentos[index] || descuentos[descuentos.length - 1]; // Si no hay descuento definido para el índice actual, se aplica el descuento máximo
+    prev += valor * descuento * cantidad;
     return prev;
   }, 0);
-  return total;
 };
+
 const totalProducts = () =>{
   return cart.reduce((acomulador,productoActual) => acomulador + productoActual.quantity, 0)
 }
