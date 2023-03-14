@@ -104,13 +104,14 @@ const productosOrdenados = cart.sort((a, b) => b.valor - a.valor);
                                         </p>
                                        
                                             
-                                        <p className="text-sm leading-5 text-gray-500 ">
-                                            <span className={`${cart.length > 1 && index > 0 ? 'line-through text-gray-400' : 'text-gray-700'} font-bold`}>                                           
+                                        <p className="text-sm leading-5  ">
+                                            <span style={{ textDecorationColor: 'black' }} className={`${cart.length > 1 && index > 0 ? 'line-through text-gray-500'  : 'text-gray-700'} font-bold`}>                                           
                                                 {cart[index].valor}
                                             </span>
+                                            <span className='text-blue-500'> { index === 0 ? "" : index === 1 ?  "20%":  "40%"}</span>
                                             { index > 0 ? (
                                                 <span className='text-gray-700 font-bold pl-2'>
-                                                    { index === 0 ? cart[index].valor : index === 1 ? cart[index].valor * 0.8 : cart[index].valor * 0.6}
+                                                    { index === 0 ? cart[index].valor : index === 1 ? cart[index].valor * 0.8  : cart[index].valor * 0.6 }
                                                 </span>
                                             ) : " "}
                                         </p>
