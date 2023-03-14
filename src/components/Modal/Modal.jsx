@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { AiFillDelete } from "react-icons/ai"
 import { AiOutlineClose } from "react-icons/ai";
 import { ListaColores } from '../ListaColores';
-//import { BsBag } from 'react-icons/bs';
+import { DataCategorias } from '../front/DataCategorias';
+
 
 const descuento = 0.6
 const precioLimite = 149900
@@ -57,11 +58,11 @@ const productosOrdenados = cart.sort((a, b) => b.valor - a.valor);
     return (
         <div className=" fixed w-full z-[100]  right-0 inset-y-0 pt-0 md:mt-[10rem]  sm:flex sm:items-center sm:justify-center ">
             <div className="fixed inset-0 transition-opacity" onClick={closeModal}>
-                <div className="absolute inset-0 bg-black bg-opacity-80  "></div>
+                <div className="w-full absolute inset-0 bg-black bg-opacity-80  "></div>
             </div>
-            <div className='relative h-[120vh] bg-gray-100 '>
-            <div className="h-[90vh] max-h-[90vh] md:max-h-[88vh] overflow-y-scroll  rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full ">
-                <div className="   pb-[8rem] sm:p-6 sm:pb-4">
+            <div className='md:w-[40%] relative h-[120vh] bg-gray-100 '>
+            <div className="h-[90vh] max-h-[90vh] md:max-h-[88vh] overflow-y-scroll  rounded-lg overflow-hidden shadow-xl transform transition-all  ">
+                <div className="pb-[8rem] sm:p-6 sm:pb-4">
                     <div className="h-[70vh] text-center sm:mt-5 mx-2 relative">
                     <h3 className="text-xl font-bold leading-6  text-gray-900 my-6 ">
                     {filteredProducts.length> 0 ? 
@@ -126,14 +127,36 @@ const productosOrdenados = cart.sort((a, b) => b.valor - a.valor);
                                 
                             </div>
                             <hr />
-
+                           
                             </>))}
                         </div>
+                        <div className='w-full max-w-full overflow-x-hidden grid   text-black justify-center items-center
+                            my-5 text-xl font-semibold'>
                         
-                        {filteredProducts.length > 0 ? 
-                        <h2 className='text-lg font-bold mt-4'>Obten 40% dcto en productos populares</h2>
-                        : <div className='w-full bg-white h-[80vh] flex items-center justify-center'>
-                            <h3 className='text-2xl'>Agregar Mapeo de categorias</h3></div>}
+                         {cart.length === 0 ? "Tu carrito está vacío" : cart.length === 1 ? "Obten 20% en el siguiente producto"  : cart.length >= 2 ? "Obten 40% en el siguiente producto" :null }
+                       
+                        </div>
+                         
+                        {cart.length === 0 ?
+                         <>
+                           
+                            <div className="w-full max-w-full overflow-x-hidden grid   text-sky-700 justify-center items-center">
+                {DataCategorias.map((category,index)=>(
+                <NavLink to={`/categoria/${category.url}`} key={index} className=" w-full relative h-[15rem] mt-2">
+                <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src={category.src} />
+                    <div className="absolute grid bottom-[20%] translate-y-[50%] w-full text-sm px-4 ">
+                        <h3 className="place-self-center text-gray-200  text-2xl my-4 font-semibold" >{category.nombre}</h3>
+                        
+                    </div>                
+                </NavLink>
+                )
+                 )}
+                
+            </div>
+                        </> :
+                        
+
+
                         <div className="pb-[0.2rem]">
                             {filteredProducts.map((producto, index) => (
                                 <div key={index} className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem] justify-items-center content-center">
@@ -147,7 +170,7 @@ const productosOrdenados = cart.sort((a, b) => b.valor - a.valor);
                                             <h4 className="text-xs font-bold text-black">{producto.category}</h4>
                                             <h4 className="text-xs font-bold text-gray-500">{producto.nombre}</h4>
                                             <aside className="text-sm leading-5 text-gray-500 ">
-                                                <h4 className="font-bold text-black text-sm">{producto.valor * 0.6}</h4>
+                                                <h4 className="font-bold text-black text-sm">{cart.length === 1 ? producto.valor * 0.8 : producto.valor * 0.6 }</h4>
                                                 <h4 className={`${" line-through text-gray-500"} font-bold text-sm`}>{producto.valor}</h4>
                                             </aside>
                                         </div>
@@ -208,13 +231,13 @@ const productosOrdenados = cart.sort((a, b) => b.valor - a.valor);
                            
 
                             ))}
-                        </div>
+                        </div>}
                     </div>
                     
                 </div>
                 </div>
 
-                <div className="h-[11vh]  sm:max-w-lg sm:w-full bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
+                <div className="h-[11vh]  md:w-[40%] bg-gray-50  fixed bottom-0 w-full shadow-md grid justify-items-center content-center">
                 <h3 className="text-sm leading-5 text-gray-500 w-full text-center pt-1">
                             <span className='font-bold text-black'>Total: </span> <span className={`${ 'text-black font-bold'}`}>
                             ${totalPrice()}</span>

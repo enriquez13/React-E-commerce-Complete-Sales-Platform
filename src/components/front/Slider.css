@@ -1,6 +1,6 @@
 .slick-thumb {
     position: absolute;
-    bottom: 0;
+    bottom: -6px;
     display: flex;
     justify-content: center;
     margin: 0;

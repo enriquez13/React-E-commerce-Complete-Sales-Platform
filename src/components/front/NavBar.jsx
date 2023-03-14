@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { getAuth, signOut } from 'firebase/auth';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BsBag } from 'react-icons/bs';
@@ -10,8 +10,10 @@ import { DataCategorias, DataIformacion } from "./DataCategorias";
 import { Modal } from "../Modal/Modal";
 
 function NavBar(props) {
+  //Ubicación por ruta
+  const location = useLocation();
   //showmodal
-  const { data, allProducts } = props;
+  const { data, allProducts, detalleId } = props;
   const [showModal, setShowModal] = useState(false); 
   const closeModaldetail = () => {
     setShowModal(false);
@@ -47,14 +49,17 @@ function NavBar(props) {
     return (
         <> 
            <div className="fixed z-10 shadown-md w-full top-0 left-0 max-w-screen " >
-            {opens === false && scroll <= 100? <div className="relative z-10 w-full bg-gray-700 top-0 text-center "> 
+            
+           {location.pathname === `/detalle/${detalleId}` ? null : 
+            opens === false && scroll <= 100? <div className="relative z-10 w-full bg-gray-700 top-0 text-center "> 
             <div className="w-full h-[2rem] flex items-center justify-center text-[0.6rem] text-amber-200 tracking-[0.3rem] uppercase" style={{ display: 'flex', alignItems: 'center' }}>
                 <AnimatedText />
             </div> 
             
                 <div onClick={closeOpen} className="absolute left-3 md:left-[3rem] content-center flex items-center
                 top-[25%] text-gray-200 md:transform md:hover:text-gray-700 cursor-pointer"><AiOutlineClose /></div>
-                </div>: ""}
+                </div>: ""
+              }
                     
                
                 

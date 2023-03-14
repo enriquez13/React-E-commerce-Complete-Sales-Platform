@@ -51,7 +51,7 @@ export const ItemDetailContainer = ()=>{
 
     return (
         <>
-        <Navbar data={data} allProducts={allProducts}/>
+        <Navbar data={data} allProducts={allProducts} detalleId={detalleId}/>
         <ItemDetail data={data} allProducts={allProducts} />
         {//<ItemList />
         }  
