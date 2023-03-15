@@ -13,7 +13,7 @@ function NavBar(props) {
   //Ubicación por ruta
   const location = useLocation();
   //showmodal
-  const { data, allProducts, detalleId } = props;
+  const { data, allProducts, detalleId, categoriaId } = props;
   const [showModal, setShowModal] = useState(false); 
   const closeModaldetail = () => {
     setShowModal(false);
@@ -67,35 +67,38 @@ function NavBar(props) {
                 <div className={`${scroll <= 100 ? " bg-opacity-[0.01] from-black  md:h-[7rem] md:grid md:grid-cols-3"
                     : "md:h-[4rem] md:grid md:grid-cols-6" } 
                     ${open ? "bg-opacity-[1]" : ""}
-                flex transition-all duration-1000 bg-black relative items-center justify-center py-4 md:px-10 px-7`}>
+                flex transition-all duration-1000 bg-black relative items-center justify-center py-4 md:px-10`}>
                     <div className={` ${scroll <= 100 ? "md:col-start-1 md:col-span-6" : "md:col-start-1 md:col-span-1" }
-                     text-gray-300 z-[50] md:col-start-1 md:col-span-1  h-full`}>
-                        <NavLink to="/">
+                     text-gray-300 z-[50] md:col-start-1 md:col-span-1 h-full grid items-center`}>
+                       
                             <div className="text-xl md:text-2xl tracking-[0.1rem] text-gray-400 text-center">
-                                ZOROBABEL
+                            <NavLink to="/" >
+                              ZOROBABEL
+                            </NavLink>
                             </div>
-                        </NavLink>
+                       
                     </div>
-                    <h1 className=" text-xl absolute right-[1.5rem] md:right-[4rem] top-[1.1rem] md:top-[1.5rem] text-slate-400 cursor-pointer">
-                        <div onClick={()=> setShowModal(true)}> <span className=' relative'><BsBag />
+                    
+                    <div onClick={()=> setShowModal(true)} 
+                    className="z-[50] p-1 text-xl absolute right-[1.5rem] md:right-[1.8rem] top-[1.1rem] md:top-[25%] text-slate-400 ">
+                        <span className=' relative cursor-pointer'><BsBag />
                             {
                                 totalProducts() ? <span className="bg-blue-500 absolute bottom-[-10px] left-3 text-white text-base rounded-full px-2 ">
                                     {totalProducts()}
                                 </span> : ''
                             }
                         </span>
-                        </div>
-
-                    </h1>
+                        
+                    </div>
                     <div onClick={() => setOpen(!open)} className="text-xl absolute left-[1.5rem] top-5 text-gray-400 
                     cursor-pointer md:hidden ">
                         {open == false ? <AiOutlineMenu /> : <AiOutlineClose />}
                     </div>
                     <div className={`${scroll <= 100 ? "md:col-start-1 md:col-span-6 md:flex md:justify-center" 
-                    :"md:col-start-2 md:col-span-6 md:flex md:justify-center"} `}>
+                    :" md:col-start-2 md:col-span-6 md:flex md:justify-center items-center"} `}>
 
                         <ul className={`md:flex md:items-center md:pb-0  absolute md:static bg-black bg-opacity-[0.96] md:bg-transparent
-                    md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-700 ease-in 
+                    md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-700 ease-in
                      ${open ? 'top-[3.5rem] overflow-y-scroll h-[100vh] pb-[10rem]' : 'top-[-1000px]'} `}>
 
                             <div className="md:hidden grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-6 text-white
@@ -104,27 +107,31 @@ function NavBar(props) {
                             </div>
 
                             {DataCategorias.map((categorias,index)=>(
-                            <NavLink key={index} to={`/categoria/${categorias.url}`} className="mx-10  grid grid-cols-3 gap-4 cursor-pointer 
-                            md:ml-8 text-xl md:my-0 py-2 text-gray-400  hover:text-gray-800 duration-500" 
+                              <div className=" grid items-center justify-center md:h-[3rem]">
+                            <NavLink key={index} to={`/categoria/${categorias.url}`} className="mx-10 md:mx-0 grid grid-cols-3 gap-4 cursor-pointer 
+                            text-xl md:my-0 py-2 md:py-0 text-gray-400  hover:text-gray-800 duration-500" 
                             onClick={() => setOpen(!open)}>
                             <div className="md:hidden grid-row-span-2">
                               <img src={categorias.src} className="w-[6rem] h-[6rem] object-cover"/>
                             </div>
-                            <div className="col-span-2 flex flex-col justify-center items-left mx-4  ">
-                              <div className="mb-2 uppercase text-sm font-semibold">{categorias.nombre}</div>
+                            <div className="col-span-2 md:col-span-3 md:h-[3rem]  grid items-center px-4 md:mx-0 ">
+                              <div className=" uppercase text-sm font-semibold ">{categorias.nombre}</div>
                               <div className="md:hidden text-sm text-gray-300 font-semibold">{categorias.detalle}</div>
                             </div>
                           </NavLink>
+                          </div>
                             ))}
-                            <hr className="bg-gray-900 opacity-30 mx-10  my-8" />
+                            <hr className="md:hidden bg-gray-900 opacity-30 mx-10 my-8" />
 
 
-                            {DataIformacion.map((informacion, index)=>(   
+                            {DataIformacion.map((informacion, index)=>(  
+                              <div className=" grid items-center justify-center h-[3rem] px-4 ">
                             <NavLink key={index} to={`/${informacion.url}`}
-                            className="grid justify-items-center content-center  cursor-pointer md:ml-8 text-xl md:my-0 py-2
+                            className=" cursor-pointer  text-xl md:my-0 
                             text-gray-400  hover:text-gray-800 duration-500">
-                                <h3  className="mb-2 uppercase text-sm font-semibold">{informacion.nombre}</h3>
+                                <h3  className="uppercase text-sm font-semibold">{informacion.nombre}</h3>
                             </NavLink>
+                            </div> 
                             ))}
                           
                        
@@ -135,6 +142,14 @@ function NavBar(props) {
                     </div>
                 </div>
             </div>
+            {// Compenza el espacio que ocupa NavBar en las diferentes pestañas
+            }
+            {location.pathname === `/detalle/${detalleId}` ? <div className="h-[3.7rem] md:h-0"></div> 
+            :  null}
+            {location.pathname === `/categoria/${categoriaId}` ? <div className="h-[4rem] md:h-[7rem]"></div> 
+            :  null}
+            
+            
             {showModal && (
         <Modal closeModal={closeModaldetail} addProduct={addProduct} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
       )}

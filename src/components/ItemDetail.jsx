@@ -78,7 +78,7 @@ export const ItemDetail = (props) => {
     <>
       <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 md:mt-[8rem]">
      
-        <div className='md:grid md:place-content-center mx-0 px-0 mt-[3.7rem] md:mt-0'>
+        <div className='md:grid md:place-content-center mx-0 px-0  md:mt-0'>
           {data && data.sizes && data.sizes[0].colors && (
             <>
               <div style={{ backgroundImage: `url(${sliderData?.imagen})`, backgroundSize: 'cover' }} className=' object-cover bg-center w-full
