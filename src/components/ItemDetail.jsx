@@ -167,23 +167,6 @@ export const ItemDetail = (props) => {
               //   ? <Link to='/cart'>Terminar compra</Link>
               //   : <ItemCount initial={1} stock={12} onAdd={onAdd}/>
             }
-            <section className='py-5 bg-gradient-to-b from-slate-300 to-slate-100 shadow-md rounded-lg my-3 md:my-10 px-4 relative'>
-              <h3 className='text-sky-900 text-center mb-5'>Obten <span className='text-blue-500 font-bold text-lg'>20%</span> y <span className='text-blue-500 font-bold text-lg'>40%</span> por la segunda y tercera prenda</h3>
-              <h3 className='text-sky-900  text-sm'>Primera prenda  
-                <span className='text-blue-600 font-semibold'> ${data.valor} </span>
-              </h3>
-              <h3 className='py-1 text-sky-900  text-sm'>Obten <span className='text-blue-600 font-semibold'> 20% OFF </span>
-                  en la segunda prenda   
-                <span className='py-1 text-blue-600 font-semibold'> ${data.valor * 0.8} </span>
-                <span className='text-amber-500 line-through font-semibold'> ${data.valor} </span> 
-              </h3>
-              <h3 className='py-1 text-sky-900  text-sm'>Obten <span className='text-blue-600 font-semibold'> 40% OFF </span>
-                  en la tercera prenda   
-                <span className='text-blue-600 font-semibold'> ${data.valor * 0.6} </span>
-                <span className='text-amber-500 line-through font-semibold'> ${data.valor} </span> 
-              </h3>
-            </section>
-
             {selectedSize.size && color ? <div className="">
               <div className='mx-8 md:mx-[6rem] md:mt-[2rem]'>
                 <button className="flex items-center justify-center w-full h-11 mt-5 
@@ -202,6 +185,25 @@ export const ItemDetail = (props) => {
                 <span>Compra aquí y paga en CASA</span>
               </button>
             </div>
+            
+            <section className='py-5 bg-gradient-to-b from-slate-300 to-slate-100 shadow-md rounded-lg my-3 md:my-10 px-4 relative'>
+              <h3 className='text-sky-900 text-center mb-5'>Obten <span className='text-blue-500 font-bold text-lg'>20%</span> y <span className='text-blue-500 font-bold text-lg'>40%</span> por la segunda y tercera prenda</h3>
+              <h3 className='text-sky-900  text-sm'>Primera prenda  
+                <span className='text-blue-600 font-semibold'> ${data.valor} </span>
+              </h3>
+              <h3 className='py-1 text-sky-900  text-sm'>Obten <span className='text-blue-600 font-semibold'> 20% OFF </span>
+                  en la segunda prenda   
+                <span className='py-1 text-blue-600 font-semibold'> ${data.valor * 0.8} </span>
+                <span className='text-amber-500 line-through font-semibold'> ${data.valor} </span> 
+              </h3>
+              <h3 className='py-1 text-sky-900  text-sm'>Obten <span className='text-blue-600 font-semibold'> 40% OFF </span>
+                  en la tercera prenda   
+                <span className='text-blue-600 font-semibold'> ${data.valor * 0.6} </span>
+                <span className='text-amber-500 line-through font-semibold'> ${data.valor} </span> 
+              </h3>
+            </section>
+
+            
 
             <h2 className='grid justify-items-center my-10 font-semibold md:text-2xl '>INFORMACIÓN DE INTERES</h2>
               <DetailInformation />
