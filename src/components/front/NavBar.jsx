@@ -69,7 +69,7 @@ function NavBar(props) {
                     ${open ? "bg-opacity-[1]" : ""}
                 flex transition-all duration-1000 bg-black relative items-center justify-center py-4 md:px-10 px-7`}>
                     <div className={` ${scroll <= 100 ? "md:col-start-1 md:col-span-6" : "md:col-start-1 md:col-span-1" }
-                     text-gray-300 z-100 md:col-start-1 md:col-span-1  h-full`}>
+                     text-gray-300 z-[50] md:col-start-1 md:col-span-1  h-full`}>
                         <NavLink to="/">
                             <div className="text-xl md:text-2xl tracking-[0.1rem] text-gray-400 text-center">
                                 ZOROBABEL

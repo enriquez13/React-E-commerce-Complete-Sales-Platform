@@ -7,9 +7,6 @@ import { getAuth, signOut } from 'firebase/auth'
 import { NavLink } from 'react-router-dom';
 import { Clientes } from './Clientes';
 
-//function handleAction(event) {
-  //console.log('Child did:', event.target.value);
-//}
 const  auth = getAuth(firebaseApp)
 
 export const Admin = () => {

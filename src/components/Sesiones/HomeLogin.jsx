@@ -9,7 +9,6 @@ const  auth = getAuth(firebaseApp)
 export const HomeLogin = ({user}) => {
   return (
     <>
-    {console.log(user.rol)}
     {user.rol === "admin" ? <Admin /> : <Login login={user.rol}/>}
     </>
   )

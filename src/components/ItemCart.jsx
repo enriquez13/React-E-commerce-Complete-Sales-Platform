@@ -18,7 +18,7 @@ const ItemCart = ({product})=>{
             <div className=" text-black mx-2 border rounded-xl flex md:grid-cols-4 my-1">
                 <div className="p-1 flex-none w-1/4 items-center justify-center">
                     <img className="rounded-xl md:w-4/6" src={product.imagenes[0].img} />
-                    {console.log(product)}
+                    
                 </div>
 
                 <div className="  w-2/4 grid items-center ml-4 ">

@@ -157,8 +157,8 @@ export const ItemDetail = (props) => {
             })}
           </div>
 
-          {selectedSize.size === "" && <span className='text-red-400 px-4'>Falta elegir la talla</span>}
-          {selectedSize.size && color === "" && <span className='text-red-400 px-4'>Falta elegir el color</span>}
+          {selectedSize.size === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3 my-1 text-sm'>Falta elegir la talla</span>}
+          {selectedSize.size && color === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3 my-1 text-sm'>Falta elegir el color</span>}
 
           <div className="w-auto mx-2 md:px-0">
 

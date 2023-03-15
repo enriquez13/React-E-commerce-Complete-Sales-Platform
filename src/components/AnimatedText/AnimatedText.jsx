@@ -4,7 +4,8 @@ import { useTransition, animated } from 'react-spring';
 const AnimatedText = () => {
     const items = ["¡Envío gratis al comprar 149.900 o más!", 
     "Paga cuando recibas tu producto en las manos",
-    "Obten hasta 40% por comprar un segundo producto"];
+    "Obten 20% en tu segundo producto",
+    "Obten 40% en tu tercer producto"];
     const [index, setIndex] = useState(0);
   
     useEffect(() => {

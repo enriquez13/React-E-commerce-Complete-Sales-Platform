@@ -5,7 +5,6 @@ export const useCartContext = ()=> useContext(cartContext)
 export const CartProvider = ({children}) => {
 const [cart, setCart] = useState([])
 const [opens, setOpens] = useState(false)
-//console.log('carrito: ', cart)
 
 const OpenSlider = (open) => { setOpens(open) } 
 
@@ -24,7 +23,6 @@ const addProduct = (item, quantity, talla, color, ide, img) =>{
 //const totalPrice = () =>{
 //  return cart.reduce((prev,act) => prev + act.quantity * act.valor, 0)
 //}
-//console.log('totalPrice: ' ,totalPrice )
 
 //Descuento a partir de la segunda prenda
 const descuentos = [1, 0.8, 0.6]; // 0% de descuento al primer elemento, 20% al segundo, 40% a partir del tercero
@@ -50,7 +48,6 @@ const isInCart = (ide) => {
       cart.find(product => product.ide===ide ) ? true : false
     )
   }
-  //console.log(cart)
 
    // Guardar y recuperar el carrito del localStorage
    useEffect(() => {
