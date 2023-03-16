@@ -36,6 +36,8 @@ export const Modal = (props) => {
     const handleSizeClick = (size, producto) => {
         setSelectedSize(size);
         setSelectedProduct(producto);
+        setIsModalOpenTallaColor(true)
+
     };
     const handleColorClick = (color) => {
         setSelectedColor(color)
@@ -144,7 +146,7 @@ export const Modal = (props) => {
                             <div className='w-full max-w-full overflow-x-hidden grid   text-black justify-center items-center
                             my-5 text-xl font-semibold'>
 
-                                {cart.length === 0 ? "Buscar productos" : cart.length === 1 ? "Obten 20% en el siguiente producto" : cart.length >= 2 ? "Obten 40% en el siguiente producto" : null}
+                                {cart.length === 0 ? "Buscar productos" : cart.length === 1 ? "Obten 20% en el segundo producto y 40% en el tercero" : cart.length >= 2 ? "Obten 40% en el siguiente producto" : null}
 
                             </div>
 

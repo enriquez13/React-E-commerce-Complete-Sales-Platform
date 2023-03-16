@@ -139,7 +139,7 @@ export const Paytwo = () => {
     <>
     <NavLink to='/home'><h2 className='text-center text-2xl my-5 mb-10 font-semibold'>ZOROBABEL</h2></NavLink>
     <div className='w-full grid grid-cols-2'>
-    <NavLink to='/cart'><h3  className='col-start-1 col-span-1 text-center '>1. Carrito</h3></NavLink>
+    <NavLink to='/home'><h3  className='col-start-1 col-span-1 text-center '>1. Carrito</h3></NavLink>
     <h3 className='col-start-2 col-span-1 text-center'>2. Compra</h3>
     <hr className='flex col-start-1 col-span-1 mt-1 ml-7 border-[1px] border-gray-300'/>
     <hr className='flex col-start-2 col-span-1 mt-1 mr-7 border-gray-500 border-[1px]'/>
