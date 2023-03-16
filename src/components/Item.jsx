@@ -43,7 +43,7 @@ const closeModal = () => {
            
             <Link to={`/detalle/${info.id}`}>
                 <div className='flex justify-center w-full h-[300px]'>
-                <div className='relative md:w-3/4'>
+                <div className='relative md:w-3/4 '>
                     <img className=" items-center p-1 rounded-t-lg object-cover w-full h-full md:transform md:duration-500 md:hover:scale-105" 
                     src={info.imagenes[0].img} alt="product image" />
                 </div>
