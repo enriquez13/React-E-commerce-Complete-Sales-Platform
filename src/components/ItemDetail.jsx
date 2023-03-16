@@ -156,10 +156,10 @@ export const ItemDetail = (props) => {
               ));
             })}
           </div>
-
-          {selectedSize.size === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3 my-1 text-sm'>Falta elegir la talla</span>}
-          {selectedSize.size && color === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3 my-1 text-sm'>Falta elegir el color</span>}
-
+          <h4 className='my-1 text-center'>
+          {selectedSize.size === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3  my-1 text-sm'>Falta elegir la talla</span>}
+          {selectedSize.size && color === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3 py-1 text-sm'>Falta elegir el color</span>}
+          </h4>
           <div className="w-auto mx-2 md:px-0">
 
             {
@@ -169,22 +169,24 @@ export const ItemDetail = (props) => {
             }
             {selectedSize.size && color ? <div className="">
               <div className='mx-8 md:mx-[6rem] md:mt-[2rem]'>
-                <button className="flex items-center justify-center w-full h-11 mt-5 
-                border border-black rounded-xl hover:bg-neutral-100 md:transform md:duration-200 md:hover:scale-105 "
+                <button className="flex items-center justify-center w-full  h-11 mt-5
+            //        text-amber-200 animate-bounce bg-black rounded-xl font-bold md:transform md:duration-200 md:hover:scale-105
+            //        hover:bg-neutral-900 hover:text-neutral-200 "
                   disabled={selectedSize.size === ""}
                   onClick={agregar}>Agregar al carrito</button>
               </div>
 
             </div> : ""}
-            <div className='mx-8 md:mx-[6rem] mt-6'>
+           {// <div className='mx-8 md:mx-[6rem] mt-6'>
 
-              <button className="flex items-center justify-center w-full  h-11 mt-3
-                    text-amber-200 animate-bounce bg-black rounded-xl font-bold md:transform md:duration-200 md:hover:scale-105
-                    hover:bg-neutral-900 hover:text-neutral-200 "
-                onClick={agregar} disabled={color === ""}>
-                <span>Compra aquí y paga en CASA</span>
-              </button>
-            </div>
+            //  <button className="flex items-center justify-center w-full  h-11 mt-3
+            //        text-amber-200 animate-bounce bg-black rounded-xl font-bold md:transform md:duration-200 md:hover:scale-105
+            //        hover:bg-neutral-900 hover:text-neutral-200 "
+            //    onClick={agregar} disabled={color === ""}>
+            //</div>    <span>Compra aquí y paga en CASA</span>
+            //</div>  </button>
+            //</div>
+           }
             
             <section className='py-5 bg-gradient-to-b from-slate-300 to-slate-100 shadow-md rounded-lg my-3 md:my-10 px-4 relative'>
               <h3 className='text-sky-900 text-center mb-5'>Obten <span className='text-blue-500 font-bold text-lg'>20%</span> y <span className='text-blue-500 font-bold text-lg'>40%</span> por la segunda y tercera prenda</h3>
