@@ -1,13 +1,16 @@
-import React  from 'react'
+import React, { useEffect, useState }  from 'react'
 
 const envio ={
   option1:"Envío normal",
   option2:"Contraentrega"
 }
-function Ordenes({ data }) {
+ // Organizar por fecha
+ data.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+
+function Ordenes( {data} ) {
  
     return (
-        <>
+        <> 
             <h1 className='text-center mb-9 text-2xl'>Ordenes</h1>
             <section className='flex mb-[3rem]'>
               <div className='w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300 '>Por preparar 1</div>

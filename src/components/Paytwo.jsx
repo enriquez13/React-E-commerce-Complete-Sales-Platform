@@ -6,10 +6,15 @@ import {addDoc, collection, getFirestore} from 'firebase/firestore'
 import { NavLink } from 'react-router-dom';
 import { useCartContext } from '../CartProvider';
 
+const envio ={ //Convertir tipo de envío
+  option1:"Envío normal",
+  option2:"Contraentrega"
+}
 export const Paytwo = () => {
   const {cart, totalPrice, valorEnvio, total} = useCartContext()
   const [envio,setEnvio]=useState("")
   const [openCheckout, setOpenCheckout] = useState(false);
+
   //const [datos, setDatos] = useState("");
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onChange',
@@ -59,6 +64,7 @@ export const Paytwo = () => {
     
     checkout.open(function ( result ) {
       var transaction = result.transaction
+      console.log("transaction", transaction)
       console.log('Transaction ID: ', transaction.id)
       console.log('Transaction object: ', transaction)
       console.log('Transaction object: ', data)
@@ -78,7 +84,7 @@ export const Paytwo = () => {
         },
             producto: cart.map(product=> ({Ide:product.ide, Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
             envio: data.option,
-            fecha: new Date().toLocaleString(),
+            fecha: new Date().toISOString(),
             valorenvio: valorEnvio(),
             total: total(),
             }
@@ -113,7 +119,7 @@ export const Paytwo = () => {
             producto: cart.map(product=> ({Ide:product.ide, Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
             envio: data.option,
             valorenvio: valorEnvio(),
-            fecha: new Date().toLocaleString(),
+            fecha: new Date().toISOString(),
             total: total(),
             }
             const ordersCollection = collection(db, 'compras')
@@ -151,8 +157,8 @@ export const Paytwo = () => {
   
       {cart.map((items, index)=>(
         <>
-      <div key={index} className=' grid grid-cols-6 gap-1 items-center '>
-        <div className='col-span-1 h-[4rem]'><img src={items.img} className="object-cover h-full w-full"/></div>
+      <div key={index} className=' grid grid-cols-6 gap-1 items-center pb-1'>
+        <div className='col-span-1 h-[4rem] md:w-[5.5rem] md:h-[5.5rem]'><img src={items.img} className="object-cover h-full w-full "/></div>
         <div className='col-span-4 text-sm pl-1'>{items.category+" "+items.nombre+" "+items.talla+" "+items.color}</div>
         <div className='col-span-1 text-sm'>{index === 0 ? cart[index].valor : index === 1 ? cart[index].valor * 0.8 : cart[index].valor * 0.6}
        </div>
@@ -221,7 +227,7 @@ export const Paytwo = () => {
       {errors.ciudad && errors.ciudad.type === 'minLength' && <p>La ciudad debe tener al menos 4 caracteres</p>}
       {errors.ciudad && errors.ciudad.type === 'pattern' && <p>La ciudad no puede contener símbolos</p>}
       </div>
-      <label htmlFor="direccion">Dirección:</label>
+      <label htmlFor="direccion">Dirección completa y barrio:</label>
       <input id="direccion" type="text" {...register('direccion', { required: true, minLength: 4, pattern: /^[a-zA-ZáéíóúñÁÉÍÓÚ0-9#.,/-\s]+$/  })} 
       className='w-full mt-1 bg-gray-100'/>
       <div className='text-red-400 mb-3'>{errors.direccion && errors.direccion.type === 'required' && <p>Falta escribir la dirección</p>}
@@ -234,6 +240,7 @@ export const Paytwo = () => {
       </button>
       </div>
     </form>
+    {console.log("hora :",new Date().toLocaleString())}
     </div>
     </>
   );

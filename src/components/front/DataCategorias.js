@@ -13,6 +13,6 @@ export const DataCategorias = [
 export const DataIformacion = [
     {url: "", nombre: "Contacto"},
     {url: "", nombre: "Nosotros"},
-    {url: "sesion", nombre: "Sesión"},
+    {url: "sesion", nombre: "Iniciar sesión"},
   
 ]
