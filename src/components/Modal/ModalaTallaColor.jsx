@@ -58,6 +58,7 @@ function ModalaTallaColor(props) {
                     className='bg-black text-white border rounded-lg px-9 py-2 text-sm'
                 >Agregar</button>
                 </div>
+                <h4 className='text-center font-semibold mt-4'>Duradero, confiable, agradable y cómodo</h4>
 
                {//} <button onClick={onClose} className="block mt-4 mx-auto px-4 py-2 bg-blue-500 text-white rounded-lg">
                 //    Cerrar
