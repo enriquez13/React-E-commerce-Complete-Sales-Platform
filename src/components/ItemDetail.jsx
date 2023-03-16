@@ -158,7 +158,7 @@ export const ItemDetail = (props) => {
           </div>
           <h4 className='my-1 text-center'>
           {selectedSize.size === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3  my-1 text-sm'>Falta elegir la talla</span>}
-          {selectedSize.size && color === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3 py-1 text-sm'>Falta elegir el color</span>}
+          {selectedSize.size && color === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3 py-1 text-sm'>Elegir talla y color</span>}
           </h4>
           <div className="w-auto mx-2 md:px-0">
 
