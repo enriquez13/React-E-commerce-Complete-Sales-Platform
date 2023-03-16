@@ -16,10 +16,13 @@ function ModalaTallaColor(props) {
         <div 
         className="fixed inset-0 h-[100vh] z-[40] flex items-center justify-center bg-black bg-opacity-80"
         onClick={handleClickOutside}>
-            <div className="bg-white w-[90%]  h-[78vh] max-h-[80vh] absolute top-[5rem] rounded-lg ">
-                <div className='h-[67%]'>
+            <div className="bg-white w-[90%]  h-[78vh] max-h-[80vh] absolute rounded-lg ">
+                <div className='h-[67%] relative'>
                 <img src={selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen}
                  alt="Placeholder" className='w-full h-full object-cover'/>
+                 <div onClick={onClose}
+                 className='text-2xl rounded-full bg-black bg-opacity-5 px-3 py-1 font-semibold absolute top-1 right-2 z-[80] text-black'>X
+                 </div>
                 </div>
                 <div className='grid grid-cols-4 gap-4 justify-center items-center py-2 mx-10'>
                     {producto?.sizes.map((size, index) => (
