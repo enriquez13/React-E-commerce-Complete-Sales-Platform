@@ -4,10 +4,11 @@ const envio ={
   option1:"Envío normal",
   option2:"Contraentrega"
 }
- // Organizar por fecha
- data.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+ 
 
 function Ordenes( {data} ) {
+  // Organizar por fecha
+ data.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
  
     return (
         <> 
