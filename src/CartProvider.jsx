@@ -37,6 +37,15 @@ const totalPrice = () => {
   }, 0);
 };
 
+const valorEnvio = () =>{
+  const envioFinal = totalPrice()>=149900 ? 0 : 10000 
+  return envioFinal
+}
+const total = () => {
+  const totalFinal = totalPrice()+valorEnvio()
+  return totalFinal
+}
+
 const totalProducts = () =>{
   return cart.reduce((acomulador,productoActual) => acomulador + productoActual.quantity, 0)
 }
@@ -70,6 +79,8 @@ const isInCart = (ide) => {
       totalPrice,
       totalProducts,
       OpenSlider,
+      valorEnvio,
+      total,
       opens,
       cart
       }}>

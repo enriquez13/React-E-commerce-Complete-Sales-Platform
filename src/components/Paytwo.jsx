@@ -6,10 +6,8 @@ import {addDoc, collection, getFirestore} from 'firebase/firestore'
 import { NavLink } from 'react-router-dom';
 import { useCartContext } from '../CartProvider';
 
-const descuento = 0.4
-
 export const Paytwo = () => {
-  const {cart, totalPrice} = useCartContext()
+  const {cart, totalPrice, valorEnvio, total} = useCartContext()
   const [envio,setEnvio]=useState("")
   const [openCheckout, setOpenCheckout] = useState(false);
   //const [datos, setDatos] = useState("");
@@ -34,7 +32,7 @@ export const Paytwo = () => {
     setOpenCheckout(true);
     var checkout = new WidgetCheckout({
       currency: 'COP',
-      amountInCents: totalPrice()*100,
+      amountInCents: total()*100,
       reference: reference,
       publicKey: 'pub_test_wnCSRp1S2oerlMK4i0no1sEoPrLIvC05',
       //redirectUrl: 'https://transaction-redirect.wompi.co/check', // Opcional
@@ -81,7 +79,8 @@ export const Paytwo = () => {
             producto: cart.map(product=> ({Ide:product.ide, Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
             envio: data.option,
             fecha: new Date().toLocaleString(),
-            total: totalPrice(),
+            valorenvio: valorEnvio(),
+            total: total(),
             }
             const ordersCollection = collection(db, 'compras')
             addDoc(ordersCollection, orden)
@@ -113,8 +112,9 @@ export const Paytwo = () => {
         },
             producto: cart.map(product=> ({Ide:product.ide, Id:product.id, Nombre: product.nombre, Talla: product.talla, Color: product.color, Precio: product.valor, Cantidad: product.quantity})),
             envio: data.option,
+            valorenvio: valorEnvio(),
             fecha: new Date().toLocaleString(),
-            total: totalPrice(),
+            total: total(),
             }
             const ordersCollection = collection(db, 'compras')
             addDoc(ordersCollection, orden)
@@ -137,7 +137,7 @@ export const Paytwo = () => {
 
   return (
     <>
-    <NavLink to='/home'><h2 className='text-center text-2xl my-5 mb-10'>ZOROBABEL</h2></NavLink>
+    <NavLink to='/home'><h2 className='text-center text-2xl my-5 mb-10 font-semibold'>ZOROBABEL</h2></NavLink>
     <div className='w-full grid grid-cols-2'>
     <NavLink to='/cart'><h3  className='col-start-1 col-span-1 text-center '>1. Carrito</h3></NavLink>
     <h3 className='col-start-2 col-span-1 text-center'>2. Compra</h3>
@@ -146,8 +146,40 @@ export const Paytwo = () => {
     </div>
     <div className='my-10'>
     <h3 className=" w-full mb-5 text-center text-2xl text-black">Facturación y envío</h3>
+    
     <form onSubmit={handleSubmit(onSubmit)} className='mx-7 text-black md:w-1/2'>
-    <label htmlFor="email">Email:</label>
+  
+      {cart.map((items, index)=>(
+        <>
+      <div key={index} className=' grid grid-cols-6 gap-1 items-center '>
+        <div className='col-span-1 h-[4rem]'><img src={items.img} className="object-cover h-full w-full"/></div>
+        <div className='col-span-4 text-sm pl-1'>{items.category+" "+items.nombre+" "+items.talla+" "+items.color}</div>
+        <div className='col-span-1 text-sm'>{index === 0 ? cart[index].valor : index === 1 ? cart[index].valor * 0.8 : cart[index].valor * 0.6}
+       </div>
+      </div>
+      </>
+      ))}
+      <hr  className='mt-2'/>
+          <div className=' grid grid-cols-6 gap-1 my-2'>
+            <div className='col-span-5 font-semibold'> Total parcial</div>
+            <div className='col-span-1'> {totalPrice()}</div>
+<h3 className='col-span-6 text-center py-2'>Elija el tipo de envío:</h3>
+            <div className='col-span-5'>
+              <label htmlFor="option2" className=' pr-1 text-blue-700'>Envío normal</label>
+              <input id="option2" type="radio" className='w-4 h-4 '
+              value="option2" {...register('option', { required: true })} />
+              <label htmlFor="option1" className='ml-4 pr-1 text-blue-700'>Contraentrega</label>
+              <input id="option1" type="radio" className='w-4 h-4  ' value="option1" {...register('option', { required: true })} />
+              {errors.option && errors.option.type === 'required' && <p className='text-red-400'>Seleccion una opción de envío</p>}
+            </div>
+            <div className='col-span-1'>{valorEnvio()}</div>
+            <hr  className='mt-2 col-span-6'/>
+            <div className='col-span-5 text-lg font-semibold'> Total</div>
+            <div className='col-span-1 text-lg font-semibold'> {total()}</div>
+          </div>
+          <h3 className='text-center text-2xl my-7 '>Datos para envío</h3>
+
+      <label htmlFor="email">Email:</label>
       <input id="email" type="email" {...register('email', { required: true, minLength: 4, pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/  })} 
       className='w-full mt-1 bg-gray-100'/>
       <div className='text-red-400 mb-3'>{errors.email && errors.email.type === 'required' && <p>Falta escribir el nombre</p>}
@@ -195,13 +227,6 @@ export const Paytwo = () => {
       <div className='text-red-400 mb-3'>{errors.direccion && errors.direccion.type === 'required' && <p>Falta escribir la dirección</p>}
       {errors.direccion && errors.direccion.type === 'minLength' && <p>La dirección debe tener al menos 4 caracteres</p>}
       {errors.direccion && errors.direccion.type === 'pattern' && <p>La dirección no puede contener símbolos los permitidos son (# - . , / )</p>}
-      </div>
-      <div>
-      <label htmlFor="option2" className=' pr-1 text-blue-700'>Envío normal:</label>
-        <input id="option2" type="radio" value="option2" {...register('option', { required: true })} />
-        <label htmlFor="option1" className='ml-4 pr-1 text-blue-700'>Contraentrega:</label>
-        <input id="option1" type="radio" value="option1" {...register('option', { required: true })} />
-        {errors.option && errors.option.type === 'required' && <p className='text-red-400'>Seleccion una opción de envío</p>}
       </div>
       <div className='flex items-center justify-center'>
       <button type="submit" className="rounded-lg mt-5 bg-black text-white px-10 py-2">
