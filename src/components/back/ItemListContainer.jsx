@@ -58,7 +58,7 @@ export const ItemListContainer = ()=>{
   }, [fetchData]);
     if (isLoading) {
         return (
-            <div className="flex flex-col items-center justify-center h-[5rem]">
+            <div className="flex flex-col items-center justify-center h-[10rem]">
             <div className="mb-3 text-xl font-bold text-gray-600">Cargando productos...</div>
             <div role="status">
               <svg aria-hidden="true" className="w-12 h-12 mr-2 text-gray-200 animate-spin dark:text-blue-500 fill-gray-100" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
