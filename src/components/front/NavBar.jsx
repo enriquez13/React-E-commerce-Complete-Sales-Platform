@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { getAuth, signOut } from 'firebase/auth';
+//import { getAuth, signOut } from 'firebase/auth';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BsBag } from 'react-icons/bs';
 import { useCartContext } from "../../CartProvider";
 import AnimatedText from "../AnimatedText/AnimatedText";
-import firebaseApp from '../../firebase/config';
-import { DataCategorias, DataIformacion } from "./DataCategorias";
+//import firebaseApp from '../../firebase/config';
 import { Modal } from "../Modal/Modal";
+import { CategoriasNavBar } from "./CategoriasNavBar";
+import { InformacionNavBar } from "./InformacionNavBar";
+
 
 function NavBar(props) {
   //Ubicación por ruta
@@ -18,11 +20,11 @@ function NavBar(props) {
   const closeModaldetail = () => {
     setShowModal(false);
   };
-  const {addProduct, closeModal, cart, removeProduct, totalPrice } = useCartContext()
+  const {addProduct, cart, removeProduct, totalPrice } = useCartContext()
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState(0);
-  const auth = getAuth(firebaseApp);
+  //const auth = getAuth(firebaseApp);
   const { totalProducts, OpenSlider, opens } = useCartContext();
   const closeOpen = () => OpenSlider(true);
 
@@ -36,16 +38,15 @@ function NavBar(props) {
     };
   }, []);
 
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("Logout successful");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-      
-  };
+  //const handleLogout = () => {
+   // signOut(auth)
+  //    .then(() => {
+  //      console.log("Logout successful");
+  //    })
+  //    .catch((error) => {
+   //     console.error(error);
+   //   });
+      //};
     return (
         <> 
            <div className="fixed z-10 shadown-md w-full top-0 left-0 max-w-screen " >
@@ -61,9 +62,6 @@ function NavBar(props) {
                 </div>: ""
               }
                     
-               
-                
-
                 <div className={`${scroll <= 100 ? " bg-opacity-[0.01] from-black  md:h-[7rem] md:grid md:grid-cols-3"
                     : "md:h-[4rem] md:grid md:grid-cols-6" } 
                     ${open ? "bg-opacity-[1]" : ""}
@@ -76,7 +74,6 @@ function NavBar(props) {
                               ZOROBABEL
                             </NavLink>
                             </div>
-                       
                     </div>
                     
                     <div onClick={()=> setShowModal(true)} 
@@ -105,38 +102,9 @@ function NavBar(props) {
                          hover:text-gray-400 duration-500 font-semibold ">
                                Nuestros productos
                             </div>
-
-                            {DataCategorias.map((categorias,index)=>(
-                              <div className=" grid items-center justify-center md:h-[3rem]">
-                            <NavLink key={index} to={`/categoria/${categorias.url}`} className="mx-10 md:mx-0 grid grid-cols-3 gap-4 cursor-pointer 
-                            text-xl md:my-0 py-2 md:py-0 text-gray-400  hover:text-gray-800 duration-500" 
-                            onClick={() => setOpen(!open)}>
-                            <div className="md:hidden grid-row-span-2">
-                              <img src={categorias.src} className="w-[6rem] h-[6rem] object-cover"/>
-                            </div>
-                            <div className="col-span-2 md:col-span-3 md:h-[3rem]  grid items-center px-4 md:mx-0 ">
-                              <div className=" uppercase text-sm font-semibold ">{categorias.nombre}</div>
-                              <div className="md:hidden text-sm text-gray-300 font-semibold">{categorias.detalle}</div>
-                            </div>
-                          </NavLink>
-                          </div>
-                            ))}
+                            <CategoriasNavBar />
                             <hr className="md:hidden bg-gray-900 opacity-30 mx-10 my-8" />
-
-
-                            {DataIformacion.map((informacion, index)=>(  
-                              <div className=" grid items-center justify-center h-[3rem] px-4 ">
-                            <NavLink key={index} to={`/${informacion.url}`}
-                            className=" cursor-pointer  text-xl md:my-0 
-                            text-gray-400  hover:text-gray-800 duration-500">
-                                <h3  className="uppercase text-sm font-semibold">{informacion.nombre}</h3>
-                            </NavLink>
-                            </div> 
-                            ))}
-                          
-                       
-                                 
-                                          
+                            <InformacionNavBar />  
                         </ul>
                      
                     </div>

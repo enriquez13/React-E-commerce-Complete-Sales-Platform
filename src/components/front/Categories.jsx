@@ -11,7 +11,7 @@ export const Categories = () => {
 <div className=" grid justify-items-center my-10  md:font-semibold md:text-2xl text-lg text-white ">
             CATEGORIAS
 </div>
-            <div className="w-full max-w-full overflow-x-hidden grid sm:grid-cols-5 text-gray-100 ">
+            <div className="w-full max-w-full overflow-x-hidden grid sm:grid-cols-4 text-gray-100 ">
                 {DataCategorias.map((category,index)=>(
                 <NavLink to={`/categoria/${category.url}`} key={index} className=" w-full relative h-[24rem] md:h-[600px] mt-2">
                 <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src={category.src} />
