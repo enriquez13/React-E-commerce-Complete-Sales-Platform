@@ -45,7 +45,7 @@ const closeModal = () => {
                 <div className='flex justify-center w-full h-[300px]'>
                 <div className='relative md:w-3/4 '>
                     <img className=" items-center p-1 rounded-t-lg object-cover w-full h-full md:transform md:duration-500 md:hover:scale-105" 
-                    src={info.imagenes[0].img} alt="product image" />
+                    src={info ? info.imagenes : null} alt="product image" />
                 </div>
                 {info.nuevo && <div className='absolute bg-amber-200 rounded-tl-lg rounded-br-lg 
                 p-1 left-2 sm:left-[4rem] top-2 text-xs font-semibold'>NEW</div>}

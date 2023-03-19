@@ -8,19 +8,19 @@ const envio ={
 
 function Ordenes( {data} ) {
   // Organizar por fecha
- data.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+  data.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
  
     return (
         <> 
             <h1 className='text-center mb-9 text-2xl'>Ordenes</h1>
-            <section className='flex mb-[3rem]'>
-              <div className='w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300 '>Por preparar 1</div>
-              <div className='w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300'>En preparación 0</div>
-              <div className='w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300'>En tránsito 0</div>
-              <div className='w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300 '> Entregado 0</div>
+            <section className='md:flex mb-[3rem]'>
+              <div className='my-1 md:w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300 '>Por preparar 1</div>
+              <div className='my-1 md:w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300'>En preparación 0</div>
+              <div className='my-1 md:w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300'>En tránsito 0</div>
+              <div className='my-1 md:w-1/4 py-2 pl-3 bg-gray-200 border-r-4 rounded-r-lg border-gray-300 '> Entregado 0</div>
             </section>
-            
-            <table className="table-auto  w-full text-center border text-[0.6rem] md:text-base">         
+            <div className='overflow-x-auto pb-5'>
+            <table className="table-auto overflow-x-auto w-full text-center border text-[0.6rem] md:text-base">         
                                   <thead className=''>
                                   <tr className='rounded-lg bg-gray-200 '>
                                     <th className='border'>Fecha</th>
@@ -65,6 +65,8 @@ function Ordenes( {data} ) {
                                
                                   </tbody>                  
             </table>  
+            </div>
+           
            
         </>
     );

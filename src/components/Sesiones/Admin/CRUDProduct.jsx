@@ -37,10 +37,11 @@ const AddProductForm = () => {
         if (color.img) {
           const imgRef = ref(storage, `images/${Math.random().toString(36).substring(2)}`);
           const imgFile = color.img[0];
-          const imgPromise = uploadBytes(imgRef, imgFile)
+          const imgPromise = await uploadBytes(imgRef, imgFile)
             .then(async (snapshot) => {
               const downloadURL = await getDownloadURL(snapshot.ref);
               color.img = downloadURL;
+              console.log(color.img)
             });
           imgPromises.push(imgPromise);
         }
@@ -57,17 +58,17 @@ const AddProductForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='mx-7 text-black md:w-1/2'>
-    <label className="block">
+    <label className="block text-black">
       Category:
-      <input {...register("category")} className=' mt-1 mb-3 bg-gray-100 ml-2'/>
+      <input {...register("category")} className=' mt-1 mb-3 bg-gray-400 ml-2'/>
     </label>
     <label className="block">
       Nombre del producto:
-      <input {...register("nombre")} className='mt-1 mb-3 bg-gray-100 ml-2'/>
+      <input {...register("nombre")} className='mt-1 mb-3 bg-gray-400 ml-2'/>
     </label>
     <label className="block">
       Valor:
-      <input type="number" {...register("valor")} className='mt-1 mb-3 bg-gray-100 ml-2'/>
+      <input type="number" {...register("valor")} className='mt-1 mb-3 bg-gray-900 ml-2'/>
     </label>
     <label className="block">
       Cantidad:
@@ -111,15 +112,15 @@ const AddProductForm = () => {
               </label>
               <label className="block">
                 Background color:
-                <input {...register(`sizes.${sizeIndex}.colors.${colorIndex}.bg`)} className='mt-1 mb-3 bg-gray-100 ml-2'/>
+                <input {...register(`sizes.${sizeIndex}.colors.${colorIndex}.bg`)} className='mt-1 mb-3 bg-gray-800 ml-2'/>
               </label>
               <label className="block">
                 Stock:
-                <input type="number" {...register(`sizes.${sizeIndex}.colors.${colorIndex}.stock`)} className='mt-1 mb-3 bg-gray-100'/>
+                <input type="number" {...register(`sizes.${sizeIndex}.colors.${colorIndex}.stock`)} className='mt-1 mb-3 bg-gray-800'/>
               </label>
               <label className="block">
                 Image:
-                <input type="file" {...register(`sizes.${sizeIndex}.colors.${colorIndex}.img`)} className='mt-1 mb-3 bg-gray-100'/>
+                <input type="file" {...register(`sizes.${sizeIndex}.colors.${colorIndex}.img`)} className='mt-1 mb-3 bg-gray-800'/>
               </label>
             </div>
           ))}

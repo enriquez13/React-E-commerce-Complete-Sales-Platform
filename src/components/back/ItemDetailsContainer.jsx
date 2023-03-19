@@ -28,7 +28,7 @@ export const ItemDetailContainer = ()=>{
           const Data = { id: docSnap.id, ...docSnap.data() };
           const allProductsData = collectionSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
           setData(Data);
-            setAllProducts(allProductsData);
+          setAllProducts(allProductsData);
           setIsLoading(false);
     }
     fetchData();

@@ -5,11 +5,11 @@ import { ListaColores } from '../ListaColores';
 function ModalaTallaColor(props) {
 
     const { onClose, producto, handleSizeClick, handleColorClick, selectedSize, selectedColor, 
-        selectedImagen , agregar} = props
+        selectedImagen , agregar, resetSelections} = props
         const handleClickOutside = (e) => {
             if (e.target === e.currentTarget) {
+                resetSelections()
                 onClose();
-               
             }
         }
     return (
@@ -26,7 +26,7 @@ function ModalaTallaColor(props) {
                 </div>
                 <div className='grid grid-cols-4 gap-4 justify-center items-center py-2 mx-10'>
                     {producto?.sizes.map((size, index) => (
-                        <button key={index} className={`text-[0.9rem] ${size.size === selectedSize.size
+                        <button key={index} className={`text-[0.9rem] ${selectedSize&&size.size === selectedSize.size
                             ? " border border-lg bg-black text-gray-100 w-8 h-8 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                             : " w-8 h-8 border border-lg border-gray-200 transform duration-500 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                             }  `}
@@ -36,7 +36,7 @@ function ModalaTallaColor(props) {
                     ))}
                 </div>
                 <div className='grid grid-cols-5 gap-1 my-2  mx-10'>
-                    {selectedSize.size && (
+                    {selectedSize && selectedSize.size && (
                         <>
                             {producto?.sizes
                                 .find((size) => size.size === selectedSize.size)
@@ -44,7 +44,7 @@ function ModalaTallaColor(props) {
 
                                     <button
                                         onClick={() => handleColorClick(color)}
-                                        className={`${color.color === selectedColor.color ? "border-2 border-black w-8 h-8"
+                                        className={`${selectedColor&&color.color === selectedColor.color ? "border-2 border-black w-8 h-8"
                                             : "border border-gray-300 w-8 h-8"} md:mx-0 
                                         rounded-full transform duration-500 hover:scale-110  ${ListaColores[color.color]}`}
                                         key={color.idepro} />

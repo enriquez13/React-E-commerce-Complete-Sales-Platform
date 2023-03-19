@@ -22,7 +22,7 @@ export const ItemDetail = (props) => {
   const [selectedSize, setSelectedSize] = useState(data && data.sizes ? data.sizes[0] : {})
   const [images, setImages] = useState(data && data.sizes && data.sizes[0].colors ? data.sizes[0].colors : null)
 
-  const[producto,setProducto] = useState(data)
+  //const[producto,setProducto] = useState(data)
   useEffect(() => {
     if (data?.sizes) {
       setSelectedSize(data.sizes[0]);
@@ -56,17 +56,18 @@ export const ItemDetail = (props) => {
   }
 
   const [talla, setTalla] = useState(data.sizes[0].size)
-  const [color, setColor] = useState('')
-  const [ide, setIde] = useState('')
-  const [img, setImg] = useState("")
+  const [color, setColor] = useState(null)
+  const [ide, setIde] = useState(null)
+  const [img, setImg] = useState(null)
 
   function agregar() {
     setShowModal(true)
     onAdd(1, talla, color, ide, img)
-    setTalla("")
-    setColor("")
-    setImg("")
-    setSelectedSize(data && data.sizes ? data.sizes[0] : {})
+    setTalla(null)
+    setColor(null)
+    setImg(null)
+    setTalla(selectedSize.size)
+    setSelectedSize(selectedSize ? selectedSize : {})
     setSelectedImageIndex(null)
   }
   const closeModaldetail = () => {
@@ -75,7 +76,7 @@ export const ItemDetail = (props) => {
 
 
   return (
-    <>
+    <> 
       <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 md:mt-[8rem]">
      
         <div className='md:grid md:place-content-center mx-0 px-0  md:mt-0'>
@@ -222,7 +223,8 @@ export const ItemDetail = (props) => {
       <Footer />
 
       {showModal && (
-        <Modal closeModal={closeModaldetail} addProduct={addProduct} cart={cart} removeProduct={removeProduct} totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
+        <Modal closeModal={closeModaldetail} addProduct={addProduct} cart={cart} removeProduct={removeProduct} 
+        totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
       )}
 
     </>

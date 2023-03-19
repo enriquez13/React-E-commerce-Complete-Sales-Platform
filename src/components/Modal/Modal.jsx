@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AiFillDelete } from "react-icons/ai"
 import { AiOutlineClose } from "react-icons/ai";
@@ -33,6 +33,17 @@ export const Modal = (props) => {
         setGoToCart(true)
         addProduct(selectedProduct, quantity, talla, color, ide, img)
     }
+    //Reset de los atributos
+    
+    const resetSelections = () => {
+        setSelectedSize(null)
+        setSelectedProduct(null)
+        setSelectedColor(null)
+        setProductId(null)
+        setSelectedImagen(null)
+    }
+ 
+
     const handleSizeClick = (size, producto) => {
         setSelectedSize(size);
         setSelectedProduct(producto);
@@ -42,20 +53,15 @@ export const Modal = (props) => {
     const handleColorClick = (color) => {
         setSelectedColor(color)
         setSelectedImagen(color.imagen)
-        setProductId("")
+        //setProductId("")
     }
     function agregar(Id) {
         setProductId(Id)
-        if (selectedColor !== "") {
+        if (selectedColor) {
             onAdd(1, selectedSize.size, selectedColor.color, selectedColor.idepro, selectedColor.imagen)
             alert("Agregado con éxito")
+            resetSelections()
             handleCloseModalTallaColor()
-            setSelectedSize("")
-            setSelectedProduct("")
-            setSelectedColor("")
-            setProductId("")
-            setSelectedImagen(null)
-            //setImg("")
         }
     }
 
@@ -66,7 +72,9 @@ export const Modal = (props) => {
         setSelectedProduct(producto)
     }
     function handleCloseModalTallaColor() {
+        setSelectedSize(null)
         setIsModalOpenTallaColor(false);
+        resetSelections()
     }
 
     return (
@@ -74,6 +82,7 @@ export const Modal = (props) => {
             <div className="fixed inset-0 transition-opacity" onClick={closeModal}>
                 <div className="w-full absolute inset-0 bg-black bg-opacity-80  "></div>
             </div>
+            
             <div className='md:w-[40%] relative h-[120vh] bg-gray-100 '>
                 <div className="h-[90vh] max-h-[90vh] md:max-h-[88vh] overflow-y-scroll  rounded-lg overflow-hidden shadow-xl transform transition-all  ">
                     <div className="pb-[8rem] sm:p-6 sm:pb-4">
@@ -175,7 +184,7 @@ export const Modal = (props) => {
                                         <div key={index} className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem] justify-items-center content-center">
                                             <div className="container h-[5rem] w-[5rem] col-span-2">
                                                 <img className="object-cover w-full h-full " onClick={()=>handleOpenModalTallaColor(producto)}
-                                                    src={selectedProduct.id === producto.id && selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen}
+                                                    src={selectedProduct&&selectedProduct.id === producto.id && selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen}
                                                 />
                                             </div>
 
@@ -195,7 +204,7 @@ export const Modal = (props) => {
                                                         {producto.sizes.map((size, index) => (
  <>
 
-                                                            <button key={index} className={`${size.size === selectedSize.size && selectedProduct.id === producto.id
+                                                            <button key={index} className={`${selectedSize&&size.size === selectedSize.size && selectedProduct.id === producto.id
                                                                 ? "text-[0.7rem] border bg-black text-gray-100 w-5 h-5 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                                                                 : "text-[0.7rem] w-5 h-5 border border-gray-200 transform duration-500 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                                                                 }`}
@@ -261,7 +270,8 @@ export const Modal = (props) => {
                         </div>
                         {isModalOpenTallaColor && <ModalaTallaColor  onClose={handleCloseModalTallaColor}  
                                         handleSizeClick={handleSizeClick} handleColorClick={handleColorClick} producto={selectedProduct} 
-                                        selectedSize={selectedSize} selectedColor={selectedColor} agregar={agregar} selectedImagen={selectedImagen}/>}
+                                        selectedSize={selectedSize} selectedColor={selectedColor} agregar={agregar} selectedImagen={selectedImagen}
+                                        resetSelections={resetSelections}/>}
 
                     </div>
                 </div>

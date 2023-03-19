@@ -5,12 +5,19 @@ import { useForm } from 'react-hook-form';
 import {addDoc, collection, getFirestore} from 'firebase/firestore'
 import { NavLink } from 'react-router-dom';
 import { useCartContext } from '../CartProvider';
+import { Modal } from './Modal/Modal';
 
 const envio ={ //Convertir tipo de envío
   option1:"Envío normal",
   option2:"Contraentrega"
 }
+
 export const Paytwo = () => {
+  const [showModal, setShowModal] = useState(false)
+  function handleClick() {
+    setShowModal(true)
+  }
+
   const {cart, totalPrice, valorEnvio, total} = useCartContext()
   const [envio,setEnvio]=useState("")
   const [openCheckout, setOpenCheckout] = useState(false);
@@ -145,7 +152,7 @@ export const Paytwo = () => {
     <>
     <NavLink to='/home'><h2 className='text-center text-2xl my-5 mb-10 font-semibold'>ZOROBABEL</h2></NavLink>
     <div className='w-full grid grid-cols-2'>
-    <NavLink to='/home'><h3  className='col-start-1 col-span-1 text-center '>1. Carrito</h3></NavLink>
+    <h3  onClick={handleClick} className='col-start-1 col-span-1 text-center '>1. Carritos</h3>
     <h3 className='col-start-2 col-span-1 text-center'>2. Compra</h3>
     <hr className='flex col-start-1 col-span-1 mt-1 ml-7 border-[1px] border-gray-300'/>
     <hr className='flex col-start-2 col-span-1 mt-1 mr-7 border-gray-500 border-[1px]'/>
@@ -240,8 +247,9 @@ export const Paytwo = () => {
       </button>
       </div>
     </form>
-    {console.log("hora :",new Date().toLocaleString())}
+    
     </div>
+    
     </>
   );
 };
