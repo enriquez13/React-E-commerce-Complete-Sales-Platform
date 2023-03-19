@@ -56,13 +56,13 @@ export const SliderProducts = ({ allProducts }) => {
             <Link to={`/detalle/${productos.id}`}>
 
               <img
-                src={"imagen de "+productos.nombre}
-                alt={productos.nombre}
+                src={productos.imagenes}
+                alt={"imagen de "+productos.nombre}
                 className="w-full h-[20rem] object-cover rounded-lg"
               />
            
               <div className="px-4">
-                <h2 className="font-bold text-sm mb-2 text-center">{productos.category}{" "}{productos.nombre}</h2>
+                <h2 className="font-bold text-sm mb-2 text-center">{productos.nombre}</h2>
                 <p className="text-gray-700 text-sm  text-center">${productos.valor}</p>
               </div>
             </Link>
