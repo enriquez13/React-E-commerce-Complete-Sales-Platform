@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import {addDoc, collection, getFirestore} from 'firebase/firestore'
 import { NavLink } from 'react-router-dom';
 import { useCartContext } from '../CartProvider';
-import { Modal } from './Modal/Modal';
+//import { Modal } from './Modal/Modal';
 
 const envio ={ //Convertir tipo de envío
   option1:"Envío normal",

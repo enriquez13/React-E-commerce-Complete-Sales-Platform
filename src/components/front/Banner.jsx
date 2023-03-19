@@ -12,9 +12,9 @@ export const Banner = () => {
    
     {url:"https://i.pinimg.com/564x/1a/45/c1/1a45c1691dfb20a1b147db55d4d85265.jpg", boton:"NEW COLLECTION"},
     {url:"https://i.pinimg.com/564x/cc/db/e7/ccdbe7178ad70dad780b4bb43de3d3f4.jpg" , boton:"BEST DESIGN"},
-    {url:"https://i.pinimg.com/564x/cc/14/22/cc1422addc7cf09200ea00ef90252e9c.jpg", boton:"SUMMER"},
-    {url:"https://i.pinimg.com/564x/2e/d5/85/2ed585f8884d06b781056d7eb1584d42.jpg", boton:"WINTER"},
-    {url:"https://i.pinimg.com/564x/f5/a6/3c/f5a63c3507b50cf6fce8438065fe0725.jpg", boton:"MEN'S SHOP"},
+    //{url:"https://i.pinimg.com/564x/cc/14/22/cc1422addc7cf09200ea00ef90252e9c.jpg", boton:"SUMMER"},
+    //{url:"https://i.pinimg.com/564x/2e/d5/85/2ed585f8884d06b781056d7eb1584d42.jpg", boton:"WINTER"},
+    //{url:"https://i.pinimg.com/564x/f5/a6/3c/f5a63c3507b50cf6fce8438065fe0725.jpg", boton:"MEN'S SHOP"},
  
    ]
 
