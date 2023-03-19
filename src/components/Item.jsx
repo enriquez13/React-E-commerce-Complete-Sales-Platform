@@ -48,19 +48,19 @@ const closeModal = () => {
                     src={info ? info.imagenes : null} alt="product image" />
                 </div>
                 {info.nuevo && <div className='absolute bg-amber-200 rounded-tl-lg rounded-br-lg 
-                p-1 left-2 sm:left-[4rem] top-2 text-xs font-semibold'>NEW</div>}
+                p-1 left-2 sm:left-[4rem] top-2 text-xs font-semibold'><span>NEW</span></div>}
                 </div>
             </Link>
 
             <div className="px-3 md:pb-5">
             <Link to={`/detalle/${info.id}`}>
-                    <h5 className="text-center text-xs font-bold">{info.category}{" "}{info.nombre}</h5>
+                    <h3 className="text-center text-xs font-bold">{info.nombre}</h3>
             </Link>
             
                 <div className=" pb-2 ">
-                    <span className="grid mb-2 text-center text-xs md:text-base text-gray-900 w-full">
+                    <h3 className="grid mb-2 text-center text-xs md:text-base text-gray-900 w-full">
                         ${info.valor}
-                    </span>
+                    </h3>
                     <Link to={`/detalle/${info.id}`}>
                         <div className='grid grid-cols-8 md:grid-cols-8 gap-1 md:mx-[3rem] md:mt-5'>
                         { 

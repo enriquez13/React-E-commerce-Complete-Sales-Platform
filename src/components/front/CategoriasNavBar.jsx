@@ -14,8 +14,8 @@ export const CategoriasNavBar = () => {
         <img src={categorias.src} className="w-[6rem] h-[6rem] object-cover" alt='Imagen de las categorias'/>
       </div>
       <div className="col-span-2 md:col-span-3 md:h-[3rem]  grid items-center px-4 md:mx-0 ">
-        <div className=" uppercase text-sm font-semibold ">{categorias.nombre}</div>
-        <div className="md:hidden text-sm text-gray-300 font-semibold">{categorias.detalle}</div>
+        <h3 className=" uppercase text-sm font-semibold ">{categorias.nombre}</h3>
+        <h3 className="md:hidden text-sm text-gray-300 font-semibold">{categorias.detalle}</h3>
       </div>
     </NavLink>
     </div>

@@ -73,7 +73,7 @@ const ItemListContainer = ()=>{
            <NavBar data={memoizedData} allProducts={allProducts} categoriaId={categoriaId}/>
 
            <div  className="grid justify-items-center text-black  mb-[2rem] text-lg 
-                font-semibold md:text-2xl mt-[2rem]">PRODUCTOS</div>
+                font-semibold md:text-2xl mt-[2rem]"><h1>PRODUCTOS</h1></div>
             
             <div className="mb-[3rem] grid grid-cols-2 md:grid-cols-3 gap-1 pb-[1rem]">
                

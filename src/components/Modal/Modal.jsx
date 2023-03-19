@@ -87,11 +87,11 @@ export const Modal = (props) => {
                 <div className="h-[90vh] max-h-[90vh] md:max-h-[88vh] overflow-y-scroll  rounded-lg overflow-hidden shadow-xl transform transition-all  ">
                     <div className="pb-[8rem] sm:p-6 sm:pb-4">
                         <div className="h-[70vh] text-center sm:mt-5 mx-2 relative">
-                            <h3 className="text-xl font-bold leading-6  text-gray-900 my-6 ">
+                            <h1 className="text-xl font-bold leading-6  text-gray-900 my-6 ">
                                 {filteredProducts.length > 0 ?
                                     "Recién agregados al carrito" : "No tiene productos Agregados"
                                 }
-                            </h3>
+                            </h1>
 
                             <button
                                 type="button"
@@ -156,7 +156,7 @@ export const Modal = (props) => {
                             <div className='w-full max-w-full overflow-x-hidden grid   text-black justify-center items-center
                             my-5 text-xl font-semibold'>
 
-                                {cart.length === 0 ? "Buscar productos" : cart.length === 1 ? "Obten 20% en el segundo producto y 40% en el tercero" : cart.length >= 2 ? "Obten 40% en el siguiente producto" : null}
+                               <h2> {cart.length === 0 ? "Buscar productos" : cart.length === 1 ? "Obten 20% en el segundo producto y 40% en el tercero" : cart.length >= 2 ? "Obten 40% en el siguiente producto" : null}</h2>
 
                             </div>
 
@@ -192,7 +192,7 @@ export const Modal = (props) => {
                                             </div>
 
                                             <div className="col-span-2">
-                                                <h4 className="text-xs font-bold text-black">{producto.category}</h4>
+                                                <h3 className="text-xs font-bold text-black">{producto.category}</h3>
                                                 <h4 className="text-xs font-bold text-gray-500">{producto.nombre}</h4>
                                                 <aside className="text-sm leading-5 text-gray-500 ">
                                                     <h4 className="font-bold text-black text-sm">{cart.length === 1 ? producto.valor * 0.8 : producto.valor * 0.6}</h4>

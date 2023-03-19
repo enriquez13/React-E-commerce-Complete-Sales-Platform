@@ -21,7 +21,7 @@ function ModalaTallaColor(props) {
                 <img src={selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen}
                  alt="Imagen portada" className='w-full h-full object-cover'/>
                  <div onClick={onClose}
-                 className='text-2xl rounded-full bg-black bg-opacity-5 px-3 py-1 font-semibold absolute top-1 right-2 z-[80] text-black'>X
+                 className='text-2xl rounded-full bg-black bg-opacity-5 px-3 py-1 font-semibold absolute top-1 right-2 z-[80] text-black'><span>X</span>
                  </div>
                 </div>
                 <div className='grid grid-cols-4 gap-4 justify-center items-center py-2 mx-10'>
@@ -58,7 +58,7 @@ function ModalaTallaColor(props) {
                     className='bg-black text-white border rounded-lg px-9 py-2 text-sm'
                 >Agregar</button>
                 </div>
-                <h4 className='text-center font-semibold mt-4'>Duradero, confiable, agradable y cómodo</h4>
+                <p className='text-center font-semibold mt-4'>Duradero, confiable, agradable y cómodo</p>
 
                {//} <button onClick={onClose} className="block mt-4 mx-auto px-4 py-2 bg-blue-500 text-white rounded-lg">
                 //    Cerrar

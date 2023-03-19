@@ -15,11 +15,11 @@ function NavBar(props) {
   //Ubicación por ruta
   const location = useLocation();
   //showmodal
-  const { data, allProducts, detalleId, categoriaId } = props;
+  const { allProducts, detalleId, categoriaId } = props;
   const [showModal, setShowModal] = useState(false); 
-  const closeModaldetail = () => {
-    setShowModal(false);
-  };
+  //const closeModaldetail = () => {
+  //  setShowModal(false);
+  //};
   const {addProduct, cart, removeProduct, totalPrice } = useCartContext()
 
   const [open, setOpen] = useState(false);
@@ -69,22 +69,22 @@ function NavBar(props) {
                     <div className={` ${scroll <= 100 ? "md:col-start-1 md:col-span-6" : "md:col-start-1 md:col-span-1" }
                      text-gray-300 z-[50] md:col-start-1 md:col-span-1 h-full grid items-center`}>
                        
-                            <div className="text-xl md:text-2xl tracking-[0.1rem] text-gray-400 text-center">
+                            <ul className="text-xl md:text-2xl tracking-[0.1rem] text-gray-400 text-center">
                             <NavLink to="/" >
                               ZOROBABEL
                             </NavLink>
-                            </div>
+                            </ul>
                     </div>
                     
                     <div onClick={()=> setShowModal(true)} 
                     className="z-[50] p-1 text-xl absolute right-[1.5rem] md:right-[1.8rem] top-[1.1rem] md:top-[25%] text-slate-400 ">
-                        <span className=' relative cursor-pointer'><BsBag />
+                        <p className=' relative cursor-pointer'><BsBag />
                             {
                                 totalProducts() ? <span className="bg-blue-500 absolute bottom-[-10px] left-3 text-white text-base rounded-full px-2 ">
                                     {totalProducts()}
                                 </span> : ''
                             }
-                        </span>
+                        </p>
                         
                     </div>
                     <div onClick={() => setOpen(!open)} className="text-xl absolute left-[1.5rem] top-5 text-gray-400 
@@ -119,7 +119,7 @@ function NavBar(props) {
             
             
             {showModal && (
-        <Modal closeModal={closeModaldetail} addProduct={addProduct} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
+        <Modal closeModal={() => setShowModal(false)} addProduct={addProduct} cart={cart} removeProduct={removeProduct}  totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
       )}
         </>
     )

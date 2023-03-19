@@ -105,9 +105,9 @@ export const ItemDetail = (props) => {
             </>)}
         </div>
         <div className='md:px-20'>
-          <h2 className="text-left font-bold pl-3 mt-2 md:mt-0 md:pl-0 md:text-left text-2xl md:text-4xl  ">{data.category}{" "}{data.nombre}</h2>
+          <h1 className="text-left font-bold pl-3 mt-2 md:mt-0 md:pl-0 md:text-left text-2xl md:text-4xl  ">{data.nombre}</h1>
 
-          <h3 className="pl-3 md:pl-0 text-sm md:text-base mt-2 mb-5  md:mt-5">${data.valor} unidad</h3>
+          <h2 className="pl-3 md:pl-0 text-sm md:text-base mt-2 mb-5  md:mt-5">${data.valor} unidad</h2>
           <h3 className='hidden md:block my-4'>Elige la talla:</h3>
           <div className='grid grid-cols-8 gap-1 place-items-left pl-2 md:pl-0'>
 
@@ -158,10 +158,10 @@ export const ItemDetail = (props) => {
               ));
             })}
           </div>
-          <h4 className='my-1 text-center'>
+          <p className='my-1 text-center'>
           {selectedSize.size === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3  my-1 text-sm'>Falta elegir la talla</span>}
           {selectedSize.size && color === "" && <span className='bg-red-100 text-red-600 rounded-lg px-3 py-1 text-sm'>Elegir talla y color</span>}
-          </h4>
+          </p>
           <div className="w-auto mx-2 md:px-0">
 
             {
@@ -211,7 +211,6 @@ export const ItemDetail = (props) => {
 
             <h2 className='grid justify-items-center my-10 font-semibold md:text-2xl '>INFORMACIÓN DE INTERES</h2>
               <DetailInformation />
-
           </div>
         </div>
       </div>
