@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useForm } from 'react-hook-form';
@@ -13,6 +13,17 @@ const envio ={ //Convertir tipo de envío
 }
 
 const Paytwo = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://checkout.wompi.co/widget.js';
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   const [showModal, setShowModal] = useState(false)
   function handleClick() {
     setShowModal(true)
