@@ -110,7 +110,8 @@ export const Modal = (props) => {
                                     <>
                                         <div className=" grid grid-cols-6 bg-white h-[7rem] w-full justify-items-center content-center" key={index}  >
                                             <div className='col-span-2  w-[6rem] h-[6rem]  relative'>
-                                                <img src={cart[index].img} className="object-cover w-full h-full " />
+                                                <img src={cart[index].img} className="object-cover w-full h-full" 
+                                                alt='Imagen productos carrito de compras' />
                                                 <span className='bg-blue-500 absolute top-[-4px] right-[-7px] 
                                  text-white text-sm rounded-full px-[0.4rem]'>
                                                     {totalProducts() ? product.quantity : ''}
@@ -165,7 +166,8 @@ export const Modal = (props) => {
                                     <div className="w-full max-w-full overflow-x-hidden grid   text-sky-700 justify-center items-center">
                                         {DataCategorias.map((category, index) => (
                                             <NavLink to={`/categoria/${category.url}`} key={index} className=" w-full relative h-[15rem] mt-2">
-                                                <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src={category.src} />
+                                                <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" 
+                                                src={category.src} alt={"Imagen categoria " + category.nombre}/>
                                                 <div className="absolute grid bottom-[20%] translate-y-[50%] w-full text-sm px-4 ">
                                                     <h3 className="place-self-center text-gray-200  text-2xl my-4 font-semibold" >{category.nombre}</h3>
 
@@ -183,7 +185,8 @@ export const Modal = (props) => {
                                     {filteredProducts.map((producto, index) => (
                                         <div key={index} className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem] justify-items-center content-center">
                                             <div className="container h-[5rem] w-[5rem] col-span-2">
-                                                <img className="object-cover w-full h-full " onClick={()=>handleOpenModalTallaColor(producto)}
+                                                <img className="object-cover w-full h-full " alt='Imagen de referenica del producto'
+                                                onClick={()=>handleOpenModalTallaColor(producto)}
                                                     src={selectedProduct&&selectedProduct.id === producto.id && selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen}
                                                 />
                                             </div>

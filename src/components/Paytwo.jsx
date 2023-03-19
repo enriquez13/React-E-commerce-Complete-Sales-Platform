@@ -165,7 +165,7 @@ const Paytwo = () => {
       {cart.map((items, index)=>(
         <>
       <div key={index} className=' grid grid-cols-6 gap-1 items-center pb-1'>
-        <div className='col-span-1 h-[4rem] md:w-[5.5rem] md:h-[5.5rem]'><img src={items.img} className="object-cover h-full w-full "/></div>
+        <div className='col-span-1 h-[4rem] md:w-[5.5rem] md:h-[5.5rem]'><img src={items.img} className="object-cover h-full w-full" alt='imagenes productos'/></div>
         <div className='col-span-4 text-sm pl-1'>{items.category+" "+items.nombre+" "+items.talla+" "+items.color}</div>
         <div className='col-span-1 text-sm'>{index === 0 ? cart[index].valor : index === 1 ? cart[index].valor * 0.8 : cart[index].valor * 0.6}
        </div>

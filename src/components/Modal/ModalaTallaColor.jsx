@@ -19,7 +19,7 @@ function ModalaTallaColor(props) {
             <div className="bg-white w-[90%]  h-[78vh] max-h-[80vh] absolute rounded-lg ">
                 <div className='h-[67%] relative'>
                 <img src={selectedImagen ? selectedImagen : producto.sizes[0].colors[0].imagen}
-                 alt="Placeholder" className='w-full h-full object-cover'/>
+                 alt="Imagen portada" className='w-full h-full object-cover'/>
                  <div onClick={onClose}
                  className='text-2xl rounded-full bg-black bg-opacity-5 px-3 py-1 font-semibold absolute top-1 right-2 z-[80] text-black'>X
                  </div>

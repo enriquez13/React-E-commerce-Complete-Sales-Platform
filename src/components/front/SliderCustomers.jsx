@@ -66,7 +66,7 @@ export const SliderCustomer = () => {
             <div className="px-1 overflow-hidden">
               <img
                 src={productos.url}
-                alt={productos.url}
+                alt='testimonios de clientes'
                 className="w-full h-[18rem] object-cover rounded-lg"
               />
              

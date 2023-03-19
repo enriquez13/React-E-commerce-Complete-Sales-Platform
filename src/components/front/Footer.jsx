@@ -41,8 +41,8 @@ const Footer=()=>{
                         <NavLink className='my-2 mb-2 hover:underline'>
                             <h3  className="mb-2 hover:underline">Nosotros</h3>
                         </NavLink>
-                        <NavLink to='/contactanos' className='my-2 hover:underline '>
-                            Contáctanos
+                        <NavLink to='/contactanos' className='my-2 mb-2 hover:underline'>
+                        <h3  className="mb-2 hover:underline">Contáctanos</h3>
                         </NavLink>
                         </div>
                     </section>
@@ -91,7 +91,7 @@ const Footer=()=>{
 
             <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div className="sm:flex sm:items-center sm:justify-between md:mb-10">
-                <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#" className="hover:underline">ZOROBABEL</a>. Todos los derechos reservados.
+                <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 ZOROBABEL. Todos los derechos reservados.
                 </span>
                 
             </div>

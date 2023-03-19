@@ -56,7 +56,7 @@ export const SliderProducts = ({ allProducts }) => {
             <Link to={`/detalle/${productos.id}`}>
 
               <img
-                src={productos.imagenes}
+                src={"imagen de "+productos.nombre}
                 alt={productos.nombre}
                 className="w-full h-[20rem] object-cover rounded-lg"
               />

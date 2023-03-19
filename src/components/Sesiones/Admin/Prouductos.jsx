@@ -58,7 +58,8 @@ export const Prouductos = ({ productos }) => {
                     {producto.colors.map((final, index) => (
                       <tr className=''>
                         <td className="px-3 py-3 border ">
-                          <img src={final.imagen} className="object-cover h-[4rem] w-[4rem]" />  </td>
+                          <img src={final.imagen} className="object-cover h-[4rem] w-[4rem]" alt='Imagen productos'/>  
+                        </td>
                         <td className="px-3 py-3 border"> {final.idepro}</td>
                         <td className="px-3 py-3 border">{product.nombre}</td>
                         <td className="px-3 py-3 border">{producto.size}</td>

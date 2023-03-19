@@ -89,6 +89,7 @@ export const ItemDetail = (props) => {
 
                 {images?.map((foto, i) => (
                   <img
+                    alt='Imagen del producto'
                     key={i}
                     src={foto.imagen}
                     className={`${selectedImageIndex === i

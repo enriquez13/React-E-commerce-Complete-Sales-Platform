@@ -43,7 +43,7 @@ export const Pie = () => {
             }
           </span>
         </NavLink>
-        <a href="https://wa.me/573127296362" className='flex justify-center text-lime-800 text-[#56e95a]'><BsWhatsapp /></a>
+        <a href="https://wa.me/573127296362" className='flex justify-center text-[#56e95a]'><BsWhatsapp /></a>
       </div>
     </div>
   )
