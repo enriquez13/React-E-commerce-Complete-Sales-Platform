@@ -2,7 +2,7 @@ import React from 'react'
 import NavBar from '../front/NavBar';
 import Footer from '../front/Footer';
 
-export const Politicas = () => {
+const Politicas = () => {
   return (
     <>
     <NavBar />
@@ -31,3 +31,4 @@ export const Politicas = () => {
     </>
   );
 };
+export default Politicas

@@ -12,7 +12,7 @@ const envio ={ //Convertir tipo de envío
   option2:"Contraentrega"
 }
 
-export const Paytwo = () => {
+const Paytwo = () => {
   const [showModal, setShowModal] = useState(false)
   function handleClick() {
     setShowModal(true)
@@ -253,4 +253,4 @@ export const Paytwo = () => {
     </>
   );
 };
-
+export default Paytwo

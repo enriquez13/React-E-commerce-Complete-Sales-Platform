@@ -55,7 +55,7 @@ export const ItemDetail = (props) => {
     setImg(slider.imagen)
   }
 
-  const [talla, setTalla] = useState(data.sizes[0].size)
+  const [talla, setTalla] = useState(data && data.sizes && data.sizes[0].size)
   const [color, setColor] = useState(null)
   const [ide, setIde] = useState(null)
   const [img, setImg] = useState(null)

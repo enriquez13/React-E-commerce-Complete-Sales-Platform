@@ -2,8 +2,7 @@ import React from 'react';
 import NavBar from '../front/NavBar';
 import Footer from '../front/Footer';
 
-
-export const Contactanos = () => {
+const Contactanos = () => {
   return (
     <>
       <NavBar />
@@ -31,3 +30,4 @@ export const Contactanos = () => {
     </>
   );
 };
+export default Contactanos

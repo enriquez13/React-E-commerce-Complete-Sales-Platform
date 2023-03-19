@@ -2,7 +2,7 @@ import React from 'react'
 import NavBar from '../front/NavBar';
 import Footer from '../front/Footer';
 
-export const Envios = () => {
+const Envios = () => {
   return (
     <>
     <NavBar />
@@ -37,3 +37,4 @@ Si tienes alguna duda o consulta acerca de nuestro servicio de envío, no dudes 
     </>
   );
 };
+export default Envios

@@ -2,7 +2,7 @@ import React from 'react'
 import NavBar from '../front/NavBar';
 import Footer from '../front/Footer';
 
-export const Proceso = () => {
+const Proceso = () => {
   return (
     <>
     <NavBar />
@@ -44,3 +44,4 @@ Queremos que te sientas seguro y satisfecho al realizar compras en nuestra tiend
     </>
   );
 };
+export default Proceso

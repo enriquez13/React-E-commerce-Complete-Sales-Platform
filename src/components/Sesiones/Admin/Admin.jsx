@@ -9,7 +9,7 @@ import { Clientes } from './Clientes';
 
 const  auth = getAuth(firebaseApp)
 
-export const Admin = () => {
+const Admin = () => {
   const [data, setData] = useState({})
   const [productos, setProductos] = useState({})
   
@@ -64,3 +64,4 @@ function handlechangeClientes(){
     </div>
   )
 }
+export default Admin

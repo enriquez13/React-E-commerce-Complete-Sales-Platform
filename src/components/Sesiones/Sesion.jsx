@@ -8,7 +8,7 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore';
 const firestore = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp)
 
-export const Sesion = () => {
+const Sesion = () => {
   const [user, setUser] = useState(null)
 
   async function getRol(uid) {
@@ -49,3 +49,4 @@ function setUserWithFirebaseAndRol (usuarioFirebase){
    </>
   )
 }
+export default Sesion

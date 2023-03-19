@@ -1,7 +1,7 @@
 import React from 'react'
 import firebaseApp from '../../firebase/config'
 import { getAuth, signOut } from 'firebase/auth'
-import {Admin} from './Admin/Admin'
+import Admin from './Admin/Admin'
 import { Login } from './Login'
 
 const  auth = getAuth(firebaseApp)
