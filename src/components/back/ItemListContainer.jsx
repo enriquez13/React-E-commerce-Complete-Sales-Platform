@@ -2,16 +2,13 @@ import { getFirestore, collection, query, where, getDocs, limit, orderBy } from 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import Footer from "../front/Footer";
-import { Pie } from "../front/Pie";
 import ItemList from "../ItemList";
 import NavBar from '../front/NavBar'
 import SliderCustomers from '../front/SliderCustomers'
 import  {Informatio} from "../front/Informatio"
+//import { Pie } from "../front/Pie";
 
-
-
-const ItemListContainer = ()=>{
-   
+const ItemListContainer = ()=>{   
     
     const { categoriaId } = useParams()
     const [data, setData] = useState([]);
@@ -83,7 +80,8 @@ const ItemListContainer = ()=>{
                 <ItemList data={data} />                
             </div>
         
-            <Pie />
+            {//<Pie />
+            }
             <h2 className='w-full text-center text-lg font-semibold my-5 text-black'>AlGUNAS RESEÑAS DE CLIENTES</h2>
             <SliderCustomers />
             <Informatio />
