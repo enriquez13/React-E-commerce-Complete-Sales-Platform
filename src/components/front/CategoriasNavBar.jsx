@@ -2,14 +2,14 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { DataCategorias} from "./DataCategorias";
 
-export const CategoriasNavBar = () => {
+export const CategoriasNavBar = ({openNavBar}) => {
   return (
     <>
-    {DataCategorias&&DataCategorias.map((categorias,index)=>(
+    {DataCategorias && DataCategorias.map((categorias,index)=>(
         <div className=" grid items-center justify-center md:h-[3rem]">
       <NavLink key={index} to={`/categoria/${categorias.url}`} className="mx-10 md:mx-0 grid grid-cols-3 gap-4 cursor-pointer 
       text-xl md:my-0 py-2 md:py-0 text-gray-400  hover:text-gray-800 duration-500" 
-      onClick={() => setOpen(!open)}>
+      onClick={() => openNavBar()}>
       <div className="md:hidden grid-row-span-2">
         <img src={categorias.src} className="w-[6rem] h-[6rem] object-cover" alt='Imagen de las categorias'/>
       </div>

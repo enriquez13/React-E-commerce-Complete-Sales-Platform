@@ -105,10 +105,11 @@ export const ItemDetail = (props) => {
               </div>
             </>)}
         </div>
+        <p className='colores mx-3 pt-2'>{color? "Color "+color :null}</p>
         <div className='md:px-20'>
           <h1 className="text-left font-bold pl-3 mt-2 md:mt-0 md:pl-0 md:text-left text-2xl md:text-4xl  ">{data.nombre}</h1>
 
-          <h2 className="pl-3 md:pl-0 text-sm md:text-base mt-2 mb-5  md:mt-5">${data.valor} unidad</h2>
+          <h2 className="pl-3 md:pl-0 text-sm md:text-base mt-2 mb-5  md:mt-5">${data.valor}</h2>
           <h3 className='hidden md:block my-4'>Elige la talla:</h3>
           <div className='grid grid-cols-8 gap-1 place-items-left pl-2 md:pl-0'>
 

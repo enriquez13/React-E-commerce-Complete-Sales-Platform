@@ -23,6 +23,9 @@ function NavBar(props) {
   const {addProduct, cart, removeProduct, totalPrice } = useCartContext()
 
   const [open, setOpen] = useState(false);
+  function openNavBar (){
+    setOpen(!open)
+  }
   const [scroll, setScroll] = useState(0);
   //const auth = getAuth(firebaseApp);
   const { totalProducts, OpenSlider, opens } = useCartContext();
@@ -87,7 +90,7 @@ function NavBar(props) {
                         </p>
                         
                     </div>
-                    <div onClick={() => setOpen(!open)} className="text-xl absolute left-[1.5rem] top-5 text-gray-400 
+                    <div onClick={() => openNavBar()} className="text-xl absolute left-[1.5rem] top-5 text-gray-400 
                     cursor-pointer md:hidden ">
                         {open == false ? <AiOutlineMenu /> : <AiOutlineClose />}
                     </div>
@@ -102,7 +105,7 @@ function NavBar(props) {
                          hover:text-gray-400 duration-500 font-semibold ">
                                Nuestros productos
                             </div>
-                            <CategoriasNavBar />
+                            <CategoriasNavBar openNavBar={openNavBar}/>
                             <hr className="md:hidden bg-gray-900 opacity-30 mx-10 my-8" />
                             <InformacionNavBar />  
                         </ul>
