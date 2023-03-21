@@ -54,13 +54,13 @@ const closeModal = () => {
 
             <div className="px-3 md:pb-5">
             <Link to={`/detalle/${info.id}`}>
-                    <h3 className="text-center text-xs font-bold">{info.nombre}</h3>
+                    <h1 className="text-center text-xs font-bold">{info.nombre}</h1>
             </Link>
             
                 <div className=" pb-2 ">
-                    <h3 className="grid mb-2 text-center text-xs md:text-base text-gray-900 w-full">
+                    <h2 className="grid mb-2 text-center text-xs md:text-base text-gray-900 w-full">
                         ${info.valor}
-                    </h3>
+                    </h2>
                     <Link to={`/detalle/${info.id}`}>
                         <div className='grid grid-cols-8 md:grid-cols-8 gap-1 md:mx-[3rem] md:mt-5'>
                         { 

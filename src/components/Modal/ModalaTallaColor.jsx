@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ListaColores } from '../ListaColores';
 
 
 function ModalaTallaColor(props) {
+
+    const[validate, setValidate] = useState(false)
 
     const { onClose, producto, handleSizeClick, handleColorClick, selectedSize, selectedColor, 
         selectedImagen , agregar, resetSelections} = props
@@ -12,6 +14,15 @@ function ModalaTallaColor(props) {
                 onClose();
             }
         }
+
+      function handleAgregarClick(){
+        if (!selectedColor) {
+            setValidate(true)
+        }
+        {console.log("color : ", selectedColor)}
+        console.log("validate : ", validate, "props : ", props.id)
+        agregar()
+      }
     return (
         <div 
         className="fixed inset-0 h-[100vh] z-[40] flex items-center justify-center bg-black bg-opacity-80"
@@ -36,7 +47,7 @@ function ModalaTallaColor(props) {
                     ))}
                 </div>
                 <div className='grid grid-cols-5 gap-1 my-2  mx-10'>
-                    {selectedSize && selectedSize.size && (
+                    {selectedSize && selectedSize.size && selectedSize.size && (
                         <>
                             {producto?.sizes
                                 .find((size) => size.size === selectedSize.size)
@@ -53,12 +64,16 @@ function ModalaTallaColor(props) {
                     )}
 
                 </div>
+                
+                {validate ? <div className='grid justify-center items-center'>
+                    <p className='text-red-700 bg-red-300 rounded-lg py-1 px-2 w-full mb-1'>Se debe elegir talla y color</p>
+                </div>:""}
                 <div className='grid justify-center'>
-                <button onClick={() => agregar(producto.id)}
+                <button onClick={()=>handleAgregarClick()}
                     className='bg-black text-white border rounded-lg px-9 py-2 text-sm'
                 >Agregar</button>
                 </div>
-                <p className='text-center font-semibold mt-4'>Duradero, confiable, agradable y cómodo</p>
+                <p className='text-center font-semibold mt-4 text-black'>Duradero, confiable, agradable y cómodo</p>
 
                {//} <button onClick={onClose} className="block mt-4 mx-auto px-4 py-2 bg-blue-500 text-white rounded-lg">
                 //    Cerrar

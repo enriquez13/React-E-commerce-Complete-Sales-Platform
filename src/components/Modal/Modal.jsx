@@ -18,16 +18,13 @@ export const Modal = (props) => {
     //carrito producots ordenados de mayor a menor valor
     const productosOrdenados = cart.sort((a, b) => b.valor - a.valor);
 
-
     const [selectedSize, setSelectedSize] = useState({});
-    const [selectedColor, setSelectedColor] = useState("");
+    const [selectedColor, setSelectedColor] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState({});
     const [selectedImagen, setSelectedImagen] = useState("")
     const [goToCart, setGoToCart] = useState(false)
     //generar alerta si no se ha seleccionado color
     const [productId, setProductId] = useState("")
-    const [alertColor, setSAlertColor] = useState(false)
-
 
     const onAdd = (quantity, talla, color, ide, img) => {
         setGoToCart(true)
@@ -192,8 +189,7 @@ export const Modal = (props) => {
                                             </div>
 
                                             <div className="col-span-2">
-                                                <h3 className="text-xs font-bold text-black">{producto.category}</h3>
-                                                <h4 className="text-xs font-bold text-gray-500">{producto.nombre}</h4>
+                                                <h3 className="text-xs font-bold text-black">{producto.nombre}</h3>
                                                 <aside className="text-sm leading-5 text-gray-500 ">
                                                     <h4 className="font-bold text-black text-sm">{cart.length === 1 ? producto.valor * 0.8 : producto.valor * 0.6}</h4>
                                                     <h4 className={`${" line-through text-gray-500"} font-bold text-sm`}>{producto.valor}</h4>

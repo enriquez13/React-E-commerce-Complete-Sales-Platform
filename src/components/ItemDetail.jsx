@@ -63,7 +63,7 @@ export const ItemDetail = (props) => {
   function agregar() {
     setShowModal(true)
     onAdd(1, talla, color, ide, img)
-    setTalla(null)
+   // setTalla(null)
     setColor(null)
     setImg(null)
     setTalla(selectedSize.size)
@@ -121,7 +121,7 @@ export const ItemDetail = (props) => {
                     setTalla(c.size)
 
                   }}
-                  className={`${c.size === selectedSize.size
+                  className={`${selectedSize && c.size === selectedSize.size
                       ? "border bg-black text-gray-100 w-7 h-7 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                       : "text-[1rem] w-6 h-6 border border-gray-200 transform duration-500 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                     }`}
@@ -132,7 +132,7 @@ export const ItemDetail = (props) => {
             ))}
 
           </div>
-          {selectedSize.size && <h3 className='hidden md:block my-4'>Elige el color:</h3>}
+          {selectedSize.size && <h3 className='hidden md:block my-4'>Se debe elegir el color:</h3>}
           <div className='grid grid-cols-8 gap-1 place-items-left pt-5 md:pt-0 pl-2 md:pl-0'>
             {data.sizes?.map((item) => {
               if (item.size !== selectedSize.size) {
@@ -221,10 +221,10 @@ export const ItemDetail = (props) => {
       <SliderCustomer />
       <Informatio />
       <Footer />
-
+{showModal}
       {showModal && (
         <Modal closeModal={closeModaldetail} addProduct={addProduct} cart={cart} removeProduct={removeProduct} 
-        totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts} />
+        totalPrice={totalPrice} totalProducts={totalProducts} allProducts={allProducts}/>
       )}
 
     </>
