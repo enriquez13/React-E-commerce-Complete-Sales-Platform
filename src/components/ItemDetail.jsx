@@ -79,13 +79,14 @@ export const ItemDetail = (props) => {
     <> 
       <div className="text-black grid md:grid-cols-2 md:my-[3rem] px-0 md:mt-[8rem]">
      
-        <div className='md:grid md:place-content-center mx-0 px-0  md:mt-0'>
+        <div className='mx-0 px-0 '>
           {data && data.sizes && data.sizes[0].colors && (
             <>
-              <div style={{ backgroundImage: `url(${sliderData?.imagen})`, backgroundSize: 'cover' }} className=' object-cover bg-center w-full
-                    h-[500px] md:max-h-[450px] md:max-w-[450px] hover:scale-100 duration-500 transition-all ' >
+              <div className='flex justify-center'>
+              <img src={sliderData?.imagen} className=' object-cover bg-center w-full
+                    h-[500px] md:max-h-[450px] md:max-w-[450px] hover:scale-100 duration-500 transition-all' />
               </div>
-              <div className=" grid grid-cols-4 w-full px-0 md-px-0 gap-2">
+              <div className=" md:flex md:justify-center grid grid-cols-6 w-full px-0 md-px-0 gap-2">
 
                 {images?.map((foto, i) => (
                   <img
@@ -93,9 +94,9 @@ export const ItemDetail = (props) => {
                     key={i}
                     src={foto.imagen}
                     className={`${selectedImageIndex === i
-                        ? "border-b-4 border-black transform duration-300 md:hover:scale-100 "
+                        ? "border-b-2 border-black transform duration-300 md:hover:scale-100 "
                         : "opacity-40"
-                      } object-cover max-h-[100px] w-full md:max-h-[120px] py-1`}
+                      } object-cover max-h-[50px] w-full md:max-h-[50px] py-1`}
                     onClick={() => handleClick(i)}
                   />
                 ))}
