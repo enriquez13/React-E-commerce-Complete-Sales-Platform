@@ -99,9 +99,9 @@ function NavBar(props) {
 
                         <ul className={`md:flex md:items-center md:pb-0  absolute md:static bg-black bg-opacity-[0.96] md:bg-transparent
                     md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-700 ease-in
-                     ${open ? 'top-[3.5rem] overflow-y-scroll h-[100vh] pb-[10rem]' : 'top-[-1000px]'} `}>
+                     ${open ? 'top-[3.5rem] overflow-y-scroll h-[100vh] pb-[5rem]' : 'top-[-1000px]'} `}>
 
-                            <div className="md:hidden grid justify-center cursor-pointer md:ml-8 text-xl md:my-0 py-6 text-white
+                            <div className="md:hidden grid justify-center cursor-pointer text-xl md:my-0 py-6 text-white
                          hover:text-gray-400 duration-500 font-semibold ">
                                Nuestros productos
                             </div>

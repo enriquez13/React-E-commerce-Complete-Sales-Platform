@@ -7,14 +7,14 @@ const Politicas = () => {
     <>
     <NavBar />
     <div className="mt-[5rem] text-center">
-    <h2 className="text-2xl font-bold">Politicas</h2>
+    <h2 className="text-2xl font-bold">Políticas</h2>
   </div>
   <div className="mx-8 my-10">
-  <p>En nuestra tienda, nos esforzamos por ofrecer una experiencia de compra satisfactoria y sin preocupaciones. Para lograr esto, contamos con políticas claras y justas en cuanto a cambios y devoluciones de ropa.
+  <p>En nuestra tienda, nos esforzamos por ofrecer una experiencia de compra satisfactoria y sin preocupaciones. Para lograr esto, contamos con políticas claras y justas en cuanto a cambios y devoluciones.
 
   <br />
           <br />
-          Si por algún motivo no estás satisfecho con tu compra, puedes realizar un cambio o devolución en un plazo de 30 días desde la fecha de compra. Es importante que la prenda se encuentre en perfectas condiciones, sin haber sido usada o lavada, y con todas sus etiquetas.
+          Si por algún motivo no estás satisfecho con tu compra, puedes realizar un cambio o devolución en un plazo de 30 días desde la fecha de compra. Es importante que la prenda se encuentre en perfectas condiciones, sin haber sido usada o lavada.
     
           <br />
           <br />

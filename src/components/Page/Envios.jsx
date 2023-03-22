@@ -7,7 +7,7 @@ const Envios = () => {
     <>
     <NavBar />
     <div className="mt-[5rem] text-center">
-    <h2 className="text-2xl font-bold">Contáctanos</h2>
+    <h2 className="text-2xl font-bold">Envíos</h2>
   </div>
   <div className="mx-8 my-10">
     <p>
@@ -19,15 +19,16 @@ const Envios = () => {
 
           <br />
           <br />
-          Ofrecemos envío gratuito en compras superiores a una cantidad determinada, que varía según el destino del envío. En caso de que tu compra no alcance este monto, se aplicará un cargo adicional por envío.
+          Ofrecemos envío gratuito en compras superiores a una cantidad determinada, que varía según el destino del envío. En caso de que el destino sea un lugar de difícil acceso y que tu compra no alcance este monto, se aplicará un cargo adicional por envío pero antes nos pondremos en contaco.
 
           <br />
           <br />
-          Los envíos se realizan a través de empresas de mensajería confiables, y proporcionaremos un número de seguimiento para que puedas monitorear el estatus de tu envío en todo momento.
+          Los envíos se realizan a través de empresas de mensajería confiables, manejamos en su mayoría Servientrega, Coordinadora, interrapidisimo y en menor proporción envía. Te proporcionaremos un número de seguimiento para que puedas monitorear el estatus de tu envío en todo momento.
 
           <br />
           <br />
-          Es importante mencionar que no nos hacemos responsables por retrasos o problemas de entrega causados por factores ajenos a nuestra empresa, como problemas climáticos o de logística de la empresa de mensajería. Sin embargo, estamos comprometidos en resolver cualquier problema que se presente y brindarte la mejor solución posible.
+          Es importante mencionar que no nos hacemos responsables por retrasos o problemas de entrega causados por factores ajenos a nuestra empresa, como problemas climáticos o de logística de la empresa de mensajería. Sin embargo, estamos comprometidos en resolver cualquier problema que se presente y brindarte la mejor solución posible,
+          si tu pedido es extraviado por la transportadora (lo cuál cais nunca ocurre), nosotros haremos el proceso con la transportadora para recuperar tu dinero.
 
 Si tienes alguna duda o consulta acerca de nuestro servicio de envío, no dudes en ponerte en contacto con nuestro equipo de atención al cliente. Estamos a tu disposición para ayudarte en todo lo que necesites y para que disfrutes de una experiencia de compra en línea satisfactoria y sin preocupaciones.
     </p>
