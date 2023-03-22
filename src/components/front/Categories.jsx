@@ -13,7 +13,7 @@ export const Categories = () => {
 </div>
             <div className="w-full max-w-full overflow-x-hidden grid sm:grid-cols-4 text-gray-100 ">
                 {DataCategorias.map((category,index)=>(
-                <NavLink to={`/categoria/${category.url}`} key={index} className=" w-full relative h-[24rem] md:h-[600px] mt-2">
+                <NavLink to={`/categoria/${category.url}`} key={index} className=" w-full relative h-[27rem] md:h-[500px] mt-2">
                 <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" src={category.src} 
                 alt='Imagen categorias'/>
                     <div className="absolute grid bottom-[50%] translate-y-[50%] w-full text-sm px-4 ">

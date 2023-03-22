@@ -11,12 +11,12 @@ export const DataCategorias = [
     src:"https://i.pinimg.com/564x/82/59/8b/82598bdc2c04d71f84bb6ff680f75e77.jpg", boton: "Ver Ahora"},
 ]
 export const DataIformacion = [
-    {url: "", nombre: "Preguntas frecuentes"},
+    {url: "", nombre: "Preguntas"},
     {url: "nosotros", nombre: "Nosotros"},
     {url: "contactanos", nombre: "Contáctanos"},
-    {url: "envios", nombre: "Información de envíos"},
-    {url: "proceso", nombre: "Proceso de cambio o devolución"},
+    {url: "envios", nombre: "Envíos"},
+    {url: "proceso", nombre: "Cambio o devolución"},
     {url: "politicas", nombre: "políticas"},
-    {url: "sesion", nombre: "Registro o iniciar sesión"},
+    {url: "sesion", nombre: "Iniciar sesión"},
   
 ]
