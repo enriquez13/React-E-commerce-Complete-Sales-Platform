@@ -6,8 +6,8 @@ import Item from './Item'
     <>
     
     {
-    data.map((product, index) => 
-    <Item key={index} info={product} />)
+    data.map((product) => 
+    <Item key={product.id} info={product} />)
     }
  
     </>

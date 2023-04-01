@@ -1,8 +1,8 @@
 //import Imagen1 from '../assets/PS2.jpg'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import {useCartContext} from '../CartProvider'
-import { useState } from 'react'
+//import {useCartContext} from '../CartProvider'
+//import { useState } from 'react'
 import {ListaColores} from './ListaColores'
 //import { BsBagCheck } from "react-icons/bs";
 //import { Modal } from './Modal/Modal';
@@ -13,30 +13,30 @@ const Item = ({info})=>{
 
 //COLORES
 
-const [showModal, setShowModal] = useState(false);
-const [goToCart, setGoToCart] = useState(false)
-const {addProduct, cart, removeProduct, totalPrice, totalProducts} = useCartContext()
+//const [showModal, setShowModal] = useState(false);
+//const [goToCart, setGoToCart] = useState(false)
+//const {addProduct, cart, removeProduct, totalPrice, totalProducts} = useCartContext()
 
-    const onAdd = (quantity, talla, color,ide) =>{
-    setGoToCart(true)
-    addProduct(info, quantity, talla, color, ide)
-}
+ //   const onAdd = (quantity, talla, color,ide) =>{
+ //   setGoToCart(true)
+ //   addProduct(info, quantity, talla, color, ide)
+//}
 //const [colores, setColores] = useState([])
 
 //const [talla, setTalla] = useState('')
 //const [color, setColor] = useState('')
 //const [ide, setIde] = useState('')
 
-function agregar() {
-    setShowModal(true)
-    onAdd(1, talla, color, ide) 
-    setTalla("")
-    setColor("")
-}
+//function agregar() {
+//    setShowModal(true)
+//    onAdd(1, talla, color, ide) 
+//    setTalla("")
+//    setColor("")
+//}
 
-const closeModal = () => {
-    setShowModal(false);
-  };
+//const closeModal = () => {
+//    setShowModal(false);
+ // };
     return (
         <>
         <div className="relative rounded-lg">
@@ -66,13 +66,13 @@ const closeModal = () => {
                         { 
                            info.sizes[0].colors.slice(0, 6).map((col,index) => (
                             
-                               <>
+                               <Fragment key={index}>
                                 
-                                    <button key={col.idepro} className={`w-4 h-4 md:w-7 md:h-7 md:transform duration-500 
+                                    <button  className={`w-4 h-4 md:w-7 md:h-7 md:transform duration-500 
                                     md:hover:scale-110 mx-1 border rounded-full ${ListaColores[col.color]} !important `}  
                                     />
                                     
-                                </>
+                                </Fragment>
                            
                             )
                             ) } {info.sizes[0].colors.length>5 

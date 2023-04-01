@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useState } from 'react'
 import { useCartContext } from '../CartProvider'
 import SliderCustomer from './front/SliderCustomers'
@@ -9,12 +9,6 @@ import Footer from './front/Footer'
 import { Informatio } from './front/Informatio'
 import { ListaColores } from './ListaColores'
 import { DetailInformation } from './DetailInformation'
-
-
-
-const imgs = [
-  { id: 0, img: "https://geekflare.com/wp-content/uploads/2021/09/520401-pure-black-background-wallpaper.jpg" },
-]
 
 export const ItemDetail = (props) => {
 
@@ -114,9 +108,8 @@ export const ItemDetail = (props) => {
           <div className='grid grid-cols-8 gap-1 place-items-left pl-2 md:pl-0'>
 
             {data.sizes?.map((c) => (
-              <>
+              <Fragment key={c.size}>
                 <button
-                  key={c.size}
                   onClick={() => {
                     setSelectedSize(c)
                     setImages(c.colors)
@@ -130,7 +123,7 @@ export const ItemDetail = (props) => {
                 >
                   {c.size}
                 </button>
-              </>
+              </Fragment>
             ))}
 
           </div>

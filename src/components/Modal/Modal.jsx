@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AiFillDelete } from "react-icons/ai"
 import { AiOutlineClose } from "react-icons/ai";
@@ -104,7 +104,7 @@ export const Modal = (props) => {
                             <div className="  "> {// aquí overflow-y-scroll
                             }
                                 {cart?.map((product, index) => (
-                                    <>
+                                    <Fragment key={product.id}> 
                                         <div className=" grid grid-cols-6 bg-white h-[7rem] w-full justify-items-center content-center" key={index}  >
                                             <div className='col-span-2  w-[6rem] h-[6rem]  relative'>
                                                 <img src={cart[index].img} className="object-cover w-full h-full" 
@@ -148,7 +148,7 @@ export const Modal = (props) => {
                                         </div>
                                         <hr />
 
-                                    </>))}
+                                    </Fragment>))}
                             </div>
                             <div className='w-full max-w-full overflow-x-hidden grid   text-black justify-center items-center
                             my-5 text-xl font-semibold'>
@@ -162,7 +162,9 @@ export const Modal = (props) => {
 
                                     <div className="w-full max-w-full overflow-x-hidden grid   text-sky-700 justify-center items-center">
                                         {DataCategorias.map((category, index) => (
-                                            <NavLink to={`/categoria/${category.url}`} key={index} className=" w-full relative h-[15rem] mt-2">
+                                            <Fragment key={index}> 
+                                            
+                                            <NavLink to={`/categoria/${category.url}`}  className=" w-full relative h-[15rem] mt-2">
                                                 <img className="object-cover w-full h-full md:transform md:duration-200 md:hover:scale-105" 
                                                 src={category.src} alt={"Imagen categoria " + category.nombre}/>
                                                 <div className="absolute grid bottom-[20%] translate-y-[50%] w-full text-sm px-4 ">
@@ -170,6 +172,7 @@ export const Modal = (props) => {
 
                                                 </div>
                                             </NavLink>
+                                            </Fragment>
                                         )
                                         )}
 
@@ -180,7 +183,7 @@ export const Modal = (props) => {
 
                                 <div className="pb-[0.2rem]">
                                     {filteredProducts.map((producto, index) => (
-                                        <div key={index} className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem] justify-items-center content-center">
+                                        <div key={producto.id} className=" bg-white my-4 mx-4 border border-gray-300 px-4 py-1 grid grid-cols-8 h-[7rem] justify-items-center content-center">
                                             <div className="container h-[5rem] w-[5rem] col-span-2">
                                                 <img className="object-cover w-full h-full " alt='Imagen de referenica del producto'
                                                 onClick={()=>handleOpenModalTallaColor(producto)}
@@ -201,9 +204,9 @@ export const Modal = (props) => {
 
                                                    
                                                         {producto.sizes.map((size, index) => (
- <>
+                                                    <Fragment key={index}>
 
-                                                            <button key={index} className={`${selectedSize&&size.size === selectedSize.size && selectedProduct.id === producto.id
+                                                            <button  className={`${selectedSize&&size.size === selectedSize.size && selectedProduct.id === producto.id
                                                                 ? "text-[0.7rem] border bg-black text-gray-100 w-5 h-5 font-bold transform duration-500 scale-110 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                                                                 : "text-[0.7rem] w-5 h-5 border border-gray-200 transform duration-500 md:hover:scale-110 md:hover:border-gray-500 rounded-lg"
                                                                 }`}
@@ -212,7 +215,7 @@ export const Modal = (props) => {
                                                             </button>
                                                             
                                         
-                                                    </>  ))}
+                                                    </Fragment>  ))}
 
 
                                                 </div>
