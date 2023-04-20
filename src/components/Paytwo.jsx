@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Fragment } from 'react' 
+import React, { useEffect, Fragment } from 'react' 
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useForm } from 'react-hook-form';
@@ -8,8 +8,8 @@ import { useCartContext } from '../CartProvider';
 //import { Modal } from './Modal/Modal';
 
 const envio ={ //Convertir tipo de envío
-  option1:"Envío normal",
-  option2:"Contraentrega"
+  option1: "Envío normal",
+  option2: "Contraentrega"
 }
 
 const Paytwo = () => {
@@ -177,7 +177,7 @@ const Paytwo = () => {
         <Fragment key={`item-${index}`}>
       <div  className=' grid grid-cols-6 gap-1 items-center pb-1'>
         <div className='col-span-1 h-[4rem] md:w-[5.5rem] md:h-[5.5rem]'><img src={items.img} className="object-cover h-full w-full" alt='imagenes productos'/></div>
-        <div className='col-span-4 text-sm pl-1'>{items.category+" "+items.nombre+" "+items.talla+" "+items.color}</div>
+        <div className='col-span-4 text-sm pl-1'>{items.nombre+" "+items.talla+" "+items.color}</div>
         <div className='col-span-1 text-sm'>{index === 0 ? cart[index].valor : index === 1 ? cart[index].valor * 0.8 : cart[index].valor * 0.6}
        </div>
       </div>

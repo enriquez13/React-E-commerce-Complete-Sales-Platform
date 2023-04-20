@@ -16,10 +16,14 @@ import { CartProvider } from './CartProvider'
 //import Formulario from './components/Pay/Formulario'
 
 import  Home from './components/front/Home'
+
 const ItemListContainer = lazy(()=> import('./components/back/ItemListContainer'))
 const ItemDetailContainer = lazy(()=> import('./components/back/ItemDetailsContainer'))
-const Admin =lazy(()=> import('../src/components/Sesiones/Admin/Admin'))
 const Sesion  =lazy(()=> import('./components/Sesiones/Sesion'))
+const Admin =lazy(()=> import('../src/components/Sesiones/Admin/Admin'))
+const PreguntasFrecuentes =lazy(()=> import('./components/Page/PreguntasFrecuentes'));
+const Nosotros =lazy(()=> import('./components/Page/Nosotros'));
+
 const Proceso =lazy(()=> import('./components/Page/Proceso'))
 const Envios = lazy(()=> import( './components/Page/Envios'))
 const Politicas = lazy(()=> import('./components/Page/Politicas'))
@@ -58,6 +62,9 @@ function App() {
             <Route path='/pay' element={<Paytwo />} />
             <Route path='/sesion' element={<Sesion />} />
             <Route path='/admin' element={<Admin />} />
+            <Route path='/preguntas' element={<PreguntasFrecuentes />} />
+            <Route path='/nosotros' element={<Nosotros />} />
+
             <Route path='/contactanos' element={<Contactanos />} />
             <Route path='/proceso' element={<Proceso />} />
             <Route path='/politicas' element={<Politicas />} />

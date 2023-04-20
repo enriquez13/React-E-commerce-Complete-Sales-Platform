@@ -1,5 +1,5 @@
 import { getFirestore, collection, getDocs, doc, getDoc } from 'firebase/firestore';
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import ItemDetail from "../ItemDetail";
 import { useParams } from "react-router-dom";
 import Navbar from '../front/NavBar'

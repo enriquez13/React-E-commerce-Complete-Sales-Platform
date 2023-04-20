@@ -16,7 +16,6 @@ const addProduct = (item, quantity, talla, color, ide, img) =>{
   } else {
     setCart([...cart, { ...item, quantity, talla, color, ide, img}])
   } 
-  
 }
 
 // Precio total
@@ -38,7 +37,7 @@ const totalPrice = () => {
 };
 
 const valorEnvio = () =>{
-  const envioFinal = totalPrice()>=149900 ? 0 : 10000 
+  const envioFinal = totalPrice() >= 149900 ? 0 : 10000 
   return envioFinal
 }
 const total = () => {

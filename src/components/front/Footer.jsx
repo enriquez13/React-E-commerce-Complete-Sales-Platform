@@ -32,18 +32,18 @@ const Footer=()=>{
                     <section className="text-gray-400">
                         <h2 className="w-1/2 mt-4 text-left text-sm font-semibold text-gray-200 uppercase ">Información</h2>
                         <div className="my-2">
-                        <NavLink className='my-2 mb-2 hover:underline'>
+                        <NavLink to='/preguntas' className='my-2 mb-2 hover:underline'>
                             <h3  className="mb-2 hover:underline">Preguntas frecuentes</h3>
                         </NavLink>
-                        <NavLink className='my-2 mb-2 hover:underline'>
-                            <h3  className="mb-2 hover:underline">Direcciones</h3>
-                        </NavLink>
-                        <NavLink className='my-2 mb-2 hover:underline'>
+                        <NavLink to='/nosotros' className='my-2 mb-2 hover:underline'>
                             <h3  className="mb-2 hover:underline">Nosotros</h3>
                         </NavLink>
                         <NavLink to='/contactanos' className='my-2 mb-2 hover:underline'>
                         <h3  className="mb-2 hover:underline">Contáctanos</h3>
                         </NavLink>
+                        <div className='my-2 mb-2 '>
+                            <h3  className="mb-2 ">Cl 6 # 10-06 Centro, Popayán</h3>
+                        </div>
                         </div>
                     </section>
                 </div>
