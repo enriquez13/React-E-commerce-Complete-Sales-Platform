@@ -57,6 +57,7 @@
 - ▲ **Vercel** - Deployment platform
 
 ### 📂 Project Structure
+```bash
 React-E-commerce-Complete-Sales-Platform/
 │
 ├── src/
@@ -73,6 +74,8 @@ React-E-commerce-Complete-Sales-Platform/
 │
 ├── package.json
 └── README.md
+```
+
 ## 👤 Author
 
 Alejandro Enríquez Narváez
@@ -96,4 +99,5 @@ yarn install
 # Run development server
 yarn dev
 ```
+
 
