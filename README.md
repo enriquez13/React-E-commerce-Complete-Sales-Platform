@@ -8,7 +8,7 @@
 **A complete e-commerce application built with React, Firebase, and Tailwind CSS.**
 
 ## 🎥 Live Demo
-🔗 **[[https://my-react-app-enriquez13.vercel.app/](https://my-react-app-enriquez13.vercel.app/)]**
+🔗 **https://react-e-commerce-complete-sales-pla-liard.vercel.app/**
 
 ## ✨ Key Features
 
@@ -56,6 +56,31 @@
 ### **Deployment**
 - ▲ **Vercel** - Deployment platform
 
+### 📂 Project Structure
+React-E-commerce-Complete-Sales-Platform/
+│
+├── src/
+│   ├── components/       # Reusable UI components
+|        ├──AnimatedText/
+|        ├──back/
+|        ├──front/
+|        ├──Modal/
+|        ├──Page/ 
+|        ├──Pay/
+|        ├──Sesiones/
+│   ├── firebas/            # Data base
+│   └── App.jsx
+│
+├── package.json
+└── README.md
+## 👤 Author
+
+Alejandro Enríquez Narváez
+Master’s Student in Nuclear Physics @ USP | Data Analyst | React Developer
+📧 alejandroenriquez@usp.br
+
+🔗 LinkedIn https://www.linkedin.com/in/alejandro-enr%C3%ADquez-3611931b3/
+
 ## 🚀 Installation & Usage
 
 ```bash
@@ -66,14 +91,9 @@ git clone https://github.com/your-username/my-react-app.git
 cd my-react-app
 
 # Install dependencies
-npm install
+yarn install
 
 # Run development server
-npm run dev
+yarn dev
+```
 
-# Build for production
-npm run build
-
-# Preview production build
-
-npm run preview
