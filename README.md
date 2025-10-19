@@ -69,7 +69,7 @@ React-E-commerce-Complete-Sales-Platform/
 |        ├──Page/ 
 |        ├──Pay/
 |        ├──Sesiones/
-│   ├── firebas/            # Data base
+│   ├── firebas/            # Database
 │   └── App.jsx
 │
 ├── package.json
@@ -99,5 +99,6 @@ yarn install
 # Run development server
 yarn dev
 ```
+
 
 
