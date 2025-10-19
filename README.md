@@ -8,7 +8,7 @@
 **A complete e-commerce application built with React, Firebase, and Tailwind CSS.**
 
 ## 🎥 Live Demo
-🔗 **[https://my-react-app-enriquez13.vercel.app/](https://my-react-app-enriquez13.vercel.app/)**
+🔗 **[[https://my-react-app-enriquez13.vercel.app/](https://my-react-app-enriquez13.vercel.app/)]**
 
 ## ✨ Key Features
 
@@ -75,4 +75,5 @@ npm run dev
 npm run build
 
 # Preview production build
+
 npm run preview
