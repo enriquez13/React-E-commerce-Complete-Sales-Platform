@@ -8,7 +8,7 @@
 **A complete e-commerce application built with React, Firebase, and Tailwind CSS.**
 
 ## 🎥 Live Demo
-🔗 **https://react-e-commerce-complete-sales-pla-liard.vercel.app/**
+🔗 **[https://react-e-commerce-complete-sales-pla-liard.vercel.app/](https://react-e-commerce-complete-sales-pla.vercel.app/)**
 
 ## ✨ Key Features
 
@@ -77,3 +77,4 @@ npm run build
 # Preview production build
 
 npm run preview
+
