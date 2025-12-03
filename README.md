@@ -5,6 +5,9 @@
 [![Firebase](https://img.shields.io/badge/Firebase-9.16.0-orange)](https://firebase.google.com/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-3.2.7-cyan)](https://tailwindcss.com/)
 
+## Demo
+https://react-e-commerce-complete-sales-pla.vercel.app/
+
 ## ✨ Key Features
 
 ### 🛒 **Shopping Cart System**
@@ -94,6 +97,7 @@ yarn install
 # Run development server
 yarn dev
 ```
+
 
 
 
