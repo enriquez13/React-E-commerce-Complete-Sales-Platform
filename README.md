@@ -5,7 +5,7 @@
 [![Firebase](https://img.shields.io/badge/Firebase-9.16.0-orange)](https://firebase.google.com/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-3.2.7-cyan)](https://tailwindcss.com/)
 
-####🎥 Live Demo
+###🎥 Live Demo
 🔗 **[https://react-e-commerce-complete-sales-pla-liard.vercel.app/](https://react-e-commerce-complete-sales-pla.vercel.app/)**
 
 # ✨ Key Features
@@ -86,7 +86,7 @@ Master’s Student in Nuclear Physics @ USP | Data Analyst | React Developer
 
 ```bash
 # Clone repository
-git clone https://github.com/your-username/my-react-app.git
+git clone https://github.com/enriquez13/React-E-commerce-Complete-Sales-Platform.git
 
 # Enter directory
 cd my-react-app
@@ -97,6 +97,7 @@ yarn install
 # Run development server
 yarn dev
 ```
+
 
 
 
