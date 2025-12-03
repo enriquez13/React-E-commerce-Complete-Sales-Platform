@@ -5,10 +5,10 @@
 [![Firebase](https://img.shields.io/badge/Firebase-9.16.0-orange)](https://firebase.google.com/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-3.2.7-cyan)](https://tailwindcss.com/)
 
-## Demo
-[[https://react-e-commerce-complete-sales-pla.vercel.app/](https://react-e-commerce-complete-sales-pla-liard.vercel.app/)](https://react-e-commerce-complete-sales-pla.vercel.app/)
+####🎥 Live Demo
+🔗 **[https://react-e-commerce-complete-sales-pla-liard.vercel.app/](https://react-e-commerce-complete-sales-pla.vercel.app/)**
 
-## ✨ Key Features
+# ✨ Key Features
 
 ### 🛒 **Shopping Cart System**
 - Persistent cart with localStorage
@@ -97,6 +97,7 @@ yarn install
 # Run development server
 yarn dev
 ```
+
 
 
 
