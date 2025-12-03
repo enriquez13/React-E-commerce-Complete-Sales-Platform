@@ -6,7 +6,7 @@
 [![Tailwind](https://img.shields.io/badge/Tailwind-3.2.7-cyan)](https://tailwindcss.com/)
 
 ## Demo
-https://react-e-commerce-complete-sales-pla.vercel.app/
+[https://react-e-commerce-complete-sales-pla.vercel.app/](https://react-e-commerce-complete-sales-pla-liard.vercel.app/)
 
 ## ✨ Key Features
 
@@ -97,6 +97,7 @@ yarn install
 # Run development server
 yarn dev
 ```
+
 
 
 
